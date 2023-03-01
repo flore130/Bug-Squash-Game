@@ -11,5 +11,5 @@
  */
 void MainFrame::Initialize()
 {
-	Create( nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1000, 1250 ) );
+	Create( nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1250, 1000 ) );
 }
