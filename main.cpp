@@ -1,7 +1,9 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @author Kev
+ */
 
-int main()
-{
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
-}
+#include "pch.h"
+#include "BugSquashApp.h"
+
+wxIMPLEMENT_APP(BugSquashApp);
