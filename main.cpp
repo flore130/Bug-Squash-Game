@@ -1,15 +1,9 @@
 /**
- * Program entry point
- * @author Kevin
- * @author Kyle Nowak
+ * @file main.cpp
+ * @author Kev
  */
 
-// Test push
+#include "pch.h"
+#include "BugSquashApp.h"
 
-#include <iostream>
-
-int main()
-{
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
-}
+wxIMPLEMENT_APP(BugSquashApp);
