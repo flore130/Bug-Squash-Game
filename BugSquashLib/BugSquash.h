@@ -9,6 +9,7 @@
 #define PROJECT1_BUGSQUASHLIB_BUGSQUASH_H
 
 #include <wx/wx.h>
+#include <wx/graphics.h>
 #include <memory>
 #include <random>
 
@@ -45,7 +46,7 @@ public:
 	void Add(std::shared_ptr<Item>);
 	void Load(const wxString &filename);
 	void XmlItem(wxXmlNode *node);
-	void OnDraw(wxDC* dc);
+	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H

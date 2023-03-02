@@ -97,11 +97,15 @@ void BugSquash::Add(std::shared_ptr<Item> item)
 
 }
 
+
 /**
- * Draw the BugSquash application
- * @param dc The device context to draw on
+ * Draw the BugSquash game area
+ * @param graphics The graphics context to draw on
+ * @param width Width of the client window
+ * @param height Height of the client window
  */
-void BugSquash::OnDraw(wxDC *dc)
+void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height)
 {
 
 }
+
