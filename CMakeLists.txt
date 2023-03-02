@@ -28,3 +28,5 @@ target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} ${APPLICATION_LIBRA
 
 # pch will be a precompiled library so it won't be compiled more than once
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
+
+add_subdirectory(Tests)
