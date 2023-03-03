@@ -23,7 +23,7 @@ public:
 	Scoreboard(BugSquash* bugsqaush);
 
 	void SquashIncrement(Item* item);
-	void ProgramIncrement();
+	void ProgramIncrement(Item* item);
 	void Reset();
 
 };
