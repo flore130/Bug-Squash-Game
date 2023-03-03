@@ -19,7 +19,7 @@ using namespace std;
  *
  * Opens the XML file and reads through, creating items as appropriate.
  *
- * @param filename The filename of the file to load the aquarium from.
+ * @param filename The filename of the file to load the BugSquash application from.
  */
 void BugSquash::Load(const wxString &filename)
 {
@@ -109,3 +109,16 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 }
 
+void BugSquash::Clear()
+{
+	mItems.clear();
+}
+
+/**
+ * Handle updates for animation
+ * @param elapsed The time since the last update
+ */
+void BugSquash::Update(double elapsed)
+{
+
+}

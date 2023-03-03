@@ -42,11 +42,14 @@ private:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems;
 
-public:
 	void Add(std::shared_ptr<Item>);
+
+public:
 	void Load(const wxString &filename);
 	void XmlItem(wxXmlNode *node);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
+	void Clear();
+	void Update(double elapsed);
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H
