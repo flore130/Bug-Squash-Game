@@ -38,6 +38,7 @@ private:
 
 public:
 	void Initialize(wxFrame* parent);
+	void OnFileOpen(wxCommandEvent& event);
 
 
 

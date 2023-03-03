@@ -24,6 +24,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 		   wxFULL_REPAINT_ON_RESIZE);
 	wxWindow::SetBackgroundStyle(wxBG_STYLE_PAINT);
 	Bind(wxEVT_PAINT, &BugSquashView::OnPaint, this);
+	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnFileOpen, this, wxID_OPEN);
 	Bind(wxEVT_LEFT_DOWN, &BugSquashView::OnLeftDown, this);
 	Bind(wxEVT_LEFT_DCLICK, &BugSquashView::OnDoubleClick, this);
 	Bind(wxEVT_TIMER, &BugSquashView::OnTimer, this);
@@ -106,4 +107,23 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 //	{
 //		// TODO : Decide what to do for the item. A visitor or a virtual function may be useful here
 //	}
+}
+
+/**
+ * File>Open menu handler
+ * @param event Menu event
+ */
+void BugSquashView::OnFileOpen(wxCommandEvent& event)
+{
+	wxFileDialog loadFileDialog(this, L"Load BugSquash file", L"", L"",
+								L"BugSquash Files (*.xml)|*.xml", wxFD_OPEN);
+	if (loadFileDialog.ShowModal() == wxID_CANCEL)
+	{
+		return;
+	}
+
+	auto filename = loadFileDialog.GetPath();
+	mBugSquash.Load(filename);
+	Refresh();
+
 }

@@ -4,6 +4,7 @@
  */
 
 #include "pch.h"
+#include "BugSquashView.h"
 #include "MainFrame.h"
 
 /**
@@ -12,6 +13,9 @@
 void MainFrame::Initialize()
 {
 	Create( nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1250, 1000 ) );
+
+	auto bugSquashView = new BugSquashView();
+	bugSquashView->Initialize(this);
 
 	auto menuBar = new wxMenuBar( );
 	auto fileMenu = new wxMenu();
