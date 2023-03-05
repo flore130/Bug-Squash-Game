@@ -7,15 +7,26 @@
 #include "gtest/gtest.h"
 
 #include <Item.h>
+#include <Level.h>
+
+const std::wstring LaptopImage = L"../images/laptop.png";
+
+class ItemMock : public Item
+{
+public:
+	ItemMock(Level *level) : Item(level, LaptopImage) {}
+};
 
 TEST(ItemTest, Construct)
 {
-	Item myItem;
+	Level newLevel;
+	ItemMock myItem(&newLevel);
 }
 
 TEST(ItemTest, GetterSetters)
 {
-	Item item;
+	Level newLevel;
+	ItemMock item(&newLevel);
 
 	// Test initial values
 	ASSERT_NEAR(0, item.GetX(), 0.0001);

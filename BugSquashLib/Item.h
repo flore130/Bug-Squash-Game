@@ -9,6 +9,7 @@
 #define PROJECT1_BUGSQUASHLIB_ITEM_H
 
 class Level;
+class BugVisitor;
 
 /**
  * Base class representing items that can be displayed on screen
@@ -31,7 +32,21 @@ private:
 	/// The item bitmap
 	std::unique_ptr<wxBitmap> mItemBitmap = nullptr;
 
+protected:
+	Item(Level *level, const std::wstring &filename);
+
+
 public:
+	/// Default constructor (disabled)
+	Item() = delete;
+
+	/// Copy constructor (disabled)
+	Item(const Item &) = delete;
+
+	/// Assignment operator
+	void operator=(const Item &) = delete;
+
+
 	/**
      * The X location of the item
      * @return X location in pixels
@@ -62,6 +77,12 @@ public:
      * @return Item height in pixels
      */
 	double GetHeight() {return mItemBitmap->GetHeight();}
+
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	virtual void Accept(BugVisitor *visitor) {}
 
 
 };

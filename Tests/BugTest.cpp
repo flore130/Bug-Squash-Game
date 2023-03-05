@@ -7,16 +7,21 @@
 #include "gtest/gtest.h"
 
 #include <Bug.h>
+#include <Level.h>
+
+const std::wstring GarbageSplatImage = L"../images/blue-maize-bug.png";
 
 TEST(BugTest, Construct)
 {
-	Bug myBug;
+	Level newLevel;
+	Bug myBug(&newLevel, GarbageSplatImage);
 }
 
 
 TEST(BugTest, HitTest)
 {
-	Bug bug;
+	Level newLevel;
+	Bug bug(&newLevel, GarbageSplatImage);
 
 	// Testing at origin
 	ASSERT_TRUE(bug.HitTest(0,0));

@@ -2,7 +2,10 @@
  * @file Level.h
  * @author Kyle Nowak
  *
+ * Level class
  *
+ * This is the class that will actually load the XML data,
+ * as well as hold the items in the playing area
  */
 
 #ifndef PROJECT1_BUGSQUASHLIB_LEVEL_H
@@ -10,6 +13,12 @@
 
 #include <memory>
 
+/**
+ * Level class
+ *
+ * This is the class that will actually load the XML data,
+ * as well as hold the items in the playing area
+ */
 class Item;
 class BugVisitor;
 

@@ -20,6 +20,8 @@ private:
 public:
 	bool HitTest(double x, double y);
 
+	Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
