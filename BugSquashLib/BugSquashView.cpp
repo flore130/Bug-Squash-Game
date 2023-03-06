@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "BugSquashView.h"
 #include <wx/dcbuffer.h>
+#include "ids.h"
 
 using namespace std;
 
@@ -23,8 +24,14 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 		   wxDefaultPosition, wxDefaultSize,
 		   wxFULL_REPAINT_ON_RESIZE);
 	wxWindow::SetBackgroundStyle(wxBG_STYLE_PAINT);
+
+	// Bind the event handler to initialize
 	Bind(wxEVT_PAINT, &BugSquashView::OnPaint, this);
+
+	/// Bind the menu handlers
 	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnFileOpen, this, wxID_OPEN);
+
+	// Bind mouse to BugSquashView window
 	Bind(wxEVT_LEFT_DOWN, &BugSquashView::OnLeftDown, this);
 	Bind(wxEVT_LEFT_DCLICK, &BugSquashView::OnDoubleClick, this);
 	Bind(wxEVT_TIMER, &BugSquashView::OnTimer, this);
