@@ -15,6 +15,9 @@ class ItemMock : public Item
 {
 public:
 	ItemMock(Level *level) : Item(level, LaptopImage) {}
+
+	/// Do nothing with the visitor currently
+	virtual void Accept( ItemVisitor* visitor ) override {};
 };
 
 TEST(ItemTest, Construct)
