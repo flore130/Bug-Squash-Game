@@ -32,7 +32,23 @@ void Level::Accept( ItemVisitor* visitor )
  */
 void Level::XmlItem(wxXmlNode *node)
 {
-	
+
+}
+
+/**
+ *
+ * @param node The program node to loop through
+ */
+void Level::XmlProgram(wxXmlNode *node)
+{
+	/*
+	 * Position program on screen properly with an upcall to Item::XmlItem
+	 * Add to the level's list (need a function for this)
+	 *
+	 * Here we'll need to loop through the program node's children,
+	 * which need to be translated into bugs/features, positioned properly (upcall),
+	 * and then, if they are bugs, checked for any <code> child tag
+	 */
 }
 
 
@@ -60,9 +76,9 @@ void Level::Load(const wxString &filename)
 	for( ; child; child=child->GetNext())
 	{
 		auto name = child->GetName();
-		if(name == L"bug" || name == L"program" || name == L"feature")
+		if(name == L"program")
 		{
-			XmlItem(child);
+			XmlProgram(child);
 		}
 	}
 }

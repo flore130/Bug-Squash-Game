@@ -1,6 +1,7 @@
 /**
  * @file BugSquash.h
  * @author npmar
+ * @author Kyle Nowak
  *
  *
  */
@@ -12,8 +13,10 @@
 #include <wx/graphics.h>
 #include <memory>
 #include <random>
+#include "Level.h"
 
 class Item;
+//class Level;
 
 /**
  * The main BugSquash class.
@@ -41,6 +44,9 @@ private:
 
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems;
+
+	/// The level that is currently loaded
+	std::unique_ptr<Level> mLevel = nullptr;
 
 	void Add(std::shared_ptr<Item>);
 
