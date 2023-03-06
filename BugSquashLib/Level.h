@@ -20,7 +20,7 @@
  * as well as hold the items in the playing area
  */
 class Item;
-class BugVisitor;
+class ItemVisitor;
 
 class Level
 {
@@ -37,7 +37,7 @@ private:
 public:
 	void Load(const wxString &filename);
 
-	void Accept(BugVisitor *visitor);
+	void Accept( ItemVisitor* visitor );
 
 };
 

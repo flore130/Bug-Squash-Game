@@ -13,7 +13,7 @@
  * Accepts a visitor into this level
  * @param visitor the visitor that is visiting this level
  */
-void Level::Accept(BugVisitor *visitor)
+void Level::Accept( ItemVisitor* visitor )
 {
 	for (auto item : mItems)
 	{

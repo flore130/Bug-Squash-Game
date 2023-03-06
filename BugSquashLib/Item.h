@@ -8,8 +8,9 @@
 #ifndef PROJECT1_BUGSQUASHLIB_ITEM_H
 #define PROJECT1_BUGSQUASHLIB_ITEM_H
 
+#include "ItemVisitor.h"
+
 class Level;
-class BugVisitor;
 
 /**
  * Base class representing items that can be displayed on screen
@@ -82,7 +83,7 @@ public:
      * Accept a visitor
      * @param visitor The visitor we accept
      */
-	virtual void Accept(BugVisitor *visitor) {}
+	virtual void Accept( ItemVisitor* visitor ) = 0;
 
 
 };
