@@ -13,6 +13,8 @@
 
 using namespace std;
 
+/// Scale to shrink to when in shrink mode
+const double ShrinkScale = 0.75;
 
 /**
  * Load the BugSquash application from an XML file.
@@ -106,9 +108,47 @@ void BugSquash::Add(std::shared_ptr<Item> item)
  */
 void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height)
 {
+	//
+	// Automatic Scaling
+	//
+	auto scaleX = double(width) / double(Width);
+	auto scaleY = double(height) / double(Height);
+	mScale = std::min(scaleX, scaleY);
 
+
+	if(mShrinked)
+	{
+		mScale *= ShrinkScale;
+	}
+
+	mXOffset = (width - Width * mScale) / 2;
+	mYOffset = (height - Height * mScale) / 2;
+
+	graphics->PushState();
+
+	graphics->Translate(mXOffset, mYOffset);
+	graphics->Scale(mScale, mScale);
+
+	// From here on you are drawing virtual pixels
+
+	//
+	// Your drawing code goes here
+	//
+
+	wxBrush brush(*wxWHITE);
+	graphics->SetBrush(brush);
+
+	graphics->DrawRectangle(0, 0, Width, Height);
+
+
+
+	graphics->PopState();
 }
 
+/**
+ * Clear the game data
+ * Deletes all known items in the game
+ */
 void BugSquash::Clear()
 {
 	mItems.clear();
@@ -119,6 +159,16 @@ void BugSquash::Clear()
  * @param elapsed The time since the last update
  */
 void BugSquash::Update(double elapsed)
+{
+
+}
+
+/**
+ * Handle left mouse button click
+ * @param x x position of clicked screen
+ * @param y y position of clicked screen
+ */
+void BugSquash::OnLeftDown(int x, int y)
 {
 
 }

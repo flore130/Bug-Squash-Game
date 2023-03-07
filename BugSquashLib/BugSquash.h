@@ -49,6 +49,7 @@ public:
 	void XmlItem(wxXmlNode *node);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 	void Clear();
+	void OnLeftDown(int x, int y);
 	void Update(double elapsed);
 };
 

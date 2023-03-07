@@ -13,7 +13,7 @@
  */
 void MainFrame::Initialize()
 {
-	Create( nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1250, 1000 ) );
+	Create(nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1000, 800));
 
 	// Bind OnExit to Exit button
 	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT );
@@ -22,8 +22,17 @@ void MainFrame::Initialize()
 	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT );
 
 	// Create the view class object as a child of MainFrame
+	auto sizer = new wxBoxSizer(wxVERTICAL);
+
 	auto bugSquashView = new BugSquashView();
+
 	bugSquashView->Initialize(this);
+
+	sizer->Add(bugSquashView, 1, wxEXPAND|wxALL);
+
+	SetSizer(sizer);
+
+	Layout();
 
 	// Set the bar
 	auto menuBar = new wxMenuBar( );

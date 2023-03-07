@@ -15,7 +15,7 @@ const int FrameDuration = 30;
 
 /**
  * Initialize the bug squash view class
- * @param parent parent Frame
+ * @param mainFrame parent Frame
  */
 
 void BugSquashView::Initialize(wxFrame *mainFrame)
@@ -23,6 +23,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	Create(mainFrame, wxID_ANY,
 		   wxDefaultPosition, wxDefaultSize,
 		   wxFULL_REPAINT_ON_RESIZE);
+
 	wxWindow::SetBackgroundStyle(wxBG_STYLE_PAINT);
 
 	// Bind the event handler to initialize
@@ -61,11 +62,7 @@ void BugSquashView::OnTimer(wxTimerEvent &event)
 
 void BugSquashView::OnLeftDown(wxMouseEvent &event)
 {
-//	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
-//	if (mClickedItem != nullptr)
-//	{
-//		// TODO: Decide what to do for the item. A visitor looks like a good option here
-//	}
+	mBugSquash.OnLeftDown(event.GetX(), event.GetY());
 }
 
 /**
@@ -80,6 +77,7 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 
 	// Clear the image to black
 	wxBrush background(*wxBLACK);
+	wxWindow::SetBackgroundStyle(wxBG_STYLE_PAINT);
 	dc.SetBackground(background);
 	dc.Clear();
 

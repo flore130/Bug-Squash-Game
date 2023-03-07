@@ -8,7 +8,7 @@
 #ifndef PROJECT1__BUGSQUASHAPP_H
 #define PROJECT1__BUGSQUASHAPP_H
 
-/*
+/**
  * Main application class
  */
 class BugSquashApp : public wxApp
