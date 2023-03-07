@@ -28,11 +28,16 @@ private:
 	/// The list storing all of the items displayed in our BugSquashView
 	std::vector<std::shared_ptr<Item>> mItems;
 
-	/// The index that the first bug/feature is stored at. In other words,
-	/// the index that is one past the index of the last program
+	/// The index that the first bug/feature is stored at
+	/// This will be one index past all the programs for this level
 	int mFirstBugIndex = -1;
 
+	/// The name of this level, displayed for 2 seconds at the start of the round
+	std::wstring mName;
+
 	void XmlItem(wxXmlNode *node);
+
+	void XmlProgram(wxXmlNode *node);
 
 public:
 	void Load(const wxString &filename);

@@ -1,9 +1,11 @@
 /**
  * @file BugSquash.cpp
  * @author npmar
+ * @author Kyle Nowak
  */
 
 #include "pch.h"
+#include "Level.h"
 #include "BugSquash.h"
 #include <wx/wx.h>
 #include <memory>
@@ -25,29 +27,8 @@ const double ShrinkScale = 0.75;
  */
 void BugSquash::Load(const wxString &filename)
 {
-	wxXmlDocument xmlDoc;
-	if(!xmlDoc.Load(filename))
-	{
-		wxMessageBox(L"Unable to load BugSquash file");
-		return;
-	}
-
-	// Get the XML document root node
-	auto root = xmlDoc.GetRoot();
-
-	//
-	// Traverse the children of the root
-	// node of the XML document in memory!!!!
-	//
-	auto child = root->GetChildren();
-	for( ; child; child=child->GetNext())
-	{
-		auto name = child->GetName();
-		if(name == L"item")
-		{
-			XmlItem(child);
-		}
-	}
+	mLevel = std::make_unique<Level>();
+	mLevel->Load(filename);
 }
 
 /**
