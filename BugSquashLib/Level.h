@@ -13,14 +13,16 @@
 
 #include <memory>
 
+
+class Item;
+class ItemVisitor;
+
 /**
  * Level class
  *
  * This is the class that will actually load the XML data,
  * as well as hold the items in the playing area
  */
-class Item;
-class ItemVisitor;
 
 class Level
 {

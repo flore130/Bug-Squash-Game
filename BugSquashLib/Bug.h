@@ -20,9 +20,13 @@ private:
 public:
 	bool HitTest(double x, double y);
 
-	Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}
 
-	// Bug is also a base class, so there is nothing for it to directly accept
+	Bug(Level *level, const std::wstring &filename);
+
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
 	void Accept( ItemVisitor* visitor ) {};
 
 };

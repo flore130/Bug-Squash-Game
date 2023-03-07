@@ -3,6 +3,7 @@
  * @author Kyle Nowak
  */
 
+#include "pch.h"
 #include "Item.h"
 
 using namespace std;

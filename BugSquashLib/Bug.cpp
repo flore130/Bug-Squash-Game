@@ -24,3 +24,10 @@ bool Bug::HitTest(double x, double y)
 
 	return sqrt(dx * dx + dy * dy) < BugHitRange;
 }
+
+/**
+ * Constructor
+ * @param level the game level
+ * @param filename the filename for the bug image
+ */
+Bug::Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}

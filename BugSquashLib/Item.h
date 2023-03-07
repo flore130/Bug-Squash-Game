@@ -34,6 +34,7 @@ private:
 	std::unique_ptr<wxBitmap> mItemBitmap = nullptr;
 
 protected:
+
 	Item(Level *level, const std::wstring &filename);
 
 
