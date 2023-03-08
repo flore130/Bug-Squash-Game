@@ -68,7 +68,6 @@ double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
 
 }
 
-
 /**
  * Load this XML Node to fish
  * @param node The parent node we are going to be a child of
