@@ -9,9 +9,9 @@
 #define PROJECT1_BUGSQUASHLIB_ITEMVISITOR_H
 
 // Forward reference to all item types
-class GarbageBug;
-class RedundancyBug;
-class NullBug;
+class BugGarbage;
+class BugRedundancy;
+class BugNull;
 class Feature;
 class Program;
 
@@ -34,22 +34,22 @@ public:
 	virtual ~ItemVisitor();
 
 	/**
-	 * Visit the GarbageBug object
-	 * @param bug GarbageBug we are visiting
+	 * Visit the BugGarbage object
+	 * @param bug BugGarbage we are visiting
 	 */
-	 virtual void VisitGarbageBug( GarbageBug* bug ) {}
+	 virtual void VisitBugGarbage( BugGarbage* bug ) {}
 
 	 /**
-	  * Visit the RedundancyBug object
-	  * @param bug RedundancyBug we are visiting
+	  * Visit the BugRedundancy object
+	  * @param bug BugRedundancy we are visiting
 	  */
-	  virtual void VisitRedundancyBug( RedundancyBug* bug ) {}
+	  virtual void VisitBugRedundancy( BugRedundancy* bug ) {}
 
 	  /**
-	   * Visit the NullBug object
-	   * @param bug NullBug we are visiting
+	   * Visit the BugNull object
+	   * @param bug BugNull we are visiting
 	   */
-	   virtual void VisitNullBug( NullBug* bug ) {}
+	   virtual void VisitBugNull( BugNull* bug ) {}
 
 	   /**
 	    * Visit the Feature object
