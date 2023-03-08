@@ -1,6 +1,6 @@
 /**
  * @file Feature.cpp
- * @author Ricar
+ * @author Ricardo Flores
  */
 
 #include "Feature.h"
