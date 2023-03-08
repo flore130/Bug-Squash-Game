@@ -52,10 +52,10 @@ void MainFrame::Initialize()
 	fileMenu->Append( wxID_OPEN, "Load &File...\tCtrl-F", L"Load Bug Squash File" );
 	fileMenu->Append( wxID_EXIT, "E&xit\tAlt-X", "Quit this program" );
 
-	levelMenu->Append( IDM_LEVELONE, L"&Level One", L"Play Level One" );
-	levelMenu->Append( IDM_LEVELTWO, L"&Level Two", L"Play Level Two" );
-	levelMenu->Append( IDM_LEVELTHREE, L"&Level Three", L"Play Level Three" );
-	levelMenu->Append( IDM_LEVELFOUR, L"&Level Four", L"Play Level Four" );
+	levelMenu->Append( IDM_LEVELZERO, L"&Level 0", L"Play Level Four" );
+	levelMenu->Append( IDM_LEVELONE, L"&Level 1", L"Play Level One" );
+	levelMenu->Append( IDM_LEVELTWO, L"&Level 2", L"Play Level Two" );
+	levelMenu->Append( IDM_LEVELTHREE, L"&Level 3", L"Play Level Three" );
 
 	viewMenu->Append( IDM_SHRINK, L"Shrink", L"Shrink the window to see outside of the game" );
 
