@@ -6,7 +6,7 @@
 #include "FatGarbageBug.h"
 
 
-FatGarbageBug::FatGarbageBug(Level* level) : GarbageBug(level)
+FatGarbageBug::FatGarbageBug(Level* level) : BugGarbage(level)
 {
 
 }

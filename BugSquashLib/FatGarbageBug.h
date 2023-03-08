@@ -8,9 +8,9 @@
 #ifndef PROJECT1_BUGSQUASHLIB_FATGARBAGEBUG_H
 #define PROJECT1_BUGSQUASHLIB_FATGARBAGEBUG_H
 
-#include "GarbageBug.h"
+#include "BugGarbage.h"
 
-class FatGarbageBug : public GarbageBug
+class FatGarbageBug : public BugGarbage
 {
 private:
 

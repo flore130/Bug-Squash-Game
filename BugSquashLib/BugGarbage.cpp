@@ -1,9 +1,9 @@
 /**
- * @file GarbageBug.cpp
+ * @file BugGarbage.cpp
  * @author Ajuisiwon Azantilow
  */
 
-#include "GarbageBug.h"
+#include "BugGarbage.h"
 
 using namespace std;
 
@@ -22,7 +22,7 @@ const int GarbageBugNumSpriteImages = 5;
  * @param level level that this bug is a member of
 */
 
-GarbageBug::GarbageBug(Level *level) : Bug(level, GarbageBugSpriteImageName)
+BugGarbage::BugGarbage(Level *level) : Bug(level, GarbageBugSpriteImageName)
 {
 
 }

@@ -56,7 +56,7 @@ BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName)
 }
 
 /**
- * Test distance between two fish
+ * Test distance between two bugs
  * @param item Item we are computing distance to
  * @return distance in pixels
  */
@@ -69,7 +69,7 @@ double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
 }
 
 /**
- * Load this XML Node to fish
+ * Load this XML Node to bug
  * @param node The parent node we are going to be a child of
  */
 void BugRedundancy::XmlLoad(wxXmlNode* node)
