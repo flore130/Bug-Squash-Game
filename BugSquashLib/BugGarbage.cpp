@@ -3,6 +3,7 @@
  * @author Ajuisiwon Azantilow
  */
 
+#include "pch.h"
 #include "BugGarbage.h"
 
 using namespace std;
