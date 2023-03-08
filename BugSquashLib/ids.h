@@ -12,10 +12,10 @@
  * Ids for items in the application
  */
 enum IDs {
-	IDM_LEVELONE = wxID_HIGHEST + 1,
+	IDM_LEVELZERO = wxID_HIGHEST + 1,
+	IDM_LEVELONE,
 	IDM_LEVELTWO,
 	IDM_LEVELTHREE,
-	IDM_LEVELFOUR,
 	IDM_SHRINK,
 
 };
