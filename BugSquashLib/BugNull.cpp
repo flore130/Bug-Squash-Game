@@ -29,3 +29,26 @@ const int NullBugNumSpriteImages = 6;
 BugNull::BugNull(Level *level) : Bug(level, NullBugSpriteImageName)
 {
 }
+
+/**
+ * Test distance between two fish
+ * @param item Item we are computing distance to
+ * @return distance in pixels
+ */
+double BugNull::DistanceTo(std::shared_ptr<Item> item)
+{
+	auto dx = item->GetX() - GetX();
+	auto dy = item->GetY() - GetY();
+	return sqrt(dx * dx + dy * dy);
+
+}
+
+
+/**
+ * Load this XML Node to fish
+ * @param node The parent node we are going to be a child of
+ */
+void BugNull::XmlLoad(wxXmlNode* node)
+{
+	Bug::XmlLoad(node);
+}

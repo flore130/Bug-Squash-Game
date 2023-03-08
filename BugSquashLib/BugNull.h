@@ -32,6 +32,11 @@ public:
 
 	BugNull(Level* level);
 
+	double DistanceTo(std::shared_ptr<Item> item) override;
+
+	void XmlLoad(wxXmlNode* node) override;
+
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGNULL_H

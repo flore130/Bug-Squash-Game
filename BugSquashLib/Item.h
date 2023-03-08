@@ -86,6 +86,18 @@ public:
      */
 	virtual void Accept( ItemVisitor* visitor ) = 0;
 
+	/**
+ 	* Finds distance between two items
+ 	* @param item Item we are checking distance to
+ 	*/
+	virtual double DistanceTo(std::shared_ptr<Item> item);
+
+	/**
+ 	* Loads attributes for item node
+ 	* @param node The Xml node we are loading from
+ 	*/
+	virtual void XmlLoad(wxXmlNode *node);
+
 
 };
 

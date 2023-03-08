@@ -54,3 +54,26 @@ const int WingSetY = 5;
 BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName)
 {
 }
+
+/**
+ * Test distance between two fish
+ * @param item Item we are computing distance to
+ * @return distance in pixels
+ */
+double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
+{
+	auto dx = item->GetX() - GetX();
+	auto dy = item->GetY() - GetY();
+	return sqrt(dx * dx + dy * dy);
+
+}
+
+
+/**
+ * Load this XML Node to fish
+ * @param node The parent node we are going to be a child of
+ */
+void BugRedundancy::XmlLoad(wxXmlNode* node)
+{
+	Bug::XmlLoad(node);
+}
