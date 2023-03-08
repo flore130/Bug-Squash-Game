@@ -31,7 +31,7 @@ BugNull::BugNull(Level *level) : Bug(level, NullBugSpriteImageName)
 }
 
 /**
- * Test distance between two fish
+ * Test distance between two bugs
  * @param item Item we are computing distance to
  * @return distance in pixels
  */
