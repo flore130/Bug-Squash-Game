@@ -4,7 +4,6 @@
  */
 
 #include "pch.h"
-
 #include "Level.h"
 #include "Item.h"
 
@@ -36,7 +35,7 @@ void Level::XmlItem(wxXmlNode *node)
 }
 
 /**
- *
+ * Handles loading the bugs that are associated with a given program node
  * @param node The program node to loop through
  */
 void Level::XmlProgram(wxXmlNode *node)

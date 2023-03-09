@@ -1,8 +1,10 @@
 /**
  * @file Feature.cpp
  * @author Ricardo Flores
+ * @author Kyle Nowak
  */
 
+#include "pch.h"
 #include "Feature.h"
 
 /// The feature sprite image
