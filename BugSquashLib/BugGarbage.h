@@ -17,6 +17,7 @@
 class BugGarbage : public Bug
 {
 private:
+	bool mIsSquashed = false;
 
 public:
 	/// Default constructor (disabled)

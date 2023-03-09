@@ -19,6 +19,7 @@
 class BugRedundancy : public Bug
 {
 private:
+	bool mIsSquashed = false;
 
 public:
 	/// Default constructor (disabled)
