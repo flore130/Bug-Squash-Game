@@ -44,12 +44,15 @@ void Bug::Update(double elapsed)
 	double programY = mProgram->GetY();
 	double programDistance = DistanceTo(mProgram);
 
+	// Get difference in X and Y between bug and program
 	double diffX = programX - GetX();
 	double diffY = programY - GetY();
 
+	// Scale to normalize the vector
 	double directionX = diffX / programDistance;
 	double directionY = diffY / programDistance;
 
+	// Set location to pixels/second * seconds * direction + current position
 	SetLocation(GetX() + (directionX * mSpeed * elapsed),
 				GetY() + (directionY * mSpeed * elapsed));
 }
