@@ -52,7 +52,7 @@ public:
 	 * Accept a visitor
 	 * @param visitor The visitor to accept
 	 */
-	void Accept( ItemVisitor* visitor ) {};
+	void Accept( ItemVisitor* visitor ) override {};
 
 	void Update(double elapsed) override;
 
