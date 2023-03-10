@@ -80,4 +80,18 @@ TEST(BugTest, MovementTest)
 	ASSERT_NEAR(bug.GetX(), 193.535, 0.01) << L"Test single second of diagonal movement";
 	ASSERT_NEAR(bug.GetY(), 106.464, 0.01) << L"Test single second of diagonal movement";
 
+	bug.SetLocation(190, 110); // reset location
+
+	bug.Update(1.41421);
+
+	ASSERT_NEAR(bug.GetX(), 195, 0.01) << L"Test fractional time of diagonal movement";
+	ASSERT_NEAR(bug.GetY(), 105, 0.01) << L"Test fractional time of diagonal movement";
+
+	bug.SetLocation(245, 300);
+
+	bug.Update(4);
+
+	ASSERT_NEAR(bug.GetX(), 240.610, 0.01) << L"Test 4 seconds of diagonal movement";
+	ASSERT_NEAR(bug.GetY(), 280.488, 0.01) << L"Test 4 seconds of diagonal movement";
+
 }
