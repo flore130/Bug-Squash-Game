@@ -13,7 +13,6 @@
 class FatNullBug : public BugNull
 {
 private:
-	bool mIsSquashed = false;
 
 public:
 	/// Default constructor (disabled)

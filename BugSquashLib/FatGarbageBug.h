@@ -13,7 +13,6 @@
 class FatGarbageBug : public BugGarbage
 {
 private:
-	bool mIsSquashed = false;
 
 public:
 	/// Default constructor (disabled)

@@ -14,7 +14,6 @@
 class Feature : public Bug
 {
 private:
-	bool mIsSquashed = false;
 
 public:
 

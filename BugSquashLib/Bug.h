@@ -18,6 +18,9 @@ class Program;
 class Bug : public Item
 {
 private:
+	/// The status of whether the bug is squashed or not
+	bool mIsSquashed = false;
+
 	/// The time the bug should start moving
 	double mStartTime = 0;
 
