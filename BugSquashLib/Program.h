@@ -16,14 +16,18 @@ private:
 
 	/// Default constructor (disabled)
 	Program() = delete;
-
+	
 	/// Copy constructor (disabled)
 	Program(const Program &) = delete;
-
+	
 	/// Assignment operator
 	void operator=(const Program &) = delete;
+	
+	
 
 public:
+
+	void Accept( ItemVisitor* visitor ) override {};
 
 	Program(Level* level);
 

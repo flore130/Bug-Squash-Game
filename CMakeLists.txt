@@ -13,7 +13,7 @@ find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
 # Include the wxWidgets use file to initialize various settings
 include(${wxWidgets_USE_FILE})
 
-# Add AquariumLib to the libraries that can be used
+# Add BugSquashLib to the libraries that can be used
 add_subdirectory(${APPLICATION_LIBRARY})
 include_directories(${APPLICATION_LIBRARY})
 
@@ -28,5 +28,8 @@ target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} ${APPLICATION_LIBRA
 
 # pch will be a precompiled library so it won't be compiled more than once
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/images/)
 
 add_subdirectory(Tests)

@@ -4,11 +4,19 @@
  */
 
 #include "pch.h"
-
+#include "Program.h"
 #include "Bug.h"
 
 /// The radius tolerance for successful hit tests
 const double BugHitRange = 50;
+
+
+/**
+ * Constructor
+ * @param level the game level
+ * @param filename the filename for the bug image
+ */
+Bug::Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}
 
 
 /**
@@ -25,9 +33,23 @@ bool Bug::HitTest(double x, double y)
 	return sqrt(dx * dx + dy * dy) < BugHitRange;
 }
 
+
 /**
- * Constructor
- * @param level the game level
- * @param filename the filename for the bug image
+ * Handles updates for animations
+ * @param elapsed the seconds elapsed since last update
  */
-Bug::Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}
+void Bug::Update(double elapsed)
+{
+	double programX = mProgram->GetX();
+	double programY = mProgram->GetY();
+	double programDistance = DistanceTo(mProgram);
+
+	double diffX = programX - GetX();
+	double diffY = programY - GetY();
+
+	double directionX = diffX / programDistance;
+	double directionY = diffY / programDistance;
+
+	SetLocation(GetX() + (directionX * mSpeed * elapsed),
+				GetY() + (directionY * mSpeed * elapsed));
+}

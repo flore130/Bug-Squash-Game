@@ -98,6 +98,12 @@ public:
  	*/
 	virtual void XmlLoad(wxXmlNode *node);
 
+	/**
+	 * Handle update event for animations
+	 * @param elapsed the seconds elapsed since last update
+	 */
+	virtual void Update(double elapsed) {}
+
 
 };
 
