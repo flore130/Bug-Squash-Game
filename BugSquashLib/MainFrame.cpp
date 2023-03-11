@@ -55,7 +55,7 @@ void MainFrame::Initialize()
 	menuBar->Append(fileMenu, L"&File" );
 	menuBar->Append( levelMenu, L"&Level" );
 	menuBar->Append( viewMenu, L"&View" );
-	mBugSquashView->AddMenus( this, menuBar, fileMenu, viewMenu );
+	mBugSquashView->AddMenus( this, menuBar, levelMenu, viewMenu );
 	menuBar->Append( helpMenu, L"&Help" );
 
 	SetMenuBar( menuBar );
