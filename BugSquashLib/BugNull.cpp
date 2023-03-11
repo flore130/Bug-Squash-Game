@@ -40,7 +40,6 @@ double BugNull::DistanceTo(std::shared_ptr<Item> item)
 	auto dx = item->GetX() - GetX();
 	auto dy = item->GetY() - GetY();
 	return sqrt(dx * dx + dy * dy);
-
 }
 
 

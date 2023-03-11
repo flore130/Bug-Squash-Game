@@ -30,18 +30,22 @@ private:
 	/// The last stopwatch time
 	long mTime = 0;
 
+	/// Whether or not the view is shrunk to see outside the play area
+	bool mShrink = false;
+
 	void OnTimer(wxTimerEvent& event);
 	void OnLeftDown(wxMouseEvent &event);
 	void OnPaint(wxPaintEvent& event);
 	void OnDoubleClick(wxMouseEvent& event);
 	void OnMouseMove(wxMouseEvent& event);
 
+	void OnShrink( wxCommandEvent& event );
+	void OnUpdateShrink( wxUpdateUIEvent& event );
+
 public:
 	void Initialize(wxFrame* parent);
 	void OnFileOpen(wxCommandEvent& event);
-
-
-
+	void AddMenus(wxFrame *mainFrame, wxMenuBar *menuBar, wxMenu *levelMenu, wxMenu *viewMenu);
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASHVIEW_H
