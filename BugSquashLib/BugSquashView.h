@@ -30,9 +30,6 @@ private:
 	/// The last stopwatch time
 	long mTime = 0;
 
-	/// Whether or not the view is shrunk to see outside the play area
-	bool mShrink = false;
-
 	void OnTimer(wxTimerEvent& event);
 	void OnLeftDown(wxMouseEvent &event);
 	void OnPaint(wxPaintEvent& event);

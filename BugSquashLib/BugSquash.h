@@ -58,6 +58,18 @@ public:
 	void Update(double elapsed);
 	void Accept( ItemVisitor* visitor );
 	void Add( std::shared_ptr< Item > item );
+
+	/*
+	 * Gets the current value of mShrinked
+	 * @return Current value of mShrinked
+	 */
+	bool GetShrinked() const { return mShrinked; }
+
+	/**
+	 * Set the Height of mShrinked
+	 * @param val The value to set mShrinked to
+	 */
+	 void SetShrinked( bool val ) { mShrinked = val; }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H

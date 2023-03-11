@@ -161,7 +161,7 @@ void BugSquashView::OnFileOpen(wxCommandEvent& event)
  */
 void BugSquashView::OnShrink( wxCommandEvent& event )
 {
-	mShrink = !mShrink;
+	mBugSquash.SetShrinked( !mBugSquash.GetShrinked() );
 }
 
 /**
@@ -170,6 +170,6 @@ void BugSquashView::OnShrink( wxCommandEvent& event )
  */
 void BugSquashView::OnUpdateShrink( wxUpdateUIEvent& event )
 {
-	event.Check( mShrink );
+	event.Check( mBugSquash.GetShrinked() );
 }
 
