@@ -38,8 +38,19 @@ private:
 
 	void XmlProgram(wxXmlNode *node);
 
+
+	/// All of the items in the bug squash application
+	std::vector<std::shared_ptr<Item>> mItems;
+
+	/// The level that is currently loaded
+	std::unique_ptr<Level> mLevel = nullptr;
+
 public:
 	void Load(const wxString &filename);
+
+	void Clear();
+
+
 
 };
 

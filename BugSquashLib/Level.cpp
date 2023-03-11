@@ -67,3 +67,13 @@ void Level::Load(const wxString &filename)
 		}
 	}
 }
+
+/**
+ * Clear the level data.
+ *
+ * Deletes all known items in the level.
+ */
+void Level::Clear()
+{
+	mItems.clear();
+}
