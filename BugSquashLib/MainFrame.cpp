@@ -15,24 +15,18 @@ void MainFrame::Initialize()
 {
 	Create(nullptr, wxID_ANY, L"BugSquash", wxDefaultPosition, wxSize( 1000, 800));
 
-	// Bind OnExit to Exit button
-	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT );
-
-	// Bind OnAbout to About button
-	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT );
-
 	// Create the view class object as a child of MainFrame
 	auto sizer = new wxBoxSizer(wxVERTICAL);
 
-	auto bugSquashView = new BugSquashView();
+	mBugSquashView = new BugSquashView();
+	mBugSquashView->Initialize( this );
 
-	bugSquashView->Initialize(this);
-
-	sizer->Add(bugSquashView, 1, wxEXPAND|wxALL);
+	sizer->Add( mBugSquashView, 1, wxEXPAND|wxALL );
 
 	SetSizer(sizer);
-
 	Layout();
+
+	CreateStatusBar();
 
 	// Set the bar
 	auto menuBar = new wxMenuBar( );
@@ -43,23 +37,26 @@ void MainFrame::Initialize()
 	auto viewMenu = new wxMenu();
 	auto helpMenu = new wxMenu();
 
+	// Add the file menu options
+	fileMenu->Append( wxID_OPEN, "Load &File...\tCtrl-F", L"Load Bug Squash File" );
+	fileMenu->Append( wxID_EXIT, "E&xit\tAlt-X", "Quit this program" );
+
+	// Add the help menu option
+	helpMenu->Append( wxID_ABOUT, "&About\tF1", "Show about dialogue" );
+
+	// Bind OnExit to Exit button
+	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT );
+
+	// Bind OnAbout to About button
+	Bind( wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT );
+
+
 	// Add to the top-level menuBar
 	menuBar->Append(fileMenu, L"&File" );
 	menuBar->Append( levelMenu, L"&Level" );
 	menuBar->Append( viewMenu, L"&View" );
+	mBugSquashView->AddMenus( this, menuBar, fileMenu, viewMenu );
 	menuBar->Append( helpMenu, L"&Help" );
-
-	fileMenu->Append( wxID_OPEN, "Load &File...\tCtrl-F", L"Load Bug Squash File" );
-	fileMenu->Append( wxID_EXIT, "E&xit\tAlt-X", "Quit this program" );
-
-	levelMenu->Append( IDM_LEVELZERO, L"&Level 0", L"Play Level Zero" );
-	levelMenu->Append( IDM_LEVELONE, L"&Level 1", L"Play Level One" );
-	levelMenu->Append( IDM_LEVELTWO, L"&Level 2", L"Play Level Two" );
-	levelMenu->Append( IDM_LEVELTHREE, L"&Level 3", L"Play Level Three" );
-
-	viewMenu->Append( IDM_SHRINK, L"Shrink", L"Shrink the window to see outside of the game" );
-
-	helpMenu->Append( wxID_ABOUT, "&About\tF1", "Show about dialogue" );
 
 	SetMenuBar( menuBar );
 }
