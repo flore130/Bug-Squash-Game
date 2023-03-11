@@ -14,6 +14,7 @@
 #include <memory>
 #include <random>
 #include "Level.h"
+#include "ItemVisitor.h"
 
 class Item;
 //class Level;
@@ -48,8 +49,6 @@ private:
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
 
-	void Add(std::shared_ptr<Item>);
-
 public:
 	void Load(const wxString &filename);
 	void XmlItem(wxXmlNode *node);
@@ -57,6 +56,8 @@ public:
 	void Clear();
 	void OnLeftDown(int x, int y);
 	void Update(double elapsed);
+	void Accept( ItemVisitor* visitor );
+	void Add( std::shared_ptr< Item > item );
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H

@@ -5,13 +5,13 @@
  */
 
 #include "pch.h"
-#include "Level.h"
-#include "BugSquash.h"
 #include <wx/wx.h>
 #include <memory>
 #include <random>
-
 #include <algorithm>
+#include "Level.h"
+#include "BugSquash.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -72,12 +72,12 @@ void BugSquash::XmlItem(wxXmlNode *node)
 }
 
 /**
- * Add an item to the application
- * @param item New item to add
+ * Add an Item to our current level in the field
+ * @param item the item that we are adding to our game
  */
-void BugSquash::Add(std::shared_ptr<Item> item)
+void BugSquash::Add( std::shared_ptr< Item > item )
 {
-
+	mItems.push_back( item );
 }
 
 
@@ -152,4 +152,16 @@ void BugSquash::Update(double elapsed)
 void BugSquash::OnLeftDown(int x, int y)
 {
 
+}
+
+/**
+ * Accepts a visitor to the program
+ * @param visitor the visitor that is visiting this program
+ */
+void BugSquash::Accept( ItemVisitor* visitor )
+{
+	for ( auto item : mItems )
+	{
+		item->Accept( visitor );
+	}
 }

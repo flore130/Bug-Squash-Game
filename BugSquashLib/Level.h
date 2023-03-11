@@ -27,9 +27,6 @@ class ItemVisitor;
 class Level
 {
 private:
-	/// The list storing all of the items displayed in our BugSquashView
-	std::vector<std::shared_ptr<Item>> mItems;
-
 	/// The index that the first bug/feature is stored at
 	/// This will be one index past all the programs for this level
 	int mFirstBugIndex = -1;
@@ -43,8 +40,6 @@ private:
 
 public:
 	void Load(const wxString &filename);
-
-	void Accept( ItemVisitor* visitor );
 
 };
 

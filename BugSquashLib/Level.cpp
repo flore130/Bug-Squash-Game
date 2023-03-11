@@ -7,20 +7,6 @@
 #include "Level.h"
 #include "Item.h"
 
-
-/**
- * Accepts a visitor into this level
- * @param visitor the visitor that is visiting this level
- */
-void Level::Accept( ItemVisitor* visitor )
-{
-	for (auto item : mItems)
-	{
-		item->Accept(visitor);
-	}
-}
-
-
 /**
  * Base function for handling loading XML nodes
  *
