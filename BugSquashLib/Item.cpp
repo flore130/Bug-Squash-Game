@@ -14,7 +14,7 @@ using namespace std;
  * @param level The level this item is a part of
  * @param filename The filename for the image of this item
  */
-Item::Item(Level *level, const wstring &filename) : mLevel(level)
+Item::Item(Level *level, const std::wstring &filename) : mLevel(level)
 {
 	mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
 	mItemBitmap = make_unique<wxBitmap>(*mItemImage);
@@ -57,4 +57,5 @@ void Item::XmlLoad(wxXmlNode *node)
 	node->GetAttribute(L"x", L"0").ToDouble(&mX);
 	node->GetAttribute(L"y", L"0").ToDouble(&mY);
 }
+
 

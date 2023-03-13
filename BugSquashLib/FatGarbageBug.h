@@ -10,6 +10,9 @@
 
 #include "BugGarbage.h"
 
+/**
+ * Fat garbage bug class
+ */
 class FatGarbageBug : public BugGarbage
 {
 private:
@@ -24,8 +27,14 @@ public:
 	/// Assignment operator
 	void operator=(const FatGarbageBug &) = delete;
 
+	/// Constructor
 	FatGarbageBug(Level* level);
+
+	wxXmlNode* XmlSave(wxXmlNode* node) override;
+
+	void XmlLoad(wxXmlNode* node) override;
 
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FATGARBAGEBUG_H
+

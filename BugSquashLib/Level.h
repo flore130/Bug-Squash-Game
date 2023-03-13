@@ -59,3 +59,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H
+

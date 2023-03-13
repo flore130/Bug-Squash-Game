@@ -6,9 +6,14 @@
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <BugNull.h>
+#include <BugGarbage.h>
+#include <FatNullBug.h>
+#include <FatGarbageBug.h>
+#include <BugRedundancy.h>
+#include <Feature.h>
+#include <Program.h>
 #include <Bug.h>
 #include <Level.h>
-#include <Program.h>
 #include <regex>
 #include <string>
 #include <fstream>
@@ -76,6 +81,44 @@ void TestEmpty(wxString filename)
 
 
 /**
+* Test a file which has all types of items
+* @param filename Name of the file to read
+*/
+void PopulateAllTypes(Level *level)
+{
+
+	auto bug1 = make_shared<BugNull>(level);
+	level->Add(bug1);
+	bug1->SetLocation(100, 200);
+
+	auto bug2 = make_shared<BugGarbage>(level);
+	level->Add(bug2);
+	bug2->SetLocation(400, 400);
+
+	auto bug3 = make_shared<BugRedundancy>(level);
+	level->Add(bug3);
+	bug3->SetLocation(600, 100);
+
+	auto bug4 = make_shared<FatGarbageBug>(level);
+	level->Add(bug4);
+	bug4->SetLocation(500, 200);
+
+	auto bug5 = make_shared<FatNullBug>(level);
+	level->Add(bug5);
+	bug5->SetLocation(400, 100);
+
+	auto feature = make_shared<Feature>(level);
+	level->Add(feature);
+	feature->SetLocation(800, 300);
+
+
+	auto program = make_shared<Program>(level);
+	level->Add(program);
+	program->SetLocation(1000, 600);
+}
+
+
+/**
 * Test a file which has three null bugs
 * @param filename Name of the file to read
 */
@@ -97,6 +140,31 @@ void TestThreeNullBugs(wxString filename)
 	// Ensure the types are correct
 	ASSERT_TRUE(regex_search(xml,
 							 wregex(L"<xml><item.* type=\"null\"/><item.* type=\"null\"/><item.* type=\"null\"/></xml>")));
+}
+
+
+void TestAllTypes(wxString filename)
+{
+	cout << "Temp file: " << filename << endl;
+
+	auto xml = ReadFile(filename);
+	cout << xml << endl;
+
+	// Ensure three items
+	ASSERT_TRUE(regex_search(xml, wregex(L"<xml><item.*<item.*<item.*<item.*<item.*<item.*<item.*</xml>")));
+
+	// Ensure the positions are correct
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"100\" y=\"200\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"400\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"600\" y=\"100\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"800\" y=\"300\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"1000\" y=\"600\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"500\" y=\"200\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"100\"")));
+
+	// Ensure the types are correct
+	ASSERT_TRUE(regex_search(xml,
+							 wregex(L"<xml><item.* type=\"null\"/><item.* type=\"garbage\"/><item.* type=\"redundancy\"/><item.* type=\"fatgarbage\"/><item.* type=\"fatnull\"/><item.* type=\"feature\"/><item.* type=\"program\"/></xml>")));
 }
 
 /**
@@ -223,22 +291,13 @@ TEST(BugTest, Load)
 	//
 	// Test all types
 	//
-//	Level level3;
-//	level3.GetRandom().seed(RandomSeed);
+	Level level3;
 
-//	PopulateAllTypes(&level3);
+	PopulateAllTypes(&level3);
 
-//	wstring file3 = path + L"/test3.xml";
-//	level3.Save(file3);
-//	TestAllTypes(file3);
-
-//	level2.Load(file2);
-//	level2.Save(file2);
-//	TestThreeNullBugs(file2);
-
-//	level3.Load(file3);
-//	level3.Save(file3);
-//	TestAllTypes(file3);
+	auto file3 = path + L"/test3.xml";
+	level3.Save(file3);
+	TestAllTypes(file3);
 
 }
 

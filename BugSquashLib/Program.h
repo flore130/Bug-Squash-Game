@@ -10,6 +10,10 @@
 #include "Level.h"
 #include "Item.h"
 
+
+/**
+ * Program item class
+ */
 class Program : public Item
 {
 private:
@@ -30,6 +34,10 @@ public:
 	void Accept( ItemVisitor* visitor ) override {};
 
 	Program(Level* level);
+
+	wxXmlNode* XmlSave(wxXmlNode* node) override;
+
+	void XmlLoad(wxXmlNode* node) override;
 
 };
 

@@ -59,7 +59,7 @@ wxXmlNode* BugNull::XmlSave(wxXmlNode* node)
 }
 
 /**
- * Load this XML Node to fish
+ * Load this XML Node to bug
  * @param node The parent node we are going to be a child of
  */
 void BugNull::XmlLoad(wxXmlNode* node)

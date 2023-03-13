@@ -42,3 +42,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGNULL_H
+

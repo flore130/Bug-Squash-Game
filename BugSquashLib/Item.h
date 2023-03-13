@@ -34,7 +34,7 @@ private:
 	std::unique_ptr<wxBitmap> mItemBitmap = nullptr;
 
 protected:
-
+	/// Constructor
 	Item(Level *level, const std::wstring &filename);
 
 
@@ -86,22 +86,10 @@ public:
      */
 	virtual void Accept( ItemVisitor* visitor ) = 0;
 
-	/**
- 	* Finds distance between two items
- 	* @param item Item we are checking distance to
- 	*/
 	virtual double DistanceTo(std::shared_ptr<Item> item);
 
-	/**
- 	* Saves attributes for item node
- 	* @param node The Xml node we are saving
- 	*/
 	virtual wxXmlNode *XmlSave(wxXmlNode *node);
 
-	/**
- 	* Loads attributes for item node
- 	* @param node The Xml node we are loading from
- 	*/
 	virtual void XmlLoad(wxXmlNode *node);
 
 	/**

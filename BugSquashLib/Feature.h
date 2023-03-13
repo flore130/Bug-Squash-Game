@@ -11,6 +11,9 @@
 #include "Bug.h"
 #include "Level.h"
 
+/**
+ * Feature item class
+ */
 class Feature : public Bug
 {
 private:
@@ -29,6 +32,11 @@ public:
 	///Constructor
 	Feature(Level* level);
 
+	wxXmlNode* XmlSave(wxXmlNode* node) override;
+
+	void XmlLoad(wxXmlNode* node) override;
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FEATURE_H
+

@@ -10,6 +10,9 @@
 
 #include "BugNull.h"
 
+/**
+ * Fat null bug class
+ */
 class FatNullBug : public BugNull
 {
 private:
@@ -24,7 +27,12 @@ public:
 	/// Assignment operator
 	void operator=(const FatNullBug &) = delete;
 
+	/// Constructor
 	FatNullBug(Level* level);
+
+	wxXmlNode* XmlSave(wxXmlNode* node) override;
+
+	void XmlLoad(wxXmlNode* node) override;
 
 };
 
