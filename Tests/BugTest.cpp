@@ -9,6 +9,7 @@
 #include <Bug.h>
 #include <Level.h>
 #include <Program.h>
+#include <wx/filename.h>
 
 const std::wstring GarbageSplatImage = L"../images/blue-maize-bug.png";
 
@@ -19,6 +20,20 @@ TEST(BugTest, Construct)
 	Bug myBug(&newLevel, GarbageSplatImage);
 }
 
+/**
+* Create a path to a place to put temporary files
+*/
+wxString TempPath()
+{
+	// Create a temporary filename we can use
+	auto path = wxFileName::GetTempDir() + L"/xml";
+	if(!wxFileName::DirExists(path))
+	{
+		wxFileName::Mkdir(path);
+	}
+
+	return path;
+}
 
 TEST(BugTest, HitTest)
 {
@@ -93,5 +108,59 @@ TEST(BugTest, MovementTest)
 
 	ASSERT_NEAR(bug.GetX(), 240.610, 0.01) << L"Test 4 seconds of diagonal movement";
 	ASSERT_NEAR(bug.GetY(), 280.488, 0.01) << L"Test 4 seconds of diagonal movement";
+
+}
+
+TEST(BugTest, Load)
+{
+	// Create a path to temporary files
+	auto path = TempPath();
+
+	// Create a level
+	Level level;
+	Level level2;
+
+	//
+	// First test, saving an empty aquarium
+	//
+	auto file1 = path + L"/test1.xml";
+	level.Save(file1);
+
+//	TestEmpty(file1);
+
+	level2.Load(file1);
+	level2.Save(file1);
+//	TestEmpty(file1);
+
+	//
+	// Now populate the level
+	//
+//	level.GetRandom().seed(RandomSeed);
+
+//	PopulateThreeNullBugs(&level);
+
+//	wstring file2 = path + L"/test2.xml";
+//	level.Save(file2);
+//	TestThreeNullBugs(file2);
+
+	//
+	// Test all types
+	//
+//	Level level3;
+//	level3.GetRandom().seed(RandomSeed);
+
+//	PopulateAllTypes(&level3);
+
+//	wstring file3 = path + L"/test3.xml";
+//	level3.Save(file3);
+//	TestAllTypes(file3);
+
+//	level2.Load(file2);
+//	level2.Save(file2);
+//	TestThreeNullBugs(file2);
+
+//	level3.Load(file3);
+//	level3.Save(file3);
+//	TestAllTypes(file3);
 
 }

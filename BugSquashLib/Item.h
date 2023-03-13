@@ -93,6 +93,12 @@ public:
 	virtual double DistanceTo(std::shared_ptr<Item> item);
 
 	/**
+ 	* Saves attributes for item node
+ 	* @param node The Xml node we are saving
+ 	*/
+	virtual wxXmlNode *XmlSave(wxXmlNode *node);
+
+	/**
  	* Loads attributes for item node
  	* @param node The Xml node we are loading from
  	*/
@@ -108,3 +114,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
+
