@@ -37,17 +37,17 @@ void Level::XmlProgram(wxXmlNode *node)
 }
 
 /**
- * Save the aquarium as a .aqua XML file.
+ * Save the level as a .xml XML file.
  *
- * Open an XML file and stream the aquarium data to it.
+ * Open an XML file and stream the level data to it.
  *
- * @param filename The filename of the file to save the aquarium to
+ * @param filename The filename of the file to save the level to
  */
 void Level::Save(const wxString &filename)
 {
 	wxXmlDocument xmlDoc;
 
-	auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"aqua");
+	auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"xml");
 	xmlDoc.SetRoot(root);
 
 	// Iterate over all items and save them
@@ -92,6 +92,15 @@ void Level::Load(const wxString &filename)
 			XmlProgram(child);
 		}
 	}
+}
+
+/**
+ * Add an Item to our current level in the field
+ * @param item the item that we are adding to our game
+ */
+void Level::Add( std::shared_ptr< Item > item )
+{
+	mItems.push_back( item );
 }
 
 /**

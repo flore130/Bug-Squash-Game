@@ -46,6 +46,8 @@ private:
 	std::unique_ptr<Level> mLevel = nullptr;
 
 public:
+	void Add( std::shared_ptr< Item > item );
+
 	void Save(const wxString &filename);
 
 	void Load(const wxString &filename);

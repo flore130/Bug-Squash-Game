@@ -34,6 +34,8 @@ public:
 
 	double DistanceTo(std::shared_ptr<Item> item) override;
 
+	wxXmlNode* XmlSave(wxXmlNode* node) override;
+
 	void XmlLoad(wxXmlNode* node) override;
 
 

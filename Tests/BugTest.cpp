@@ -5,11 +5,16 @@
 
 #include <pch.h>
 #include "gtest/gtest.h"
-
+#include <BugNull.h>
 #include <Bug.h>
 #include <Level.h>
 #include <Program.h>
+#include <regex>
+#include <string>
+#include <fstream>
 #include <wx/filename.h>
+
+using namespace std;
 
 const std::wstring GarbageSplatImage = L"../images/blue-maize-bug.png";
 
@@ -18,6 +23,80 @@ TEST(BugTest, Construct)
 {
 	Level newLevel;
 	Bug myBug(&newLevel, GarbageSplatImage);
+}
+
+/**
+* Add three null bugs to the level
+* @param level The level to populate
+*/
+void PopulateThreeNullBugs(Level *level)
+{
+	auto bug1 = make_shared<BugNull>(level);
+	level->Add(bug1);
+	bug1->SetLocation(100, 200);
+
+	auto bug2 = make_shared<BugNull>(level);
+	level->Add(bug2);
+	bug2->SetLocation(400, 400);
+
+	auto bug3 = make_shared<BugNull>(level);
+	level->Add(bug3);
+	bug3->SetLocation(600, 100);
+}
+
+/**
+* Read a file into a wstring and return it.
+* @param filename Name of the file to read
+* @return File contents
+*/
+wstring ReadFile(const wxString &filename)
+{
+	ifstream t(filename.ToStdString());
+	wstring str((istreambuf_iterator<char>(t)),
+				istreambuf_iterator<char>());
+
+	return str;
+}
+
+/**
+* Test a file which is just an empty level
+* @param filename Name of the file to read
+*/
+void TestEmpty(wxString filename)
+{
+	cout << "Temp file: " << filename << endl;
+
+	auto xml = ReadFile(filename);
+	cout << xml << endl;
+
+	ASSERT_TRUE(regex_search(xml, wregex(L"<\\?xml.*\\?>")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<xml/>")));
+
+}
+
+
+/**
+* Test a file which has three null bugs
+* @param filename Name of the file to read
+*/
+void TestThreeNullBugs(wxString filename)
+{
+	cout << "Temp file: " << filename << endl;
+
+	auto xml = ReadFile(filename);
+	cout << xml << endl;
+
+	// Ensure three items
+	ASSERT_TRUE(regex_search(xml, wregex(L"<xml><item.*<item.*<item.*</xml>")));
+
+	// Ensure the positions are correct
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"100\" y=\"200\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"400\"")));
+	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"600\" y=\"100\"")));
+
+	// Ensure the types are correct
+	ASSERT_TRUE(regex_search(xml,
+							 wregex(L"<xml><item.* type=\"null\"/><item.* type=\"null\"/><item.* type=\"null\"/></xml>")));
 }
 
 /**
@@ -121,27 +200,25 @@ TEST(BugTest, Load)
 	Level level2;
 
 	//
-	// First test, saving an empty aquarium
+	// First test, saving an empty level
 	//
 	auto file1 = path + L"/test1.xml";
 	level.Save(file1);
 
-//	TestEmpty(file1);
+	TestEmpty(file1);
 
 	level2.Load(file1);
 	level2.Save(file1);
-//	TestEmpty(file1);
+	TestEmpty(file1);
 
 	//
 	// Now populate the level
 	//
-//	level.GetRandom().seed(RandomSeed);
+	PopulateThreeNullBugs(&level);
 
-//	PopulateThreeNullBugs(&level);
-
-//	wstring file2 = path + L"/test2.xml";
-//	level.Save(file2);
-//	TestThreeNullBugs(file2);
+	auto file2 = path + L"/test2.xml";
+	level.Save(file2);
+	TestThreeNullBugs(file2);
 
 	//
 	// Test all types
@@ -164,3 +241,4 @@ TEST(BugTest, Load)
 //	TestAllTypes(file3);
 
 }
+
