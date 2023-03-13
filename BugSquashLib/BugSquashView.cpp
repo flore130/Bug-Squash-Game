@@ -103,6 +103,14 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 	dc.SetBackground(background);
 	dc.Clear();
 
+	// Compute the time that has elapsed
+	// since the last call to OnPaint.
+	auto newTime = mStopWatch.Time();
+	auto elapsed = (double)(newTime - mTime) * 0.001;
+	mTime = newTime;
+
+	mBugSquash.Update(elapsed);
+
 	// Create a graphics context
 	auto gc =
 		std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));

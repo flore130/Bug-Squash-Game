@@ -141,7 +141,10 @@ void BugSquash::Clear()
  */
 void BugSquash::Update(double elapsed)
 {
-
+	for (auto item : mItems)
+	{
+		item->Update(elapsed);
+	}
 }
 
 /**
