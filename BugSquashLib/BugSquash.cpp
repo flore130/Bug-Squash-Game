@@ -122,6 +122,13 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	graphics->DrawRectangle(0, 0, Width, Height);
 
 
+//	auto image = std::make_shared<wxImage>(L"images/laptop.png");
+//	auto bitmap = graphics->CreateBitmapFromImage(*mImage);
+//	graphics->DrawBitmap(bitmap, 0, 0, mImage->GetWidth(), mImage->GetHeight());
+
+
+
+
 
 	graphics->PopState();
 }

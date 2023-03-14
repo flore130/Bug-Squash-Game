@@ -49,6 +49,8 @@ private:
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
 
+	std::shared_ptr<wxImage> mLaptopImage;
+
 public:
 	void Load(const wxString &filename);
 	void XmlItem(wxXmlNode *node);
@@ -58,6 +60,7 @@ public:
 	void Update(double elapsed);
 	void Accept( ItemVisitor* visitor );
 	void Add( std::shared_ptr< Item > item );
+
 
 	/*
 	 * Gets the current value of mShrinked
