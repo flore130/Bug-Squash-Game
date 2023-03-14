@@ -15,6 +15,10 @@
 
 using namespace std;
 
+
+///// Number of images in the sample sprite object
+//int imageIndex = 0;
+
 /// Scale to shrink to when in shrink mode
 const double ShrinkScale = 0.75;
 
@@ -121,14 +125,21 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 	graphics->DrawRectangle(0, 0, Width, Height);
 
+//	auto programImage = std::make_shared<wxImage>(L"images/laptop.png");
+//	auto programBitmap = graphics->CreateBitmapFromImage(*programImage);
+//	int programWidth = programImage->GetWidth();
+//	int programHeight = programImage->GetHeight();
+//	graphics->DrawBitmap(programBitmap, Width/2, Height/2,programWidth, programHeight);
+//
+//	auto spriteImage = std::make_shared<wxImage>(L"images/blue-maize-bug.png");
+//	auto spriteWidth = spriteImage->GetWidth();
+//	auto spriteHeight = spriteImage->GetHeight() / 6;
+//	wxImage sprite = spriteImage->GetSubImage(wxRect(0, imageIndex * spriteHeight, spriteWidth, spriteHeight));
+//	wxBitmap spriteBitmap(sprite);
+//	graphics->DrawBitmap(spriteBitmap, 20, 20,spriteWidth, spriteHeight);
+//	imageIndex = (imageIndex + 1) % 6;
 
-//	auto image = std::make_shared<wxImage>(L"images/laptop.png");
-//	auto bitmap = graphics->CreateBitmapFromImage(*mImage);
-//	graphics->DrawBitmap(bitmap, 0, 0, mImage->GetWidth(), mImage->GetHeight());
-
-
-
-
+	// Sample for drawing the sprite images
 
 	graphics->PopState();
 }
