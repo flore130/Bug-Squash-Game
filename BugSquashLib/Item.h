@@ -105,8 +105,12 @@ public:
 	 */
 //	virtual bool HitTest(int x, int y) = 0;
 
+	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
+
+
 
 

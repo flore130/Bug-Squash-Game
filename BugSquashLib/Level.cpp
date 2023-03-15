@@ -24,7 +24,7 @@ using namespace std;
  *
  * @param node the node to load
  */
-void Level::XmlItem(wxXmlNode *node)
+void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 {
 	// A pointer for the item we are loading
 	shared_ptr<Item> item;
@@ -46,10 +46,12 @@ void Level::XmlItem(wxXmlNode *node)
 		{
 			item = make_shared<BugRedundancy>(this);
 		}
+		item->SetProgram(node, parent);
 	}
 	else if (name == L"feature")
 	{
 		item = make_shared<Feature>(this);
+		item->SetProgram(node, parent);
 	}
 
 	if (item != nullptr)
@@ -75,10 +77,12 @@ void Level::XmlProgram(wxXmlNode *node)
 	 * which need to be translated into bugs/features, positioned properly (upcall),
 	 * and then, if they are bugs, checked for any <code> child tag
 	 */
+	shared_ptr<Program> program_item;
+	program_item = make_shared<Program>(this);
 	auto child = node->GetChildren();
 	for( ; child; child = child->GetNext())
 	{
-		XmlItem(child);
+		XmlItem(child, program_item);
 	}
 
 }
@@ -181,3 +185,4 @@ std::vector<std::shared_ptr< Item >> Level::GetItem()
 {
 	return mItems;
 }
+

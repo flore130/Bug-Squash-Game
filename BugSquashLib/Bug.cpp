@@ -7,6 +7,8 @@
 #include "Program.h"
 #include "Bug.h"
 
+using namespace std;
+
 /// The radius tolerance for successful hit tests
 const double BugHitRange = 50;
 
@@ -55,4 +57,9 @@ void Bug::Update(double elapsed)
 	// Set location to pixels/second * seconds * direction + current position
 	SetLocation(GetX() + (directionX * mSpeed * elapsed),
 				GetY() + (directionY * mSpeed * elapsed));
+}
+
+void Bug::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
+{
+	this->mProgram = parent;
 }

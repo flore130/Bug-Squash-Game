@@ -35,7 +35,7 @@ private:
 	/// The name of this level, displayed for 2 seconds at the start of the round
 	std::wstring mName;
 
-	void XmlItem(wxXmlNode *node);
+	void XmlItem(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	void XmlProgram(wxXmlNode *node);
 
