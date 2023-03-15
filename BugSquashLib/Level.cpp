@@ -5,7 +5,16 @@
 
 #include "pch.h"
 #include "Level.h"
+#include "BugGarbage.h"
+#include "BugNull.h"
+#include "BugRedundancy.h"
+#include "Feature.h"
+#include "Program.h"
+#include "FatGarbageBug.h"
+#include "FatNullBug.h"
 #include "Item.h"
+
+using namespace std;
 
 /**
  * Base function for handling loading XML nodes
@@ -15,10 +24,44 @@
  *
  * @param node the node to load
  */
-void Level::XmlItem(wxXmlNode *node)
+void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 {
+	// A pointer for the item we are loading
+	shared_ptr<Item> item;
+
+	auto name = node->GetName();
+
+	if (name == L"bug")
+	{
+		auto type = node->GetAttribute(L"type");
+		if (type == L"garbage")
+		{
+			item = make_shared<BugGarbage>(this);
+		}
+		else if (type == L"null")
+		{
+			item = make_shared<BugNull>(this);
+		}
+		else if (type == L"redundancy")
+		{
+			item = make_shared<BugRedundancy>(this);
+		}
+		item->SetProgram(node, parent);
+	}
+	else if (name == L"feature")
+	{
+		item = make_shared<Feature>(this);
+		item->SetProgram(node, parent);
+	}
+
+	if (item != nullptr)
+	{
+		Add(item);
+		item->XmlLoad(node);
+	}
 
 }
+
 
 /**
  * Handles loading the bugs that are associated with a given program node
@@ -34,6 +77,14 @@ void Level::XmlProgram(wxXmlNode *node)
 	 * which need to be translated into bugs/features, positioned properly (upcall),
 	 * and then, if they are bugs, checked for any <code> child tag
 	 */
+	shared_ptr<Program> program_item;
+	program_item = make_shared<Program>(this);
+	auto child = node->GetChildren();
+	for( ; child; child = child->GetNext())
+	{
+		XmlItem(child, program_item);
+	}
+
 }
 
 /**
@@ -89,6 +140,18 @@ void Level::Load(const wxString &filename)
 		auto name = child->GetName();
 		if(name == L"program")
 		{
+			shared_ptr<Item> program_item;
+			program_item = make_shared<Program>(this);
+			mItems.push_back(program_item);
+			program_item->XmlLoad(child);
+		}
+	}
+	child = root->GetChildren();
+	for( ; child; child=child->GetNext())
+	{
+		auto name = child->GetName();
+		if(name == L"program")
+		{
 			XmlProgram(child);
 		}
 	}
@@ -113,4 +176,13 @@ void Level::Clear()
 	mItems.clear();
 }
 
+
+/**
+ * Getter for the list of items in level
+ * @return All items data in the level
+ */
+std::vector<std::shared_ptr< Item >> Level::GetItem()
+{
+	return mItems;
+}
 

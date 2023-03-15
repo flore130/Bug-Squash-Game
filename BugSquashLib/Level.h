@@ -16,6 +16,7 @@
 
 class Item;
 class ItemVisitor;
+class Program;
 
 /**
  * Level class
@@ -34,7 +35,7 @@ private:
 	/// The name of this level, displayed for 2 seconds at the start of the round
 	std::wstring mName;
 
-	void XmlItem(wxXmlNode *node);
+	void XmlItem(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	void XmlProgram(wxXmlNode *node);
 
@@ -53,6 +54,8 @@ public:
 	void Load(const wxString &filename);
 
 	void Clear();
+
+	std::vector<std::shared_ptr< Item >>  GetItem();
 
 
 

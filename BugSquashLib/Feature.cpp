@@ -45,3 +45,27 @@ void Feature::XmlLoad(wxXmlNode* node)
 	Item::XmlLoad(node);
 }
 
+/**
+ * Draw the Garbage Bug
+ * @param gc graphics context we want to draw on
+ */
+void Feature::Draw(std::shared_ptr<wxGraphicsContext> gc)
+{
+	/// Obtain the bug image
+	auto bugFeatureSpriteImage = GetImage();
+	auto bugFeatureWidth = bugFeatureSpriteImage->GetWidth();
+
+	/// Obtain the height needed to get the specific bug image
+	auto bugFeatureHeight = bugFeatureSpriteImage->GetHeight() / (FeatureNumSpriteImages + 1);
+	auto bugGarbageImageIndex = GetSpriteImageIndex();
+
+	std::cout << bugGarbageImageIndex << std::endl;
+
+	/// Get the sub image from the sprite image
+	auto bugGarbageImage = bugFeatureSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex, bugFeatureWidth, bugFeatureHeight));
+	wxBitmap bugGarbageBitmap(bugGarbageImage);
+	Bug::ChangeSpriteImageIndex(FeatureNumSpriteImages + 1);
+
+	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugFeatureWidth, bugFeatureHeight);
+}
+

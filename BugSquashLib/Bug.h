@@ -27,6 +27,9 @@ private:
 	/// The speed the bug should move at in pixels per second
 	double mSpeed = 0;
 
+	/// The image index of the bug in the sprite image
+	int mImageIndex = 0;
+
 	/// The program this bug is associated with
 	std::shared_ptr<Program> mProgram = nullptr;
 
@@ -56,6 +59,23 @@ public:
 
 	void Update(double elapsed) override;
 
+	void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent) override;
+
+	void XmlLoad(wxXmlNode *node);
+
+	/**
+	 * Changes the index of the bug image to be used in the sprite image
+	 * @param numBugs
+	 */
+	void ChangeSpriteImageIndex(int numBugs){ mImageIndex = (mImageIndex + 1) % numBugs; }
+
+	/***
+	 * Obtains the image index of the bug index to be used.
+	 * @return the image index of the bug
+	 */
+	int GetSpriteImageIndex(){ return mImageIndex; }
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
+

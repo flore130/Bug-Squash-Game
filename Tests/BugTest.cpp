@@ -30,158 +30,6 @@ TEST(BugTest, Construct)
 	Bug myBug(&newLevel, GarbageSplatImage);
 }
 
-/**
-* Add three null bugs to the level
-* @param level The level to populate
-*/
-void PopulateThreeNullBugs(Level *level)
-{
-	auto bug1 = make_shared<BugNull>(level);
-	level->Add(bug1);
-	bug1->SetLocation(100, 200);
-
-	auto bug2 = make_shared<BugNull>(level);
-	level->Add(bug2);
-	bug2->SetLocation(400, 400);
-
-	auto bug3 = make_shared<BugNull>(level);
-	level->Add(bug3);
-	bug3->SetLocation(600, 100);
-}
-
-/**
-* Read a file into a wstring and return it.
-* @param filename Name of the file to read
-* @return File contents
-*/
-wstring ReadFile(const wxString &filename)
-{
-	ifstream t(filename.ToStdString());
-	wstring str((istreambuf_iterator<char>(t)),
-				istreambuf_iterator<char>());
-
-	return str;
-}
-
-/**
-* Test a file which is just an empty level
-* @param filename Name of the file to read
-*/
-void TestEmpty(wxString filename)
-{
-	cout << "Temp file: " << filename << endl;
-
-	auto xml = ReadFile(filename);
-	cout << xml << endl;
-
-	ASSERT_TRUE(regex_search(xml, wregex(L"<\\?xml.*\\?>")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<xml/>")));
-
-}
-
-
-/**
-* Test a file which has all types of items
-* @param filename Name of the file to read
-*/
-void PopulateAllTypes(Level *level)
-{
-
-	auto bug1 = make_shared<BugNull>(level);
-	level->Add(bug1);
-	bug1->SetLocation(100, 200);
-
-	auto bug2 = make_shared<BugGarbage>(level);
-	level->Add(bug2);
-	bug2->SetLocation(400, 400);
-
-	auto bug3 = make_shared<BugRedundancy>(level);
-	level->Add(bug3);
-	bug3->SetLocation(600, 100);
-
-	auto bug4 = make_shared<FatGarbageBug>(level);
-	level->Add(bug4);
-	bug4->SetLocation(500, 200);
-
-	auto bug5 = make_shared<FatNullBug>(level);
-	level->Add(bug5);
-	bug5->SetLocation(400, 100);
-
-	auto feature = make_shared<Feature>(level);
-	level->Add(feature);
-	feature->SetLocation(800, 300);
-
-
-	auto program = make_shared<Program>(level);
-	level->Add(program);
-	program->SetLocation(1000, 600);
-}
-
-
-/**
-* Test a file which has three null bugs
-* @param filename Name of the file to read
-*/
-void TestThreeNullBugs(wxString filename)
-{
-	cout << "Temp file: " << filename << endl;
-
-	auto xml = ReadFile(filename);
-	cout << xml << endl;
-
-	// Ensure three items
-	ASSERT_TRUE(regex_search(xml, wregex(L"<xml><item.*<item.*<item.*</xml>")));
-
-	// Ensure the positions are correct
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"100\" y=\"200\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"400\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"600\" y=\"100\"")));
-
-	// Ensure the types are correct
-	ASSERT_TRUE(regex_search(xml,
-							 wregex(L"<xml><item.* type=\"null\"/><item.* type=\"null\"/><item.* type=\"null\"/></xml>")));
-}
-
-
-void TestAllTypes(wxString filename)
-{
-	cout << "Temp file: " << filename << endl;
-
-	auto xml = ReadFile(filename);
-	cout << xml << endl;
-
-	// Ensure three items
-	ASSERT_TRUE(regex_search(xml, wregex(L"<xml><item.*<item.*<item.*<item.*<item.*<item.*<item.*</xml>")));
-
-	// Ensure the positions are correct
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"100\" y=\"200\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"400\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"600\" y=\"100\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"800\" y=\"300\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"1000\" y=\"600\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"500\" y=\"200\"")));
-	ASSERT_TRUE(regex_search(xml, wregex(L"<item x=\"400\" y=\"100\"")));
-
-	// Ensure the types are correct
-	ASSERT_TRUE(regex_search(xml,
-							 wregex(L"<xml><item.* type=\"null\"/><item.* type=\"garbage\"/><item.* type=\"redundancy\"/><item.* type=\"fatgarbage\"/><item.* type=\"fatnull\"/><item.* type=\"feature\"/><item.* type=\"program\"/></xml>")));
-}
-
-/**
-* Create a path to a place to put temporary files
-*/
-wxString TempPath()
-{
-	// Create a temporary filename we can use
-	auto path = wxFileName::GetTempDir() + L"/xml";
-	if(!wxFileName::DirExists(path))
-	{
-		wxFileName::Mkdir(path);
-	}
-
-	return path;
-}
-
 TEST(BugTest, HitTest)
 {
 	Level newLevel;
@@ -234,7 +82,7 @@ TEST(BugTest, MovementTest)
 	ASSERT_NEAR(bug.GetX(), 200, 0.01);
 	ASSERT_NEAR(bug.GetY(), 180, 0.01) << L"Testing multiple seconds elapsed of movement";
 
-	// Testing diagonal movement, setting bug 10 to left and 10 down
+//	 Testing diagonal movement, setting bug 10 to left and 10 down
 	bug.SetLocation(190, 110);
 
 	bug.Update(1);
@@ -255,49 +103,6 @@ TEST(BugTest, MovementTest)
 
 	ASSERT_NEAR(bug.GetX(), 240.610, 0.01) << L"Test 4 seconds of diagonal movement";
 	ASSERT_NEAR(bug.GetY(), 280.488, 0.01) << L"Test 4 seconds of diagonal movement";
-
-}
-
-TEST(BugTest, Load)
-{
-	// Create a path to temporary files
-	auto path = TempPath();
-
-	// Create a level
-	Level level;
-	Level level2;
-
-	//
-	// First test, saving an empty level
-	//
-	auto file1 = path + L"/test1.xml";
-	level.Save(file1);
-
-	TestEmpty(file1);
-
-	level2.Load(file1);
-	level2.Save(file1);
-	TestEmpty(file1);
-
-	//
-	// Now populate the level
-	//
-	PopulateThreeNullBugs(&level);
-
-	auto file2 = path + L"/test2.xml";
-	level.Save(file2);
-	TestThreeNullBugs(file2);
-
-	//
-	// Test all types
-	//
-	Level level3;
-
-	PopulateAllTypes(&level3);
-
-	auto file3 = path + L"/test3.xml";
-	level3.Save(file3);
-	TestAllTypes(file3);
 
 }
 

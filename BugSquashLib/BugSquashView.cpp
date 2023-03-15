@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "BugSquashView.h"
+#include "Level.h"
 #include <wx/dcbuffer.h>
 #include "ids.h"
 
@@ -42,6 +43,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	mTimer.Start(FrameDuration);
 
 	mStopWatch.Start();
+
 }
 
 /**
@@ -63,6 +65,10 @@ void BugSquashView::AddMenus( wxFrame* mainFrame, wxMenuBar* menuBar, wxMenu* le
 	viewMenu->Append( IDM_SHRINK, L"Shrink", L"Shrink the window to see outside of the game", wxITEM_CHECK );
 	mainFrame->Bind( wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnShrink, this, IDM_SHRINK );
 	mainFrame->Bind( wxEVT_UPDATE_UI, &BugSquashView::OnUpdateShrink, this, IDM_SHRINK );
+	levelMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnLevelZero, this, IDM_LEVELZERO);
+	levelMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnLevelOne, this, IDM_LEVELONE);
+	levelMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnLevelTwo, this, IDM_LEVELTWO);
+	levelMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnLevelThree, this, IDM_LEVELTHREE);
 }
 
 
@@ -181,3 +187,53 @@ void BugSquashView::OnUpdateShrink( wxUpdateUIEvent& event )
 	event.Check( mBugSquash.GetShrinked() );
 }
 
+/**
+ * Level>Level Zero menu handler
+ * @param event Menu event
+ */
+void BugSquashView::OnLevelZero(wxCommandEvent &event)
+{
+
+	auto filename = L"data/level0.xml";
+	mBugSquash.Load(filename);
+	Refresh();
+
+}
+
+/**
+ * Level>Level One menu handler
+ * @param event Menu event
+ */
+void BugSquashView::OnLevelOne(wxCommandEvent &event)
+{
+
+	auto filename = L"data/level1.xml";
+	mBugSquash.Load(filename);
+	Refresh();
+}
+
+/**
+ * Level>Level Two menu handler
+ * @param event Menu event
+ */
+void BugSquashView::OnLevelTwo(wxCommandEvent &event)
+{
+
+	auto filename = L"data/level2.xml";
+	mBugSquash.Load(filename);
+	Refresh();
+
+}
+
+/**
+ * Level>Level Three menu handler
+ * @param event Menu event
+ */
+void BugSquashView::OnLevelThree(wxCommandEvent &event)
+{
+
+	auto filename = L"data/level3.xml";
+	mBugSquash.Load(filename);
+	Refresh();
+
+}
