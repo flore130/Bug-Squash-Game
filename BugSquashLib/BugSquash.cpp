@@ -10,6 +10,8 @@
 #include <random>
 #include <algorithm>
 #include "Level.h"
+#include <wx/dcbuffer.h>
+#include <wx/graphics.h>
 #include "BugSquash.h"
 #include "Item.h"
 
@@ -33,6 +35,16 @@ void BugSquash::Load(const wxString &filename)
 {
 	mLevel = std::make_unique<Level>();
 	mLevel->Load(filename);
+	vector<shared_ptr< Item >> levelLoad;
+
+	if (mLevel != nullptr)
+	{
+		levelLoad = mLevel->GetItem();
+		for (auto item : levelLoad)
+		{
+			Add(item);
+		}
+	}
 }
 
 /**
@@ -186,3 +198,4 @@ void BugSquash::Accept( ItemVisitor* visitor )
 		item->Accept( visitor );
 	}
 }
+

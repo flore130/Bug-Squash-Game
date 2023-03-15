@@ -57,6 +57,3 @@ void Item::XmlLoad(wxXmlNode *node)
 	node->GetAttribute(L"x", L"0").ToDouble(&mX);
 	node->GetAttribute(L"y", L"0").ToDouble(&mY);
 }
-
-
-

@@ -103,9 +103,10 @@ public:
 	 * @param y coordinate to know where mouse clicked
 	 * @return bool to check if we hit an item
 	 */
-	virtual bool HitTest(int x, int y) = 0;
+//	virtual bool HitTest(int x, int y) = 0;
 
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
+
 

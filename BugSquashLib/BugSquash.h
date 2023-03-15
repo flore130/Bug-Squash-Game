@@ -76,3 +76,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H
+

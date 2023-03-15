@@ -16,6 +16,7 @@
 
 class Item;
 class ItemVisitor;
+class Program;
 
 /**
  * Level class
@@ -53,6 +54,8 @@ public:
 	void Load(const wxString &filename);
 
 	void Clear();
+
+	std::vector<std::shared_ptr< Item >>  GetItem();
 
 
 
