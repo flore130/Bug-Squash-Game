@@ -61,7 +61,7 @@ public:
 
 	void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent) override;
 
-	void XmlLoad(wxXmlNode *node);
+	void XmlLoad(wxXmlNode *node) override;
 
 	/**
 	 * Changes the index of the bug image to be used in the sprite image
