@@ -10,6 +10,7 @@
 
 
 #include "BugSquash.h"
+class BugSquash;
 class Item;
 
 /**
@@ -37,6 +38,10 @@ public:
 	void OopsIncrement();
 	void MissedIncrement();
 	void Reset();
+	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+	void DrawScore(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x, int score);
+
+
 
 };
 
