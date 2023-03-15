@@ -8,6 +8,7 @@
 #ifndef PROJECT1_BUGSQUASHLIB_ITEM_H
 #define PROJECT1_BUGSQUASHLIB_ITEM_H
 
+#include <wx/graphics.h>
 #include "ItemVisitor.h"
 
 class Level;
@@ -114,6 +115,8 @@ public:
 
 
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
+
+	virtual bool HitTest(int x, int y);
 
 };
 

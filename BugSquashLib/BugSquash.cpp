@@ -15,6 +15,7 @@
 #include "BugGarbage.h"
 #include "Program.h"
 #include "BugNull.h"
+#include "Scoreboard.h"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ const double ShrinkScale = 0.75;
  */
 void BugSquash::Load(const wxString &filename)
 {
+	mScoreboard->Reset();
 	mLevel = std::make_unique<Level>();
 	mLevel->Load(filename);
 	vector<shared_ptr< Item >> levelLoad;
@@ -145,6 +147,7 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	}
 
 	graphics->PopState();
+	mScoreboard->Draw(graphics);
 }
 
 /**
@@ -173,9 +176,16 @@ void BugSquash::Update(double elapsed)
  * @param x x position of clicked screen
  * @param y y position of clicked screen
  */
-void BugSquash::OnLeftDown(int x, int y)
+std::shared_ptr<Item> BugSquash::HitTest(int x, int y)
 {
-
+	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	{
+		if ((*i)->HitTest(x, y))
+		{
+			return *i;
+		}
+	}
+	return  nullptr;
 }
 
 /**
@@ -188,4 +198,9 @@ void BugSquash::Accept( ItemVisitor* visitor )
 	{
 		item->Accept( visitor );
 	}
+}
+
+BugSquash::BugSquash()
+{
+	mScoreboard = make_unique<Scoreboard>(this);
 }

@@ -3,6 +3,7 @@
  * @author Ricardo Flores
  *
  *
+ *
  */
 
 #ifndef PROJECT1_BUGSQUASHLIB_PROGRAM_H
@@ -38,7 +39,6 @@ public:
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
-
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_PROGRAM_H

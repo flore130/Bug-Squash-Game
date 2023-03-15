@@ -90,7 +90,11 @@ void BugSquashView::OnTimer(wxTimerEvent &event)
 
 void BugSquashView::OnLeftDown(wxMouseEvent &event)
 {
-	mBugSquash.OnLeftDown(event.GetX(), event.GetY());
+	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
+	if (mClickedItem != nullptr)
+	{
+		//squash bug here?
+	}
 }
 
 /**
