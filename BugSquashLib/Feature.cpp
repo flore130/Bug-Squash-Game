@@ -64,6 +64,6 @@ void Feature::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	wxBitmap bugGarbageBitmap(bugGarbageImage);
 	Bug::ChangeSpriteImageIndex(FeatureNumSpriteImages);
 
-	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugFeatureWidth, bugFeatureHeight);
+	gc->DrawBitmap(bugGarbageBitmap, GetX() - (bugFeatureWidth / 2), GetY() - (bugFeatureHeight / 2), bugFeatureWidth, bugFeatureHeight);
 }
 

@@ -73,7 +73,7 @@ void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 	//
 	int imageWidth = mItemImage->GetWidth();
 	int imageHeight = mItemImage->GetHeight();
-	graphics->DrawBitmap(mItemBitmap, mX, mY, imageWidth, imageHeight);
+	graphics->DrawBitmap(mItemBitmap, mX - (imageWidth / 2), mY - (imageHeight / 2), imageWidth, imageHeight);
 }
 
 /**
