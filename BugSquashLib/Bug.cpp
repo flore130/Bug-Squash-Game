@@ -61,7 +61,8 @@ void Bug::Update(double elapsed)
 
 /**
 * Set the program this bug is associated with
-* @param program The program to set
+* @param node The bug we are looking at
+* @param parent The program to set
 */
 void Bug::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
