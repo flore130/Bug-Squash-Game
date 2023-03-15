@@ -51,7 +51,7 @@ const int WingSetY = 5;
  * @param level Level that this bug is a member of
  */
 
-BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName)
+BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName, 0)
 {
 }
 

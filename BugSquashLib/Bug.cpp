@@ -18,7 +18,10 @@ const double BugHitRange = 50;
  * @param level the game level
  * @param filename the filename for the bug image
  */
-Bug::Bug(Level *level, const std::wstring &filename) : Item(level, filename) {}
+Bug::Bug(Level *level, const std::wstring &filename, int spriteCount) : Item(level, filename)
+{
+	mSpriteCount = spriteCount;
+}
 
 
 /**
@@ -78,4 +81,23 @@ void Bug::XmlLoad(wxXmlNode *node)
 {
 	Item::XmlLoad(node);
 	node->GetAttribute(L"speed", L"0").ToDouble(&mSpeed);
+}
+
+
+void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
+{
+	/// Obtain the bug image
+	auto bugGarbageSpriteImage = GetImage();
+	auto bugGarbageWidth = bugGarbageSpriteImage->GetWidth();
+
+	/// Obtain the height needed to get the specific bug image
+	auto bugGarbageHeight = bugGarbageSpriteImage->GetHeight() / (mSpriteCount);
+	auto bugGarbageImageIndex = GetSpriteImageIndex();
+
+	/// Get the sub image from the sprite image
+	auto bugGarbageImage = bugGarbageSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex * bugGarbageHeight, bugGarbageWidth, bugGarbageHeight));
+	wxBitmap bugGarbageBitmap(bugGarbageImage);
+	ChangeSpriteImageIndex(mSpriteCount);
+
+	graphics->DrawBitmap(bugGarbageBitmap, GetX() - (bugGarbageWidth / 2), GetY() - (bugGarbageHeight / 2), bugGarbageWidth, bugGarbageHeight );
 }

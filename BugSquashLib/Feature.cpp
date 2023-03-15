@@ -16,7 +16,7 @@ const std::wstring FeatureSplatImageName = L"images/feature-splat.png";
 /// Number of sprite images
 const int FeatureNumSpriteImages = 7;
 
-Feature::Feature(Level* level) : Bug(level, FeatureImageName)
+Feature::Feature(Level* level) : Bug(level, FeatureImageName, FeatureNumSpriteImages)
 {
 
 }
@@ -45,25 +45,4 @@ void Feature::XmlLoad(wxXmlNode* node)
 	Bug::XmlLoad(node);
 }
 
-/**
- * Draw the Garbage Bug
- * @param gc graphics context we want to draw on
- */
-void Feature::Draw(std::shared_ptr<wxGraphicsContext> gc)
-{
-	/// Obtain the bug image
-	auto bugFeatureSpriteImage = GetImage();
-	auto bugFeatureWidth = bugFeatureSpriteImage->GetWidth();
-
-	/// Obtain the height needed to get the specific bug image
-	auto bugFeatureHeight = bugFeatureSpriteImage->GetHeight() / (FeatureNumSpriteImages);
-	auto bugFeatureImageIndex = GetSpriteImageIndex();
-
-	/// Get the sub image from the sprite image
-	auto bugGarbageImage = bugFeatureSpriteImage->GetSubImage(wxRect(0, bugFeatureImageIndex * bugFeatureHeight, bugFeatureWidth, bugFeatureHeight));
-	wxBitmap bugGarbageBitmap(bugGarbageImage);
-	Bug::ChangeSpriteImageIndex(FeatureNumSpriteImages);
-
-	gc->DrawBitmap(bugGarbageBitmap, GetX() - (bugFeatureWidth / 2), GetY() - (bugFeatureHeight / 2), bugFeatureWidth, bugFeatureHeight);
-}
 

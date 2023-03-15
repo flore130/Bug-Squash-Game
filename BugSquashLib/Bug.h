@@ -30,6 +30,9 @@ private:
 	/// The image index of the bug in the sprite image
 	int mImageIndex = 0;
 
+	/// The number of sprites this bug will swap through
+	int mSpriteCount = 0;
+
 	/// The program this bug is associated with
 	std::shared_ptr<Program> mProgram = nullptr;
 
@@ -43,7 +46,7 @@ public:
 	 */
 	void SetSpeed(double newSpeed) { mSpeed = newSpeed; }
 
-	Bug(Level *level, const std::wstring &filename);
+	Bug(Level *level, const std::wstring &filename, int spriteCount);
 
 	/**
 	 * Accept a visitor
@@ -68,6 +71,8 @@ public:
 	 * @return the index of the sprite image to use
 	 */
 	int GetSpriteImageIndex(){ return mImageIndex; }
+
+	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
 };
 
