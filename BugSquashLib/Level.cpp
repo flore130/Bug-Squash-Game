@@ -173,6 +173,10 @@ void Level::Clear()
 }
 
 
+/**
+ * Getter for the list of items in level
+ * @return All items data in the level
+ */
 std::vector<std::shared_ptr< Item >> Level::GetItem()
 {
 	return mItems;
