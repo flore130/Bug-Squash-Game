@@ -66,10 +66,8 @@ void BugGarbage::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	auto bugGarbageHeight = bugGarbageSpriteImage->GetHeight() / (GarbageBugNumSpriteImages + 1);
 	auto bugGarbageImageIndex = GetSpriteImageIndex();
 
-	std::cout << bugGarbageImageIndex << std::endl;
-
 	/// Get the sub image from the sprite image
-	auto bugGarbageImage = bugGarbageSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex, bugGarbageWidth, bugGarbageHeight));
+	auto bugGarbageImage = bugGarbageSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex * bugGarbageHeight, bugGarbageWidth, bugGarbageHeight));
 	wxBitmap bugGarbageBitmap(bugGarbageImage);
 	Bug::ChangeSpriteImageIndex(GarbageBugNumSpriteImages + 1);
 

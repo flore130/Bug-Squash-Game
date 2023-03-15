@@ -82,7 +82,7 @@ void BugNull::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	auto bugNullImageIndex = GetSpriteImageIndex();
 
 	/// Get the sub image from the sprite image
-	auto bugNullImage = bugNullSpriteImage->GetSubImage(wxRect(0, bugNullImageIndex, bugNullWidth, bugNullHeight));
+	auto bugNullImage = bugNullSpriteImage->GetSubImage(wxRect(0, bugNullImageIndex * bugNullHeight, bugNullWidth, bugNullHeight));
 	wxBitmap bugGarbageBitmap(bugNullImage);
 	Bug::ChangeSpriteImageIndex(NullBugNumSpriteImages+ 1);
 
