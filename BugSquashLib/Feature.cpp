@@ -42,7 +42,7 @@ wxXmlNode* Feature::XmlSave(wxXmlNode* node)
  */
 void Feature::XmlLoad(wxXmlNode* node)
 {
-	Item::XmlLoad(node);
+	Bug::XmlLoad(node);
 }
 
 /**
