@@ -8,7 +8,7 @@
 #include "Item.h"
 
 /// Program image filename
-const std::wstring ProgramImage = L"../images/laptop.png";
+const std::wstring ProgramImage = L"images/laptop.png";
 
 /// Program name font size
 const int ProgramNameFontSize = 22;

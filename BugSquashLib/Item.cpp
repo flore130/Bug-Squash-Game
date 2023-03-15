@@ -16,8 +16,7 @@ using namespace std;
  */
 Item::Item(Level *level, const std::wstring &filename) : mLevel(level)
 {
-	mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-	mItemBitmap = make_unique<wxBitmap>(*mItemImage);
+	mItemImage = std::make_shared<wxImage>(filename);
 }
 
 /**
@@ -56,6 +55,25 @@ void Item::XmlLoad(wxXmlNode *node)
 {
 	node->GetAttribute(L"x", L"0").ToDouble(&mX);
 	node->GetAttribute(L"y", L"0").ToDouble(&mY);
+}
+
+/**
+* Draw the item on the graphics context
+ * @param graphics graphics context to draw on
+*/
+void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+	if (mItemBitmap.IsNull())
+	{
+		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
+	}
+
+	//
+	// Draw a bitmap
+	//
+	int imageWidth = mItemImage->GetWidth();
+	int imageHeight = mItemImage->GetHeight();
+	graphics->DrawBitmap(mItemBitmap, mX, mY, imageWidth, imageHeight);
 }
 
 void Item::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)

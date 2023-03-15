@@ -43,6 +43,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	mTimer.Start(FrameDuration);
 
 	mStopWatch.Start();
+
 }
 
 /**
@@ -209,7 +210,6 @@ void BugSquashView::OnLevelOne(wxCommandEvent &event)
 	auto filename = L"data/level1.xml";
 	mBugSquash.Load(filename);
 	Refresh();
-
 }
 
 /**

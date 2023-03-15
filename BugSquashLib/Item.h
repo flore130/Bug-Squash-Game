@@ -31,11 +31,23 @@ private:
 	std::shared_ptr<wxImage> mItemImage = nullptr;
 
 	/// The item bitmap
-	std::unique_ptr<wxBitmap> mItemBitmap = nullptr;
+	wxGraphicsBitmap mItemBitmap;
 
 protected:
 	/// Constructor
 	Item(Level *level, const std::wstring &filename);
+
+	/**
+	 * Get the image associated with the item
+	 * @return
+	 */
+	std::shared_ptr<wxImage> GetImage() { return mItemImage;}
+
+	/**
+	 * Set the bitmap associated with the item
+	 * @param bitmap
+	 */
+	void SetBitmap(wxGraphicsBitmap bitmap) { mItemBitmap = bitmap; }
 
 
 public:
@@ -72,13 +84,13 @@ public:
      * Get the width of the item
      * @return Item width in pixels
      */
-	double GetWidth() {return mItemBitmap->GetWidth();}
+	double GetWidth() {return mItemImage->GetWidth();}
 
 	/**
      * Get the height of the item
      * @return Item height in pixels
      */
-	double GetHeight() {return mItemBitmap->GetHeight();}
+	double GetHeight() {return mItemImage->GetHeight();}
 
 	/**
      * Accept a visitor
@@ -98,19 +110,14 @@ public:
 	 */
 	virtual void Update(double elapsed) {}
 
-	/**
-	 * @param x coordinate to know where mouse clicked
-	 * @param y coordinate to know where mouse clicked
-	 * @return bool to check if we hit an item
-	 */
-//	virtual bool HitTest(int x, int y) = 0;
+	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+
 
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
-
 
 
 
