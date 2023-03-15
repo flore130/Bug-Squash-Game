@@ -58,6 +58,9 @@ public:
 
 	void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent) override;
 
+	void XmlLoad(wxXmlNode *node);
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
+

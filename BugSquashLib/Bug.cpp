@@ -63,3 +63,14 @@ void Bug::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
 	this->mProgram = parent;
 }
+
+/**
+ * Load the attributes for bug node.
+ *
+ * @param node The Xml node we are loading the item from
+ */
+void Bug::XmlLoad(wxXmlNode *node)
+{
+	Item::XmlLoad(node);
+	node->GetAttribute(L"speed", L"0").ToDouble(&mSpeed);
+}
