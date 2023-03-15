@@ -80,3 +80,8 @@ void Item::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
 
 }
+
+bool Item::HitTest(int x, int y)
+{
+	return false;
+}
