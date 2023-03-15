@@ -98,6 +98,7 @@ public:
 	 */
 	virtual void Update(double elapsed) {}
 
+	virtual bool HitTest(int x, int y) = 0;
 
 };
 
