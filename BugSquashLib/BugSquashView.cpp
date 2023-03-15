@@ -195,6 +195,7 @@ void BugSquashView::OnLevelZero(wxCommandEvent &event)
 {
 
 	auto filename = L"data/level0.xml";
+	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 
@@ -208,6 +209,7 @@ void BugSquashView::OnLevelOne(wxCommandEvent &event)
 {
 
 	auto filename = L"data/level1.xml";
+	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }
@@ -220,6 +222,7 @@ void BugSquashView::OnLevelTwo(wxCommandEvent &event)
 {
 
 	auto filename = L"data/level2.xml";
+	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 
