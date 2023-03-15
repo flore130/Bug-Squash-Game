@@ -69,9 +69,9 @@ public:
 	 */
 	void ChangeSpriteImageIndex(int numBugs){ mImageIndex = (mImageIndex + 1) % numBugs; }
 
-	/***
-	 * Obtains the image index of the bug index to be used.
-	 * @return the image index of the bug
+	/**
+	 * Get the index of the sprite image to use
+	 * @return the index of the sprite image to use
 	 */
 	int GetSpriteImageIndex(){ return mImageIndex; }
 

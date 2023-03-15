@@ -146,8 +146,9 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 		item->Draw(graphics);
 	}
 
-	graphics->PopState();
 	mScoreboard->Draw(graphics);
+	graphics->PopState();
+
 }
 
 /**
