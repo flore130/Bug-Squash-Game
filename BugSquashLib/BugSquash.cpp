@@ -10,16 +10,17 @@
 #include <random>
 #include <algorithm>
 #include "Level.h"
-#include <wx/dcbuffer.h>
-#include <wx/graphics.h>
 #include "BugSquash.h"
 #include "Item.h"
+#include "BugGarbage.h"
+#include "Program.h"
+#include "BugNull.h"
 
 using namespace std;
 
 
-///// Number of images in the sample sprite object
-//int imageIndex = 0;
+/// Number of images in the sample sprite object
+int imageIndex = 0;
 
 /// Scale to shrink to when in shrink mode
 const double ShrinkScale = 0.75;
@@ -54,7 +55,7 @@ void BugSquash::Load(const wxString &filename)
 void BugSquash::XmlItem(wxXmlNode *node)
 {
 	// A pointer for the item we are loading
-	shared_ptr<Item> item;
+	shared_ptr<Item> item = nullptr;
 
 	// We have an item. What type?
 	auto type = node->GetAttribute(L"type");
@@ -83,7 +84,7 @@ void BugSquash::XmlItem(wxXmlNode *node)
 	{
 
 		Add(item);
-//		item->XmlLoad(node);
+		item->XmlLoad(node);
 	}
 }
 
@@ -137,21 +138,11 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 	graphics->DrawRectangle(0, 0, Width, Height);
 
-//	auto programImage = std::make_shared<wxImage>(L"images/laptop.png");
-//	auto programBitmap = graphics->CreateBitmapFromImage(*programImage);
-//	int programWidth = programImage->GetWidth();
-//	int programHeight = programImage->GetHeight();
-//	graphics->DrawBitmap(programBitmap, Width/2, Height/2,programWidth, programHeight);
-//
-//	auto spriteImage = std::make_shared<wxImage>(L"images/blue-maize-bug.png");
-//	auto spriteWidth = spriteImage->GetWidth();
-//	auto spriteHeight = spriteImage->GetHeight() / 6;
-//	wxImage sprite = spriteImage->GetSubImage(wxRect(0, imageIndex * spriteHeight, spriteWidth, spriteHeight));
-//	wxBitmap spriteBitmap(sprite);
-//	graphics->DrawBitmap(spriteBitmap, 20, 20,spriteWidth, spriteHeight);
-//	imageIndex = (imageIndex + 1) % 6;
 
-	// Sample for drawing the sprite images
+	for (auto item : mItems)
+	{
+		item->Draw(graphics);
+	}
 
 	graphics->PopState();
 }
@@ -198,4 +189,3 @@ void BugSquash::Accept( ItemVisitor* visitor )
 		item->Accept( visitor );
 	}
 }
-
