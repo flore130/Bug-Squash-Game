@@ -67,7 +67,7 @@ public:
 /// Game area height in virtual pixels
 	const static int Height = 1000;
 
-	/*
+	/**
 	 * Gets the current value of mShrinked
 	 * @return Current value of mShrinked
 	 */
