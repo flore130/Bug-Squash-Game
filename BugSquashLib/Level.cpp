@@ -79,6 +79,7 @@ void Level::XmlProgram(wxXmlNode *node)
 	 */
 	shared_ptr<Program> program_item;
 	program_item = make_shared<Program>(this);
+	program_item->XmlLoad(node);
 	auto child = node->GetChildren();
 	for( ; child; child = child->GetNext())
 	{
