@@ -86,5 +86,5 @@ void BugNull::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	wxBitmap bugGarbageBitmap(bugNullImage);
 	Bug::ChangeSpriteImageIndex(NullBugNumSpriteImages+ 1);
 
-	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugNullWidth, bugNullHeight);
+	gc->DrawBitmap(bugGarbageBitmap, GetX() - (bugNullWidth / 2), GetY() - (bugNullHeight / 2), bugNullWidth, bugNullHeight);
 }
