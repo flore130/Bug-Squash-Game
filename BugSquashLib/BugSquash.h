@@ -15,9 +15,11 @@
 #include <random>
 #include "Level.h"
 #include "ItemVisitor.h"
+#include "Scoreboard.h"
 
 class Item;
 //class Level;
+class Scoreboard;
 
 /**
  * The main BugSquash class.
@@ -25,12 +27,6 @@ class Item;
 class BugSquash
 {
 private:
-	/// Game area in virtual pixels
-	const static int Width = 1250;
-
-	/// Game area height in virtual pixels
-	const static int Height = 1000;
-
 	/// Whether or not the the window is in shrink mode
 	bool mShrinked = false;
 
@@ -51,16 +47,25 @@ private:
 
 	std::shared_ptr<wxImage> mLaptopImage;
 
+	std::shared_ptr<Scoreboard> mScoreboard = nullptr;
+
 public:
+	BugSquash();
 	void Load(const wxString &filename);
 	void XmlItem(wxXmlNode *node);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 	void Clear();
-	void OnLeftDown(int x, int y);
+	std::shared_ptr<Item> HitTest(int x, int y);
 	void Update(double elapsed);
 	void Accept( ItemVisitor* visitor );
 	void Add( std::shared_ptr< Item > item );
 
+
+	/// Game area in virtual pixels
+	const static int Width = 1250;
+
+/// Game area height in virtual pixels
+	const static int Height = 1000;
 
 	/*
 	 * Gets the current value of mShrinked
