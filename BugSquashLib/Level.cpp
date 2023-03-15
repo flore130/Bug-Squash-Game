@@ -23,6 +23,7 @@ using namespace std;
  * beneficial to split into ~3 different XmlBug/XmlProgram functions
  *
  * @param node the node to load
+  * @param parent the program that the item is a child of
  */
 void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 {
