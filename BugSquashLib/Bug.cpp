@@ -59,6 +59,10 @@ void Bug::Update(double elapsed)
 				GetY() + (directionY * mSpeed * elapsed));
 }
 
+/**
+* Set the program this bug is associated with
+* @param program The program to set
+*/
 void Bug::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
 	this->mProgram = parent;

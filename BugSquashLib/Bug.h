@@ -38,12 +38,6 @@ public:
 	bool HitTest(double x, double y);
 
 	/**
-	 * Set the program this bug is associated with
-	 * @param program The program to set
-	 */
-	void SetProgram(std::shared_ptr<Program> program) { mProgram = program; }
-
-	/**
 	 * Sets the speed of this bug
 	 * @param newSpeed The new speed in pixels per second
 	 */
