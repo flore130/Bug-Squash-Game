@@ -76,6 +76,11 @@ void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 	graphics->DrawBitmap(mItemBitmap, mX, mY, imageWidth, imageHeight);
 }
 
+/**
+* Assigns an item to a program
+* @param node The item that we are looking at
+ *@param parent The program that the item is being assigned to
+*/
 void Item::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
 
