@@ -56,15 +56,13 @@ void Feature::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	auto bugFeatureWidth = bugFeatureSpriteImage->GetWidth();
 
 	/// Obtain the height needed to get the specific bug image
-	auto bugFeatureHeight = bugFeatureSpriteImage->GetHeight() / (FeatureNumSpriteImages + 1);
-	auto bugGarbageImageIndex = GetSpriteImageIndex();
-
-	std::cout << bugGarbageImageIndex << std::endl;
+	auto bugFeatureHeight = bugFeatureSpriteImage->GetHeight() / (FeatureNumSpriteImages);
+	auto bugFeatureImageIndex = GetSpriteImageIndex();
 
 	/// Get the sub image from the sprite image
-	auto bugGarbageImage = bugFeatureSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex, bugFeatureWidth, bugFeatureHeight));
+	auto bugGarbageImage = bugFeatureSpriteImage->GetSubImage(wxRect(0, bugFeatureImageIndex * bugFeatureHeight, bugFeatureWidth, bugFeatureHeight));
 	wxBitmap bugGarbageBitmap(bugGarbageImage);
-	Bug::ChangeSpriteImageIndex(FeatureNumSpriteImages + 1);
+	Bug::ChangeSpriteImageIndex(FeatureNumSpriteImages);
 
 	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugFeatureWidth, bugFeatureHeight);
 }
