@@ -98,6 +98,11 @@ public:
 	 */
 	virtual void Update(double elapsed) {}
 
+	/**
+	 * @param x coordinate to know where mouse clicked
+	 * @param y coordinate to know where mouse clicked
+	 * @return bool to check if we hit an item
+	 */
 	virtual bool HitTest(int x, int y) = 0;
 
 };
