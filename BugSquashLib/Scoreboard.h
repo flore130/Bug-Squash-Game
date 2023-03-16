@@ -9,7 +9,7 @@
 #define PROJECT1_BUGSQUASHLIB_SCOREBOARD_H
 
 
-#include "BugSquash.h"
+
 class BugSquash;
 class Item;
 

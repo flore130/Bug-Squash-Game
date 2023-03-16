@@ -3,9 +3,11 @@
  * @author Ricardo Flores
  */
 
+#include "pch.h"
 #include "Program.h"
 #include "Level.h"
 #include "Item.h"
+
 
 /// Program image filename
 const std::wstring ProgramImage = L"images/laptop.png";
