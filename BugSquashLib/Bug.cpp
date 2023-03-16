@@ -87,17 +87,23 @@ void Bug::XmlLoad(wxXmlNode *node)
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
 	/// Obtain the bug image
-	auto bugGarbageSpriteImage = GetImage();
-	auto bugGarbageWidth = bugGarbageSpriteImage->GetWidth();
+	auto bugSpriteImage = GetImage();
+	auto bugWidth = bugSpriteImage->GetWidth();
 
 	/// Obtain the height needed to get the specific bug image
-	auto bugGarbageHeight = bugGarbageSpriteImage->GetHeight() / (mSpriteCount);
-	auto bugGarbageImageIndex = GetSpriteImageIndex();
+	auto bugHeight = bugSpriteImage->GetHeight() / (mSpriteCount + 1);
+	auto bugImageIndex = GetSpriteImageIndex();
 
 	/// Get the sub image from the sprite image
-	auto bugGarbageImage = bugGarbageSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex * bugGarbageHeight, bugGarbageWidth, bugGarbageHeight));
-	wxBitmap bugGarbageBitmap(bugGarbageImage);
+	auto bugImageBitmap = GetBitmap();
+	if (bugImageBitmap.IsNull())
+	{
+		bugImageBitmap = graphics->CreateBitmapFromImage(*bugSpriteImage);
+		SetBitmap(bugImageBitmap);
+	}
+
+	auto bugBitmap= graphics->CreateSubBitmap(bugImageBitmap,0, bugImageIndex * bugHeight, bugWidth, bugHeight);
 	ChangeSpriteImageIndex(mSpriteCount);
 
-	graphics->DrawBitmap(bugGarbageBitmap, GetX() - (bugGarbageWidth / 2), GetY() - (bugGarbageHeight / 2), bugGarbageWidth, bugGarbageHeight );
+	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
 }

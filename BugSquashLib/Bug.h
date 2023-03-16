@@ -36,6 +36,12 @@ private:
 	/// The program this bug is associated with
 	std::shared_ptr<Program> mProgram = nullptr;
 
+	/// The splash image associated with the bug
+	std::shared_ptr<wxImage> mSplashedImage = nullptr;
+
+	/// The bitmap associated with the splash image
+	wxGraphicsBitmap mSplashedBugBitmap;
+
 
 public:
 	bool HitTest(double x, double y);
@@ -73,6 +79,12 @@ public:
 	int GetSpriteImageIndex(){ return mImageIndex; }
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+	/**
+	 * Determine if the bug is squashed or not
+	 * @return a boolean indicating whether the bug is squashed or not
+	 */
+	bool GetIsSquashed() { return mIsSquashed; }
 
 };
 

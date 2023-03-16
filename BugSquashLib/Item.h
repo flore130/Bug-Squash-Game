@@ -50,6 +50,9 @@ protected:
 	 */
 	void SetBitmap(wxGraphicsBitmap bitmap) { mItemBitmap = bitmap; }
 
+	wxGraphicsBitmap GetBitmap() { return mItemBitmap; }
+
+
 
 public:
 	/// Default constructor (disabled)
@@ -117,6 +120,7 @@ public:
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	virtual bool HitTest(int x, int y);
+
 
 };
 
