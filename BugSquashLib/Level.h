@@ -13,7 +13,7 @@
 
 #include <memory>
 
-
+class BugSquash;
 class Item;
 class ItemVisitor;
 class Program;
@@ -32,25 +32,20 @@ private:
 	int mFirstBugIndex = -1;
 
 	/// The name of this level, displayed for 2 seconds at the start of the round
-	std::wstring mName;
+	std::wstring mName = L"";
 
 	void XmlItem(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	void XmlProgram(wxXmlNode *node);
 
-	/// All of the items in the bug squash application
-	std::vector<std::shared_ptr<Item>> mItems;
+	/// The BugSquash that owns the level
+	BugSquash* mBugSquash = nullptr;
 
 public:
-	void Add( std::shared_ptr< Item > item );
-
-	void Save(const wxString &filename);
-
 	void Load(const wxString &filename);
 
-	void Clear();
-
-	std::vector<std::shared_ptr< Item >>  GetItem();
+	/// Set mBugSquash to be the bugSquash so we can pass up for loading
+	void SetBugSquash( BugSquash* bugSquash ) { mBugSquash = bugSquash; }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H

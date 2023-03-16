@@ -4,7 +4,7 @@
  */
 
 #include "pch.h"
-#include "Level.h"
+#include "BugSquash.h"
 #include "BugGarbage.h"
 #include "BugNull.h"
 #include "BugRedundancy.h"
@@ -57,7 +57,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 
 	if (item != nullptr)
 	{
-		Add(item);
+		mBugSquash->Add( item );
 		item->XmlLoad(node);
 	}
 }
@@ -88,33 +88,6 @@ void Level::XmlProgram(wxXmlNode *node)
 }
 
 /**
- * Save the level as a .xml XML file.
- *
- * Open an XML file and stream the level data to it.
- *
- * @param filename The filename of the file to save the level to
- */
-void Level::Save(const wxString &filename)
-{
-	wxXmlDocument xmlDoc;
-
-	auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"xml");
-	xmlDoc.SetRoot(root);
-
-	// Iterate over all items and save them
-	for (auto item : mItems)
-	{
-		item->XmlSave(root);
-	}
-
-	if(!xmlDoc.Save(filename, wxXML_NO_INDENTATION))
-	{
-		wxMessageBox(L"Write to XML failed");
-		return;
-	}
-}
-
-/**
  * Handle translating data from XML file into actual game
  * @param filename the XML file to read
  */
@@ -142,7 +115,6 @@ void Level::Load(const wxString &filename)
 		{
 			shared_ptr<Item> program_item;
 			program_item = make_shared<Program>(this);
-			mItems.push_back(program_item);
 			program_item->XmlLoad(child);
 		}
 	}
@@ -156,33 +128,3 @@ void Level::Load(const wxString &filename)
 		}
 	}
 }
-
-/**
- * Add an Item to our current level in the field
- * @param item the item that we are adding to our game
- */
-void Level::Add( std::shared_ptr< Item > item )
-{
-	mItems.push_back( item );
-}
-
-/**
- * Clear the level data.
- *
- * Deletes all known items in the level.
- */
-void Level::Clear()
-{
-	mItems.clear();
-}
-
-
-/**
- * Getter for the list of items in level
- * @return All items data in the level
- */
-std::vector<std::shared_ptr< Item >> Level::GetItem()
-{
-	return mItems;
-}
-

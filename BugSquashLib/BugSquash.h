@@ -40,7 +40,7 @@ private:
 	double mScale = 1;
 
 	/// All of the items in the bug squash application
-	std::vector<std::shared_ptr<Item>> mItems;
+	std::vector<std::shared_ptr<Item>> mItems {};
 
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
@@ -51,7 +51,6 @@ private:
 public:
 	BugSquash();
 	void Load(const wxString &filename);
-	void XmlItem(wxXmlNode *node);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 	void Clear();
 	std::shared_ptr<Item> HitTest(int x, int y);

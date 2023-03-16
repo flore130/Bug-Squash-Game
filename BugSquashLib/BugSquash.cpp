@@ -37,57 +37,8 @@ void BugSquash::Load(const wxString &filename)
 {
 	mScoreboard->Reset();
 	mLevel = std::make_unique<Level>();
+	mLevel->SetBugSquash( this );
 	mLevel->Load(filename);
-	vector<shared_ptr< Item >> levelLoad;
-
-	if (mLevel != nullptr)
-	{
-		levelLoad = mLevel->GetItem();
-		for (auto item : levelLoad)
-		{
-			Add(item);
-		}
-	}
-}
-
-/**
- * Handle a node of type item.
- * @param node XML node
- */
-void BugSquash::XmlItem(wxXmlNode *node)
-{
-	// A pointer for the item we are loading
-	shared_ptr<Item> item = nullptr;
-
-	// We have an item. What type?
-	auto type = node->GetAttribute(L"type");
-	if (type == L"program")
-	{
-//		item = make_shared<Program>(this);
-	}
-	else if (type == L"feature")
-	{
-//		item = make_shared<Feature>(this);
-	}
-	else if (type == L"garbage")
-	{
-//		item = make_shared<BugGarbage>(this);
-	}
-	else if (type == L"redundancy")
-	{
-//		item = make_shared<BugRedundancy>(this);
-	}
-	else if (type == L"null")
-	{
-//		item = make_shared<BugNull>(this);
-	}
-
-	if (item != nullptr)
-	{
-
-		Add(item);
-		item->XmlLoad(node);
-	}
 }
 
 /**
