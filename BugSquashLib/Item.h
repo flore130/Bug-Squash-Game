@@ -119,7 +119,15 @@ public:
 
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
 
-	virtual bool HitTest(int x, int y);
+	/**
+	 * Returns true if an item has been clicked on
+	 * @param x The x position of the item
+	 * @param y The y position of the item
+	 * @return false The basic return of any item will be false
+	 */
+	virtual bool HitTest(int x, int y) { return false; }
+
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
