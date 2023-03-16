@@ -32,7 +32,6 @@ wxXmlNode* FatGarbageBug::XmlSave(wxXmlNode* node)
 
 	itemNode->AddAttribute(L"type", L"fatgarbage");
 
-
 	return itemNode;
 }
 
@@ -44,7 +43,6 @@ void FatGarbageBug::XmlLoad(wxXmlNode* node)
 {
 	Bug::XmlLoad(node);
 }
-
 
 /**
  * Draw the Garbage Bug

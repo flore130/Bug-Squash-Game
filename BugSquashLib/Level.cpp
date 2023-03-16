@@ -60,9 +60,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 		Add(item);
 		item->XmlLoad(node);
 	}
-
 }
-
 
 /**
  * Handles loading the bugs that are associated with a given program node

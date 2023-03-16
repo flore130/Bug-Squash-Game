@@ -16,14 +16,14 @@ const std::wstring ProgramImage = L"images/laptop.png";
 const int ProgramNameFontSize = 22;
 
 /**
- * Construcor for feature
+ * Constructor for feature
  * @param level The level that this program is a member of
  */
 Program::Program(Level* level) : Item(level, ProgramImage)
 {
-	///Program must be behind bugs so the only way to do that is to add it to the beginning of the list
-	///GetBugSquash will need to be added to the list of functions in BugSquash
-//GetBugSquash->mItems.insert(mItems.begin(), this);
+	// Program must be behind bugs so the only way to do that is to add it to the beginning of the list
+	// GetBugSquash will need to be added to the list of functions in BugSquash
+	// GetBugSquash->mItems.insert(mItems.begin(), this);
 }
 
 /**
@@ -36,7 +36,6 @@ wxXmlNode* Program::XmlSave(wxXmlNode* node)
 	auto itemNode = Item::XmlSave(node);
 
 	itemNode->AddAttribute(L"type", L"program");
-
 
 	return itemNode;
 }

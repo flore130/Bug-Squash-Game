@@ -50,7 +50,6 @@ const int WingSetY = 5;
  * Constructor
  * @param level Level that this bug is a member of
  */
-
 BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName, 0)
 {
 }
@@ -65,7 +64,6 @@ double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
 	auto dx = item->GetX() - GetX();
 	auto dy = item->GetY() - GetY();
 	return sqrt(dx * dx + dy * dy);
-
 }
 
 /**
@@ -79,10 +77,8 @@ wxXmlNode* BugRedundancy::XmlSave(wxXmlNode* node)
 
 	itemNode->AddAttribute(L"type", L"redundancy");
 
-
 	return itemNode;
 }
-
 
 /**
  * Load this XML Node to bug

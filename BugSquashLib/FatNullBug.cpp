@@ -37,7 +37,6 @@ wxXmlNode* FatNullBug::XmlSave(wxXmlNode* node)
 
 	itemNode->AddAttribute(L"type", L"fatnull");
 
-
 	return itemNode;
 }
 

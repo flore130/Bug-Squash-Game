@@ -32,7 +32,6 @@ wxXmlNode* Feature::XmlSave(wxXmlNode* node)
 
 	itemNode->AddAttribute(L"type", L"feature");
 
-
 	return itemNode;
 }
 

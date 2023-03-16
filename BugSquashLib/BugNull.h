@@ -12,7 +12,6 @@
 #include "Item.h"
 #include "Bug.h"
 
-
 /**
  * Class for a bug of type Null
  */
@@ -37,8 +36,6 @@ public:
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
-
-
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGNULL_H

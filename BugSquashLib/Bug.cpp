@@ -84,7 +84,10 @@ void Bug::XmlLoad(wxXmlNode *node)
 	node->GetAttribute(L"speed", L"0").ToDouble(&mSpeed);
 }
 
-
+/**
+ * Draw a bug onto the screen, changing the sprite as necessary to animate
+ * @param graphics The graphs we are drawing on
+ */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
 
@@ -119,8 +122,4 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 
 	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
-
-
-
-
 }

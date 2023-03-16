@@ -19,13 +19,10 @@ const wstring NullBugSplatImageName = L"images/scarlet-gray-splat.png";
 const int NullBugNumSpriteImages = 6;
 
 
-
-
 /**
  * Constructor
  * @param level Level that this bug is a member of
  */
-
 BugNull::BugNull(Level *level) : Bug(level, NullBugSpriteImageName, NullBugNumSpriteImages)
 {
 }
@@ -53,7 +50,6 @@ wxXmlNode* BugNull::XmlSave(wxXmlNode* node)
 	auto itemNode = Bug::XmlSave(node);
 
 	itemNode->AddAttribute(L"type", L"null");
-
 
 	return itemNode;
 }

@@ -45,8 +45,6 @@ private:
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
 
-	std::shared_ptr<wxImage> mLaptopImage;
-
 	std::shared_ptr<Scoreboard> mScoreboard = nullptr;
 
 public:
@@ -64,7 +62,7 @@ public:
 	/// Game area in virtual pixels
 	const static int Width = 1250;
 
-/// Game area height in virtual pixels
+	/// Game area height in virtual pixels
 	const static int Height = 1000;
 
 	/**

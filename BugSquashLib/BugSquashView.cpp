@@ -18,7 +18,6 @@ const int FrameDuration = 30;
  * Initialize the bug squash view class
  * @param mainFrame parent Frame
  */
-
 void BugSquashView::Initialize(wxFrame *mainFrame)
 {
 	Create(mainFrame, wxID_ANY,
@@ -43,7 +42,6 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	mTimer.Start(FrameDuration);
 
 	mStopWatch.Start();
-
 }
 
 /**
@@ -71,13 +69,10 @@ void BugSquashView::AddMenus( wxFrame* mainFrame, wxMenuBar* menuBar, wxMenu* le
 	levelMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnLevelThree, this, IDM_LEVELTHREE);
 }
 
-
-
 /**
 * Handle the timer event
  * @param event Timer event
 */
-
 void BugSquashView::OnTimer(wxTimerEvent &event)
 {
 	Refresh();
@@ -87,13 +82,12 @@ void BugSquashView::OnTimer(wxTimerEvent &event)
 * Handle the left mouse button down event
  * @param event
 */
-
 void BugSquashView::OnLeftDown(wxMouseEvent &event)
 {
 	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
 	if (mClickedItem != nullptr)
 	{
-		//squash bug here?
+		// Start the squashing
 	}
 }
 
@@ -101,7 +95,6 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
  Paint event, draws the window
  * @param event Paint event object
 */
-
 void BugSquashView::OnPaint(wxPaintEvent &event)
 {
 	// Create a double-buffered display context
@@ -134,7 +127,6 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 * Handle the left mouse button down event
  * @param event Mouse event
 */
-
 void BugSquashView::OnMouseMove(wxMouseEvent &event)
 {
 	// TODO : When will this function be useful?
@@ -144,13 +136,12 @@ void BugSquashView::OnMouseMove(wxMouseEvent &event)
 * Handle the double click mouse button event
  * @param event Mouse event
 */
-
 void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 {
 //	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
 //	if (mClickedItem != nullptr)
 //	{
-//		// TODO : Decide what to do for the item. A visitor or a virtual function may be useful here
+//		// TODO : This is what's needed for FatBugs
 //	}
 }
 
@@ -170,7 +161,6 @@ void BugSquashView::OnFileOpen(wxCommandEvent& event)
 	auto filename = loadFileDialog.GetPath();
 	mBugSquash.Load(filename);
 	Refresh();
-
 }
 
 /**
@@ -197,12 +187,10 @@ void BugSquashView::OnUpdateShrink( wxUpdateUIEvent& event )
  */
 void BugSquashView::OnLevelZero(wxCommandEvent &event)
 {
-
 	auto filename = L"data/level0.xml";
 	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
-
 }
 
 /**
@@ -211,7 +199,6 @@ void BugSquashView::OnLevelZero(wxCommandEvent &event)
  */
 void BugSquashView::OnLevelOne(wxCommandEvent &event)
 {
-
 	auto filename = L"data/level1.xml";
 	mBugSquash.Clear();
 	mBugSquash.Load(filename);
@@ -224,12 +211,10 @@ void BugSquashView::OnLevelOne(wxCommandEvent &event)
  */
 void BugSquashView::OnLevelTwo(wxCommandEvent &event)
 {
-
 	auto filename = L"data/level2.xml";
 	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
-
 }
 
 /**
@@ -238,9 +223,7 @@ void BugSquashView::OnLevelTwo(wxCommandEvent &event)
  */
 void BugSquashView::OnLevelThree(wxCommandEvent &event)
 {
-
 	auto filename = L"data/level3.xml";
 	mBugSquash.Load(filename);
 	Refresh();
-
 }

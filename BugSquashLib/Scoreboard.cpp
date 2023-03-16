@@ -18,7 +18,7 @@ using namespace std;
 /// Score font size to use
 const int ScoreSize = 85;
 
-/// Lable for score font size to use
+/// Label for score font size to use
 const int LabelSize = 40;
 
 /// The font color to use
@@ -36,9 +36,9 @@ const int ScoreLabelY = 100;
 
 /**
  * Constructor
- * @param bugsquash a pointer to a bugsquash object
+ * @param bugSquash A pointer to a BugSquash object
  */
-Scoreboard::Scoreboard(BugSquash* bugsquash) : mBugSquash(bugsquash)
+Scoreboard::Scoreboard(BugSquash* bugSquash) : mBugSquash(bugSquash)
 {
 }
 
@@ -76,6 +76,10 @@ void Scoreboard::Reset(){
 	mOops = 0;
 }
 
+/**
+ * Draw our graphics
+ * @param graphics The graphics to be drawn
+ */
 void Scoreboard::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
 	DrawScore(graphics, L"Fixed", LeftScoreX, mFixed);
@@ -83,11 +87,13 @@ void Scoreboard::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 	DrawScore(graphics, L"Oops", BugSquash::Width - LeftScoreX, mOops);
 }
 
-//string
-//upcalls
-//width and height
-//constructor for bugsqussh call
-
+/**
+ * Draw the current score
+ * @param graphics The graphics to draw on
+ * @param label The title of the score
+ * @param x Location of the score
+ * @param score Value of the score
+ */
 void Scoreboard::DrawScore(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x, int score)
 {
 	wxFont scoreFont(wxSize(1,ScoreSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);

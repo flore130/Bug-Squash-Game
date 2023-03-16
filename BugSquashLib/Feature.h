@@ -7,6 +7,7 @@
 
 #ifndef PROJECT1_BUGSQUASHLIB_FEATURE_H
 #define PROJECT1_BUGSQUASHLIB_FEATURE_H
+
 #include "Bug.h"
 #include "Level.h"
 

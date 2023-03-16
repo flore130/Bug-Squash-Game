@@ -131,10 +131,6 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 	// From here on you are drawing virtual pixels
 
-	//
-	// Your drawing code goes here
-	//
-
 	wxBrush brush(*wxWHITE);
 	graphics->SetBrush(brush);
 
@@ -201,7 +197,12 @@ void BugSquash::Accept( ItemVisitor* visitor )
 	}
 }
 
+
+/**
+ * Constructor
+ * Initializes the scoreboard for BugSquash to use
+ */
 BugSquash::BugSquash()
 {
-	mScoreboard = make_unique<Scoreboard>(this);
+	mScoreboard = std::make_unique<Scoreboard>(this);
 }

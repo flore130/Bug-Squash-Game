@@ -8,8 +8,6 @@
 #ifndef PROJECT1_BUGSQUASHLIB_SCOREBOARD_H
 #define PROJECT1_BUGSQUASHLIB_SCOREBOARD_H
 
-
-
 class BugSquash;
 class Item;
 
@@ -32,7 +30,7 @@ private:
 	int mOops = 0;
 
 public:
-	Scoreboard(BugSquash* bugsqaush);
+	Scoreboard(BugSquash* bugSquash);
 
 	void FixedIncrement();
 	void OopsIncrement();

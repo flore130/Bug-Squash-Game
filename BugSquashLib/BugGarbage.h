@@ -13,7 +13,6 @@
 /**
  * Class for a bug of type Garbage
  */
-
 class BugGarbage : public Bug
 {
 private:
@@ -33,8 +32,6 @@ public:
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
-
-
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGGARBAGE_H

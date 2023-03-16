@@ -24,7 +24,6 @@ class Program;
  * This is the class that will actually load the XML data,
  * as well as hold the items in the playing area
  */
-
 class Level
 {
 private:
@@ -38,7 +37,6 @@ private:
 	void XmlItem(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	void XmlProgram(wxXmlNode *node);
-
 
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems;
@@ -56,9 +54,6 @@ public:
 	void Clear();
 
 	std::vector<std::shared_ptr< Item >>  GetItem();
-
-
-
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H

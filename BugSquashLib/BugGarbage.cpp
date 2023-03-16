@@ -22,7 +22,6 @@ const int GarbageBugNumSpriteImages = 5;
 * Constructor
  * @param level level that this bug is a member of
 */
-
 BugGarbage::BugGarbage(Level *level) : Bug(level, GarbageBugSpriteImageName, GarbageBugNumSpriteImages)
 {
 }
@@ -37,7 +36,6 @@ wxXmlNode* BugGarbage::XmlSave(wxXmlNode* node)
 	auto itemNode = Bug::XmlSave(node);
 
 	itemNode->AddAttribute(L"type", L"garbage");
-
 
 	return itemNode;
 }

@@ -8,9 +8,9 @@
 
 #ifndef PROJECT1_BUGSQUASHLIB_PROGRAM_H
 #define PROJECT1_BUGSQUASHLIB_PROGRAM_H
+
 #include "Level.h"
 #include "Item.h"
-
 
 /**
  * Program item class
@@ -18,7 +18,6 @@
 class Program : public Item
 {
 private:
-
 	/// Default constructor (disabled)
 	Program() = delete;
 	
@@ -27,11 +26,8 @@ private:
 	
 	/// Assignment operator
 	void operator=(const Program &) = delete;
-	
-	
 
 public:
-
 	void Accept( ItemVisitor* visitor ) override {};
 
 	Program(Level* level);
