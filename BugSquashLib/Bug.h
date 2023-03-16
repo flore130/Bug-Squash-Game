@@ -24,6 +24,15 @@ private:
 	/// The time the bug should start moving
 	double mStartTime = 0;
 
+	///The timer that allows for changing the image
+	wxTimer mTimer;
+
+	/// The last stopwatch time
+	long mTime = 0;
+
+	/// Stopwatch used to measure elapsed time
+	wxStopWatch mStopWatch;
+
 	/// The speed the bug should move at in pixels per second
 	double mSpeed = 0;
 

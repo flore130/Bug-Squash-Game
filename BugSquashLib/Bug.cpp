@@ -21,6 +21,7 @@ const double BugHitRange = 50;
 Bug::Bug(Level *level, const std::wstring &filename, int spriteCount) : Item(level, filename)
 {
 	mSpriteCount = spriteCount;
+	mStopWatch.Start();
 }
 
 
@@ -86,13 +87,14 @@ void Bug::XmlLoad(wxXmlNode *node)
 
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
+
 	/// Obtain the bug image
 	auto bugSpriteImage = GetImage();
 	auto bugWidth = bugSpriteImage->GetWidth();
 
 	/// Obtain the height needed to get the specific bug image
 	auto bugHeight = bugSpriteImage->GetHeight() / (mSpriteCount + 1);
-	auto bugImageIndex = GetSpriteImageIndex();
+
 
 	/// Get the sub image from the sprite image
 	auto bugImageBitmap = GetBitmap();
@@ -102,8 +104,23 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		SetBitmap(bugImageBitmap);
 	}
 
+	/// Get the time the bug has been displayed
+	auto newTime = mStopWatch.Time();
+	auto elapsed = (double) (newTime - mTime) * 0.001;
+
+	if (elapsed >= 3.0/mSpeed)
+	{
+		ChangeSpriteImageIndex(mSpriteCount);
+		mTime = newTime;
+	}
+
+	auto bugImageIndex = GetSpriteImageIndex();
 	auto bugBitmap= graphics->CreateSubBitmap(bugImageBitmap,0, bugImageIndex * bugHeight, bugWidth, bugHeight);
-	ChangeSpriteImageIndex(mSpriteCount);
+
 
 	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
+
+
+
+
 }
