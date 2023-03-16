@@ -41,9 +41,6 @@ private:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems;
 
-	/// The level that is currently loaded
-	std::unique_ptr<Level> mLevel = nullptr;
-
 public:
 	void Add( std::shared_ptr< Item > item );
 
