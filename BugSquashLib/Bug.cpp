@@ -94,6 +94,11 @@ void Bug::XmlLoad(wxXmlNode *node)
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
 
+	/// Obtain the angle to rotate the bug so it faces the program
+	auto x = mProgram->GetX();
+	auto y = mProgram->GetY();
+	auto theta = 2 * M_PI- ::atan2(y - GetY(),x - GetX());
+
 	/// Obtain the bug image
 	auto bugSpriteImage = GetImage();
 	auto bugWidth = bugSpriteImage->GetWidth();
@@ -123,6 +128,10 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto bugImageIndex = GetSpriteImageIndex();
 	auto bugBitmap= graphics->CreateSubBitmap(bugImageBitmap,0, bugImageIndex * bugHeight, bugWidth, bugHeight);
 
+	auto image = bugBitmap.ConvertToImage();
+	image = image.Rotate(theta, wxPoint(GetX(), GetY()));
+
+	bugBitmap = graphics->CreateBitmapFromImage(image);
 
 	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
 }
