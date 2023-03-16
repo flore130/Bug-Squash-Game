@@ -96,12 +96,12 @@ void Scoreboard::Draw(std::shared_ptr<wxGraphicsContext> graphics)
  */
 void Scoreboard::DrawScore(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x, int score)
 {
-	wxFont scoreFont(wxSize(1,ScoreSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-	wxFont labelFont(wxSize(1, LabelSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+	wxFont scoreFont(wxSize(ScoreSize,ScoreSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+	wxFont labelFont(wxSize(LabelSize, LabelSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
 	graphics->SetFont(scoreFont, FontColor);
-	double width = 1;
-	double height = 1;
+	double width, height;
 	std::string s = std::to_string(score);
+
 
 	graphics->GetTextExtent(s, &width, &height);
 	graphics->DrawText(s, x-width/2, ScoreY);

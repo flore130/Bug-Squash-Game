@@ -20,8 +20,6 @@
 using namespace std;
 
 
-/// Number of images in the sample sprite object
-int imageIndex = 0;
 
 /// Scale to shrink to when in shrink mode
 const double ShrinkScale = 0.75;
@@ -94,6 +92,9 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	}
 
 	mScoreboard->Draw(graphics);
+
+	auto temp = Scoreboard(this);
+	temp.Draw(graphics);
 	graphics->PopState();
 
 }
