@@ -24,9 +24,6 @@ private:
 	/// The time the bug should start moving
 	double mStartTime = 0;
 
-	///The timer that allows for changing the image
-	wxTimer mTimer;
-
 	/// The last stopwatch time
 	long mTime = 0;
 
@@ -51,6 +48,8 @@ private:
 	/// The bitmap associated with the splash image
 	wxGraphicsBitmap mSplashedBugBitmap;
 
+protected:
+	Bug(Level *level, const std::wstring &filename, int spriteCount);
 
 public:
 	bool HitTest(double x, double y);
@@ -61,7 +60,6 @@ public:
 	 */
 	void SetSpeed(double newSpeed) { mSpeed = newSpeed; }
 
-	Bug(Level *level, const std::wstring &filename, int spriteCount);
 
 	/**
 	 * Accept a visitor

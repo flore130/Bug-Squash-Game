@@ -45,6 +45,7 @@ private:
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
 
+	/// The scoreboard currently being used
 	std::shared_ptr<Scoreboard> mScoreboard = nullptr;
 
 public:

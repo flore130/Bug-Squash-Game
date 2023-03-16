@@ -50,17 +50,20 @@ void Bug::Update(double elapsed)
 	double programY = mProgram->GetY();
 	double programDistance = DistanceTo(mProgram);
 
-//	// Get difference in X and Y between bug and program
-	double diffX = programX - GetX();
-	double diffY = programY - GetY();
+	if (programDistance > 0)
+	{
+		// Get difference in X and Y between bug and program
+		double diffX = programX - GetX();
+		double diffY = programY - GetY();
 
-	// Scale to normalize the vector
-	double directionX = diffX / programDistance;
-	double directionY = diffY / programDistance;
+		// Scale to normalize the vector
+		double directionX = diffX / programDistance;
+		double directionY = diffY / programDistance;
 
-	// Set location to pixels/second * seconds * direction + current position
-	SetLocation(GetX() + (directionX * mSpeed * elapsed),
-				GetY() + (directionY * mSpeed * elapsed));
+		// Set location to pixels/second * seconds * direction + current position
+		SetLocation(GetX() + (directionX * mSpeed * elapsed),
+					GetY() + (directionY * mSpeed * elapsed));
+	}
 }
 
 /**
@@ -70,7 +73,7 @@ void Bug::Update(double elapsed)
 */
 void Bug::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
 {
-	this->mProgram = parent;
+	mProgram = parent;
 }
 
 /**
@@ -96,7 +99,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto bugWidth = bugSpriteImage->GetWidth();
 
 	/// Obtain the height needed to get the specific bug image
-	auto bugHeight = bugSpriteImage->GetHeight() / (mSpriteCount + 1);
+	auto bugHeight = bugWidth; //bugSpriteImage->GetHeight() / (mSpriteCount + 1);
 
 
 	/// Get the sub image from the sprite image

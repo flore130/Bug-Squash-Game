@@ -21,19 +21,30 @@
 
 using namespace std;
 
+/// Test image
 const std::wstring GarbageSplatImage = L"../images/blue-maize-bug.png";
+
+/// Test sprite count
+const int SpriteCount = 1;
+
+
+class BugMock : public Bug
+{
+public:
+	BugMock(Level *level, const std::wstring &filename) : Bug(level, filename, SpriteCount) {}
+};
 
 
 TEST(BugTest, Construct)
 {
 	Level newLevel;
-	Bug myBug(&newLevel, GarbageSplatImage);
+	BugMock myBug(&newLevel, GarbageSplatImage);
 }
 
 TEST(BugTest, HitTest)
 {
 	Level newLevel;
-	Bug bug(&newLevel, GarbageSplatImage);
+	BugMock bug(&newLevel, GarbageSplatImage);
 
 	// Testing at origin
 	ASSERT_TRUE(bug.HitTest(0,0));
@@ -64,8 +75,8 @@ TEST(BugTest, MovementTest)
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 
-	Bug bug(&level, GarbageSplatImage);
-	bug.SetProgram(program);
+	BugMock bug(&level, GarbageSplatImage);
+	bug.SetProgram(nullptr, program);
 	bug.SetLocation(200, 200); // Position bug directly below program
 
 	ASSERT_NEAR(bug.GetX(), 200, 0.01);
