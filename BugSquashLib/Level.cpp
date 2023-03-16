@@ -122,6 +122,7 @@ void Level::Load(const wxString &filename)
 		{
 			shared_ptr<Item> program_item;
 			program_item = make_shared<Program>(this);
+			mBugSquash->Add( program_item );
 			program_item->XmlLoad(child);
 		}
 	}
