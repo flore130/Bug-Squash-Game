@@ -223,6 +223,7 @@ void BugSquashView::OnLevelTwo(wxCommandEvent &event)
  */
 void BugSquashView::OnLevelThree(wxCommandEvent &event)
 {
+	mBugSquash.Clear();
 	auto filename = L"data/level3.xml";
 	mBugSquash.Load(filename);
 	Refresh();
