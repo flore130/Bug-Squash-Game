@@ -76,6 +76,13 @@ public:
 	 * @param val The value to set mShrinked to
 	 */
 	 void SetShrinked( bool val ) { mShrinked = val; }
+
+	/**
+	 * Obtain items for testing purposes
+	 * @return The list of items that have been loaded
+	 */
+	std::vector<std::shared_ptr<Item>> LoadTest() { return mItems; }
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H

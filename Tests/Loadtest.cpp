@@ -24,7 +24,14 @@ using namespace std;
 
 void TestLevelZero(BugSquash *bugSquash)
 {
-	// Test for different items
+	auto items = bugSquash->LoadTest();
+	//Tests that there are three items in level 0
+	ASSERT_TRUE(items.size() == 3);
+	// Tests that every item is valid and not nullptr
+	for (auto i : items)
+	{
+		ASSERT_TRUE(i != nullptr);
+	}
 	auto item = bugSquash->HitTest(625, 500);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(625, 500));
@@ -32,9 +39,21 @@ void TestLevelZero(BugSquash *bugSquash)
 	item = bugSquash->HitTest(100, 600);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(100, 600));
+	// Tests if item is moving
+	item->Update(1);
+	ASSERT_FALSE(item->HitTest(100, 600));
+	// Resets item's position
+	item->Update(-1);
+	ASSERT_TRUE(item->HitTest(100, 600));
 
 	item = bugSquash->HitTest(100, 800);
 	ASSERT_FALSE(item == nullptr);
+	ASSERT_TRUE(item->HitTest(100, 800));
+	// Tests if item is moving
+	item->Update(1);
+	ASSERT_FALSE(item->HitTest(100, 800));
+	// Resets item's position
+	item->Update(-1);
 	ASSERT_TRUE(item->HitTest(100, 800));
 
 	// Test invalid location
@@ -45,19 +64,49 @@ void TestLevelZero(BugSquash *bugSquash)
 
 void TestLevelOne(BugSquash *bugSquash)
 {
+	auto items = bugSquash->LoadTest();
+	//Tests that there are 13 items in level 1
+	ASSERT_TRUE(items.size() == 13);
+	// Test that all items are loaded and not nullptr
+	for (auto i : items)
+	{
+		ASSERT_TRUE(i != nullptr);
+	}
 	// Test for several items
 	auto item = bugSquash->HitTest(625, 500);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(625, 500));
+	// We call update on the program, but its location stays the same because it is not a bug
+	item->Update(1);
+	ASSERT_TRUE(item->HitTest(625, 500));
 
-	item = bugSquash->HitTest(600, 1100);
+	item = bugSquash->HitTest(-100, 500);
 	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(600, 1100));
+	ASSERT_TRUE(item->HitTest(-100, 500));
+	// Tests if item is moving
+	item->Update(1);
+	ASSERT_FALSE(item->HitTest(-100, 500));
+	// Resets item's position
+	item->Update(-1);
+	ASSERT_TRUE(item->HitTest(-100, 500));
+
+	item = bugSquash->HitTest(500, 1100);
+	ASSERT_FALSE(item == nullptr);
+	ASSERT_TRUE(item->HitTest(500, 1100));
+	// Tests if item is moving
+	item->Update(1);
+	ASSERT_FALSE(item->HitTest(500, 1100));
+	// Resets item's position
+	item->Update(-1);
+	ASSERT_TRUE(item->HitTest(500, 1100));
+
+	item = bugSquash->HitTest(1350, 1100);
+	ASSERT_FALSE(item == nullptr);
+	ASSERT_TRUE(item->HitTest(1350, 1100));
 
 	item = bugSquash->HitTest(600, -100);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(600, -100));
-
 
 	// Test invalid location
 	item = bugSquash->HitTest(300, 200);
@@ -66,6 +115,14 @@ void TestLevelOne(BugSquash *bugSquash)
 
 void TestLevelTwo(BugSquash *bugSquash)
 {
+	auto items = bugSquash->LoadTest();
+	//Tests that there are 27 items in level 2
+	ASSERT_TRUE(items.size() == 27);
+	// Test that all items are loaded and not nullptr
+	for (auto i : items)
+	{
+		ASSERT_TRUE(i != nullptr);
+	}
 	// Test for several items
 	auto item = bugSquash->HitTest(300, 200);
 	ASSERT_FALSE(item == nullptr);
@@ -74,30 +131,35 @@ void TestLevelTwo(BugSquash *bugSquash)
 	item = bugSquash->HitTest(600, 800);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(600, 800));
+	// Tests if item is moving; in this case it is a program, so its position will stay the same
+	item->Update(1);
+	ASSERT_TRUE(item->HitTest(600, 800));
 
 	item = bugSquash->HitTest(850, 200);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(850, 200));
 
+	item = bugSquash->HitTest(500, -100);
+	ASSERT_FALSE(item == nullptr);
+	ASSERT_TRUE(item->HitTest(500, -100));
+
+	item = bugSquash->HitTest(500, 1400);
+	ASSERT_FALSE(item == nullptr);
+	ASSERT_TRUE(item->HitTest(500, 1400));
+
 	item = bugSquash->HitTest(600, 1100);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(600, 1100));
-
-	item = bugSquash->HitTest(1300, 500);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(1300, 500));
+	// Tests if item is moving
+	item->Update(1);
+	ASSERT_FALSE(item->HitTest(600, 1100));
+	// Resets item's position
+	item->Update(-1);
+	ASSERT_TRUE(item->HitTest(600, 1100));
 
 	item = bugSquash->HitTest(200, -100);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(200, -100));
-
-	item = bugSquash->HitTest(1140, 1400);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(1140, 1400));
-
-	item = bugSquash->HitTest(-100, -100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(-100, -100));
 
 	item = bugSquash->HitTest(200, -700);
 	ASSERT_FALSE(item == nullptr);
