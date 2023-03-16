@@ -100,6 +100,13 @@ void Level::Load(const wxString &filename)
 		return;
 	}
 
+	// Check to make sure we have a BugSquash to send them to
+	if ( mBugSquash == nullptr )
+	{
+		wxMessageBox( L"Unable to find BugSquash to send items to");
+		return;
+	}
+
 	// Get the XML document root node
 	auto root = xmlDoc.GetRoot();
 
