@@ -39,14 +39,15 @@ private:
 	/// Scale used to adjust the dimensions of the window
 	double mScale = 1;
 
-	/// All of the items in the bug squash application
-	std::vector<std::shared_ptr<Item>> mItems {};
-
 	/// The level that is currently loaded
 	std::unique_ptr<Level> mLevel = nullptr;
 
 	/// The scoreboard currently being used
 	std::shared_ptr<Scoreboard> mScoreboard = nullptr;
+
+protected:
+	/// All of the items in the bug squash application
+	std::vector<std::shared_ptr<Item>> mItems {};
 
 public:
 	BugSquash();
@@ -76,12 +77,6 @@ public:
 	 * @param val The value to set mShrinked to
 	 */
 	 void SetShrinked( bool val ) { mShrinked = val; }
-
-	/**
-	 * Obtain items for testing purposes
-	 * @return The list of items that have been loaded
-	 */
-	std::vector<std::shared_ptr<Item>> LoadTest() { return mItems; }
 
 };
 

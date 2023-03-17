@@ -22,7 +22,18 @@
 
 using namespace std;
 
-void TestLevelZero(BugSquash *bugSquash)
+class BugSquashTest : public BugSquash
+{
+public:
+
+	/**
+	 * Obtain items for testing purposes
+	 * @return The list of items that have been loaded
+	 */
+	std::vector<std::shared_ptr<Item>> LoadTest() { return mItems; }
+};
+
+void TestLevelZero(BugSquashTest *bugSquash)
 {
 	auto items = bugSquash->LoadTest();
 	//Tests that there are three items in level 0
@@ -65,7 +76,7 @@ void TestLevelZero(BugSquash *bugSquash)
 
 }
 
-void TestLevelOne(BugSquash *bugSquash)
+void TestLevelOne(BugSquashTest *bugSquash)
 {
 	auto items = bugSquash->LoadTest();
 	//Tests that there are 13 items in level 1
@@ -142,7 +153,7 @@ void TestLevelOne(BugSquash *bugSquash)
 	ASSERT_TRUE(item == nullptr);
 }
 
-void TestLevelTwo(BugSquash *bugSquash)
+void TestLevelTwo(BugSquashTest *bugSquash)
 {
 	auto items = bugSquash->LoadTest();
 	//Tests that there are 27 items in level 2
@@ -263,29 +274,29 @@ void TestLevelTwo(BugSquash *bugSquash)
 
 TEST(LoadTest, Load)
 {
-BugSquash bugSquash;
+	BugSquashTest bugSquash;
 
 
-auto file1 = L"data/level0.xml";
+	auto file1 = L"data/level0.xml";
 
-bugSquash.Load(file1);
+	bugSquash.Load(file1);
 
-TestLevelZero(&bugSquash);
+	TestLevelZero(&bugSquash);
 
-BugSquash bugSquash2;
+	BugSquashTest bugSquash2;
 
 
-auto file2 = L"data/level1.xml";
+	auto file2 = L"data/level1.xml";
 
-bugSquash2.Load(file2);
+	bugSquash2.Load(file2);
 
-TestLevelOne(&bugSquash2);
+	TestLevelOne(&bugSquash2);
 
-BugSquash bugSquash3;
+	BugSquashTest bugSquash3;
 
-auto file3 = L"data/level2.xml";
+	auto file3 = L"data/level2.xml";
 
-bugSquash3.Load(file3);
+	bugSquash3.Load(file3);
 
-TestLevelTwo(&bugSquash3);
+	TestLevelTwo(&bugSquash3);
 }
