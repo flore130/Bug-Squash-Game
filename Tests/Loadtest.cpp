@@ -34,20 +34,33 @@ void TestLevelZero(BugSquash *bugSquash)
 	}
 
 	// Grabs an item and confirms its position
-	auto item = bugSquash->HitTest(625, 500);
-	ASSERT_TRUE(item->HitTest(625, 500));
+	ASSERT_TRUE(items[0]->GetX() == 625);
+	ASSERT_TRUE(items[0]->GetY() == 500);
 
-	item = bugSquash->HitTest(100, 800);
-	ASSERT_TRUE(item->HitTest(100, 800));
+	ASSERT_TRUE(items[1]->GetX() == 100);
+	ASSERT_TRUE(items[1]->GetY() == 600);
 	// Tests if item is moving
-	item->Update(1);
-	ASSERT_FALSE(item->HitTest(100, 800));
+	items[1]->Update(1);
+	ASSERT_FALSE(items[1]->GetX() == (100));
+	ASSERT_FALSE(items[1]->GetY() == (600));
 	// Resets item's position
-	item->Update(-1);
-	ASSERT_TRUE(item->HitTest(100, 800));
+	items[1]->Update(-1);
+	ASSERT_TRUE(items[1]->GetX() == 100);
+	ASSERT_TRUE(items[1]->GetY() == 600);
+
+	ASSERT_TRUE(items[2]->GetX() == 100);
+	ASSERT_TRUE(items[2]->GetY() == 800);
+	// Tests if item is moving
+	items[2]->Update(1);
+	ASSERT_FALSE(items[2]->GetX() == (100));
+	ASSERT_FALSE(items[2]->GetY() == (800));
+	// Resets item's position
+	items[2]->Update(-1);
+	ASSERT_TRUE(items[2]->GetX() == 100);
+	ASSERT_TRUE(items[2]->GetY() == 800);
 
 	// Test invalid location
-	item = bugSquash->HitTest(300, 200);
+	auto item = bugSquash->HitTest(300, 200);
 	ASSERT_TRUE(item == nullptr);
 
 }
@@ -62,35 +75,70 @@ void TestLevelOne(BugSquash *bugSquash)
 	{
 		ASSERT_TRUE(i != nullptr);
 	}
-	auto item = bugSquash->HitTest(625, 500);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(625, 500));
-	// We call update on the program, but its location stays the same because it is not a bug
-	item->Update(1);
-	ASSERT_TRUE(item->HitTest(625, 500));
 
-	item = bugSquash->HitTest(-100, 500);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(-100, 500));
-	// Tests if item is moving
-	item->Update(1);
-	ASSERT_FALSE(item->HitTest(-100, 500));
-	// Resets item's position
-	item->Update(-1);
-	ASSERT_TRUE(item->HitTest(-100, 500));
+	// Grabs an item and confirms its position
+	ASSERT_TRUE(items[0]->GetX() == 625);
+	ASSERT_TRUE(items[0]->GetY() == 500);
+	items[0]->Update(1);
+	// Since this is a program, it will not be moved when update is called on it
+	ASSERT_TRUE(items[0]->GetX() == 625);
+	ASSERT_TRUE(items[0]->GetY() == 500);
 
-	item = bugSquash->HitTest(500, 1100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(500, 1100));
+	ASSERT_TRUE(items[1]->GetX() == 500);
+	ASSERT_TRUE(items[1]->GetY() == -100);
 	// Tests if item is moving
-	item->Update(1);
-	ASSERT_FALSE(item->HitTest(500, 1100));
+	items[1]->Update(1);
+	ASSERT_FALSE(items[1]->GetX() == (500));
+	ASSERT_FALSE(items[1]->GetY() == (-100));
 	// Resets item's position
-	item->Update(-1);
-	ASSERT_TRUE(item->HitTest(500, 1100));
+	items[1]->Update(-1);
+	ASSERT_TRUE(items[1]->GetX() == 500);
+	ASSERT_TRUE(items[1]->GetY() == -100);
+
+	ASSERT_TRUE(items[2]->GetX() == 1350);
+	ASSERT_TRUE(items[2]->GetY() == 100);
+
+	ASSERT_TRUE(items[3]->GetX() == -100);
+	ASSERT_TRUE(items[3]->GetY() == 500);
+
+	ASSERT_TRUE(items[4]->GetX() == 1000);
+	ASSERT_TRUE(items[4]->GetY() == -100);
+
+	ASSERT_TRUE(items[5]->GetX() == 600);
+	ASSERT_TRUE(items[5]->GetY() == 1100);
+
+	ASSERT_TRUE(items[6]->GetX() == -100);
+	ASSERT_TRUE(items[6]->GetY() == 900);
+
+	ASSERT_TRUE(items[7]->GetX() == 500);
+	ASSERT_TRUE(items[7]->GetY() == 1100);
+	// Tests if item is moving
+	items[7]->Update(2);
+	ASSERT_FALSE(items[7]->GetX() == (500));
+	ASSERT_FALSE(items[7]->GetY() == (1100));
+	// Resets item's position
+	items[7]->Update(-2);
+	ASSERT_TRUE(items[7]->GetX() == 500);
+	ASSERT_TRUE(items[7]->GetY() == 1100);
+
+	ASSERT_TRUE(items[8]->GetX() == 600);
+	ASSERT_TRUE(items[8]->GetY() == -100);
+
+	ASSERT_TRUE(items[9]->GetX() == -100);
+	ASSERT_TRUE(items[9]->GetY() == 100);
+
+	ASSERT_TRUE(items[10]->GetX() == 1350);
+	ASSERT_TRUE(items[10]->GetY() == 1100);
+
+	ASSERT_TRUE(items[11]->GetX() == -100);
+	ASSERT_TRUE(items[11]->GetY() == 1200);
+
+	ASSERT_TRUE(items[12]->GetX() == -100);
+	ASSERT_TRUE(items[12]->GetY() == 900);
+
 
 	// Test invalid location
-	item = bugSquash->HitTest(300, 200);
+	auto item = bugSquash->HitTest(300, 200);
 	ASSERT_TRUE(item == nullptr);
 }
 
@@ -105,57 +153,139 @@ void TestLevelTwo(BugSquash *bugSquash)
 		ASSERT_TRUE(i != nullptr);
 	}
 
-	auto item = bugSquash->HitTest(300, 200);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(300, 200));
+	// Grabs an item and confirms its position
+	ASSERT_TRUE(items[0]->GetX() == 300);
+	ASSERT_TRUE(items[0]->GetY() == 200);
+	items[0]->Update(1);
+	// Since this is a program, it will not be moved when update is called on it
+	ASSERT_TRUE(items[0]->GetX() == 300);
+	ASSERT_TRUE(items[0]->GetY() == 200);
 
-	item = bugSquash->HitTest(600, 800);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(600, 800));
-	// Tests if item is moving; in this case it is a program, so its position will stay the same
-	item->Update(1);
-	ASSERT_TRUE(item->HitTest(600, 800));
+	ASSERT_TRUE(items[1]->GetX() == 600);
+	ASSERT_TRUE(items[1]->GetY() == 800);
 
-	item = bugSquash->HitTest(600, 1100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(600, 1100));
+	ASSERT_TRUE(items[2]->GetX() == 850);
+	ASSERT_TRUE(items[2]->GetY() == 200);
+
+	ASSERT_TRUE(items[3]->GetX() == 500);
+	ASSERT_TRUE(items[3]->GetY() == -100);
+
+	ASSERT_TRUE(items[4]->GetX() == 1350);
+	ASSERT_TRUE(items[4]->GetY() == 1300);
+
+	ASSERT_TRUE(items[5]->GetX() == 500);
+	ASSERT_TRUE(items[5]->GetY() == 1400);
+
+	ASSERT_TRUE(items[6]->GetX() == 600);
+	ASSERT_TRUE(items[6]->GetY() == 1100);
+
+	ASSERT_TRUE(items[7]->GetX() == -100);
+	ASSERT_TRUE(items[7]->GetY() == 900);
 	// Tests if item is moving
-	item->Update(1);
-	ASSERT_FALSE(item->HitTest(600, 1100));
+	items[7]->Update(2);
+	ASSERT_FALSE(items[7]->GetX() == -100);
+	ASSERT_FALSE(items[7]->GetY() == 900);
 	// Resets item's position
-	item->Update(-1);
-	ASSERT_TRUE(item->HitTest(600, 1100));
+	items[7]->Update(-2);
+	ASSERT_TRUE(items[7]->GetX() == -100);
+	ASSERT_TRUE(items[7]->GetY() == 900);
+
+	ASSERT_TRUE(items[8]->GetX() == 1550);
+	ASSERT_TRUE(items[8]->GetY() == 1190);
+
+	ASSERT_TRUE(items[9]->GetX() == 100);
+	ASSERT_TRUE(items[9]->GetY() == 1300);
+
+	ASSERT_TRUE(items[10]->GetX() == 1300);
+	ASSERT_TRUE(items[10]->GetY() == 500);
+
+	ASSERT_TRUE(items[11]->GetX() == 500);
+	ASSERT_TRUE(items[11]->GetY() == -100);
+
+	ASSERT_TRUE(items[12]->GetX() == -100);
+	ASSERT_TRUE(items[12]->GetY() == 100);
+
+	ASSERT_TRUE(items[13]->GetX() == 200);
+	ASSERT_TRUE(items[13]->GetY() == -100);
+
+	ASSERT_TRUE(items[14]->GetX() == 1140);
+	ASSERT_TRUE(items[14]->GetY() == 1400);
+
+	ASSERT_TRUE(items[15]->GetX() == 1550);
+	ASSERT_TRUE(items[15]->GetY() == 190);
+
+	ASSERT_TRUE(items[16]->GetX() == -100);
+	ASSERT_TRUE(items[16]->GetY() == -100);
+	// Tests if item is moving
+	items[16]->Update(2);
+	ASSERT_FALSE(items[16]->GetX() == (-100));
+	ASSERT_FALSE(items[16]->GetY() == (-100));
+	// Resets item's position
+	items[16]->Update(-2);
+	ASSERT_TRUE(items[16]->GetX() == -100);
+	ASSERT_TRUE(items[16]->GetY() == -100);
+
+	ASSERT_TRUE(items[17]->GetX() == 1000);
+	ASSERT_TRUE(items[17]->GetY() == 1180);
+
+	ASSERT_TRUE(items[18]->GetX() == 1050);
+	ASSERT_TRUE(items[18]->GetY() == -100);
+
+	ASSERT_TRUE(items[19]->GetX() == 200);
+	ASSERT_TRUE(items[19]->GetY() == -700);
+
+	ASSERT_TRUE(items[20]->GetX() == -100);
+	ASSERT_TRUE(items[20]->GetY() == 1150);
+
+	ASSERT_TRUE(items[21]->GetX() == 1050);
+	ASSERT_TRUE(items[21]->GetY() == -100);
+
+	ASSERT_TRUE(items[22]->GetX() == -100);
+	ASSERT_TRUE(items[22]->GetY() == 100);
+
+	ASSERT_TRUE(items[23]->GetX() == 1000);
+	ASSERT_TRUE(items[23]->GetY() == 1150);
+
+	ASSERT_TRUE(items[24]->GetX() == 100);
+	ASSERT_TRUE(items[24]->GetY() == 1160);
+
+	ASSERT_TRUE(items[25]->GetX() == 1000);
+	ASSERT_TRUE(items[25]->GetY() == -100);
+
+	ASSERT_TRUE(items[26]->GetX() == 1550);
+	ASSERT_TRUE(items[26]->GetY() == 190);
+
 
 	// Test invalid location
-	item = bugSquash->HitTest(650, 1100);
+	auto item = bugSquash->HitTest(650, 1100);
 	ASSERT_TRUE(item == nullptr);
 }
 
 TEST(LoadTest, Load)
 {
-	BugSquash bugSquash;
+BugSquash bugSquash;
 
 
-	auto file1 = L"data/level0.xml";
+auto file1 = L"data/level0.xml";
 
-	bugSquash.Load(file1);
+bugSquash.Load(file1);
 
-	TestLevelZero(&bugSquash);
+TestLevelZero(&bugSquash);
 
-	BugSquash bugSquash2;
+BugSquash bugSquash2;
 
 
-	auto file2 = L"data/level1.xml";
+auto file2 = L"data/level1.xml";
 
-	bugSquash2.Load(file2);
+bugSquash2.Load(file2);
 
-	TestLevelOne(&bugSquash2);
+TestLevelOne(&bugSquash2);
 
-	BugSquash bugSquash3;
+BugSquash bugSquash3;
 
-	auto file3 = L"data/level2.xml";
+auto file3 = L"data/level2.xml";
 
-	bugSquash3.Load(file3);
+bugSquash3.Load(file3);
 
-	TestLevelTwo(&bugSquash3);
+TestLevelTwo(&bugSquash3);
 }
