@@ -50,6 +50,10 @@ protected:
 	 */
 	void SetBitmap(wxGraphicsBitmap bitmap) { mItemBitmap = bitmap; }
 
+	/**
+	 * Gets the current bitmap of the item
+	 * @return bitmap The current bitmap of the item
+	 */
 	wxGraphicsBitmap GetBitmap() { return mItemBitmap; }
 
 

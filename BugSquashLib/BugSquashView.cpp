@@ -42,6 +42,10 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	mTimer.Start(FrameDuration);
 
 	mStopWatch.Start();
+
+	// Start the game on level one
+	wxCommandEvent blank_event;
+	OnLevelOne( blank_event );
 }
 
 /**
