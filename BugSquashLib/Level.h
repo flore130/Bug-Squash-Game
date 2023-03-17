@@ -44,7 +44,10 @@ private:
 public:
 	void Load(const wxString &filename);
 
-	/// Set mBugSquash to be the bugSquash so we can pass up for loading
+	/**
+ 	* Sets mBugSquash to be the current BugSquash application so we can pass up for loading
+	 * @param bugSquash The bugSquash program we are looking at
+ 	*/
 	void SetBugSquash( BugSquash* bugSquash ) { mBugSquash = bugSquash; }
 };
 
