@@ -18,7 +18,6 @@
 #include "Scoreboard.h"
 
 class Item;
-//class Level;
 class Scoreboard;
 
 /**
