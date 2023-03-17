@@ -19,6 +19,8 @@
 class BugRedundancy : public Bug
 {
 private:
+	std::string GetType() override { return "Redundancy"; }
+
 
 public:
 	/// Default constructor (disabled)
@@ -42,4 +44,5 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H
+
 

@@ -16,6 +16,8 @@
 class BugGarbage : public Bug
 {
 private:
+	std::string GetType() override { return "Garbage"; }
+
 
 public:
 	/// Default constructor (disabled)

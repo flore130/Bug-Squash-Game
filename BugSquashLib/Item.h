@@ -77,6 +77,8 @@ public:
 	 */
 	double GetY() const { return mY; }
 
+	virtual std::string GetType() {return "";}
+
 	/**
 	 * Set the item location
 	 * @param x X location in pixels
@@ -120,9 +122,9 @@ public:
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
 
 	virtual bool HitTest(int x, int y);
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
-
 
 

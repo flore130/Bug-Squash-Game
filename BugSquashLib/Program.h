@@ -27,6 +27,9 @@ private:
 	/// Assignment operator
 	void operator=(const Program &) = delete;
 
+	std::string GetType() override { return "Program"; }
+
+
 public:
 	void Accept( ItemVisitor* visitor ) override {};
 
@@ -38,3 +41,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_PROGRAM_H
+

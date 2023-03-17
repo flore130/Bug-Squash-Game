@@ -48,6 +48,8 @@ private:
 	/// The bitmap associated with the splash image
 	wxGraphicsBitmap mSplashedBugBitmap;
 
+	std::string GetType() override { return "Bug"; }
+
 protected:
 	Bug(Level *level, const std::wstring &filename, int spriteCount);
 
@@ -96,4 +98,5 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
+
 

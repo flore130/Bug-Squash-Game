@@ -18,6 +18,7 @@
 class BugNull : public Bug
 {
 private:
+	std::string GetType() override { return "Null"; }
 
 public:
 	/// Default constructor (disabled)
@@ -36,6 +37,7 @@ public:
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGNULL_H

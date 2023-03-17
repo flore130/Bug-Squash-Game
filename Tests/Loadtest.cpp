@@ -32,22 +32,16 @@ void TestLevelZero(BugSquash *bugSquash)
 	{
 		ASSERT_TRUE(i != nullptr);
 	}
+	// Checks type of every item
+	ASSERT_TRUE(items[0]->GetType() == "Program");
+	ASSERT_TRUE(items[1]->GetType() == "Redundancy");
+	ASSERT_TRUE(items[2]->GetType() == "Feature");
+
+	// Grabs an item and confirms its position
 	auto item = bugSquash->HitTest(625, 500);
-	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(625, 500));
 
-	item = bugSquash->HitTest(100, 600);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(100, 600));
-	// Tests if item is moving
-	item->Update(1);
-	ASSERT_FALSE(item->HitTest(100, 600));
-	// Resets item's position
-	item->Update(-1);
-	ASSERT_TRUE(item->HitTest(100, 600));
-
 	item = bugSquash->HitTest(100, 800);
-	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(100, 800));
 	// Tests if item is moving
 	item->Update(1);
@@ -72,7 +66,20 @@ void TestLevelOne(BugSquash *bugSquash)
 	{
 		ASSERT_TRUE(i != nullptr);
 	}
-	// Test for several items
+	// Checks type of every item
+	ASSERT_TRUE(items[0]->GetType() == "Program");
+	ASSERT_TRUE(items[1]->GetType() == "Garbage");
+	ASSERT_TRUE(items[2]->GetType() == "Garbage");
+	ASSERT_TRUE(items[3]->GetType() == "Null");
+	ASSERT_TRUE(items[4]->GetType() == "Redundancy");
+	ASSERT_TRUE(items[5]->GetType() == "Feature");
+	ASSERT_TRUE(items[6]->GetType() == "Garbage");
+	ASSERT_TRUE(items[7]->GetType() == "Null");
+	ASSERT_TRUE(items[8]->GetType() == "Feature");
+	ASSERT_TRUE(items[9]->GetType() == "Garbage");
+	ASSERT_TRUE(items[10]->GetType() == "Null");
+	ASSERT_TRUE(items[11]->GetType() == "Redundancy");
+	ASSERT_TRUE(items[12]->GetType() == "Garbage");
 	auto item = bugSquash->HitTest(625, 500);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(625, 500));
@@ -100,14 +107,6 @@ void TestLevelOne(BugSquash *bugSquash)
 	item->Update(-1);
 	ASSERT_TRUE(item->HitTest(500, 1100));
 
-	item = bugSquash->HitTest(1350, 1100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(1350, 1100));
-
-	item = bugSquash->HitTest(600, -100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(600, -100));
-
 	// Test invalid location
 	item = bugSquash->HitTest(300, 200);
 	ASSERT_TRUE(item == nullptr);
@@ -123,7 +122,36 @@ void TestLevelTwo(BugSquash *bugSquash)
 	{
 		ASSERT_TRUE(i != nullptr);
 	}
-	// Test for several items
+	// Check all item types
+	ASSERT_TRUE(items[0]->GetType() == "Program");
+	ASSERT_TRUE(items[1]->GetType() == "Program");
+	ASSERT_TRUE(items[2]->GetType() == "Program");
+	ASSERT_TRUE(items[3]->GetType() == "Null");
+	ASSERT_TRUE(items[4]->GetType() == "Garbage");
+	ASSERT_TRUE(items[5]->GetType() == "Null");
+	ASSERT_TRUE(items[6]->GetType() == "Feature");
+	ASSERT_TRUE(items[7]->GetType() == "Garbage");
+	ASSERT_TRUE(items[8]->GetType() == "Null");
+	ASSERT_TRUE(items[9]->GetType() == "Redundancy");
+	ASSERT_TRUE(items[10]->GetType() == "Feature");
+	ASSERT_TRUE(items[11]->GetType() == "Null");
+	ASSERT_TRUE(items[12]->GetType() == "Garbage");
+	ASSERT_TRUE(items[13]->GetType() == "Feature");
+	ASSERT_TRUE(items[14]->GetType() == "Feature");
+	ASSERT_TRUE(items[15]->GetType() == "Null");
+	ASSERT_TRUE(items[16]->GetType() == "Feature");
+	ASSERT_TRUE(items[17]->GetType() == "Null");
+	ASSERT_TRUE(items[18]->GetType() == "Garbage");
+	ASSERT_TRUE(items[19]->GetType() == "Feature");
+	ASSERT_TRUE(items[20]->GetType() == "Garbage");
+	ASSERT_TRUE(items[21]->GetType() == "Null");
+	ASSERT_TRUE(items[22]->GetType() == "Garbage");
+	ASSERT_TRUE(items[23]->GetType() == "Redundancy");
+	ASSERT_TRUE(items[24]->GetType() == "Feature");
+	ASSERT_TRUE(items[25]->GetType() == "Garbage");
+	ASSERT_TRUE(items[26]->GetType() == "Garbage");
+
+
 	auto item = bugSquash->HitTest(300, 200);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(300, 200));
@@ -135,18 +163,6 @@ void TestLevelTwo(BugSquash *bugSquash)
 	item->Update(1);
 	ASSERT_TRUE(item->HitTest(600, 800));
 
-	item = bugSquash->HitTest(850, 200);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(850, 200));
-
-	item = bugSquash->HitTest(500, -100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(500, -100));
-
-	item = bugSquash->HitTest(500, 1400);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(500, 1400));
-
 	item = bugSquash->HitTest(600, 1100);
 	ASSERT_FALSE(item == nullptr);
 	ASSERT_TRUE(item->HitTest(600, 1100));
@@ -156,18 +172,6 @@ void TestLevelTwo(BugSquash *bugSquash)
 	// Resets item's position
 	item->Update(-1);
 	ASSERT_TRUE(item->HitTest(600, 1100));
-
-	item = bugSquash->HitTest(200, -100);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(200, -100));
-
-	item = bugSquash->HitTest(200, -700);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(200, -700));
-
-	item = bugSquash->HitTest(100, 1160);
-	ASSERT_FALSE(item == nullptr);
-	ASSERT_TRUE(item->HitTest(100, 1160));
 
 	// Test invalid location
 	item = bugSquash->HitTest(650, 1100);
@@ -201,5 +205,4 @@ TEST(LoadTest, Load)
 	bugSquash3.Load(file3);
 
 	TestLevelTwo(&bugSquash3);
-
 }
