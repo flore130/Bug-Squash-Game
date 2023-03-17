@@ -81,8 +81,6 @@ public:
 	 */
 	double GetY() const { return mY; }
 
-	virtual std::string GetType() {return "";}
-
 	/**
 	 * Set the item location
 	 * @param x X location in pixels
@@ -130,5 +128,4 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H
-
 

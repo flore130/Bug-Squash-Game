@@ -17,7 +17,6 @@
 class Feature : public Bug
 {
 private:
-	std::string GetType() override { return "Feature"; }
 
 public:
 
@@ -40,5 +39,3 @@ public:
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FEATURE_H
-
-
