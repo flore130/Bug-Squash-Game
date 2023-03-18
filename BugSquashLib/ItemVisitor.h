@@ -28,10 +28,10 @@ protected:
 	 * Constructor
 	 * Ensures that this will be an abstract class
 	 */
-	 ItemVisitor();
+	 ItemVisitor() {}
 
 public:
-	virtual ~ItemVisitor();
+	virtual ~ItemVisitor() {}
 
 	/**
 	 * Visit the BugGarbage object

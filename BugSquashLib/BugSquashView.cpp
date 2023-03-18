@@ -6,7 +6,9 @@
 #include "pch.h"
 #include <wx/dcbuffer.h>
 #include "BugSquashView.h"
+#include "SimpleBugSquashVisitor.h"
 #include "Level.h"
+#include "Item.h"
 #include "ids.h"
 
 using namespace std;
@@ -45,7 +47,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 
 	// Start the game on level one
 	wxCommandEvent blank_event;
-	OnLevelOne( blank_event );
+	OnLevelZero( blank_event );
 }
 
 /**
@@ -124,9 +126,15 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 	if ( mClickedItem != nullptr )
 	{
 		// Initialize our visitor
+		SimpleBugSquashVisitor visitor;
 
-		// Send the visitor to just this tile
+		// Send the visitor to just this item. If it's a simple item
+		// then we try to squash it
+		mClickedItem->Accept( &visitor );
+		if ( visitor.IsSimpleBug() )
+		{
 
+		}
 	}
 
 
