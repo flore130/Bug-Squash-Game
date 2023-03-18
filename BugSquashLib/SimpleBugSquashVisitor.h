@@ -22,6 +22,9 @@ private:
 	/// Is the item clicked on a simple bug
 	bool mIsSimpleBug = false;
 
+	/// Is this Bug squashed yet
+	bool mIsAlreadySquashed = false;
+
 public:
 	/**
 	 * Get whether it's a simple bug or not
@@ -30,28 +33,18 @@ public:
 	 bool IsSimpleBug() const { return mIsSimpleBug; }
 
 	 /**
-	  * Visit the BugGarbage object
-	  * @param bug Bug we are visiting
+	  * Get whether the bug has been squashed
+	  * @return If it's been squashed
 	  */
-	  void VisitBugGarbage( BugGarbage* bug ) { mIsSimpleBug = true; }
+	  bool IsAlreadySquashed() const { return mIsAlreadySquashed; }
 
-	 /**
-	  * Visit the BugNull object
-	  * @param bug Bug we are visiting
-	  */
-	 void VisitBugNull( BugNull* bug ) { mIsSimpleBug = true; }
+	 void VisitBugGarbage( BugGarbage* bug );
 
-	 /**
-	  * Visit the BugRedundancy object
-	  * @param bug Bug we are visiting
-	  */
-	  void VisitBugRedundancy( BugRedundancy* bug ) { mIsSimpleBug = true; }
+	 void VisitBugNull( BugNull* bug );
 
-	  /**
-	   * Visit the Feature object
-	   * @param feature Feature we are visiting
-	   */
-	   void VisitFeature( Feature* feature ) { mIsSimpleBug = true; }
+	 void VisitBugRedundancy( BugRedundancy* bug );
+
+	 void VisitFeature( Feature* feature );
 
 };
 
