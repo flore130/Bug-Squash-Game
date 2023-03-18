@@ -6,6 +6,8 @@
 #include "pch.h"
 #include "FatGarbageBug.h"
 
+using namespace std;
+
 /// The bug sprite image
 const std::wstring GarbageBugSpriteImageName = L"images/blue-maize-bug.png";
 
@@ -15,7 +17,10 @@ const std::wstring GarbageBugSplatImageName = L"images/blue-maize-splat.png";
 /// Number of sprite images
 const int GarbageBugNumSpriteImages = 5;
 
-
+/**
+ * Constructor
+ * @param level Level that this bug is a member of
+ */
 FatGarbageBug::FatGarbageBug(Level* level) : BugGarbage(level)
 {
 
