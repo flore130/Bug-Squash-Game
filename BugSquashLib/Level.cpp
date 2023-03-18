@@ -28,9 +28,11 @@ using namespace std;
 void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 {
 	// A pointer for the item we are loading
-	shared_ptr<Item> item;
+	shared_ptr<Bug> item;
 
 	auto name = node->GetName();
+	auto start = 0.0;
+	node->GetAttribute(L"start").ToDouble(&start);
 
 	if (name == L"bug")
 	{
@@ -57,6 +59,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 
 	if (item != nullptr)
 	{
+		item->SetStart(start);
 		mBugSquash->Add( item );
 		item->XmlLoad(node);
 	}
