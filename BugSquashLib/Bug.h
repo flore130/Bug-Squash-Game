@@ -48,8 +48,11 @@ private:
 	/// The bitmap associated with the splash image
 	wxGraphicsBitmap mSplashedBugBitmap;
 
+	/// The squashed image
+	std::shared_ptr<wxImage> mSquashedBugBitmap = nullptr;
+
 protected:
-	Bug(Level *level, const std::wstring &filename, int spriteCount);
+	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
 public:
 	bool HitTest(double x, double y);

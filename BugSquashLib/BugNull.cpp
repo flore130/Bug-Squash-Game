@@ -23,7 +23,7 @@ const int NullBugNumSpriteImages = 6;
  * Constructor
  * @param level Level that this bug is a member of
  */
-BugNull::BugNull(Level *level) : Bug(level, NullBugSpriteImageName, NullBugNumSpriteImages)
+BugNull::BugNull(Level *level) : Bug(level, NullBugSpriteImageName, NullBugSplatImageName, NullBugNumSpriteImages)
 {
 }
 

@@ -18,9 +18,10 @@ const double BugHitRange = 50;
  * @param level the game level
  * @param filename the filename for the bug image
  */
-Bug::Bug(Level *level, const std::wstring &filename, int spriteCount) : Item(level, filename)
+Bug::Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount) : Item(level, filename)
 {
 	mSpriteCount = spriteCount;
+	mSquashedBugBitmap = std::make_shared<wxImage>( squashedFilename );
 	mStopWatch.Start();
 }
 
@@ -93,7 +94,6 @@ void Bug::XmlLoad(wxXmlNode *node)
  */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-
 	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();
@@ -106,6 +106,12 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	/// Obtain the height needed to get the specific bug image
 	auto bugHeight = bugWidth; //bugSpriteImage->GetHeight() / (mSpriteCount + 1);
 
+	// If we are squashed, just draw the squashed image
+	if ( mIsSquashed )
+	{
+		graphics->DrawBitmap( graphics->CreateBitmapFromImage( *mSquashedBugBitmap ),  GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
+		return;
+	}
 
 	/// Get the sub image from the sprite image
 	auto bugImageBitmap = GetBitmap();

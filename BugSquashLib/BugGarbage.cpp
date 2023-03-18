@@ -22,7 +22,7 @@ const int GarbageBugNumSpriteImages = 5;
 * Constructor
  * @param level level that this bug is a member of
 */
-BugGarbage::BugGarbage(Level *level) : Bug(level, GarbageBugSpriteImageName, GarbageBugNumSpriteImages)
+BugGarbage::BugGarbage(Level *level) : Bug(level, GarbageBugSpriteImageName, GarbageBugSplatImageName, GarbageBugNumSpriteImages)
 {
 }
 
