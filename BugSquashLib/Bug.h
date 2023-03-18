@@ -60,6 +60,13 @@ public:
 	 */
 	void SetSpeed(double newSpeed) { mSpeed = newSpeed; }
 
+	
+	/**
+ 	* Sets the start time for this bug
+ 	* @param newSpeed The new speed in pixels per second
+ 	*/
+	void SetStart(double newStart) { mStartTime = newStart; }
+
 
 	/**
 	 * Accept a visitor
