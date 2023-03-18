@@ -46,24 +46,28 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Update(double elapsed)
 {
-	double programX = mProgram->GetX();
-	double programY = mProgram->GetY();
-	double programDistance = DistanceTo(mProgram);
-
-	if (programDistance > 0)
+	if (mStartTime <= 0)
 	{
-		// Get difference in X and Y between bug and program
-		double diffX = programX - GetX();
-		double diffY = programY - GetY();
+		double programX = mProgram->GetX();
+		double programY = mProgram->GetY();
+		double programDistance = DistanceTo(mProgram);
 
-		// Scale to normalize the vector
-		double directionX = diffX / programDistance;
-		double directionY = diffY / programDistance;
+		if (programDistance > 0)
+		{
+			// Get difference in X and Y between bug and program
+			double diffX = programX - GetX();
+			double diffY = programY - GetY();
 
-		// Set location to pixels/second * seconds * direction + current position
-		SetLocation(GetX() + (directionX * mSpeed * elapsed),
-					GetY() + (directionY * mSpeed * elapsed));
+			// Scale to normalize the vector
+			double directionX = diffX / programDistance;
+			double directionY = diffY / programDistance;
+
+			// Set location to pixels/second * seconds * direction + current position
+			SetLocation(GetX() + (directionX * mSpeed * elapsed),
+						GetY() + (directionY * mSpeed * elapsed));
+		}
 	}
+	mStartTime -= elapsed;
 }
 
 /**
