@@ -19,7 +19,7 @@ private:
 	BugSquash mBugSquash;
 
 	/// An object that describes the clicked item in the bug squash
-	std::shared_ptr<Item> mClickedItem;
+	std::shared_ptr<Item> mClickedItem = nullptr;
 
 	/// The timer that allows for animation
 	wxTimer mTimer;

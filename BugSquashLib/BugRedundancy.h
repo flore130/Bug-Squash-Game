@@ -39,6 +39,12 @@ public:
 	void XmlLoad(wxXmlNode* node) override;
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc) override {};
+
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept( ItemVisitor* visitor ) override { visitor->VisitBugRedundancy( this ); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H

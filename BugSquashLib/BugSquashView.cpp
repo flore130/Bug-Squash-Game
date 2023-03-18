@@ -83,19 +83,6 @@ void BugSquashView::OnTimer(wxTimerEvent &event)
 }
 
 /**
- * Handle the left mouse button down event
- * @param event
- */
-void BugSquashView::OnLeftDown(wxMouseEvent &event)
-{
-	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
-	if (mClickedItem != nullptr)
-	{
-		// Start the squashing
-	}
-}
-
-/**
  * Paint event, draws the window
  * @param event Paint event object
  */
@@ -125,6 +112,26 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 	// Tell the game class to draw
 	wxRect rect = GetRect();
 	mBugSquash.OnDraw(gc, rect.GetWidth(), rect.GetHeight());
+}
+
+/**
+ * Handle the left mouse button down event
+ * @param event
+ */
+void BugSquashView::OnLeftDown(wxMouseEvent &event)
+{
+	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
+	if ( mClickedItem != nullptr )
+	{
+		// Initialize our visitor
+
+		// Send the visitor to just this tile
+
+	}
+
+
+	// Reset the clicked item
+	mClickedItem = nullptr;
 }
 
 /**
