@@ -66,7 +66,7 @@ public:
 	
 	/**
  	* Sets the start time for this bug
- 	* @param newSpeed The new speed in pixels per second
+ 	* @param newStart How many seconds before a bug starts to move
  	*/
 	void SetStart(double newStart) { mStartTime = newStart; }
 
