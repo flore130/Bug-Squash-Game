@@ -37,6 +37,11 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept( ItemVisitor* visitor ) override { visitor->VisitBugNull( this ); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGNULL_H

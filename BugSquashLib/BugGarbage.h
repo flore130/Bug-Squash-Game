@@ -32,6 +32,12 @@ public:
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
+
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept( ItemVisitor* visitor ) override { visitor->VisitBugGarbage( this ); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGGARBAGE_H

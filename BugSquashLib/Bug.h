@@ -60,6 +60,13 @@ public:
 	 */
 	void SetSpeed(double newSpeed) { mSpeed = newSpeed; }
 
+	
+	/**
+ 	* Sets the start time for this bug
+ 	* @param newSpeed The new speed in pixels per second
+ 	*/
+	void SetStart(double newStart) { mStartTime = newStart; }
+
 
 	/**
 	 * Accept a visitor
@@ -92,6 +99,12 @@ public:
 	 * @return a boolean indicating whether the bug is squashed or not
 	 */
 	bool GetIsSquashed() { return mIsSquashed; }
+
+	/**
+	 * Set the Bug status to squashed. Once true it can never be false
+	 * @param squashStatus Set the bug's squash status
+	 */
+	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; }
 
 };
 

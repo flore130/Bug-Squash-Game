@@ -19,7 +19,6 @@ class Feature : public Bug
 private:
 
 public:
-
 	/// Default constructor (disabled)
 	Feature() = delete;
 
@@ -36,6 +35,11 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept( ItemVisitor* visitor ) override { visitor->VisitFeature( this ); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FEATURE_H

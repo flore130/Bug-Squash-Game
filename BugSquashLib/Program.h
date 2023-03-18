@@ -29,13 +29,17 @@ private:
 
 
 public:
-	void Accept( ItemVisitor* visitor ) override {};
-
 	Program(Level* level);
 
 	wxXmlNode* XmlSave(wxXmlNode* node) override;
 
 	void XmlLoad(wxXmlNode* node) override;
+
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept( ItemVisitor* visitor ) override { visitor->VisitProgram( this ); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_PROGRAM_H

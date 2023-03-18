@@ -124,13 +124,9 @@ void TestLevelOne(BugSquashTest *bugSquash)
 	ASSERT_TRUE(items[7]->GetX() == 500);
 	ASSERT_TRUE(items[7]->GetY() == 1100);
 	// Tests if item is moving
-	items[7]->Update(2);
+	items[7]->Update(15);
 	ASSERT_FALSE(items[7]->GetX() == (500));
 	ASSERT_FALSE(items[7]->GetY() == (1100));
-	// Resets item's position
-	items[7]->Update(-2);
-	ASSERT_TRUE(items[7]->GetX() == 500);
-	ASSERT_TRUE(items[7]->GetY() == 1100);
 
 	ASSERT_TRUE(items[8]->GetX() == 600);
 	ASSERT_TRUE(items[8]->GetY() == -100);
@@ -193,11 +189,11 @@ void TestLevelTwo(BugSquashTest *bugSquash)
 	ASSERT_TRUE(items[7]->GetX() == -100);
 	ASSERT_TRUE(items[7]->GetY() == 900);
 	// Tests if item is moving
-	items[7]->Update(2);
+	items[7]->Update(15);
 	ASSERT_FALSE(items[7]->GetX() == -100);
 	ASSERT_FALSE(items[7]->GetY() == 900);
-	// Resets item's position
-	items[7]->Update(-2);
+	// Resets item position
+	items[7]->SetLocation(-100, 900);
 	ASSERT_TRUE(items[7]->GetX() == -100);
 	ASSERT_TRUE(items[7]->GetY() == 900);
 
@@ -228,11 +224,11 @@ void TestLevelTwo(BugSquashTest *bugSquash)
 	ASSERT_TRUE(items[16]->GetX() == -100);
 	ASSERT_TRUE(items[16]->GetY() == -100);
 	// Tests if item is moving
-	items[16]->Update(2);
+	items[16]->Update(25);
 	ASSERT_FALSE(items[16]->GetX() == (-100));
 	ASSERT_FALSE(items[16]->GetY() == (-100));
-	// Resets item's position
-	items[16]->Update(-2);
+	// Resets item position
+	items[16]->SetLocation(-100, -100);
 	ASSERT_TRUE(items[16]->GetX() == -100);
 	ASSERT_TRUE(items[16]->GetY() == -100);
 

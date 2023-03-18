@@ -4,9 +4,11 @@
  */
 
 #include "pch.h"
-#include "BugSquashView.h"
-#include "Level.h"
 #include <wx/dcbuffer.h>
+#include "BugSquashView.h"
+#include "SimpleBugSquashVisitor.h"
+#include "Level.h"
+#include "Item.h"
 #include "ids.h"
 
 using namespace std;
@@ -45,7 +47,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 
 	// Start the game on level one
 	wxCommandEvent blank_event;
-	OnLevelOne( blank_event );
+	OnLevelZero( blank_event );
 }
 
 /**
@@ -74,31 +76,18 @@ void BugSquashView::AddMenus( wxFrame* mainFrame, wxMenuBar* menuBar, wxMenu* le
 }
 
 /**
-* Handle the timer event
+ * Handle the timer event
  * @param event Timer event
-*/
+ */
 void BugSquashView::OnTimer(wxTimerEvent &event)
 {
 	Refresh();
 }
 
 /**
-* Handle the left mouse button down event
- * @param event
-*/
-void BugSquashView::OnLeftDown(wxMouseEvent &event)
-{
-	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
-	if (mClickedItem != nullptr)
-	{
-		// Start the squashing
-	}
-}
-
-/**
- Paint event, draws the window
+ * Paint event, draws the window
  * @param event Paint event object
-*/
+ */
 void BugSquashView::OnPaint(wxPaintEvent &event)
 {
 	// Create a double-buffered display context
@@ -128,18 +117,40 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 }
 
 /**
-* Handle the left mouse button down event
+ * Handle the left mouse button down event
+ * @param event
+ */
+void BugSquashView::OnLeftDown(wxMouseEvent &event)
+{
+	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
+	if ( mClickedItem != nullptr )
+	{
+		// Initialize our visitor
+		SimpleBugSquashVisitor visitor;
+
+		// Send the visitor to just this item
+		// If the item is a simple & un-squashed bug, the visitor
+		// tell the item to squash itself.
+		mClickedItem->Accept( &visitor );
+	}
+
+	// Reset the clicked item
+	mClickedItem = nullptr;
+}
+
+/**
+ * Handle the left mouse button down event
  * @param event Mouse event
-*/
+ */
 void BugSquashView::OnMouseMove(wxMouseEvent &event)
 {
 	// TODO : When will this function be useful?
 }
 
 /**
-* Handle the double click mouse button event
+ * Handle the double click mouse button event
  * @param event Mouse event
-*/
+ */
 void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 {
 //	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
