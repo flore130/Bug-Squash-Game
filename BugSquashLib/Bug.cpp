@@ -47,24 +47,28 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Update(double elapsed)
 {
-	double programX = mProgram->GetX();
-	double programY = mProgram->GetY();
-	double programDistance = DistanceTo(mProgram);
-
-	if (programDistance > 0)
+	if (mStartTime - elapsed <= 0)
 	{
-		// Get difference in X and Y between bug and program
-		double diffX = programX - GetX();
-		double diffY = programY - GetY();
+		double programX = mProgram->GetX();
+		double programY = mProgram->GetY();
+		double programDistance = DistanceTo(mProgram);
 
-		// Scale to normalize the vector
-		double directionX = diffX / programDistance;
-		double directionY = diffY / programDistance;
+		if (programDistance > 0)
+		{
+			// Get difference in X and Y between bug and program
+			double diffX = programX - GetX();
+			double diffY = programY - GetY();
 
-		// Set location to pixels/second * seconds * direction + current position
-		SetLocation(GetX() + (directionX * mSpeed * elapsed),
-					GetY() + (directionY * mSpeed * elapsed));
+			// Scale to normalize the vector
+			double directionX = diffX / programDistance;
+			double directionY = diffY / programDistance;
+
+			// Set location to pixels/second * seconds * direction + current position
+			SetLocation(GetX() + (directionX * mSpeed * elapsed),
+						GetY() + (directionY * mSpeed * elapsed));
+		}
 	}
+	mStartTime -= elapsed;
 }
 
 /**
@@ -97,7 +101,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();
-	auto theta = 2 * M_PI- ::atan2(y - GetY(),x - GetX());
+	auto theta = 2 * M_PI - atan2(y - GetY(),x - GetX());
 
 	/// Obtain the bug image
 	auto bugSpriteImage = GetImage();
