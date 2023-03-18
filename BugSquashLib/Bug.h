@@ -93,6 +93,12 @@ public:
 	 */
 	bool GetIsSquashed() { return mIsSquashed; }
 
+	/**
+	 * Set the Bug status to squashed. Once true it can never be false
+	 * @param squashStatus Set the bug's squash status
+	 */
+	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; }
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H

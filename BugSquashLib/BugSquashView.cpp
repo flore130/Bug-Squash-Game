@@ -129,15 +129,10 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 		SimpleBugSquashVisitor visitor;
 
 		// Send the visitor to just this item
+		// If the item is a simple & un-squashed bug, the visitor
+		// tell the item to squash itself.
 		mClickedItem->Accept( &visitor );
-
-		// If the item is a simple, un-squashed bug, squash it
-		if ( visitor.IsSimpleBug() && !visitor.IsAlreadySquashed() )
-		{
-
-		}
 	}
-
 
 	// Reset the clicked item
 	mClickedItem = nullptr;
