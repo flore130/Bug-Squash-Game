@@ -97,7 +97,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();
-	auto theta = 2 * M_PI- ::atan2(y - GetY(),x - GetX());
+	auto theta = 2 * M_PI - atan2(y - GetY(),x - GetX());
 
 	/// Obtain the bug image
 	auto bugSpriteImage = GetImage();
