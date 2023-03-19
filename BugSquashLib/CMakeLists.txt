@@ -1,6 +1,6 @@
 project(BugSquashLib)
 
-set(SOURCE_FILES MainFrame.cpp MainFrame.h BugSquashView.cpp BugSquashView.h Item.cpp Item.h Bug.cpp Bug.h BugSquash.cpp BugSquash.h Scoreboard.cpp Scoreboard.h Level.cpp Level.h ids.h ItemVisitor.cpp ItemVisitor.h BugNull.cpp BugNull.h BugRedundancy.cpp BugRedundancy.h BugGarbage.cpp BugGarbage.h FatGarbageBug.cpp FatGarbageBug.h FatNullBug.cpp FatNullBug.h Feature.cpp Feature.h Program.cpp Program.h Code.cpp Code.h SimpleBugSquashVisitor.cpp SimpleBugSquashVisitor.h)
+set(SOURCE_FILES MainFrame.cpp MainFrame.h BugSquashView.cpp BugSquashView.h Item.cpp Item.h Bug.cpp Bug.h BugSquash.cpp BugSquash.h Scoreboard.cpp Scoreboard.h Level.cpp Level.h ids.h ItemVisitor.cpp ItemVisitor.h BugNull.cpp BugNull.h BugRedundancy.cpp BugRedundancy.h BugGarbage.cpp BugGarbage.h FatGarbageBug.cpp FatGarbageBug.h FatNullBug.cpp FatNullBug.h Feature.cpp Feature.h Program.cpp Program.h Code.cpp Code.h SimpleBugSquashVisitor.cpp SimpleBugSquashVisitor.h FatBugSquashVisitor.cpp FatBugSquashVisitor.h)
 
 set(wxBUILD_PRECOMP OFF )
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
