@@ -127,9 +127,13 @@ void BugSquash::Update(double elapsed)
  */
 std::shared_ptr<Item> BugSquash::HitTest(int x, int y)
 {
-	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	// First need to convert the x and y coordinate to virtual pixel locations
+	double virtualX = ( x - mXOffset ) / mScale;
+	double virtualY = ( y - mYOffset ) / mScale;
+
+	for ( auto i = mItems.rbegin(); i != mItems.rend();  i++ )
 	{
-		if ((*i)->HitTest(x, y))
+		if ( ( *i )->HitTest( virtualX, virtualY ) )
 		{
 			return *i;
 		}
