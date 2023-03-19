@@ -47,6 +47,11 @@ public:
 	void OnLevelOne(wxCommandEvent& event);
 	void OnLevelTwo(wxCommandEvent& event);
 	void OnLevelThree(wxCommandEvent& event);
+
+	/**
+	 * Stop the timer so we can close
+	 */
+	void StopTimer() {mTimer.Stop();}
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASHVIEW_H

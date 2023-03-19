@@ -19,6 +19,7 @@ private:
 
 	void OnExit( wxCommandEvent& event );
 	void OnAbout( wxCommandEvent& event );
+	void OnClose(wxCloseEvent &event);
 
 public:
 	void Initialize();
