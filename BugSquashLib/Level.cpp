@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "BugSquash.h"
+#include "Code.h"
 #include "BugGarbage.h"
 #include "BugNull.h"
 #include "BugRedundancy.h"
@@ -42,6 +43,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatGarbageBug>(this);
+				Code code(node->GetChildren());
 			}
 			else
 			{
@@ -53,6 +55,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatNullBug>(this);
+				Code code(node->GetChildren());
 			}
 			else
 			{
