@@ -122,8 +122,8 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
  */
 void BugSquashView::OnLeftDown(wxMouseEvent &event)
 {
-	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
-	if ( mClickedItem != nullptr )
+	auto item = mBugSquash.HitTest(event.GetX(), event.GetY());
+	if ( item != nullptr )
 	{
 		// Initialize our visitor
 		SimpleBugSquashVisitor visitor;
@@ -131,11 +131,8 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 		// Send the visitor to just this item
 		// If the item is a simple & un-squashed bug, the visitor
 		// tell the item to squash itself.
-		mClickedItem->Accept( &visitor );
+		item->Accept( &visitor );
 	}
-
-	// Reset the clicked item
-	mClickedItem = nullptr;
 }
 
 /**
