@@ -19,24 +19,18 @@ class BugRedundancy;
 class SimpleBugSquashVisitor : public ItemVisitor
 {
 private:
-	/// Is the item clicked on a simple bug
-	bool mIsSimpleBug = false;
-
 	/// Is this Bug squashed yet
 	bool mIsAlreadySquashed = false;
+
+	/// Bug was squashed on this visit
+	bool mJustSquashed = false;
 
 public:
 	/**
 	 * Get whether it's a simple bug or not
 	 * @return Is it a simple bug
 	 */
-	 bool IsSimpleBug() const { return mIsSimpleBug; }
-
-	 /**
-	  * Get whether the bug has been squashed
-	  * @return If it's been squashed
-	  */
-	  bool IsAlreadySquashed() const { return mIsAlreadySquashed; }
+	 bool JustSquashed() const { return mJustSquashed; }
 
 	 void VisitBugGarbage( BugGarbage* bug );
 

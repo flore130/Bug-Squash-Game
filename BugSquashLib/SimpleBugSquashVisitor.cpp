@@ -16,11 +16,10 @@
   */
 void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 {
-	mIsSimpleBug = true;
 	mIsAlreadySquashed = bug->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
-	if ( mIsSimpleBug && !mIsAlreadySquashed )
+	if ( !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
 
@@ -29,6 +28,9 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 
 		// One time call to set the squash image to face the program
 		bug->FaceSquashToProgram();
+
+		// Tell us that we just squashed the bug, so we can update the scoreboard
+		mJustSquashed = true;
 	}
 }
 
@@ -38,11 +40,10 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
   */
 void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 {
-	mIsSimpleBug = true;
 	mIsAlreadySquashed = bug->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
-	if ( mIsSimpleBug && !mIsAlreadySquashed )
+	if ( !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
 
@@ -51,6 +52,9 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 
 		// One time call to set the squash image to face the program
 		bug->FaceSquashToProgram();
+
+		// Tell us that we just squashed the bug, so we can update the scoreboard
+		mJustSquashed = true;
 	}
 }
 
@@ -60,11 +64,10 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
   */
 void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 {
-	mIsSimpleBug = true;
 	mIsAlreadySquashed = bug->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
-	if ( mIsSimpleBug && !mIsAlreadySquashed )
+	if ( !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
 
@@ -73,6 +76,9 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 
 		// One time call to set the squash image to face the program
 		bug->FaceSquashToProgram();
+
+		// Tell us that we just squashed the bug, so we can update the scoreboard
+		mJustSquashed = true;
 	}
 }
 
@@ -82,11 +88,10 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
  */
 void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 {
-	mIsSimpleBug = true;
 	mIsAlreadySquashed = feature->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
-	if ( mIsSimpleBug && !mIsAlreadySquashed )
+	if (  !mIsAlreadySquashed )
 	{
 		feature->SetIsSquashed( true );
 
@@ -95,5 +100,8 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 
 		// One time call to set the squash image to face the program
 		feature->FaceSquashToProgram();
+
+		// Tell us that we just squashed the bug, so we can update the scoreboard
+		mJustSquashed = true;
 	}
 }
