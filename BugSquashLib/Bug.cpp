@@ -34,6 +34,28 @@ Bug::Bug(Level *level, const std::wstring &filename, const std::wstring& squashe
  */
 bool Bug::HitTest(double x, double y)
 {
+	auto bugSpriteImage = GetImage();
+
+	double wid = bugSpriteImage->GetWidth();
+	double hit = bugSpriteImage->GetHeight();
+	if ( mSpriteCount > 0 )
+	{
+		hit /= mSpriteCount;
+	}
+
+	// Make x and y relative to the top-left corner of the bitmap image
+	// Subtracting the center makes x, y relative to the image center
+	// Adding half the size makes x, y relative to the image top corner
+	double testX = x - GetX() + wid / 2;
+	double testY = y - GetY() + hit / 2;
+
+	// Test to see if x, y are in the image
+	if( testX < 0 || testY < 0 || testX >= wid || testY >= hit )
+	{
+		// We are outside the image
+		return false;
+	}
+
 	double dx = x - GetX();
 	double dy = y - GetY();
 

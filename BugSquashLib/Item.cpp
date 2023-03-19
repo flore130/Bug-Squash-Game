@@ -92,7 +92,7 @@ void Item::SetProgram(wxXmlNode *node, shared_ptr<Program> parent)
  * @param y The y position of the item
  * @return false The basic return of any item will be false
  */
-bool Item::HitTest(int x, int y)
+bool Item::HitTest(double x, double y)
 {
 	double wid = mItemImage->GetWidth();
 	double hit = mItemImage->GetHeight();

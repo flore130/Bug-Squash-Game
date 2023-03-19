@@ -61,7 +61,7 @@ protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
 public:
-	bool HitTest(double x, double y);
+	bool HitTest(double x, double y) override;
 
 	/**
 	 * Sets the speed of this bug

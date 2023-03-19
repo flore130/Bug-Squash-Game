@@ -34,6 +34,9 @@ private:
 	/// The item bitmap
 	wxGraphicsBitmap mItemBitmap;
 
+	/// The amount of sprites of each item
+	int mSpriteCount = 1;
+
 protected:
 	/// Constructor
 	Item(Level *level, const std::wstring &filename);
@@ -123,7 +126,7 @@ public:
 
 	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
 
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(double x, double y);
 
 };
 
