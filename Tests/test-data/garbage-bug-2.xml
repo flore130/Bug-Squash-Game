@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code pass="Player.*\*.*mPlayer.*=.*nullptr.*;"><![CDATA[/**
+ * Our game class
+ */
+class Game
+{
+private:
+    /// The active player
+    Player *mPlayer;
+
+public:
+    void LoadLevel(int level);
+};
+]]><answer><![CDATA[/**
+ * Our game class
+ */
+class Game
+{
+private:
+    /// The active player
+    Player *mPlayer = nullptr;
+
+public:
+    void LoadLevel(int level);
+};
+]]>
+</answer></code>

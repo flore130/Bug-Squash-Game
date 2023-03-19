@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*\{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
+    GetGame()->SetPause(false);
+
+    mCode->Clear();
+
+    return true;
+]]><answer><![CDATA[
+    GetGame()->SetPause(false);
+
+    if (mCode != nullptr)
+    {
+        mCode->Clear();
+    }
+
+    return true;
+]]>
+</answer></code>
