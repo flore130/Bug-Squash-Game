@@ -182,7 +182,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
  */
 void Bug::FaceSquashToProgram()
 {
-	/// Obtain the angle to rotate the bug so it faces the program
+	// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();
 	auto theta = 2 * M_PI - atan2(y - GetY(),x - GetX());
