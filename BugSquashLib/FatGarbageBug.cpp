@@ -55,18 +55,6 @@ void FatGarbageBug::XmlLoad(wxXmlNode* node)
  */
 void FatGarbageBug::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-	/// Obtain the bug image
-	auto bugGarbageSpriteImage = GetImage();
-	auto bugGarbageWidth = bugGarbageSpriteImage->GetWidth();
-
-	/// Obtain the height needed to get the specific bug image
-	auto bugGarbageHeight = bugGarbageSpriteImage->GetHeight() / (GarbageBugNumSpriteImages + 1);
-	auto bugGarbageImageIndex = GetSpriteImageIndex();
-
-	/// Get the sub image from the sprite image
-	auto bugGarbageImage = bugGarbageSpriteImage->GetSubImage(wxRect(0, bugGarbageImageIndex * bugGarbageHeight, bugGarbageWidth, bugGarbageHeight));
-	wxBitmap bugGarbageBitmap(bugGarbageImage);
-	Bug::ChangeSpriteImageIndex(GarbageBugNumSpriteImages + 1);
-
-	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugGarbageWidth * 1.25, bugGarbageHeight * 1.25);
+	SetScale(1.25);
+	Bug::Draw(gc);
 }

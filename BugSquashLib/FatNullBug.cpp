@@ -55,18 +55,6 @@ void FatNullBug::XmlLoad(wxXmlNode* node)
  */
 void FatNullBug::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-	/// Obtain the bug image
-	auto bugNullSpriteImage = GetImage();
-	auto bugNullWidth = bugNullSpriteImage->GetWidth();
-
-	/// Obtain the height needed to get the specific bug image
-	auto bugNullHeight = bugNullSpriteImage->GetHeight() / (NullBugNumSpriteImages + 1);
-	auto bugNullImageIndex = GetSpriteImageIndex();
-
-	/// Get the sub image from the sprite image
-	auto bugNullImage = bugNullSpriteImage->GetSubImage(wxRect(0, bugNullImageIndex * bugNullHeight, bugNullWidth, bugNullHeight));
-	wxBitmap bugGarbageBitmap(bugNullImage);
-	Bug::ChangeSpriteImageIndex(NullBugNumSpriteImages + 1);
-
-	gc->DrawBitmap(bugGarbageBitmap, GetX(), GetY(), bugNullWidth * 1.25, bugNullHeight * 1.25);
+	SetScale(1.25);
+	Bug::Draw(gc);
 }

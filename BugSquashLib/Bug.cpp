@@ -143,5 +143,8 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 	bugBitmap = graphics->CreateBitmapFromImage(image);
 
+	bugHeight *= mScale;
+	bugWidth *= mScale;
+
 	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
 }

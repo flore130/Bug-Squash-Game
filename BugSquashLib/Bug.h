@@ -33,6 +33,9 @@ private:
 	/// The speed the bug should move at in pixels per second
 	double mSpeed = 0;
 
+	/// The scale factor for the bug
+	double mScale = 1;
+
 	/// The image index of the bug in the sprite image
 	int mImageIndex = 0;
 
@@ -62,6 +65,12 @@ public:
 	 * @param newSpeed The new speed in pixels per second
 	 */
 	void SetSpeed(double newSpeed) { mSpeed = newSpeed; }
+
+	/**
+	 * Sets the scaling of this bug
+ 	* @param newScale The new scaling factor of the bug
+ 	*/
+	void SetScale(double newScale) { mScale = newScale; }
 
 	
 	/**
