@@ -46,12 +46,6 @@ private:
 	/// The program this bug is associated with
 	std::shared_ptr<Program> mProgram = nullptr;
 
-	/// The splash image associated with the bug
-	std::shared_ptr<wxImage> mSplashedImage = nullptr;
-
-	/// The bitmap associated with the splash image
-	wxGraphicsBitmap mSplashedBugBitmap;
-
 	/// The squashed image
 	std::shared_ptr<wxImage> mSquashedBugImage = nullptr;
 
