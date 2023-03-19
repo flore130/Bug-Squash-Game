@@ -9,6 +9,7 @@
 #define PROJECT1_BUGSQUASHLIB_BUG_H
 
 #include "Item.h"
+#include "Code.h"
 
 class Program;
 
@@ -54,6 +55,8 @@ private:
 	/// The squashed image
 	std::shared_ptr<wxImage> mSquashedBugBitmap = nullptr;
 
+	std::shared_ptr<Code> mCode = nullptr;
+
 protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
@@ -78,6 +81,7 @@ public:
  	* @param newStart How many seconds before a bug starts to move
  	*/
 	void SetStart(double newStart) { mStartTime = newStart; }
+
 
 
 	/**
@@ -117,6 +121,13 @@ public:
 	 * @param squashStatus Set the bug's squash status
 	 */
 	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; }
+
+
+	/**
+	* Set the code that must be solved to squash a fat garbage or null bug
+	* @param fatCode The code that is to be associated with a fat bug
+	*/
+	 void SetCode (std::shared_ptr<Code> fatCode) {mCode = fatCode;}
 
 };
 
