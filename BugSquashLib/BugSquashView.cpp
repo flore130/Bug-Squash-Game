@@ -186,6 +186,7 @@ void BugSquashView::OnFileOpen(wxCommandEvent& event)
 	}
 
 	auto filename = loadFileDialog.GetPath();
+	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }

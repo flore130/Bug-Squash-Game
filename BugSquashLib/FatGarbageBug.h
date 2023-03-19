@@ -36,6 +36,12 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
 
+	/**
+	 * Accept a visitor
+	 * @param visitor The visitor to accept
+	 */
+	void Accept(ItemVisitor* visitor) override {}
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FATGARBAGEBUG_H
