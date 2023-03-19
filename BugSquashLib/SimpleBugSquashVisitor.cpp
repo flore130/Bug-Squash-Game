@@ -23,6 +23,9 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 	if ( mIsSimpleBug && !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
+
+		// Set the speed of the bug to 0
+		bug->SetSpeed( 0 );
 	}
 }
 
@@ -39,6 +42,9 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 	if ( mIsSimpleBug && !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
+
+		// Set the speed of the bug to 0
+		bug->SetSpeed( 0 );
 	}
 }
 
@@ -55,6 +61,9 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 	if ( mIsSimpleBug && !mIsAlreadySquashed )
 	{
 		bug->SetIsSquashed( true );
+
+		// Set the speed of the bug to 0
+		bug->SetSpeed( 0 );
 	}
 }
 
@@ -71,5 +80,8 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 	if ( mIsSimpleBug && !mIsAlreadySquashed )
 	{
 		feature->SetIsSquashed( true );
+
+		// Set the speed of the bug to 0
+		feature->SetSpeed( 0 );
 	}
 }
