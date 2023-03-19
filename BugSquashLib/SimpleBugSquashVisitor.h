@@ -10,12 +10,9 @@
 
 #include "ItemVisitor.h"
 
-class BugGarbage;
-class BugNull;
-class BugGarbage;
-class BugRedundancy;
-
-
+/*
+ * Class SimpleBugSquashVisitor, visits and squashes simple bugs
+ */
 class SimpleBugSquashVisitor : public ItemVisitor
 {
 private:
@@ -24,6 +21,12 @@ private:
 
 	/// Bug was squashed on this visit
 	bool mJustSquashed = false;
+
+	/// Squashed a bug
+	bool mBugSquashed = false;
+
+	/// Squashed a feature
+	bool mFeatureSquashed = false;
 
 public:
 	/**
@@ -39,6 +42,18 @@ public:
 	 void VisitBugRedundancy( BugRedundancy* bug );
 
 	 void VisitFeature( Feature* feature );
+
+	 /**
+	  * Get if it was a bug that was squashed
+	  * @return true if a bug was squashed
+	  */
+	 bool GoodSquash() const { return mBugSquashed; }
+
+	 /**
+	  * Get if it was a feature that was squashed
+	  * @return true if a feature was squashed
+	  */
+	 bool BadSquash() const { return mFeatureSquashed; }
 
 };
 

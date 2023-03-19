@@ -15,7 +15,6 @@ class BugNull;
 class Feature;
 class Program;
 
-
 /**
  * Base class for our Item Visitor
  */

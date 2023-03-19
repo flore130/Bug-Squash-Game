@@ -132,6 +132,21 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 		// If the item is a simple & un-squashed bug, the visitor
 		// tell the item to squash itself.
 		item->Accept( &visitor );
+
+		// If we squashed the bug this time around, scoreboard must be updated
+		if ( visitor.JustSquashed() )
+		{
+			// Did we squash a bug
+			if ( visitor.GoodSquash() )
+			{
+				mBugSquash.FixedIncrement();
+			}
+			// Did we squash a feature
+			else if ( visitor.BadSquash() )
+			{
+				mBugSquash.OopsIncrement();
+			}
+		}
 	}
 }
 

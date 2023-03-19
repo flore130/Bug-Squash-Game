@@ -77,6 +77,20 @@ public:
 	 */
 	 void SetShrinked( bool val ) { mShrinked = val; }
 
+	 /**
+	  * Tells the scoreboard to increment the fixed value
+	  */
+	 void FixedIncrement() { mScoreboard->FixedIncrement(); }
+
+	 /**
+	  * Tells the scoreboard to increment the missed value
+	  */
+	 void MissedIncrement() { mScoreboard->MissedIncrement(); }
+
+	 /**
+	  * Tells the scoreboard to increment the oops value
+	  */
+	 void OopsIncrement() { mScoreboard->OopsIncrement(); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H

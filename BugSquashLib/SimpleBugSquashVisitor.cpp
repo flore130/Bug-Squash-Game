@@ -31,6 +31,9 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
+
+		// It was a good squash
+		mBugSquashed = true;
 	}
 }
 
@@ -55,6 +58,9 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
+
+		// It was a good squash
+		mBugSquashed = true;
 	}
 }
 
@@ -79,6 +85,9 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
+
+		// It was a good squash
+		mBugSquashed = true;
 	}
 }
 
@@ -103,5 +112,8 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
+
+		// It was a bad squash
+		mFeatureSquashed = true;
 	}
 }
