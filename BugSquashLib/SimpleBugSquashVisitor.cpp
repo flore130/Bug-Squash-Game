@@ -26,6 +26,9 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
+
+		// One time call to set the squash image to face the program
+		bug->FaceSquashToProgram();
 	}
 }
 
@@ -45,6 +48,9 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
+
+		// One time call to set the squash image to face the program
+		bug->FaceSquashToProgram();
 	}
 }
 
@@ -64,6 +70,9 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
+
+		// One time call to set the squash image to face the program
+		bug->FaceSquashToProgram();
 	}
 }
 
@@ -83,5 +92,8 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 
 		// Set the speed of the bug to 0
 		feature->SetSpeed( 0 );
+
+		// One time call to set the squash image to face the program
+		feature->FaceSquashToProgram();
 	}
 }

@@ -53,7 +53,7 @@ private:
 	wxGraphicsBitmap mSplashedBugBitmap;
 
 	/// The squashed image
-	std::shared_ptr<wxImage> mSquashedBugBitmap = nullptr;
+	std::shared_ptr<wxImage> mSquashedBugImage = nullptr;
 
 	std::shared_ptr<Code> mCode = nullptr;
 
@@ -129,6 +129,7 @@ public:
 	*/
 	 void SetCode (std::shared_ptr<Code> fatCode) {mCode = fatCode;}
 
+	void FaceSquashToProgram();
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
