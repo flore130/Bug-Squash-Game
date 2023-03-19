@@ -23,13 +23,6 @@ private:
 	/// The regular expression needed in mCurrentCode to be considered passing
 	std::wstring mPass;
 
-protected:
-	/**
-	 * Used in testing to print the code currently in this object
-	 * @return the code currently stored in this object
-	 */
-	std::wstring GetCurrentCode() { return mCurrentCode; }
-
 public:
 	/// Default constructor (disabled)
 	Code() = delete;
@@ -45,6 +38,12 @@ public:
 	bool Passes();
 
 	void SetCode(const std::wstring &newCode);
+
+	/**
+	 * Return string representation of the code currently stored in this object
+	 * @return the code currently stored in this object
+	 */
+	std::wstring GetCurrentCode() { return mCurrentCode; }
 
 
 };

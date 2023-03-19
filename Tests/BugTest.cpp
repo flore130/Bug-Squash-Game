@@ -22,7 +22,10 @@
 using namespace std;
 
 /// Test image
-const std::wstring GarbageSplatImage = L"../images/blue-maize-bug.png";
+const std::wstring GarbageSplatImage = L"../images/blue-maize-splat.png";
+
+/// Test sprite
+const std::wstring GarbageBugImage = L"images/blue-maize-bug.png";
 
 /// Test sprite count
 const int SpriteCount = 1;
@@ -31,20 +34,20 @@ const int SpriteCount = 1;
 class BugMock : public Bug
 {
 public:
-	BugMock(Level *level, const std::wstring &filename) : Bug(level, filename, SpriteCount) {}
+	BugMock(Level *level, const std::wstring &filename, const std::wstring &squashedFile) : Bug(level, filename, squashedFile, SpriteCount) {}
 };
 
 
 TEST(BugTest, Construct)
 {
 	Level newLevel;
-	BugMock myBug(&newLevel, GarbageSplatImage);
+	BugMock myBug(&newLevel, GarbageBugImage, GarbageSplatImage);
 }
 
 TEST(BugTest, HitTest)
 {
 	Level newLevel;
-	BugMock bug(&newLevel, GarbageSplatImage);
+	BugMock bug(&newLevel, GarbageBugImage, GarbageSplatImage);
 
 	// Testing at origin
 	ASSERT_TRUE(bug.HitTest(0,0));
@@ -75,7 +78,7 @@ TEST(BugTest, MovementTest)
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 
-	BugMock bug(&level, GarbageSplatImage);
+	BugMock bug(&level, GarbageBugImage, GarbageSplatImage);
 	bug.SetProgram(nullptr, program);
 	bug.SetLocation(200, 200); // Position bug directly below program
 

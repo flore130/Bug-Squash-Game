@@ -10,22 +10,9 @@
 using namespace std;
 
 
-class CodeMock : public Code {
-public:
-	/**
-	 * Constructor
-	 * @param node the code node
-	 */
-	CodeMock(wxXmlNode* node) : Code(node) {}
-
-
-	wstring GetCurrentCode() { return Code::GetCurrentCode(); }
-};
-
-
 class CodeTest : public ::testing::Test {
 protected:
-	shared_ptr<CodeMock> mCode = nullptr;
+	shared_ptr<Code> mCode = nullptr;
 };
 
 
@@ -34,7 +21,7 @@ TEST_F(CodeTest, Construct){
 	ASSERT_TRUE(doc.Load(L"../Tests/test-data/garbage-bug-1.xml"));
 
 	auto node = doc.GetRoot();
-	mCode = make_shared<CodeMock>(node);
+	mCode = make_shared<Code>(node);
 }
 
 
@@ -43,7 +30,7 @@ TEST_F(CodeTest, Test1){
 	ASSERT_TRUE(doc.Load(L"../Tests/test-data/garbage-bug-1.xml"));
 
 	auto node = doc.GetRoot();
-	mCode = make_shared<CodeMock>(node);
+	mCode = make_shared<Code>(node);
 
 	cout << mCode->GetCurrentCode() << endl;
 
