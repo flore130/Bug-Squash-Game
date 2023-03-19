@@ -3,10 +3,10 @@
   <program name="Bug Squash" x="625" y="500">
     <bug type="redundancy" x="100" y="600" speed="120" start="0"/>
     <bug type="garbage" x="700" y="600" speed="120" start="0"/>
-    <bug type="null" x="200" y="600" speed="120" start="0"/>
-    <bug type="null" x="200" y="600" speed="120" start="0"/>
-    <bug type="null" x="100" y="600" speed="50" start="0"/>
-    <bug type="null" x="200" y="750" speed="90" start="0"/>
+    <bug type="null" x="200" y="100" speed="120" start="10"/>
+    <bug type="null" x="200" y="300" speed="120" start="13"/>
+    <bug type="null" x="100" y="100" speed="50" start="16"/>
+    <bug type="null" x="200" y="750" speed="90" start="19"/>
     <feature x="100" y="800" speed="120" start="0"/>
   </program>
 </bug-squash>
