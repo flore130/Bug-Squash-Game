@@ -40,7 +40,7 @@ public:
 	 * Accept a visitor
 	 * @param visitor The visitor to accept
 	 */
-	void Accept(ItemVisitor* visitor) override {}
+	void Accept(ItemVisitor* visitor) override { visitor->VisitFatGarbage(this); }
 
 };
 

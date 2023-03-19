@@ -12,6 +12,8 @@
 class BugGarbage;
 class BugRedundancy;
 class BugNull;
+class FatGarbageBug;
+class FatNullBug;
 class Feature;
 class Program;
 
@@ -39,6 +41,12 @@ public:
 	 virtual void VisitBugGarbage( BugGarbage* bug ) {}
 
 	 /**
+	  * Visit the FatGarbageBug object
+	  * @param bug FatGarbageBug to visit
+	  */
+	 virtual void VisitFatGarbage( FatGarbageBug* bug ) {}
+
+	 /**
 	  * Visit the BugRedundancy object
 	  * @param bug BugRedundancy we are visiting
 	  */
@@ -49,6 +57,12 @@ public:
 	   * @param bug BugNull we are visiting
 	   */
 	   virtual void VisitBugNull( BugNull* bug ) {}
+
+	   /**
+	    * Visit the FatNullBug object
+	    * @param bug FatNullBug to visit
+	    */
+	   virtual void VisitFatNull ( FatNullBug* bug ) {}
 
 	   /**
 	    * Visit the Feature object
