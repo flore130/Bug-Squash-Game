@@ -93,10 +93,7 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 	mScoreboard->Draw(graphics);
 
-	auto temp = Scoreboard(this);
-	temp.Draw(graphics);
 	graphics->PopState();
-
 }
 
 /**
