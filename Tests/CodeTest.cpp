@@ -32,7 +32,17 @@ TEST_F(CodeTest, Test1){
 	auto node = doc.GetRoot();
 	mCode = make_shared<Code>(node);
 
-	cout << mCode->GetCurrentCode() << endl;
+	cout << "Initial code: \n" << mCode->GetCurrentCode() << endl;
 
 	ASSERT_FALSE(mCode->Passes());
+
+	mCode->SetCode(L"This is the wrong answer");
+
+	ASSERT_FALSE(mCode->Passes());
+
+	mCode->SetCode(mCode->GetExampleAnswer());
+
+	cout << "Answer code:\n" << mCode->GetCurrentCode() << endl;
+
+	ASSERT_TRUE(mCode->Passes());
 }

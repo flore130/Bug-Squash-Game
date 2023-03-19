@@ -23,6 +23,9 @@ private:
 	/// The regular expression needed in mCurrentCode to be considered passing
 	std::wstring mPass;
 
+	/// Example answer code that will pass the regular expression determined by mPass
+	std::wstring mExampleAnswer;
+
 public:
 	/// Default constructor (disabled)
 	Code() = delete;
@@ -45,6 +48,11 @@ public:
 	 */
 	std::wstring GetCurrentCode() { return mCurrentCode; }
 
+	/**
+	 * Get an example solution to this code problem
+	 * @return string containing the example solution
+	 */
+	std::wstring GetExampleAnswer() { return mExampleAnswer; }
 
 };
 

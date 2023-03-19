@@ -16,6 +16,15 @@ Code::Code(wxXmlNode* node)
 	mCurrentCode = code.ToStdWstring();
 
 	mPass = node->GetAttribute(L"pass", L"");
+
+	auto child = node->GetChildren();
+	for( ; child; child = child->GetNext())
+	{
+		if (child->GetName() == "answer")
+		{
+			mExampleAnswer = child->GetNodeContent().ToStdWstring();
+		}
+	}
 }
 
 
@@ -26,4 +35,14 @@ Code::Code(wxXmlNode* node)
 bool Code::Passes()
 {
 	return std::regex_search(mCurrentCode, std::wregex(mPass));
+}
+
+
+/**
+ * Sets the current code in this object
+ * @param newCode the string to replace the old code with
+ */
+void Code::SetCode(const std::wstring &newCode)
+{
+	mCurrentCode = newCode;
 }

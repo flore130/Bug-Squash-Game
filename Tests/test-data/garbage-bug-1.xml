@@ -11,4 +11,17 @@ private:
 public:
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 };
-]]></code>
+]]><answer><![CDATA[/**
+ * The game scoreboard/scoring area
+ */
+class ScoreBoard
+{
+private:
+    /// The current score
+    int mScore = 0;
+
+public:
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+};
+]]>
+</answer></code>
