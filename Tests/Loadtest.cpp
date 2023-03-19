@@ -37,7 +37,7 @@ void TestLevelZero(BugSquashTest *bugSquash)
 {
 	auto items = bugSquash->LoadTest();
 	//Tests that there are three items in level 0
-	ASSERT_TRUE(items.size() == 3);
+	ASSERT_TRUE(items.size() == 8);
 	// Tests that every item is valid and not nullptr
 	for (auto i : items)
 	{
@@ -59,16 +59,16 @@ void TestLevelZero(BugSquashTest *bugSquash)
 	ASSERT_TRUE(items[1]->GetX() == 100);
 	ASSERT_TRUE(items[1]->GetY() == 600);
 
-	ASSERT_TRUE(items[2]->GetX() == 100);
-	ASSERT_TRUE(items[2]->GetY() == 800);
+	ASSERT_TRUE(items[2]->GetX() == 700);
+	ASSERT_TRUE(items[2]->GetY() == 600);
 	// Tests if item is moving
 	items[2]->Update(1);
-	ASSERT_FALSE(items[2]->GetX() == (100));
-	ASSERT_FALSE(items[2]->GetY() == (800));
+	ASSERT_FALSE(items[2]->GetX() == (700));
+	ASSERT_FALSE(items[2]->GetY() == (600));
 	// Resets item's position
 	items[2]->Update(-1);
-	ASSERT_TRUE(items[2]->GetX() == 100);
-	ASSERT_TRUE(items[2]->GetY() == 800);
+	ASSERT_TRUE(items[2]->GetX() == 700);
+	ASSERT_TRUE(items[2]->GetY() == 600);
 
 	// Test invalid location
 	auto item = bugSquash->HitTest(300, 200);
