@@ -49,6 +49,7 @@ private:
 	/// The squashed image
 	std::shared_ptr<wxImage> mSquashedBugImage = nullptr;
 
+	/// The code associated with this bug (fat bugs only)
 	std::shared_ptr<Code> mCode = nullptr;
 
 protected:
@@ -121,7 +122,13 @@ public:
 	* Set the code that must be solved to squash a fat garbage or null bug
 	* @param fatCode The code that is to be associated with a fat bug
 	*/
-	 void SetCode (std::shared_ptr<Code> fatCode) {mCode = fatCode;}
+	void SetCode (std::shared_ptr<Code> fatCode) {mCode = fatCode;}
+
+	/**
+	 * Get the code for this fat bug
+	 * @return Pointer to this bug's code
+	 */
+	std::shared_ptr<Code> GetCode() { return mCode; }
 
 	void FaceSquashToProgram();
 };

@@ -8,6 +8,9 @@
 #include "BugSquashView.h"
 #include "SimpleBugSquashVisitor.h"
 #include "FatBugSquashVisitor.h"
+#include "Code.h"
+#include "FatGarbageBug.h"
+#include "FatNullBug.h"
 #include "Level.h"
 #include "Item.h"
 #include "ids.h"
@@ -176,6 +179,13 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 		// If the item is a simple & un-squashed bug, the visitor
 		// tell the item to squash itself.
 		item->Accept( &visitor );
+
+		FatGarbageBug* visitedGarbage = visitor.GetVisitedGarbage();
+		FatNullBug* visitedNull = visitor.GetVisitedNull();
+		if (visitedGarbage != nullptr)
+		{
+			shared_ptr<Code> code = visitedGarbage->GetCode();
+		}
 
 	}
 }

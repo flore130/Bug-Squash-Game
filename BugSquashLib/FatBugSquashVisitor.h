@@ -26,6 +26,18 @@ public:
 	void VisitFatNull(FatNullBug* bug) override;
 	void VisitFatGarbage(FatGarbageBug* bug) override;
 
+	/**
+	 * Gets the recently visited garbage bug
+	 * @return pointer to recently visited garbage bug
+	 */
+	FatGarbageBug* GetVisitedGarbage() { return mGarbageBugVisited; }
+
+	/**
+	 * Gets the recently visited null bug
+	 * @return pointer to recently visited null bug
+	 */
+	FatNullBug* GetVisitedNull() { return mNullBugVisited; }
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FATBUGSQUASHVISITOR_H
