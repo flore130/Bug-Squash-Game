@@ -7,6 +7,7 @@
 #include <wx/dcbuffer.h>
 #include "BugSquashView.h"
 #include "SimpleBugSquashVisitor.h"
+#include "FatBugSquashVisitor.h"
 #include "Level.h"
 #include "Item.h"
 #include "ids.h"
@@ -165,11 +166,18 @@ void BugSquashView::OnMouseMove(wxMouseEvent &event)
  */
 void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 {
-//	mClickedItem = mBugSquash.HitTest(event.GetX(), event.GetY());
-//	if (mClickedItem != nullptr)
-//	{
-//		// TODO : This is what's needed for FatBugs
-//	}
+	auto item = mBugSquash.HitTest(event.GetX(), event.GetY());
+	if ( item != nullptr )
+	{
+		// Initialize our visitor
+		FatBugSquashVisitor visitor;
+
+		// Send the visitor to just this item
+		// If the item is a simple & un-squashed bug, the visitor
+		// tell the item to squash itself.
+		item->Accept( &visitor );
+
+	}
 }
 
 /**
