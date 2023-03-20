@@ -67,20 +67,6 @@ double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
 }
 
 /**
- * Save this bug to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* BugRedundancy::XmlSave(wxXmlNode* node)
-{
-	auto itemNode = Bug::XmlSave(node);
-
-	itemNode->AddAttribute(L"type", L"redundancy");
-
-	return itemNode;
-}
-
-/**
  * Load this XML Node to bug
  * @param node The parent node we are going to be a child of
  */

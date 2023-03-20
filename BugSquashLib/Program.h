@@ -31,8 +31,6 @@ private:
 public:
 	Program(Level* level);
 
-	wxXmlNode* XmlSave(wxXmlNode* node) override;
-
 	void XmlLoad(wxXmlNode* node) override;
 
 	/**

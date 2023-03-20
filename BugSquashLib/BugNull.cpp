@@ -39,21 +39,6 @@ double BugNull::DistanceTo(std::shared_ptr<Item> item)
 	return sqrt(dx * dx + dy * dy);
 }
 
-
-/**
- * Save this bug to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* BugNull::XmlSave(wxXmlNode* node)
-{
-	auto itemNode = Bug::XmlSave(node);
-
-	itemNode->AddAttribute(L"type", L"null");
-
-	return itemNode;
-}
-
 /**
  * Load this XML Node to bug
  * @param node The parent node we are going to be a child of

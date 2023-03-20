@@ -111,8 +111,6 @@ public:
 
 	virtual double DistanceTo(std::shared_ptr<Item> item);
 
-	virtual wxXmlNode *XmlSave(wxXmlNode *node);
-
 	virtual void XmlLoad(wxXmlNode *node);
 
 	/**

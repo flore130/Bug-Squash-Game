@@ -38,8 +38,6 @@ public:
 
 	double DistanceTo(std::shared_ptr<Item> item) override;
 
-	wxXmlNode* XmlSave(wxXmlNode* node) override;
-
 	void XmlLoad(wxXmlNode* node) override;
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc) override {};

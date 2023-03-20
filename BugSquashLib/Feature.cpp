@@ -22,20 +22,6 @@ Feature::Feature(Level* level) : Bug(level, FeatureImageName, FeatureSplatImageN
 }
 
 /**
- * Save this bug to an XML node
- * @param node The parent node we are going to be a child of
- * @return
- */
-wxXmlNode* Feature::XmlSave(wxXmlNode* node)
-{
-	auto itemNode = Item::XmlSave(node);
-
-	itemNode->AddAttribute(L"type", L"feature");
-
-	return itemNode;
-}
-
-/**
  * Load this XML Node to bug
  * @param node The parent node we are going to be a child of
  */

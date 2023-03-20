@@ -30,8 +30,6 @@ public:
 	/// Constructor
 	FatNullBug(Level* level);
 
-	wxXmlNode* XmlSave(wxXmlNode* node) override;
-
 	void XmlLoad(wxXmlNode* node) override;
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
