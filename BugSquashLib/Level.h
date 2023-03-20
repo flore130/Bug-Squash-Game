@@ -41,8 +41,10 @@ private:
 	/// The BugSquash that owns the level
 	BugSquash* mBugSquash = nullptr;
 
+	/// The number of programs that belong to the level
 	int mNumPrograms = 0;
 
+	/// The number of bugs (and features) that belong on the level
 	int mNumBugs = 0;
 
 public:
@@ -54,7 +56,15 @@ public:
  	*/
 	void SetBugSquash( BugSquash* bugSquash ) { mBugSquash = bugSquash; }
 
+	/**
+ 	* Obtains the number of program objects that exist on the level
+ 	* @return The count of programs on the level
+ 	*/
 	int GetNumPrograms() {return mNumPrograms;}
+	/**
+ 	* Obtains the number of bug objects that exist on the level
+ 	* @return The count of bugs/features on the level
+ 	*/
 	int GetNumBugs() {return mNumBugs;}
 
 };
