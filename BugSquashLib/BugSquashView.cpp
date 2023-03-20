@@ -9,6 +9,7 @@
 #include "SimpleBugSquashVisitor.h"
 #include "FatBugSquashVisitor.h"
 #include "Code.h"
+#include "CodeDlg.h"
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"
 #include "Level.h"
@@ -182,9 +183,18 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 
 		FatGarbageBug* visitedGarbage = visitor.GetVisitedGarbage();
 		FatNullBug* visitedNull = visitor.GetVisitedNull();
+
+		shared_ptr<Code> code = nullptr;
 		if (visitedGarbage != nullptr)
 		{
-			shared_ptr<Code> code = visitedGarbage->GetCode();
+			code = visitedGarbage->GetCode();
+		}
+
+
+		if (code != nullptr)
+		{
+			//CodeDlg dlg(window, mCode);
+			//dlg.ShowModal();
 		}
 
 	}
