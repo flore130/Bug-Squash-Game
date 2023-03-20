@@ -40,28 +40,23 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 		auto type = node->GetAttribute(L"type");
 		if (type == L"garbage")
 		{
+			item = make_shared<BugGarbage>(this);
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatGarbageBug>(this);
 				auto code = make_shared<Code>(node->GetChildren());
 				item->SetCode(code);
 			}
-			else
-			{
-				item = make_shared<BugGarbage>(this);
-			}
 		}
 		else if (type == L"null")
 		{
+			item = make_shared<BugNull>(this);
+
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatNullBug>(this);
 				auto code = make_shared<Code>(node->GetChildren());
 				item->SetCode(code);
-			}
-			else
-			{
-				item = make_shared<BugNull>(this);
 			}
 		}
 		else if (type == L"redundancy")
