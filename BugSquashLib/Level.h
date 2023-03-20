@@ -41,6 +41,10 @@ private:
 	/// The BugSquash that owns the level
 	BugSquash* mBugSquash = nullptr;
 
+	int mNumPrograms = 0;
+
+	int mNumBugs = 0;
+
 public:
 	void Load(const wxString &filename);
 
@@ -49,6 +53,10 @@ public:
 	 * @param bugSquash The bugSquash program we are looking at
  	*/
 	void SetBugSquash( BugSquash* bugSquash ) { mBugSquash = bugSquash; }
+
+	int GetNumPrograms() {return mNumPrograms;}
+	int GetNumBugs() {return mNumBugs;}
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H

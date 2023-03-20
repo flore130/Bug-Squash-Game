@@ -72,6 +72,12 @@ public:
 	bool GetShrinked() const { return mShrinked; }
 
 	/**
+ 	* Obtains the number of items in the game
+ 	* @return The size of/ number of items in mItems
+ 	*/
+	int GetNumItems() const { return mItems.size(); }
+
+	/**
 	 * Set the Height of mShrinked
 	 * @param val The value to set mShrinked to
 	 */

@@ -81,6 +81,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 		item->SetStart(start);
 		mBugSquash->Add( item );
 		item->XmlLoad(node);
+		mNumBugs += 1;
 	}
 }
 
@@ -100,6 +101,7 @@ void Level::XmlProgram(wxXmlNode *node)
 	 */
 	shared_ptr<Program> program_item;
 	program_item = make_shared<Program>(this);
+	mNumPrograms += 1;
 	program_item->XmlLoad(node);
 	auto child = node->GetChildren();
 	for( ; child; child = child->GetNext())
