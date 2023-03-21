@@ -26,6 +26,17 @@ class Scoreboard;
 class BugSquash
 {
 private:
+	/**
+	 * This enum class will tell us what state the current level
+	 * is in. Beginning state of the level (Start of Level Text appears)
+	 * Playing state of the level is when after beginning when user is playing
+	 * Finished is when there are no bugs left and shows the level complete frame
+	 */
+	enum class Type
+	{
+		Beginning, Playing, Finished
+	};
+
 	/// Whether or not the the window is in shrink mode
 	bool mShrinked = false;
 
