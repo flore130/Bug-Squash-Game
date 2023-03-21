@@ -5,7 +5,8 @@
 
 #include "pch.h"
 #include "FatBugSquashVisitor.h"
-
+#include "FatGarbageBug.h"
+#include "FatNullBug.h"
 
 /**
  * Visit a FatGarbageBug
@@ -13,8 +14,11 @@
  */
 void FatBugSquashVisitor::VisitFatGarbage(FatGarbageBug *bug)
 {
-	mVisitedFat = true;
-	mGarbageBugVisited = bug;
+	if (!bug->GetIsSquashed())
+	{
+		mVisitedFat = true;
+		mGarbageBugVisited = bug;
+	}
 }
 
 /**
@@ -23,6 +27,9 @@ void FatBugSquashVisitor::VisitFatGarbage(FatGarbageBug *bug)
  */
 void FatBugSquashVisitor::VisitFatNull(FatNullBug *bug)
 {
-	mVisitedFat = true;
-	mNullBugVisited = bug;
+	if (!bug->GetIsSquashed())
+	{
+		mVisitedFat = true;
+		mNullBugVisited = bug;
+	}
 }

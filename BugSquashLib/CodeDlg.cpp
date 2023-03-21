@@ -74,6 +74,7 @@ void CodeDlg::OnOk(wxCommandEvent& event)
  */
 void CodeDlg::OnClose(wxCloseEvent& event)
 {
+	mTextCtrl->Destroy();
 	mView->ResumeStopwatch();
 	Destroy();
 }
