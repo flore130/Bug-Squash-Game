@@ -53,12 +53,6 @@ public:
 	void Load(const wxString &filename);
 
 	/**
- 	* Sets mBugSquash to be the current BugSquash application so we can pass up for loading
-	 * @param bugSquash The bugSquash program we are looking at
- 	*/
-	void SetBugSquash( BugSquash* bugSquash ) { mBugSquash = bugSquash; }
-
-	/**
  	* Obtains the number of program objects that exist on the level
  	* @return The count of programs on the level
  	*/

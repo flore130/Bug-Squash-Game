@@ -34,8 +34,7 @@ const double ShrinkScale = 0.75;
 void BugSquash::Load(const wxString &filename)
 {
 	mScoreboard->Reset();
-	mLevel = std::make_unique<Level>();
-	mLevel->SetBugSquash( this );
+	mLevel = std::make_unique<Level>(this);
 	mLevel->Load(filename);
 }
 
