@@ -20,7 +20,7 @@
 
 using namespace std;
 
-const double LevelDuration = 2;
+const double LevelDuration = 2 * 1000;
 
 /// Scale to shrink to when in shrink mode
 const double ShrinkScale = 0.75;
@@ -105,14 +105,12 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	mItems = itemsToBeKept;
 	itemsToBeKept.clear();
 
-
 	mScoreboard->Draw(graphics);
-
 	graphics->PopState();
 
 	if (mState == Type::Beginning)
 	{
-		//Draw level Frame
+		mLevel->Draw(graphics);
 	}
 }
 
@@ -135,10 +133,14 @@ void BugSquash::Update(double elapsed)
 	{
 		mState = Type::Beginning;
 	}
-	if (mStopWatch.Time() > LevelDuration)
+	else
 	{
 		mState = Type::Playing;
 	}
+//	if (mStopWatch.Time() > LevelDuration)
+//	{
+//		mState = Type::Playing;
+//	}
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);
