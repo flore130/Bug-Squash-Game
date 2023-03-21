@@ -184,7 +184,34 @@ void Level::Load(const wxString &filename)
 	}
 }
 
+/**
+ * Draw our graphics
+ * @param graphics The graphics to be drawn
+ */
 void Level::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
+	//if (mstate == beginning)
+	DrawLevel(graphics, L"WELCOME TO LEVEL :)))", LeftScoreX);
+//	//if (mSate = Playing)
+//	DrawLevel(graphics, L"Missed", BugSquash::Width/2, mMissed);
+//	//if (mstate == end)
+//	DrawLevel(graphics, L"Oops", BugSquash::Width - LeftScoreX, mOops);
+}
 
+void Level::DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x)
+{
+	wxFont scoreFont(wxSize(TextSize,TextSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+	wxFont labelFont(wxSize(LabelSize, LabelSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+	graphics->SetFont(scoreFont, FontColor);
+	double width, height;
+	//std::string s = std::to_string(score);
+
+
+//	graphics->GetTextExtent(s, &width, &height);
+//	graphics->DrawText(s, x-width/2, ScoreY);
+//
+	graphics->SetFont(labelFont, FontColor);
+
+	graphics->GetTextExtent(label, &width, &height);
+	graphics->DrawText(label, x-width/2, LabelY);
 }

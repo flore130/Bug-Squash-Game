@@ -63,6 +63,8 @@ public:
  	*/
 	int GetNumBugs() {return mNumBugs;}
 
+	void DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x);
+
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
