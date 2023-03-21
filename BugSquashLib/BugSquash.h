@@ -50,6 +50,8 @@ private:
 	 */
 	wxStopWatch mStopWatch;
 
+	long elapsed = 0;
+
 protected:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems {};
