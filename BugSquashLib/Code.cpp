@@ -10,8 +10,10 @@
  * Constructor
  * @param node the <code> node to read from
  */
-Code::Code(wxXmlNode* node)
+Code::Code(wxXmlNode* node, std::shared_ptr<Bug> bug)
 {
+	mBug = bug;
+
 	wxString code = node->GetNodeContent();
 	mCurrentCode = code.ToStdWstring();
 

@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Program.h"
 #include "Bug.h"
+#include "Code.h"
 
 using namespace std;
 

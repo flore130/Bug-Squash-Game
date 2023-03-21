@@ -10,6 +10,7 @@
 
 #include <regex>
 
+class Bug;
 
 /**
  * Class to handle Fat Bug code checking
@@ -26,6 +27,9 @@ private:
 	/// Example answer code that will pass the regular expression determined by mPass
 	std::wstring mExampleAnswer;
 
+	/// The bug this code is for
+	std::shared_ptr<Bug> mBug = nullptr;
+
 public:
 	/// Default constructor (disabled)
 	Code() = delete;
@@ -36,7 +40,7 @@ public:
 	/// Assignment operator
 	void operator=(const Code &) = delete;
 
-	Code(wxXmlNode* node);
+	Code(wxXmlNode* node, std::shared_ptr<Bug> bug);
 
 	bool Passes();
 
@@ -53,6 +57,12 @@ public:
 	 * @return string containing the example solution
 	 */
 	std::wstring GetExampleAnswer() { return mExampleAnswer; }
+
+	/**
+	 * Get the bug this code is associated with
+	 * @return shared ptr to the bug
+	 */
+	std::shared_ptr<Bug> GetBug() { return mBug; }
 
 };
 

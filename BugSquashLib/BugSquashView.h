@@ -52,6 +52,18 @@ public:
 	 * Stop the timer so we can close
 	 */
 	void StopTimer() {mTimer.Stop();}
+
+	/**
+	 * Pause stopwatch
+	 *
+	 * Used to pause game while player edits fat bug code
+	 */
+	void PauseStopwatch() { mStopWatch.Pause(); }
+
+	/**
+	 * Resume stopwatch
+	 */
+	void ResumeStopwatch() { mStopWatch.Resume(); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASHVIEW_H

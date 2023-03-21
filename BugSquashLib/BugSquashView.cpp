@@ -189,6 +189,10 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 		{
 			code = visitedGarbage->GetCode();
 		}
+		/*else if (visitedNull != nullptr)
+		{
+			code = visitedNull->GetCode();
+		}*/
 
 
 		if (code != nullptr)

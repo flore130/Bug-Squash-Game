@@ -8,5 +8,20 @@
     <bug type="null" x="100" y="100" speed="50" start="16"/>
     <bug type="null" x="200" y="750" speed="90" start="19"/>
     <feature x="100" y="800" speed="120" start="0"/>
+    <bug type="garbage" x="300" y="900" speed="60" start="0">
+      <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
+ * The game scoreboard/scoring area
+ */
+class ScoreBoard
+{
+private:
+    /// The current score
+    int mScore;
+
+public:
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+};
+        ]]></code>
+    </bug>
   </program>
 </bug-squash>

@@ -5,6 +5,8 @@
 
 #include "pch.h"
 #include "CodeDlg.h"
+#include "BugSquashView.h"
+#include "Bug.h"
 
 using namespace std;
 
@@ -13,7 +15,7 @@ using namespace std;
  * @param window the window this dialog box should be a child of
  * @param code the code this dialog box should display
  */
-CodeDlg::CodeDlg(wxWindow* window, shared_ptr<Code> code) : mWindow(window), mCode(code)
+CodeDlg::CodeDlg(BugSquashView* view, shared_ptr<Code> code) : mView(view), mCode(code)
 {
 }
 
@@ -22,20 +24,56 @@ CodeDlg::CodeDlg(wxWindow* window, shared_ptr<Code> code) : mWindow(window), mCo
  */
 void CodeDlg::Initialize()
 {
-	Create(mWindow, wxID_ANY, L"FatBug Code Editor", wxDefaultPosition, wxSize( 1000, 800));
+	mView->PauseStopwatch();
+	Create(mView, wxID_ANY, L"FatBug Code Editor",
+		   wxDefaultPosition, wxSize( 500, 600));
+
+	Bind(wxEVT_CLOSE_WINDOW, &CodeDlg::OnClose, this);
 
 	auto sizer = new wxBoxSizer(wxVERTICAL);
 
-	auto textCtrl = new wxTextCtrl(this,wxID_ANY, wxEmptyString,
-								   wxDefaultPosition, wxSize( 1000, 800), wxTE_MULTILINE);
+	mTextCtrl = new wxTextCtrl(this,wxID_ANY, wxEmptyString,
+								   wxDefaultPosition, wxSize( 500, 500), wxTE_MULTILINE);
 
-	sizer->Add(textCtrl, 1, wxALIGN_LEFT | wxEXPAND, 5);
+	auto button = new wxButton(this, wxID_ANY, L"OK", wxDefaultPosition, wxSize(100, 10));
+
+	button->Bind(wxEVT_BUTTON, &CodeDlg::OnOk, this);
+
+	sizer->Add(mTextCtrl, 1, wxALIGN_LEFT | wxEXPAND, 5);
+	sizer->Add(button, 1, wxALIGN_CENTER | wxALL, 10);
 	// wxButton.Connect to bind button to event handler
-	// Add button to sizer
 
-	textCtrl->AppendText(mCode->GetCurrentCode());
+	mTextCtrl->AppendText(mCode->GetCurrentCode());
 
 	SetSizer(sizer);
 	Layout();
 
+}
+
+
+/**
+ * Event handler for button press
+ * @param event
+ */
+void CodeDlg::OnOk(wxCommandEvent& event)
+{
+	wxString currentText = mTextCtrl->GetValue();
+	mCode->SetCode(currentText.ToStdWstring());
+
+	if (mCode->Passes())
+	{
+		mCode->GetBug()->SetIsSquashed(true);
+	}
+
+	Close(true);
+}
+
+/**
+ * Event handler for closing this window
+ * @param event
+ */
+void CodeDlg::OnClose(wxCloseEvent& event)
+{
+	mView->ResumeStopwatch();
+	Destroy();
 }

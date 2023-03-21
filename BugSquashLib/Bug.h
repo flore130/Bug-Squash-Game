@@ -9,8 +9,8 @@
 #define PROJECT1_BUGSQUASHLIB_BUG_H
 
 #include "Item.h"
-#include "Code.h"
 
+class Code;
 class Program;
 
 /**
@@ -130,7 +130,7 @@ public:
 	 * Set the Bug status to squashed. Once true it can never be false
 	 * @param squashStatus Set the bug's squash status
 	 */
-	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; }
+	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; mSpeed = 0; }
 
 
 	/**

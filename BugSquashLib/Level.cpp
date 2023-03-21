@@ -69,7 +69,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatGarbageBug>(this);
-				auto code = make_shared<Code>(node->GetChildren());
+				auto code = make_shared<Code>(node->GetChildren(), item);
 				item->SetCode(code);
 			}
 		}
@@ -80,7 +80,7 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 			if (node->GetChildren() != nullptr)
 			{
 				item = make_shared<FatNullBug>(this);
-				auto code = make_shared<Code>(node->GetChildren());
+				auto code = make_shared<Code>(node->GetChildren(), item);
 				item->SetCode(code);
 			}
 		}
