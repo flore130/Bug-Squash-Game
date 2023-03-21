@@ -4,8 +4,12 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
 #include <Code.h>
+#include <Bug.h>
+#include <BugGarbage.h>
+#include <BugNull.h>
+#include <BugSquash.h>
+#include "gtest/gtest.h"
 
 using namespace std;
 
@@ -18,13 +22,13 @@ protected:
 	 * Load the proper xml file into the code block
 	 * @param filename the name of the xml file
 	 */
-	void Load(const wstring &filename)
+	void Load(const wstring &filename, Bug* bug )
 	{
 		wxXmlDocument doc;
 		ASSERT_TRUE(doc.Load(filename));
 
 		auto node = doc.GetRoot();
-		mCode = make_shared<Code>(node);
+		mCode = make_shared<Code>( node, bug );
 
 		cout << "Initial code: \n" << mCode->GetCurrentCode() << endl;
 	}
@@ -51,20 +55,30 @@ protected:
 
 
 TEST_F(CodeTest, Construct){
-	Load(L"../Tests/test-data/garbage-bug-1.xml");
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
+	BugGarbage myBug( &newLevel );
+
+	Load( L"../Tests/test-data/garbage-bug-1.xml", &myBug );
 }
 
 
 TEST_F(CodeTest, AnswerChecks){
-	Load(L"../Tests/test-data/garbage-bug-1.xml");
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
+	BugGarbage myBug( &newLevel );
+
+	Load( L"../Tests/test-data/garbage-bug-1.xml", &myBug );
 	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 1";
 	CheckAnswers();
 
-	Load(L"../Tests/test-data/garbage-bug-2.xml");
+	BugGarbage myBug2( &newLevel );
+	Load( L"../Tests/test-data/garbage-bug-2.xml",& myBug2 );
 	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 2";
 	CheckAnswers();
 
-	Load(L"../Tests/test-data/null-bug-1.xml");
+	BugNull myBug3( &newLevel );
+	Load( L"../Tests/test-data/null-bug-1.xml", &myBug3 );
 	ASSERT_FALSE(mCode->Passes()) << L"Null bug 1";
 	CheckAnswers();
 }
