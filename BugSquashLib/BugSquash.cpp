@@ -66,7 +66,6 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	auto scaleY = double(height) / double(Height);
 	mScale = std::min(scaleX, scaleY);
 
-
 	if(mShrinked)
 	{
 		mScale *= ShrinkScale;
@@ -112,6 +111,10 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	{
 		mLevel->Draw(graphics);
 	}
+	else if (mState == Type::Finished)
+	{
+		mLevel->DrawLevel(graphics, L"Level Complete!!!");
+	}
 }
 
 /**
@@ -129,18 +132,20 @@ void BugSquash::Clear()
  */
 void BugSquash::Update(double elapsed)
 {
+
 	if (mStopWatch.Time() <= LevelDuration)
 	{
 		mState = Type::Beginning;
+	}
+	else if(mAllBugsSquashed)
+	{
+		mState = Type::Finished;
 	}
 	else
 	{
 		mState = Type::Playing;
 	}
-//	if (mStopWatch.Time() > LevelDuration)
-//	{
-//		mState = Type::Playing;
-//	}
+
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);

@@ -19,6 +19,7 @@
 
 class Item;
 class Scoreboard;
+class Level;
 
 /**
  * The main BugSquash class.
@@ -27,11 +28,11 @@ class BugSquash
 {
 private:
 	/**
-	 * This enum class will tell us what state the current level
-	 * is in. Beginning state of the level (Start of Level Text appears)
-	 * Playing state of the level is when after beginning when user is playing
-	 * Finished is when there are no bugs left and shows the level complete frame
-	 */
+ * This enum class will tell us what state the current level
+ * is in. Beginning state of the level (Start of Level Text appears)
+ * Playing state of the level is when after beginning when user is playing
+ * Finished is when there are no bugs left and shows the level complete frame
+ */
 	enum class Type
 	{
 		Beginning, Playing, Finished
@@ -64,11 +65,15 @@ private:
 	 */
 	wxStopWatch mStopWatch;
 
+	bool mAllBugsSquashed = false;
+
 protected:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems {};
 
 public:
+
+
 	BugSquash();
 	void Load(const wxString &filename);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -97,6 +102,8 @@ public:
  	*/
 	int GetNumItems() const { return mItems.size(); }
 
+	Type GetState(){return mState;}
+
 	/**
 	 * Set the Height of mShrinked
 	 * @param val The value to set mShrinked to
@@ -117,6 +124,8 @@ public:
 	  * Tells the scoreboard to increment the oops value
 	  */
 	 void OopsIncrement() { mScoreboard->OopsIncrement(); }
+
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASH_H
