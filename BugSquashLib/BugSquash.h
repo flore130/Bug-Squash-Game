@@ -37,6 +37,9 @@ private:
 		Beginning, Playing, Finished
 	};
 
+	///The state the level is currently in
+	Type mState = Type::Beginning;
+
 	/// Whether or not the the window is in shrink mode
 	bool mShrinked = false;
 
@@ -60,8 +63,6 @@ private:
 	 * in the beginning and end of the levels
 	 */
 	wxStopWatch mStopWatch;
-
-	long elapsed = 0;
 
 protected:
 	/// All of the items in the bug squash application
