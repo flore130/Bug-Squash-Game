@@ -109,6 +109,11 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	mScoreboard->Draw(graphics);
 
 	graphics->PopState();
+
+	if (mState == Type::Beginning)
+	{
+		//Draw level Frame
+	}
 }
 
 /**
@@ -128,7 +133,11 @@ void BugSquash::Update(double elapsed)
 {
 	if (mStopWatch.Time() <= LevelDuration)
 	{
-
+		mState = Type::Beginning;
+	}
+	if (mStopWatch.Time() > LevelDuration)
+	{
+		mState = Type::Playing;
 	}
 	for (auto item : mItems)
 	{
