@@ -164,4 +164,8 @@ void Level::Load(const wxString &filename)
 		}
 	}
 }
-//make funciton draw here
+
+void Level::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+
+}

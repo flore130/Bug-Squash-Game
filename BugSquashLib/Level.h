@@ -63,6 +63,7 @@ public:
  	*/
 	int GetNumBugs() {return mNumBugs;}
 
+	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H
