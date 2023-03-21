@@ -4,10 +4,9 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
-
 #include <Item.h>
-#include <Level.h>
+#include <BugSquash.h>
+#include "gtest/gtest.h"
 
 const std::wstring LaptopImage = L"../images/laptop.png";
 
@@ -22,13 +21,15 @@ public:
 
 TEST(ItemTest, Construct)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	ItemMock myItem(&newLevel);
 }
 
 TEST(ItemTest, GetterSetters)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	ItemMock item(&newLevel);
 
 	// Test initial values

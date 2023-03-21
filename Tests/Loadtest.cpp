@@ -4,9 +4,8 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
 #include <BugSquash.h>
-#include <Level.h>
+#include "gtest/gtest.h"
 
 using namespace std;
 
@@ -17,9 +16,7 @@ TEST(LoadTest, Load)
 	auto file1 = L"data/level0.xml";
 
 
-	Level level;
-
-	level.SetBugSquash(&bugSquash);
+	Level level( &bugSquash );
 
 	level.Load(file1);
 
@@ -36,9 +33,8 @@ TEST(LoadTest, Load)
 	auto file2 = L"data/level1.xml";
 
 
-	Level level2;
+	Level level2( &bugSquash2 );
 
-	level2.SetBugSquash(&bugSquash2);
 
 	level2.Load(file2);
 
@@ -52,9 +48,8 @@ TEST(LoadTest, Load)
 
 	auto file3 = L"data/level2.xml";
 
-	Level level3;
+	Level level3( &bugSquash3 );
 
-	level3.SetBugSquash(&bugSquash3);
 
 	level3.Load(file3);
 

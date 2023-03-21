@@ -4,24 +4,26 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
+#include <BugSquash.h>
 #include <BugNull.h>
 #include <Feature.h>
 #include <Program.h>
-#include <Level.h>
+#include "gtest/gtest.h"
 
 /// Test sprite count
 const int SpriteCount = 1;
 
 TEST(NullBugTest, Construct)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugNull myBug( &newLevel );
 }
 
 TEST(NullBugTest, HitTest)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugNull myBug( &newLevel );
 
 	// Testing at origin
@@ -48,7 +50,8 @@ TEST(NullBugTest, HitTest)
 
 TEST(NullBugTest, MovementTest)
 {
-	Level level;
+	BugSquash* bugSquash;
+	Level level( bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 

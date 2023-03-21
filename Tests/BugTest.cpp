@@ -4,7 +4,7 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
+#include <BugSquash.h>
 #include <BugNull.h>
 #include <BugGarbage.h>
 #include <FatNullBug.h>
@@ -13,11 +13,10 @@
 #include <Feature.h>
 #include <Program.h>
 #include <Bug.h>
-#include <Level.h>
-#include <regex>
 #include <string>
 #include <fstream>
-#include <wx/filename.h>
+#include "gtest/gtest.h"
+
 
 using namespace std;
 
@@ -40,13 +39,15 @@ public:
 
 TEST(BugTest, Construct)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugMock myBug(&newLevel, GarbageBugImage, GarbageSplatImage);
 }
 
 TEST(BugTest, HitTest)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugMock bug(&newLevel, GarbageBugImage, GarbageSplatImage);
 
 	// Testing at origin
@@ -74,7 +75,8 @@ TEST(BugTest, HitTest)
 
 TEST(BugTest, MovementTest)
 {
-	Level level;
+	BugSquash* bugSquash;
+	Level level( bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 

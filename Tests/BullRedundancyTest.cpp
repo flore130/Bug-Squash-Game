@@ -4,24 +4,26 @@
  */
 
 #include <pch.h>
-#include "gtest/gtest.h"
 #include <BugRedundancy.h>
 #include <Feature.h>
+#include <BugSquash.h>
 #include <Program.h>
-#include <Level.h>
+#include "gtest/gtest.h"
 
 /// Test sprite count
 const int SpriteCount = 1;
 
 TEST(RedundancyBugTest, Construct)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugRedundancy myBug( &newLevel );
 }
 
 TEST(RedundancyBugTest, HitTest)
 {
-	Level newLevel;
+	BugSquash* bugSquash;
+	Level newLevel( bugSquash );
 	BugRedundancy myBug( &newLevel );
 
 	// Testing at origin
@@ -48,7 +50,8 @@ TEST(RedundancyBugTest, HitTest)
 
 TEST(RedundancyBugTest, MovementTest)
 {
-	Level level;
+	BugSquash* bugSquash;
+	Level level( bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 
