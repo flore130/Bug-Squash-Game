@@ -193,8 +193,9 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 
 		if (code != nullptr)
 		{
-			//CodeDlg dlg(window, mCode);
-			//dlg.ShowModal();
+			CodeDlg dlg(this, code);
+			dlg.Initialize();
+			dlg.ShowModal();
 		}
 
 	}
