@@ -48,6 +48,8 @@ private:
 	int mNumBugs = 0;
 
 public:
+	Level(BugSquash* bugsquash);
+
 	void Load(const wxString &filename);
 
 	/**

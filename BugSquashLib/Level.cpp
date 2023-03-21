@@ -19,6 +19,14 @@
 using namespace std;
 
 /**
+ * Constructor
+ */
+Level::Level(BugSquash* bugsquash)
+{
+	mBugSquash = bugsquash;
+}
+
+/**
  * Base function for handling loading XML nodes
  *
  * Probably will be temporary, will most likely be more
