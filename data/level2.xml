@@ -86,7 +86,7 @@ public:
         <bug type="garbage" x="1000" y="-100" speed="120" start="10"/>
 
         <bug type="garbage" x="1550" y="190" speed="80" start="13">
-            <code pass="int.*mCoordinates.*\[(mArraySize|2) .*\].*=.*{[0-9]+\, [0-9]+};"><![CDATA[/**
+            <code pass="int.*mCoordinates.*\[(mArraySize|2)\].*=.*\{[0-9]+\,.*[0-9]+\};"><![CDATA[/**
  *Our graph points class
  */
 class GraphPoints

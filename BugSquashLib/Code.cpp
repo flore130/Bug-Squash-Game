@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Code.h"
+#include <wx/regex.h>
 
 /**
  * Constructor
@@ -36,7 +37,13 @@ Code::Code(wxXmlNode* node, std::shared_ptr<Bug> bug)
  */
 bool Code::Passes()
 {
-	return std::regex_search(mCurrentCode, std::wregex(mPass));
+	wxRegEx regex = wxRegEx(mPass);
+	if (regex.IsValid())
+	{
+		return regex.Matches(mCurrentCode);
+	}
+	//return std::regex_search(mCurrentCode, std::wregex(mPass));
+	return false;
 }
 
 
