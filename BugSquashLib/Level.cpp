@@ -18,6 +18,25 @@
 
 using namespace std;
 
+/// Score font size to use
+const int TextSize = 85;
+
+/// Label for font size to use
+const int LabelSize = 40;
+
+/// The font color to use
+const wxColour FontColor = wxColour(0, 200, 200);
+
+/// Left  X location. The right score is
+/// the width minus this value.
+const int LeftScoreX = 150;
+
+/// Y location
+const int ScoreY = 20;
+
+/// Y location
+const int LabelY = 100;
+
 /**
  * Constructor
  */
