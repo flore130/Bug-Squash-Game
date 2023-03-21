@@ -26,9 +26,6 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
 
-		// One time call to set the squash image to face the program
-		bug->FaceSquashToProgram();
-
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
 
@@ -52,9 +49,6 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
-
-		// One time call to set the squash image to face the program
-		bug->FaceSquashToProgram();
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
@@ -80,9 +74,6 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 		// Set the speed of the bug to 0
 		bug->SetSpeed( 0 );
 
-		// One time call to set the squash image to face the program
-		bug->FaceSquashToProgram();
-
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;
 
@@ -106,9 +97,6 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 
 		// Set the speed of the bug to 0
 		feature->SetSpeed( 0 );
-
-		// One time call to set the squash image to face the program
-		feature->FaceSquashToProgram();
 
 		// Tell us that we just squashed the bug, so we can update the scoreboard
 		mJustSquashed = true;

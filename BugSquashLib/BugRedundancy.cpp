@@ -4,6 +4,7 @@
  */
 
 #include "pch.h"
+#include "Program.h"
 #include "BugRedundancy.h"
 #include "Level.h"
 
@@ -52,6 +53,10 @@ const int WingSetY = 5;
  */
 BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName, RedundancyFlySplatImageName, 0)
 {
+	mLeftWingImage = std::make_shared<wxImage>(RedundancyFlyLeftWingImageName);
+	mRightWingImage = std::make_shared<wxImage>(RedundancyFlyRightWingImageName);
+	mTopImage = std::make_shared<wxImage>(RedundancyFlyTopImageName);
+	mSquashedImage = std::make_shared<wxImage>(RedundancyFlySplatImageName);
 }
 
 /**
@@ -73,5 +78,117 @@ double BugRedundancy::DistanceTo(std::shared_ptr<Item> item)
 void BugRedundancy::XmlLoad(wxXmlNode* node)
 {
 	Bug::XmlLoad(node);
+}
+
+void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
+{
+	/// Obtain the angle to rotate the bug so it faces the program
+	auto x = GetProgram()->GetX();
+	auto y = GetProgram()->GetY();
+	auto theta = atan2(y - GetY(),x - GetX());
+
+	/// Get the sub image from the sprite image
+	auto bugImageBitmap = GetBitmap();
+	if (bugImageBitmap.IsNull())
+	{
+		bugImageBitmap = gc->CreateBitmapFromImage(*GetImage());
+		SetBitmap(bugImageBitmap);
+	}
+
+	if (mSquashedFly.IsNull())
+	{
+		mSquashedFly = gc->CreateBitmapFromImage(*mSquashedImage);
+	}
+
+	/// Set the left wing bitmap of the redundancy fly
+	if (mLeftWingBitmap.IsNull())
+	{
+		mLeftWingBitmap = gc->CreateBitmapFromImage(*mLeftWingImage);
+	}
+
+	/// Set the right wing bitmap of the redundancy fly
+	if (mRightWingBitmap.IsNull())
+	{
+		mRightWingBitmap = gc->CreateBitmapFromImage(*mRightWingImage);
+	}
+
+	/// Set the top wing bitmap of the redundancy fly
+	if (mTopBitmap.IsNull())
+	{
+		mTopBitmap = gc->CreateBitmapFromImage(*mTopImage);
+	}
+
+	if (GetIsSquashed())
+	{
+		auto squashedImageWidth = mSquashedImage->GetWidth();
+		auto squashedImageHeight = mSquashedImage->GetHeight();
+		gc->PushState();
+		gc->Translate(GetX(), GetY());
+		gc->Rotate(theta);
+		gc->DrawBitmap(  mSquashedFly,
+							   - (squashedImageWidth/ 2),
+							   - (squashedImageHeight/ 2),
+							   squashedImageWidth,
+							   squashedImageHeight);
+		gc->PopState();
+		return;
+	}
+
+//	/// Get the time the bug has been displayed
+	auto newTime = mStopWatch.Time();
+	auto elapsed = (double) (newTime - mTime) * 0.001;
+	auto wingTheta = WingRotateStart + (elapsed * (WingRotateEnd - WingRotateStart));
+
+	if (elapsed >= WingPeriod)
+	{
+		mTime = newTime;
+		mWingRelaxed = !mWingRelaxed;
+	}
+
+
+
+
+	auto bugWidth = GetImage()->GetWidth();
+	auto bugHeight = GetImage()->GetHeight();
+
+	gc->PushState();
+	gc->Translate(GetX(), GetY());
+	gc->Rotate(theta);
+	gc->DrawBitmap(bugImageBitmap,-bugWidth/2, -bugHeight/2, bugWidth, bugHeight );
+	gc->PopState();
+
+
+	gc->PushState();
+	gc->Translate(GetX(), GetY());
+	gc->Rotate(theta - wingTheta);
+
+	auto xPos = -mLeftWingImage->GetWidth()/2 + FirstWingSetX;
+	auto yPos = -mLeftWingImage->GetHeight()/2 - WingSetY;
+
+	for (int i = 0; i < NumberOfSetsOfWings; i++)
+	{
+		gc->DrawBitmap(mLeftWingBitmap, xPos + WingSetXOffset * i, yPos , mLeftWingImage->GetWidth(), mLeftWingImage->GetHeight());
+	}
+	gc->PopState();
+
+	gc->PushState();
+	gc->Translate(GetX(), GetY());
+	gc->Rotate(theta + wingTheta);
+
+	xPos = -mRightWingImage->GetWidth()/2 + FirstWingSetX;
+	yPos = -mRightWingImage->GetHeight()/2 + WingSetY;
+
+	for (int i = 0; i < NumberOfSetsOfWings; i++)
+	{
+		gc->DrawBitmap(mRightWingBitmap,  xPos + WingSetXOffset * i,yPos , mRightWingImage->GetWidth(), mRightWingImage->GetHeight());
+	}
+
+	gc->PopState();
+
+	gc->PushState();
+	gc->Translate(GetX(), GetY());
+	gc->Rotate(theta);
+	gc->DrawBitmap(mTopBitmap, -mTopImage->GetWidth()/2, -mTopImage->GetHeight()/2, mTopImage->GetWidth(), mTopImage->GetHeight());
+	gc->PopState();
 }
 

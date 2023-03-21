@@ -16,6 +16,7 @@
 #include "Program.h"
 #include "BugNull.h"
 #include "Scoreboard.h"
+#include "RemoveBugVisitor.h"
 
 using namespace std;
 
@@ -86,11 +87,24 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 
 	graphics->DrawRectangle(0, 0, Width, Height);
 
+	vector<std::shared_ptr<Item>> itemsToBeKept;
 
 	for (auto item : mItems)
 	{
+		RemoveBugVisitor visitor;
+		item->Accept(&visitor);
 		item->Draw(graphics);
+		if (!visitor.GetRemoveItemState())
+		{
+			itemsToBeKept.push_back(item);
+			continue;
+		}
+		MissedIncrement();
 	}
+
+	mItems = itemsToBeKept;
+	itemsToBeKept.clear();
+
 
 	mScoreboard->Draw(graphics);
 

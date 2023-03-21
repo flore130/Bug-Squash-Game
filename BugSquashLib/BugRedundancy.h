@@ -24,6 +24,41 @@ private:
 	/// Squashing it now will not spawn additional children.
 	bool mParentSquashed = false;
 
+	/// The left wing image of the bug
+	std::shared_ptr<wxImage> mLeftWingImage;
+
+	/// The left wing bitmap of the fly
+	wxGraphicsBitmap mLeftWingBitmap;
+
+	/// The right wing image of the bug
+	std::shared_ptr<wxImage> mRightWingImage;
+
+	/// The right wing bitmap of the fly
+	wxGraphicsBitmap mRightWingBitmap;
+
+	/// The top image
+	std::shared_ptr<wxImage> mTopImage;
+
+	/// The top image bitmap of the fly
+	wxGraphicsBitmap mTopBitmap;
+
+	/// The squashed image of the fly
+	std::shared_ptr<wxImage> mSquashedImage;
+
+	/// The last stopwatch time
+	long mTime = 0;
+
+	/// The bitmap of the squashed fly
+	wxGraphicsBitmap mSquashedFly;
+
+	/// Stopwatch used to measure elapsed time
+	wxStopWatch mStopWatch;
+
+	/// Determine whether the wing is in a relaxed state or in motion
+	bool mWingRelaxed = true;
+
+
+
 public:
 	/// Default constructor (disabled)
 	BugRedundancy() = delete;
@@ -40,7 +75,7 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
-	void Draw(std::shared_ptr<wxGraphicsContext> gc) override {};
+	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
 
 	/**
 	 * Accept a visitor

@@ -52,6 +52,9 @@ private:
 	/// The code associated with this bug (fat bugs only)
 	std::shared_ptr<Code> mCode = nullptr;
 
+	/// A boolean to show if the bug has gotten to the program
+	bool mHitProgram = false;
+
 protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
@@ -69,6 +72,18 @@ public:
  	* @param newScale The new scaling factor of the bug
  	*/
 	void SetScale(double newScale) { mScale = newScale; }
+
+	/**
+	 * Sets the indicator whether the bug got to the program or not
+	 */
+
+	void SetHitProgram() { mHitProgram = true; }
+
+	/**
+	 * Get whether the bug hit the program or not
+	 * @return a boolean indicating the bug got to the program
+	 */
+	 bool GetHitProgram() { return mHitProgram; }
 
 	
 	/**
@@ -130,7 +145,11 @@ public:
 	 */
 	std::shared_ptr<Code> GetCode() { return mCode; }
 
-	void FaceSquashToProgram();
+	 /**
+	  * Get the program the bug is associated with
+	  * @ return a pointer to the program the fly is associated with
+	  */
+	  std::shared_ptr<Program> GetProgram() { return mProgram;}
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H
