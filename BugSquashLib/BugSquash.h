@@ -44,6 +44,12 @@ private:
 	/// The scoreboard currently being used
 	std::shared_ptr<Scoreboard> mScoreboard = nullptr;
 
+	/**
+	 * Stopwatch to keep track of the 2 second intro frames
+	 * in the beginning and end of the levels
+	 */
+	wxStopWatch mStopWatch;
+
 protected:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems {};
