@@ -14,6 +14,7 @@
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"
 #include "Item.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -155,3 +156,4 @@ void Level::Load(const wxString &filename)
 		}
 	}
 }
+//make funciton draw here

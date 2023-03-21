@@ -19,7 +19,7 @@
 
 using namespace std;
 
-
+const double LevelDuration = 2;
 
 /// Scale to shrink to when in shrink mode
 const double ShrinkScale = 0.75;
