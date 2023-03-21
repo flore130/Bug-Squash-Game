@@ -106,7 +106,7 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	itemsToBeKept.clear();
 
 	mScoreboard->Draw(graphics);
-	graphics->PopState();
+
 
 	if (mState == Type::Beginning)
 	{
@@ -116,6 +116,7 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	{
 		mLevel->DrawLevel(graphics, L"Level Complete!!!");
 	}
+	graphics->PopState();
 }
 
 /**
