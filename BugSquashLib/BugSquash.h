@@ -102,8 +102,6 @@ public:
  	*/
 	int GetNumItems() const { return mItems.size(); }
 
-	Type GetState(){return mState;}
-
 	/**
 	 * Set the Height of mShrinked
 	 * @param val The value to set mShrinked to
