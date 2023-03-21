@@ -12,6 +12,7 @@
 #define PROJECT1_BUGSQUASHLIB_LEVEL_H
 
 #include <memory>
+#include "BugSquash.h"
 
 class BugSquash;
 class Item;
@@ -63,7 +64,7 @@ public:
  	*/
 	int GetNumBugs() {return mNumBugs;}
 
-	void DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label, float x);
+	void DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label);
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 };
