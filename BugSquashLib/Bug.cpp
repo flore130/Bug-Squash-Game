@@ -72,7 +72,7 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Update(double elapsed)
 {
-	if (mStartTime + TextDelay - elapsed <= 0)
+	if (mStartTime - elapsed <= 0)
 	{
 		double programX = mProgram->GetX();
 		double programY = mProgram->GetY();

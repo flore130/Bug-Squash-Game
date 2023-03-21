@@ -19,10 +19,10 @@
 using namespace std;
 
 /// Score font size to use
-const int TextSize = 100;
+const int TextSize = 200;
 
 /// Label for font size to use
-const int LabelSize = 70;
+const int LabelSize = 140;
 
 /// The font color to use
 const wxColour FontColor = wxColour(255, 0, 0);
