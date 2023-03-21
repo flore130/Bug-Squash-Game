@@ -29,13 +29,13 @@ const wxColour FontColor = wxColour(255, 0, 0);
 
 /// Left  X location. The right score is
 /// the width minus this value.
-const int LeftScoreX = 500;
+const int LeftScoreX = 625;
 
 /// Y location
-const int ScoreY = 500;
+const int ScoreY = 300;
 
 /// Y location
-const int LabelY = 325;
+const int LabelY = 425;
 
 /**
  * Constructor
