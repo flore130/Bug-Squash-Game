@@ -37,6 +37,8 @@ void BugSquash::Load(const wxString &filename)
 	mScoreboard->Reset();
 	mLevel = std::make_unique<Level>(this);
 	mLevel->Load(filename);
+
+	mStopWatch.Start();
 }
 
 /**
@@ -124,6 +126,10 @@ void BugSquash::Clear()
  */
 void BugSquash::Update(double elapsed)
 {
+	if (mStopWatch.Time() <= LevelDuration)
+	{
+
+	}
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);
