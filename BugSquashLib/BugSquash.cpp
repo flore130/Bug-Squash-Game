@@ -20,6 +20,7 @@
 
 using namespace std;
 
+///Duration of the Intro Txt
 const double LevelDuration = 2 * 1000;
 
 /// Scale to shrink to when in shrink mode
