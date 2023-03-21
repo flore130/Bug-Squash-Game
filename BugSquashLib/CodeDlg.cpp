@@ -24,11 +24,18 @@ void CodeDlg::Initialize()
 {
 	Create(mWindow, wxID_ANY, L"FatBug Code Editor", wxDefaultPosition, wxSize( 1000, 800));
 
-	wxTextCtrl textCtrl = wxTextCtrl(this,wxID_ANY, mCode->GetCurrentCode(),
-															  wxDefaultPosition, wxSize( 1000, 800));
+	auto sizer = new wxBoxSizer(wxVERTICAL);
 
-	textCtrl.Show(true);
-	bool isShown = textCtrl.IsShown();
-	bool canSee = textCtrl.IsShownOnScreen();
+	auto textCtrl = new wxTextCtrl(this,wxID_ANY, wxEmptyString,
+								   wxDefaultPosition, wxSize( 1000, 800), wxTE_MULTILINE);
+
+	sizer->Add(textCtrl, 1, wxALIGN_LEFT | wxEXPAND, 5);
+	// wxButton.Connect to bind button to event handler
+	// Add button to sizer
+
+	textCtrl->AppendText(mCode->GetCurrentCode());
+
+	SetSizer(sizer);
+	Layout();
 
 }
