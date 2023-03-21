@@ -75,6 +75,8 @@ void Bug::Update(double elapsed)
 		double programY = mProgram->GetY();
 		double programDistance = DistanceTo(mProgram);
 
+
+
 		if (programDistance > 0)
 		{
 			// Get difference in X and Y between bug and program
@@ -88,6 +90,11 @@ void Bug::Update(double elapsed)
 			// Set location to pixels/second * seconds * direction + current position
 			SetLocation(GetX() + (directionX * mSpeed * elapsed),
 						GetY() + (directionY * mSpeed * elapsed));
+		}
+
+		if (programDistance < BugHitRange)
+		{
+			mHitProgram = true;
 		}
 	}
 	mStartTime -= elapsed;
@@ -123,7 +130,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();
-	auto theta = 2 * M_PI - atan2(y - GetY(),x - GetX());
+	auto theta = atan2(y - GetY(),x - GetX());
 
 	// Obtain the bug image
 	auto bugSpriteImage = GetImage();
@@ -135,11 +142,17 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	// If we are squashed, just draw the squashed image
 	if ( mIsSquashed )
 	{
+		auto squashedImageWidth = mSquashedBugImage->GetWidth() * mScale;
+		auto squashedImageHeight = mSquashedBugImage->GetHeight() * mScale;
+		graphics->PushState();
+		graphics->Translate(GetX(), GetY());
+		graphics->Rotate(theta);
 		graphics->DrawBitmap(  graphics->CreateBitmapFromImage( *mSquashedBugImage ) ,
-							  GetX() - (bugWidth / 2),
-							  GetY() - (bugHeight / 2),
-							  bugWidth,
-							  bugHeight );
+							  - (squashedImageWidth/ 2),
+							  - (squashedImageHeight/ 2),
+							  squashedImageWidth,
+							  squashedImageHeight);
+		graphics->PopState();
 		return;
 	}
 
@@ -155,7 +168,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto newTime = mStopWatch.Time();
 	auto elapsed = (double) (newTime - mTime) * 0.001;
 
-	if (elapsed >= 3.0/mSpeed)
+	if (mSpeed > 0 && elapsed >= 3.0/mSpeed)
 	{
 		ChangeSpriteImageIndex(mSpriteCount);
 		mTime = newTime;
@@ -164,28 +177,13 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto bugImageIndex = GetSpriteImageIndex();
 	auto bugBitmap= graphics->CreateSubBitmap(bugImageBitmap,0, bugImageIndex * bugHeight, bugWidth, bugHeight);
 
-	auto image = bugBitmap.ConvertToImage();
-	image = image.Rotate(theta, wxPoint(GetX(), GetY()));
-
-	bugBitmap = graphics->CreateBitmapFromImage(image);
+	graphics->PushState();
+	graphics->Translate(GetX(), GetY());
+	graphics->Rotate(theta);
 
 	bugHeight *= mScale;
 	bugWidth *= mScale;
 
-	graphics->DrawBitmap(bugBitmap, GetX() - (bugWidth / 2), GetY() - (bugHeight / 2), bugWidth, bugHeight );
-}
-
-/**
- * Update the squashed bug's rotation to match the program
- * This function is only called once by the visitor when it's
- * squashed the first time
- */
-void Bug::FaceSquashToProgram()
-{
-	// Obtain the angle to rotate the bug so it faces the program
-	auto x = mProgram->GetX();
-	auto y = mProgram->GetY();
-	auto theta = 2 * M_PI - atan2(y - GetY(),x - GetX());
-
-	*mSquashedBugImage = mSquashedBugImage->Rotate( theta, wxPoint( GetX(), GetY() ) );
+	graphics->DrawBitmap(bugBitmap, - (bugWidth / 2), - (bugHeight / 2), bugWidth, bugHeight );
+	graphics->PopState();
 }
