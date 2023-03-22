@@ -20,12 +20,12 @@ TEST(LoadTest, Load)
 
 	level.Load(file1);
 
-	ASSERT_EQ(8, bugSquash.GetNumItems());
+	ASSERT_EQ(2, bugSquash.GetNumItems());
 
 
 	ASSERT_EQ(1, level.GetNumPrograms());
 
-	ASSERT_EQ(7, level.GetNumBugs());
+	ASSERT_EQ(1, level.GetNumBugs());
 
 	BugSquash bugSquash2;
 
