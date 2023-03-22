@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bug-squash level="Your Level">
-  <program name="Your Level" x="625" y="500">
-    <bug type="garbage" x="-100" y="-100" speed="120" start="1"/>
+  <program name="Water" x="400" y="300">
+
+    <bug type="garbage" x="1100" y="1050" speed="110" start="0"/>
+
+    <feature x="600" y="1100" speed="140" start="7"/>
+
+    <bug type="null" x="500" y="-100" speed="130" start="1"/>
+
+    <bug type="redundancy" x="100" y="1100" speed="100" start="5"/>
+
+    <bug type="null" x="1350" y="1100" speed="130" start="4">
+      <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
+    GetGame()->SetPause(false);
+
+    mCode->Clear();
+
+    return true;
+]]></code>
+    </bug>
+
+    <bug type="garbage" x="-100" y="900" speed="100" start="10">
+      <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
+ * The game scoreboard/scoring area
+ */
+class ScoreBoard
+{
+private:
+    /// The current score
+    int mScore;
+
+public:
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+};
+]]></code>
+    </bug>
   </program>
+
+
+  <program name="Earth" x="850" y="300">
+
+  </program>
+
+  <program name="Fire" x="400" y="700">
+
+  </program>
+
+
+  <program name="Air" x="850" y="700">
+
+  </program>
+  <nuke x="625" y="500" speed="0" start="7"/>
 </bug-squash>
