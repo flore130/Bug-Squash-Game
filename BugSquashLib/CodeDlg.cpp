@@ -66,7 +66,8 @@ void CodeDlg::OnOk(wxCommandEvent& event)
 		mView->FixedIncrement();
 	}
 
-	Close(true);
+	mView->ResumeStopwatch();
+	EndModal(wxID_OK);
 }
 
 /**
@@ -75,7 +76,6 @@ void CodeDlg::OnOk(wxCommandEvent& event)
  */
 void CodeDlg::OnClose(wxCloseEvent& event)
 {
-	mTextCtrl->Destroy();
 	mView->ResumeStopwatch();
-	Destroy();
+	EndModal(wxID_CANCEL);
 }
