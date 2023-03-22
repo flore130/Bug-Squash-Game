@@ -56,3 +56,22 @@ Images::Images()
 	mItemImages[ NullBugSpriteImageName ] = std::make_shared< wxImage >( NullBugSpriteImageName );
 	mItemImages[ NullBugSplatImageName ] = std::make_shared< wxImage >( NullBugSplatImageName );
 }
+
+/**
+ * Check to see if there is an image matching that filename. If there is, return it.
+ * If there isn't, return a nullptr
+ * @param filename The filename we are trying to get the image to
+ * @return A shared pointer to said filename if applicable
+ */
+std::shared_ptr< wxImage > Images::GetImage( const std::wstring& filename )
+{
+	try
+	{
+		std::shared_ptr< wxImage > image = mItemImages.at( filename );
+		return image;
+	}
+	catch ( const std::out_of_range& e )
+	{
+		return nullptr;
+	}
+}

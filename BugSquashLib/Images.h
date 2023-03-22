@@ -21,6 +21,8 @@ private:
 
 public:
 	Images();
+
+	std::shared_ptr< wxImage > GetImage( const std::wstring& filename );
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_IMAGES_H

@@ -57,10 +57,14 @@ const double TextDelay = 2;
  */
 BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName, RedundancyFlySplatImageName, 0)
 {
-	mLeftWingImage = std::make_shared<wxImage>(RedundancyFlyLeftWingImageName);
-	mRightWingImage = std::make_shared<wxImage>(RedundancyFlyRightWingImageName);
-	mTopImage = std::make_shared<wxImage>(RedundancyFlyTopImageName);
-	mSquashedImage = std::make_shared<wxImage>(RedundancyFlySplatImageName);
+	mLeftWingImage = level->GetImage( RedundancyFlyLeftWingImageName );
+	mRightWingImage = level->GetImage( RedundancyFlyRightWingImageName );
+	mTopImage = level->GetImage( RedundancyFlyTopImageName );
+	mSquashedImage = level->GetImage( RedundancyFlySplatImageName );
+	// mLeftWingImage = std::make_shared<wxImage>(RedundancyFlyLeftWingImageName);
+	// mRightWingImage = std::make_shared<wxImage>(RedundancyFlyRightWingImageName);
+	// mTopImage = std::make_shared<wxImage>(RedundancyFlyTopImageName);
+	// mSquashedImage = std::make_shared<wxImage>(RedundancyFlySplatImageName);
 }
 
 /**

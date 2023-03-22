@@ -213,3 +213,13 @@ void Level::DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring 
 	graphics->GetTextExtent(label, &width, &height);
 	graphics->DrawText(label, LeftScoreX-width/2, LabelY);
 }
+
+/**
+ * Gets an image or a nullptr from the map of images
+ * @param filename The filename of the image we want
+ * @return A shared point to the wxImage or a nullptr if it's not in the map
+ */
+std::shared_ptr< wxImage > Level::GetImage( const std::wstring& filename )
+{
+	return mBugSquash->GetImage( filename );
+}

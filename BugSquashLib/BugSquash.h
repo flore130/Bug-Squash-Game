@@ -143,6 +143,12 @@ public:
 		  vec.clear();
 	  }
 
+	/**
+	 * Gets an image or a nullptr from the map of images
+	 * @param filename The filename of the image we want
+	 * @return A shared point to the wxImage or a nullptr if it's not in the map
+	 */
+	std::shared_ptr< wxImage > GetImage( const std::wstring& filename ) { return mImages->GetImage( filename ); }
 
 };
 

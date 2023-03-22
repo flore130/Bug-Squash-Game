@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Item.h"
+#include "Level.h"
 
 using namespace std;
 
@@ -16,7 +17,8 @@ using namespace std;
  */
 Item::Item(Level *level, const std::wstring &filename) : mLevel(level)
 {
-	mItemImage = std::make_shared<wxImage>(filename);
+	mItemImage = mLevel->GetImage( filename );
+	// mItemImage = std::make_shared<wxImage>(filename);
 }
 
 /**

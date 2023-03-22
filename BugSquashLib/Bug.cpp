@@ -24,7 +24,8 @@ const double TextDelay = 2;
 Bug::Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount) : Item(level, filename)
 {
 	mSpriteCount = spriteCount;
-	mSquashedBugImage = std::make_shared<wxImage>( squashedFilename );
+	mSquashedBugImage = level->GetImage( squashedFilename );
+	// mSquashedBugImage = std::make_shared<wxImage>( squashedFilename );
 	mStopWatch.Start();
 }
 

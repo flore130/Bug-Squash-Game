@@ -15,7 +15,6 @@
 
 class BugSquash;
 class Item;
-class ItemVisitor;
 class Program;
 class BugNuke;
 
@@ -76,6 +75,8 @@ public:
 	void DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label);
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+
+	std::shared_ptr< wxImage > GetImage( const std::wstring& filename );
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H
