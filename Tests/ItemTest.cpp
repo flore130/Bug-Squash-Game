@@ -21,15 +21,15 @@ public:
 
 TEST(ItemTest, Construct)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	ItemMock myItem(&newLevel);
 }
 
 TEST(ItemTest, GetterSetters)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	ItemMock item(&newLevel);
 
 	// Test initial values
