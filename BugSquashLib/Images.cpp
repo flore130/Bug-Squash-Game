@@ -70,6 +70,7 @@ std::shared_ptr< wxImage > Images::GetImage( const std::wstring& filename )
 		std::shared_ptr< wxImage > image = mItemImages.at( filename );
 		return image;
 	}
+	// at will return an out of range error if we access an invalid element. 
 	catch ( const std::out_of_range& e )
 	{
 		return nullptr;
