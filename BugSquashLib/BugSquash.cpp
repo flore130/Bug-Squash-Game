@@ -202,26 +202,3 @@ BugSquash::BugSquash()
 
 	mImages = std::make_unique< Images >();
 }
-
-/**
- * Tell all bugs to resume sprite swapping
- * @param event
- */
-void BugSquash::OnCloseDialog(wxCloseEvent &event)
-{
-	for (auto item : mItems)
-	{
-		
-	}
-
-	// Need this line so the event handler will also call CodeDlg function
-	event.Skip();
-}
-
-/**
- * Tell all bugs in list to stop sprite swapping
- */
-void BugSquash::OnOpenDialog()
-{
-
-}

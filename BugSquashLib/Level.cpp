@@ -223,3 +223,13 @@ std::shared_ptr< wxImage > Level::GetImage( const std::wstring& filename )
 {
 	return mBugSquash->GetImage( filename );
 }
+
+
+/**
+ * Whether a FatBug's code is currently being edited
+ * @return true if player is editing fat bugs, false otherwise
+ */
+bool Level::GetIsEditingCode()
+{
+	return mBugSquash->GetIsEditingCode();
+}

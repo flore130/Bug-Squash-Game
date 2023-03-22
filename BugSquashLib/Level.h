@@ -77,6 +77,8 @@ public:
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
 	std::shared_ptr< wxImage > GetImage( const std::wstring& filename );
+
+	bool GetIsEditingCode();
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H
