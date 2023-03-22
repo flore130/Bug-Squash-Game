@@ -18,7 +18,6 @@ using namespace std;
 Item::Item(Level *level, const std::wstring &filename) : mLevel(level)
 {
 	mItemImage = mLevel->GetImage( filename );
-	// mItemImage = std::make_shared<wxImage>(filename);
 }
 
 /**

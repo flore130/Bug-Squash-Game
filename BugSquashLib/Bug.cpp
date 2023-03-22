@@ -25,7 +25,6 @@ Bug::Bug(Level *level, const std::wstring &filename, const std::wstring& squashe
 {
 	mSpriteCount = spriteCount;
 	mSquashedBugImage = level->GetImage( squashedFilename );
-	// mSquashedBugImage = std::make_shared<wxImage>( squashedFilename );
 	mStopWatch.Start();
 }
 

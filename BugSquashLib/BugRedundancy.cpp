@@ -61,10 +61,6 @@ BugRedundancy::BugRedundancy(Level *level) : Bug(level, RedundancyFlyImageName, 
 	mRightWingImage = level->GetImage( RedundancyFlyRightWingImageName );
 	mTopImage = level->GetImage( RedundancyFlyTopImageName );
 	mSquashedImage = level->GetImage( RedundancyFlySplatImageName );
-	// mLeftWingImage = std::make_shared<wxImage>(RedundancyFlyLeftWingImageName);
-	// mRightWingImage = std::make_shared<wxImage>(RedundancyFlyRightWingImageName);
-	// mTopImage = std::make_shared<wxImage>(RedundancyFlyTopImageName);
-	// mSquashedImage = std::make_shared<wxImage>(RedundancyFlySplatImageName);
 }
 
 /**
