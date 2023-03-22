@@ -102,7 +102,7 @@ public:
 
 	virtual void Update(double elapsed) override;
 
-	void SetProgram(std::shared_ptr<Program> parent) override;
+	void SetProgram(wxXmlNode *node,std::shared_ptr<Program> parent) override;
 
 	void XmlLoad(wxXmlNode *node) override;
 

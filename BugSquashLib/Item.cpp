@@ -66,7 +66,7 @@ void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 * @param node The item that we are looking at
  *@param parent The program that the item is being assigned to
 */
-void Item::SetProgram(shared_ptr<Program> parent)
+void Item::SetProgram(wxXmlNode* wxNode,shared_ptr<Program> parent)
 {
 
 }
