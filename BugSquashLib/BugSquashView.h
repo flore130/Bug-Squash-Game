@@ -64,6 +64,11 @@ public:
 	 * Resume stopwatch
 	 */
 	void ResumeStopwatch() { mStopWatch.Resume(); }
+
+	/**
+	 * Increments fixed count of the current level's scoreboard
+	 */
+	void FixedIncrement() { mBugSquash.FixedIncrement(); }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGSQUASHVIEW_H

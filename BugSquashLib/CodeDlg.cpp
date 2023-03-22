@@ -63,6 +63,7 @@ void CodeDlg::OnOk(wxCommandEvent& event)
 	if (mCode->Passes())
 	{
 		mCode->GetBug()->SetIsSquashed(true);
+		mView->FixedIncrement();
 	}
 
 	Close(true);
