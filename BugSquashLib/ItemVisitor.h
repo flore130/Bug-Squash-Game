@@ -16,6 +16,7 @@ class FatGarbageBug;
 class FatNullBug;
 class Feature;
 class Program;
+class BugNuke;
 
 /**
  * Base class for our Item Visitor
@@ -75,6 +76,12 @@ public:
 		 * @param program Program we are visiting
 		 */
 		 virtual void VisitProgram( Program* program ) {}
+
+		/**
+		* Visit the BugNuke object
+		* @param nuke The BugNuke power up we are visiting
+		*/
+		virtual void VisitBugNuke( BugNuke* nuke ) {}
 
 };
 

@@ -10,6 +10,7 @@
 #include "BugNull.h"
 #include "BugRedundancy.h"
 #include "Feature.h"
+#include "BugNuke.h"
 #include "Program.h"
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"
@@ -171,6 +172,13 @@ void Level::Load(const wxString &filename)
 			program_item = make_shared<Program>(this);
 			mBugSquash->Add( program_item );
 			program_item->XmlLoad(child);
+		}
+		else if (name == L"nuke")
+		{
+			shared_ptr<Item> nuke_item;
+			nuke_item = make_shared<BugNuke>(this);
+			mBugSquash->Add(nuke_item);
+			nuke_item->XmlLoad(child);
 		}
 	}
 	child = root->GetChildren();
