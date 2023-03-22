@@ -72,7 +72,7 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Update(double elapsed)
 {
-	if (mStartTime + TextDelay - elapsed <= 0)
+	if (mStartTime - elapsed <= 0)
 	{
 		double programX = mProgram->GetX();
 		double programY = mProgram->GetY();
@@ -171,7 +171,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto newTime = mStopWatch.Time();
 	auto elapsed = (double) (newTime - mTime) * 0.001;
 
-	if (mSpeed > 0 && elapsed >= 3.0/mSpeed && mStartTime + TextDelay <= 0)
+	if (mSpeed > 0 && elapsed >= 3.0/mSpeed && mStartTime <= 0)
 	{
 		ChangeSpriteImageIndex(mSpriteCount);
 		mTime = newTime;
@@ -182,7 +182,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 	graphics->PushState();
 	graphics->Translate(GetX(), GetY());
-	if (mStartTime + TextDelay <= 0)
+	if (mStartTime <= 0)
 	{
 		graphics->Rotate(theta);
 	}

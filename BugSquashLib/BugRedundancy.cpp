@@ -94,7 +94,7 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	auto x = GetProgram()->GetX();
 	auto y = GetProgram()->GetY();
 	auto theta = 0;
-	if (GetStart() + TextDelay <= 0)
+	if (GetStart() <= 0)
 	{
 		theta = atan2(y - GetY(),x - GetX());
 	}
