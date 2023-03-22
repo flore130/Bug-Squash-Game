@@ -17,6 +17,7 @@ class BugSquash;
 class Item;
 class ItemVisitor;
 class Program;
+class BugNuke;
 
 /**
  * Level class
