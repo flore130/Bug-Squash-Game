@@ -182,7 +182,10 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 	graphics->PushState();
 	graphics->Translate(GetX(), GetY());
-	graphics->Rotate(theta);
+	if (mStartTime <= 0)
+	{
+		graphics->Rotate(theta);
+	}
 
 	bugHeight *= mScale;
 	bugWidth *= mScale;
