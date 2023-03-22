@@ -199,6 +199,8 @@ void BugSquashView::OnDoubleClick(wxMouseEvent &event)
 		{
 			CodeDlg dlg(this, code);
 			dlg.Initialize();
+			dlg.Bind(wxEVT_CLOSE_WINDOW, &BugSquash::OnCloseDialog, &mBugSquash);
+
 			dlg.ShowModal();
 		}
 
