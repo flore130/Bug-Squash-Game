@@ -88,12 +88,12 @@ void Level::XmlItem(wxXmlNode *node, shared_ptr<Program> parent)
 		{
 			item = make_shared<BugRedundancy>(this);
 		}
-		item->SetProgram(node, parent);
+		item->SetProgram(parent);
 	}
 	else if (name == L"feature")
 	{
 		item = make_shared<Feature>(this);
-		item->SetProgram(node, parent);
+		item->SetProgram(parent);
 	}
 
 	if (item != nullptr)

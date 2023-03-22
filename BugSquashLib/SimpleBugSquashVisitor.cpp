@@ -64,22 +64,30 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
   */
 void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 {
-	mIsAlreadySquashed = bug->GetIsSquashed();
-
-	// If the bug isn't squashed, and it's simple, squash it
-	if ( !mIsAlreadySquashed )
+	if (bug->GetParentSquashedStatus())
 	{
-		bug->SetIsSquashed( true );
+		mIsAlreadySquashed = bug->GetIsSquashed();
 
-		// Set the speed of the bug to 0
-		bug->SetSpeed( 0 );
+		// If the bug isn't squashed, and it's simple, squash it
+		if ( !mIsAlreadySquashed )
+		{
+			bug->SetIsSquashed( true );
 
-		// Tell us that we just squashed the bug, so we can update the scoreboard
-		mJustSquashed = true;
+			// Set the speed of the bug to 0
+			bug->SetSpeed( 0 );
 
-		// It was a good squash
-		mBugSquashed = true;
+			// Tell us that we just squashed the bug, so we can update the scoreboard
+			mJustSquashed = true;
+
+			// It was a good squash
+			mBugSquashed = true;
+		}
 	}
+	else
+	{
+		bug->SpawnRedundancyFlies();
+	}
+
 }
 
 /**

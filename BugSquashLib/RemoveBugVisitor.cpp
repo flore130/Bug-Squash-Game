@@ -24,7 +24,7 @@ void RemoveBugVisitor::VisitBugNull( BugNull* bug )
 
 void RemoveBugVisitor::VisitBugRedundancy( BugRedundancy* bug )
 {
-	if (bug->GetHitProgram())
+	if (bug->GetHitProgram() || bug->GetDisappearState())
 	{
 		mRemoveItem = true;
 	}

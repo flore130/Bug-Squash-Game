@@ -17,9 +17,9 @@
 #include "ItemVisitor.h"
 #include "Scoreboard.h"
 
+class Level;
 class Item;
 class Scoreboard;
-class Level;
 
 /**
  * The main BugSquash class.
@@ -72,8 +72,6 @@ protected:
 	std::vector<std::shared_ptr<Item>> mItems {};
 
 public:
-
-
 	BugSquash();
 	void Load(const wxString &filename);
 	void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
@@ -122,6 +120,24 @@ public:
 	  * Tells the scoreboard to increment the oops value
 	  */
 	 void OopsIncrement() { mScoreboard->OopsIncrement(); }
+
+	 /**
+	  * Remove an item from the list
+	  */
+	  void RemoveItem(std::shared_ptr<Item> item){
+		  auto vec = std::vector<std::shared_ptr<Item>>();
+		  for (auto temp : mItems)
+		  {
+			  if (item == temp)
+			  {
+				  continue;
+			  }
+			  vec.push_back(temp);
+		  }
+		  mItems.clear();
+		  mItems = vec;
+		  vec.clear();
+	  }
 
 
 };

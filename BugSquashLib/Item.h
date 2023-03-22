@@ -122,9 +122,15 @@ public:
 	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
 
-	virtual void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent);
+	virtual void SetProgram(std::shared_ptr<Program> parent);
 
 	virtual bool HitTest(double x, double y);
+
+	/**
+	 * Get the level the item is associated with
+	 * @return a pointer to the level the game is associated with
+	 */
+	 Level * GetLevel() { return mLevel; };
 
 };
 

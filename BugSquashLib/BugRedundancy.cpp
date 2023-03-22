@@ -7,6 +7,7 @@
 #include "Program.h"
 #include "BugRedundancy.h"
 #include "Level.h"
+#include <vector>
 
 using namespace std;
 
@@ -80,6 +81,10 @@ void BugRedundancy::XmlLoad(wxXmlNode* node)
 	Bug::XmlLoad(node);
 }
 
+/**
+ * Draw the redundancy fly
+ * @param gc the graphics context to draw on
+ */
 void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
 	/// Obtain the angle to rotate the bug so it faces the program
@@ -126,10 +131,10 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		gc->Translate(GetX(), GetY());
 		gc->Rotate(theta);
 		gc->DrawBitmap(  mSquashedFly,
-							   - (squashedImageWidth/ 2),
-							   - (squashedImageHeight/ 2),
-							   squashedImageWidth,
-							   squashedImageHeight);
+						 - (squashedImageWidth/ 2),
+						 - (squashedImageHeight/ 2),
+						 squashedImageWidth,
+						 squashedImageHeight);
 		gc->PopState();
 		return;
 	}
@@ -142,7 +147,6 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	if (elapsed >= WingPeriod)
 	{
 		mTime = newTime;
-		mWingRelaxed = !mWingRelaxed;
 	}
 
 
@@ -192,3 +196,76 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	gc->PopState();
 }
 
+/**
+ * Generate random points given a point with some average distance
+ * @param x the x coordinate of the point
+ * @param y the y coordinate of the point
+ * @param numberOfPoints the number of points to generate
+ * @param dispersion the radius which the points are supposed to be dispersed by
+ * @return a vector containing the points
+ */
+std::vector<std::vector<double>> GenerateRandomPoints(int x, int y, int numberOfPoints, int dispersion)
+{
+	std::vector<std::vector<double>> points{};
+	random_device rd;
+	mt19937 gen(rd());
+	normal_distribution<double> dist(dispersion, 5);
+
+	for (int i = 0; i < numberOfPoints; i++)
+	{
+		double angle = (double)rand() * 2 * M_PI / RAND_MAX;
+
+		// Generate random distance
+		double distance = dist(gen);
+
+		// Calculate x and y coordinates of new point
+		double x0 = x + distance * cos(angle);
+		double y0 = y + distance * sin(angle);
+		std::vector<double> temp {x0, y0};
+		points.push_back(temp);
+	}
+	return points;
+}
+
+/**
+* Spawn redundancy bugs
+ *
+*/
+void BugRedundancy::SpawnRedundancyFlies()
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> distrib(3, 6);
+
+	int numberOfFlies = distrib(gen);
+
+	auto points = GenerateRandomPoints(GetX(), GetY(),numberOfFlies, 200);
+	std::vector<std::shared_ptr<BugRedundancy>> store{};
+
+	for (int i = 0; i < numberOfFlies; ++i)
+	{
+		std::shared_ptr<BugRedundancy> bugPtr;
+		bugPtr = std::make_shared<BugRedundancy>(GetLevel());
+
+		auto locationX = points[i][0];
+		auto locationY = points[i][1];
+		bugPtr->SetLocation(locationX, locationY);
+		bugPtr->SetProgram(GetProgram());
+		bugPtr->SetSpeed(GetSpeed());
+		bugPtr->mParentSquashed = true;
+		store.push_back(bugPtr);
+	}
+
+	auto bugSquash = GetLevel()->GetBugSquash();
+	for (auto item : store)
+	{
+		bugSquash->Add(item);
+	}
+	mDisappearState = true;
+}
+
+void BugRedundancy::Update(double elapsed)
+{
+	Bug::Update(elapsed);
+	mTime += elapsed;
+}

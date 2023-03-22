@@ -100,9 +100,9 @@ public:
 	 */
 	void Accept( ItemVisitor* visitor ) override {};
 
-	void Update(double elapsed) override;
+	virtual void Update(double elapsed) override;
 
-	void SetProgram(wxXmlNode *node, std::shared_ptr<Program> parent) override;
+	void SetProgram(std::shared_ptr<Program> parent) override;
 
 	void XmlLoad(wxXmlNode *node) override;
 
@@ -150,6 +150,12 @@ public:
 	  * @ return a pointer to the program the fly is associated with
 	  */
 	  std::shared_ptr<Program> GetProgram() { return mProgram;}
+
+	  /**
+	   * Get the speed the bug is moving at
+	   * @return speed the bug is moving with
+	   */
+	   double GetSpeed () { return mSpeed; }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUG_H

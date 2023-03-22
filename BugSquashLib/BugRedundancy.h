@@ -9,8 +9,10 @@
 #define PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H
 
 #include <wx/wx.h>
+#include <random>
 #include "Item.h"
 #include "Bug.h"
+#include "BugSquash.h"
 
 
 /**
@@ -46,7 +48,7 @@ private:
 	std::shared_ptr<wxImage> mSquashedImage;
 
 	/// The last stopwatch time
-	long mTime = 0;
+	double mTime = 0;
 
 	/// The bitmap of the squashed fly
 	wxGraphicsBitmap mSquashedFly;
@@ -54,8 +56,8 @@ private:
 	/// Stopwatch used to measure elapsed time
 	wxStopWatch mStopWatch;
 
-	/// Determine whether the wing is in a relaxed state or in motion
-	bool mWingRelaxed = true;
+	/// Determine whether the bug is to disappear or not
+	bool mDisappearState = false;
 
 
 
@@ -88,6 +90,17 @@ public:
 	 * @return mParentSquashed
 	 */
 	bool GetParentSquashedStatus() { return mParentSquashed; }
+
+	void SetParentSquashed() { mParentSquashed = true; }
+
+	bool GetDisappearState() { return mDisappearState; }
+
+	/**
+	 * Create multiple redundancy flies
+	 */
+	 void SpawnRedundancyFlies();
+
+	 void Update(double elapsed) override;
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H

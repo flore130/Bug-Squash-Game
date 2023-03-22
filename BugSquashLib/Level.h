@@ -64,6 +64,15 @@ public:
  	*/
 	int GetNumBugs() {return mNumBugs;}
 
+	/**
+	 * Get the bug squash class associated with the level
+	 * @return the bug squash class the level belongs to
+	 */
+	 BugSquash* GetBugSquash()
+	 {
+		 return mBugSquash;
+	 }
+
 	void DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label);
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics);
