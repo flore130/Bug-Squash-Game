@@ -92,7 +92,11 @@ public:
  	*/
 	void SetStart(double newStart) { mStartTime = newStart; }
 
-
+	/**
+ 	* Obtains the start time for this bug
+ 	* @return Returns the value of the start time member variable for this bug
+	 */
+	double GetStart() { return mStartTime; }
 
 	/**
 	 * Accept a visitor
