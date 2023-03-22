@@ -191,8 +191,11 @@ void BugSquash::Accept( ItemVisitor* visitor )
 /**
  * Constructor
  * Initializes the scoreboard for BugSquash to use
+ * Loads all of the images
  */
 BugSquash::BugSquash()
 {
 	mScoreboard = std::make_unique<Scoreboard>(this);
+
+	mImages = std::make_unique< Images >();
 }

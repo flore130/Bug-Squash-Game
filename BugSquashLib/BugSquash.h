@@ -16,10 +16,10 @@
 #include "Level.h"
 #include "ItemVisitor.h"
 #include "Scoreboard.h"
+#include "Images.h"
 
-class Level;
 class Item;
-class Scoreboard;
+
 
 /**
  * The main BugSquash class.
@@ -65,7 +65,11 @@ private:
 	 */
 	wxStopWatch mStopWatch;
 
+	/// Are all bugs in mItems squashed
 	bool mAllBugsSquashed = false;
+
+	/// Pointer to the image class which holds all of the images used
+	std::shared_ptr< Images > mImages = nullptr;
 
 protected:
 	/// All of the items in the bug squash application
