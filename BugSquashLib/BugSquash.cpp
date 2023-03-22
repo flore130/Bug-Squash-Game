@@ -36,9 +36,12 @@ const double ShrinkScale = 0.75;
 void BugSquash::Load(const wxString &filename)
 {
 	mScoreboard->Reset();
+	Clear();
 	mLevel = std::make_unique<Level>(this);
 	mLevel->Load(filename);
 
+	// Reset the bug status
+	mAllBugsSquashed = false;
 	mStopWatch.Start();
 }
 
@@ -67,7 +70,7 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	auto scaleY = double(height) / double(Height);
 	mScale = std::min(scaleX, scaleY);
 
-	if(mShrinked)
+	if( mShrinked )
 	{
 		mScale *= ShrinkScale;
 	}
@@ -112,9 +115,9 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	{
 		mLevel->Draw(graphics);
 	}
-	else if (mState == Type::Finished)
+	else if ( mState == Type::Finished )
 	{
-		mLevel->DrawLevel(graphics, L"Level Complete!!!");
+		mLevel->DrawLevel( graphics, L"Level Complete!!!" );
 	}
 	graphics->PopState();
 }
@@ -139,7 +142,7 @@ void BugSquash::Update(double elapsed)
 	{
 		mState = Type::Beginning;
 	}
-	else if(mAllBugsSquashed)
+	else if( mAllBugsSquashed )
 	{
 		mState = Type::Finished;
 	}

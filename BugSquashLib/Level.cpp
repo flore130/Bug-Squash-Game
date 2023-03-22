@@ -41,7 +41,7 @@ const int LabelY = 425;
 /**
  * Constructor
  */
-Level::Level(BugSquash* bugsquash) : mBugSquash(bugsquash){}
+Level::Level(BugSquash* bugSquash) : mBugSquash(bugSquash){}
 
 /**
  * Base function for handling loading XML nodes

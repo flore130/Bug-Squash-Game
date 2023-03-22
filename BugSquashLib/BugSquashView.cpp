@@ -219,7 +219,6 @@ void BugSquashView::OnFileOpen(wxCommandEvent& event)
 	}
 
 	auto filename = loadFileDialog.GetPath();
-	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }
@@ -249,7 +248,6 @@ void BugSquashView::OnUpdateShrink( wxUpdateUIEvent& event )
 void BugSquashView::OnLevelZero(wxCommandEvent &event)
 {
 	auto filename = L"data/level0.xml";
-	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }
@@ -261,7 +259,6 @@ void BugSquashView::OnLevelZero(wxCommandEvent &event)
 void BugSquashView::OnLevelOne(wxCommandEvent &event)
 {
 	auto filename = L"data/level1.xml";
-	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }
@@ -273,7 +270,6 @@ void BugSquashView::OnLevelOne(wxCommandEvent &event)
 void BugSquashView::OnLevelTwo(wxCommandEvent &event)
 {
 	auto filename = L"data/level2.xml";
-	mBugSquash.Clear();
 	mBugSquash.Load(filename);
 	Refresh();
 }
@@ -284,7 +280,6 @@ void BugSquashView::OnLevelTwo(wxCommandEvent &event)
  */
 void BugSquashView::OnLevelThree(wxCommandEvent &event)
 {
-	mBugSquash.Clear();
 	auto filename = L"data/level3.xml";
 	mBugSquash.Load(filename);
 	Refresh();
