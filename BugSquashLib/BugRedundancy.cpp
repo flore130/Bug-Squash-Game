@@ -249,7 +249,7 @@ void BugRedundancy::SpawnRedundancyFlies()
 		bugPtr->SetLocation(locationX, locationY);
 		bugPtr->SetProgram(nullptr,GetProgram());
 		bugPtr->SetSpeed(GetSpeed());
-		bugPtr->SetStart(0);
+		bugPtr->SetStart(0 - TextDelay);
 		bugPtr->mParentSquashed = true;
 		bugSquash->Add(bugPtr);
 	}

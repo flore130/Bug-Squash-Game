@@ -59,6 +59,8 @@ protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
 public:
+	const static int TextDelay = 2;
+
 	bool HitTest(double x, double y) override;
 
 	/**
@@ -90,7 +92,7 @@ public:
  	* Sets the start time for this bug
  	* @param newStart How many seconds before a bug starts to move
  	*/
-	void SetStart(double newStart) { mStartTime = newStart; }
+	void SetStart(double newStart) { mStartTime = newStart + 2; }
 
 	/**
  	* Obtains the start time for this bug
