@@ -48,9 +48,6 @@ const int FirstWingSetX = -36;
 /// of this is the Y position for the left wings.
 const int WingSetY = 5;
 
-///The Constant to delay bugs from crawling in when text appears
-const double TextDelay = 2;
-
 /**
  * Constructor
  * @param level Level that this bug is a member of
@@ -93,11 +90,7 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = GetProgram()->GetX();
 	auto y = GetProgram()->GetY();
-	auto theta = 0;
-	if (GetStart() + TextDelay <= 0)
-	{
-		theta = atan2(y - GetY(),x - GetX());
-	}
+	auto theta = atan2(y - GetY(),x - GetX());
 
 	/// Get the sub image from the sprite image
 	auto bugImageBitmap = GetBitmap();
