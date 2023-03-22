@@ -3,4 +3,5 @@
  * @author npmar
  */
 
+#include "pch.h"
 #include "BugNuke.h"

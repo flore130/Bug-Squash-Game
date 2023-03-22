@@ -12,7 +12,6 @@
 #define PROJECT1_BUGSQUASHLIB_LEVEL_H
 
 #include <memory>
-#include "BugSquash.h"
 
 class BugSquash;
 class Item;
