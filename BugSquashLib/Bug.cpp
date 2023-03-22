@@ -171,7 +171,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	auto newTime = mStopWatch.Time();
 	auto elapsed = (double) (newTime - mTime) * 0.001;
 
-	if (mSpeed > 0 && elapsed >= 3.0/mSpeed)
+	if (mSpeed > 0 && elapsed >= 3.0/mSpeed && mStartTime <= 0)
 	{
 		ChangeSpriteImageIndex(mSpriteCount);
 		mTime = newTime;
