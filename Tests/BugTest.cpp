@@ -39,15 +39,15 @@ public:
 
 TEST(BugTest, Construct)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugMock myBug(&newLevel, GarbageBugImage, GarbageSplatImage);
 }
 
 TEST(BugTest, HitTest)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugMock bug(&newLevel, GarbageBugImage, GarbageSplatImage);
 
 	// Testing at origin
@@ -75,8 +75,8 @@ TEST(BugTest, HitTest)
 
 TEST(BugTest, MovementTest)
 {
-	BugSquash* bugSquash;
-	Level level( bugSquash );
+	BugSquash bugSquash;
+	Level level( &bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 

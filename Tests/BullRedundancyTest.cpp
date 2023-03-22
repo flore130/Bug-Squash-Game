@@ -15,15 +15,15 @@ const int SpriteCount = 1;
 
 TEST(RedundancyBugTest, Construct)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugRedundancy myBug( &newLevel );
 }
 
 TEST(RedundancyBugTest, HitTest)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugRedundancy myBug( &newLevel );
 
 	// Testing at origin
@@ -50,8 +50,8 @@ TEST(RedundancyBugTest, HitTest)
 
 TEST(RedundancyBugTest, MovementTest)
 {
-	BugSquash* bugSquash;
-	Level level( bugSquash );
+	BugSquash bugSquash;
+	Level level( &bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 

@@ -15,15 +15,15 @@ const int SpriteCount = 1;
 
 TEST(NullBugTest, Construct)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugNull myBug( &newLevel );
 }
 
 TEST(NullBugTest, HitTest)
 {
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
 	BugNull myBug( &newLevel );
 
 	// Testing at origin
@@ -50,8 +50,8 @@ TEST(NullBugTest, HitTest)
 
 TEST(NullBugTest, MovementTest)
 {
-	BugSquash* bugSquash;
-	Level level( bugSquash );
+	BugSquash bugSquash;
+	Level level( &bugSquash );
 	std::shared_ptr<Program> program = std::make_shared<Program>(&level);
 	program->SetLocation(200, 100);
 

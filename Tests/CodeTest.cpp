@@ -8,6 +8,8 @@
 #include <Bug.h>
 #include <BugGarbage.h>
 #include <BugNull.h>
+#include <FatGarbageBug.h>
+#include <FatNullBug.h>
 #include <BugSquash.h>
 #include "gtest/gtest.h"
 
@@ -22,7 +24,7 @@ protected:
 	 * Load the proper xml file into the code block
 	 * @param filename the name of the xml file
 	 */
-	void Load(const wstring &filename, Bug* bug )
+	void Load(const wstring &filename, shared_ptr<Bug> bug )
 	{
 		wxXmlDocument doc;
 		ASSERT_TRUE(doc.Load(filename));
@@ -55,30 +57,30 @@ protected:
 
 
 TEST_F(CodeTest, Construct){
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
-	BugGarbage myBug( &newLevel );
+	BugSquash bugSquash;
+	Level newLevel(&bugSquash);
+	shared_ptr<FatGarbageBug> myBug = make_shared<FatGarbageBug>(&newLevel);
 
-	Load( L"../Tests/test-data/garbage-bug-1.xml", &myBug );
+	Load( L"../Tests/test-data/garbage-bug-1.xml", myBug);
 }
 
 
 TEST_F(CodeTest, AnswerChecks){
-	BugSquash* bugSquash;
-	Level newLevel( bugSquash );
-	BugGarbage myBug( &newLevel );
+	BugSquash bugSquash;
+	Level newLevel(&bugSquash);
+	std::shared_ptr<FatGarbageBug> myBug = std::make_shared<FatGarbageBug>(&newLevel);
 
-	Load( L"../Tests/test-data/garbage-bug-1.xml", &myBug );
+	Load( L"../Tests/test-data/garbage-bug-1.xml", myBug);
 	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 1";
 	CheckAnswers();
 
-	BugGarbage myBug2( &newLevel );
-	Load( L"../Tests/test-data/garbage-bug-2.xml",& myBug2 );
+	std::shared_ptr<FatGarbageBug> myBug2 = std::make_shared<FatGarbageBug>(&newLevel);
+	Load( L"../Tests/test-data/garbage-bug-2.xml", myBug2);
 	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 2";
 	CheckAnswers();
 
-	BugNull myBug3( &newLevel );
-	Load( L"../Tests/test-data/null-bug-1.xml", &myBug3 );
+	std::shared_ptr<FatNullBug> myBug3 = std::make_shared<FatNullBug>(&newLevel);
+	Load( L"../Tests/test-data/null-bug-1.xml", myBug3);
 	ASSERT_FALSE(mCode->Passes()) << L"Null bug 1";
 	CheckAnswers();
 }
