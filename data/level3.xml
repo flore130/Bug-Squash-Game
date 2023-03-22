@@ -2,15 +2,15 @@
 <bug-squash level="Your Level">
   <program name="Water" x="400" y="300">
 
-    <bug type="garbage" x="1100" y="1050" speed="110" start="0"/>
+    <bug type="garbage" x="1100" y="1050" speed="110" start="13"/>
 
-    <feature x="600" y="1100" speed="140" start="7"/>
+    <feature x="600" y="1100" speed="140" start="18"/>
 
-    <bug type="null" x="500" y="-100" speed="130" start="1"/>
+    <bug type="null" x="-120" y="200" speed="130" start="4"/>
 
-    <bug type="redundancy" x="100" y="1100" speed="100" start="5"/>
+    <bug type="redundancy" x="100" y="1100" speed="100" start="9"/>
 
-    <bug type="null" x="1350" y="1100" speed="130" start="4">
+    <bug type="null" x="1350" y="1100" speed="130" start="15">
       <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
     GetGame()->SetPause(false);
 
@@ -20,7 +20,7 @@
 ]]></code>
     </bug>
 
-    <bug type="garbage" x="-100" y="900" speed="100" start="10">
+    <bug type="garbage" x="-100" y="900" speed="100" start="11">
       <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
  * The game scoreboard/scoring area
  */
@@ -40,15 +40,99 @@ public:
 
   <program name="Earth" x="850" y="300">
 
+    <feature x="800" y="1100" speed="110" start="5"/>
+
+    <feature x="1300" y="1050" speed="115" start="2"/>
+
+    <feature x="-220" y="500" speed="135" start="7"/>
+
+    <bug type="garbage" x="1000" y="-100" speed="125" start="12"/>
+
+    <feature x="-200" y="700" speed="160" start="20"/>
+
+    <feature x="-80" y="1000" speed="200" start="16"/>
+
+    <bug type="garbage" x="-150" y="0" speed="115" start="18">
+      <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
+ * The game scoreboard/scoring area
+ */
+class ScoreBoard
+{
+private:
+    /// The current score
+    int mScore;
+
+public:
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+};
+]]></code>
+    </bug>
+
   </program>
 
   <program name="Fire" x="400" y="700">
+
+    <bug type="null" x="-100" y="-80" speed="120" start="7"/>
+
+    <bug type="redundancy" x="300" y="1100" speed="75" start="3"/>
+
+    <bug type="null" x="850" y="-100" speed="120" start="7"/>
+
+    <bug type="null" x="1300" y="-90" speed="150" start="18"/>
+
+    <bug type="redundancy" x="1400" y="900" speed="100" start="9"/>
+
+    <bug type="garbage" x="-100" y="400" speed="100" start="14">
+      <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
+ * The game scoreboard/scoring area
+ */
+class ScoreBoard
+{
+private:
+    /// The current score
+    int mScore;
+
+public:
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+};
+]]></code>
+    </bug>
+
+    <bug type="null" x="1360" y="600" speed="65" start="5">
+      <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
+    GetGame()->SetPause(false);
+
+    mCode->Clear();
+
+    return true;
+]]></code>
+    </bug>
 
   </program>
 
 
   <program name="Air" x="850" y="700">
 
+    <bug type="garbage" x="300" y="-160" speed="130" start="0"/>
+
+    <bug type="garbage" x="1350" y="650" speed="155" start="4"/>
+
+    <feature x="450" y="1050" speed="140" start="8"/>
+
+    <bug type="garbage" x="-120" y="600" speed="150" start="11"/>
+
+    <feature x="1350" y="400" speed="160" start="18"/>
+
+    <bug type="null" x="1100" y="1100" speed="250" start="25">
+      <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
+    GetGame()->SetPause(false);
+
+    mCode->Clear();
+
+    return true;
+]]></code>
+    </bug>
+
   </program>
-  <nuke x="625" y="500" speed="0" start="7"/>
+  <nuke x="625" y="500" speed="0" start="10"/>
 </bug-squash>
