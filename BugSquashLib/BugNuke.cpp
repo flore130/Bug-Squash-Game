@@ -67,9 +67,13 @@ void BugNuke::Activate()
 
 bool BugNuke::HitTest(double x, double y)
 {
-	if (mHasSpawned)
+	if(Item::HitTest(x, y))
 	{
-		Activate();
+		if (mHasSpawned)
+		{
+			Activate();
+		}
+		return true;
 	}
-	return Item::HitTest(x, y);
+	return false;
 }
