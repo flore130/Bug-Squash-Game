@@ -131,24 +131,6 @@ public:
 
 	 void KillAll();
 
-	 /**
-	  * Remove an item from the list
-	  */
-	  void RemoveItem(std::shared_ptr<Item> item){
-		  auto vec = std::vector<std::shared_ptr<Item>>();
-		  for (auto temp : mItems)
-		  {
-			  if (item == temp)
-			  {
-				  continue;
-			  }
-			  vec.push_back(temp);
-		  }
-		  mItems.clear();
-		  mItems = vec;
-		  vec.clear();
-	  }
-
 	/**
 	 * Gets an image or a nullptr from map of images
 	 * @param filename The filename of the image we want
