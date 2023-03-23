@@ -19,7 +19,7 @@
 
 using namespace std;
 
-/// Score font size to use
+/// font size to use
 const int TextSize = 200;
 
 /// Label for font size to use

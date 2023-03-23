@@ -125,30 +125,40 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	}
 	else if ( mState == Type::Finished )
 	{
-		mLevel->DrawLevel( graphics, L"Level Complete!!!" );
-
-		// Swap the levels
-		// Check through each option
-		if ( mLevel->GetName() == L"Level Zero" )
+		if(mDrawComplete)
 		{
-			Load( L"data/level1.xml" );
-		}
-		else if ( mLevel->GetName() == L"Single Team" )
-		{
-			Load( L"data/level2.xml" );
-		}
-		else if ( mLevel->GetName() == L"Many Teams" )
-		{
-			Load( L"data/level3.xml" );
-		}
-		else if ( mLevel->GetName() == L"Your Level" )
-		{
-			Load( L"data/level3.xml" );
+			mFinishDrawing = mStopWatch.Time() + 2000;
+			mDrawComplete = false;
 		}
 
+		mLevel->DrawLevel(graphics, L"Level Complete!");
+
+		if(mStopWatch.Time() >= mFinishDrawing)
+		{
+			mDrawComplete = true;
+			// Swap the levels
+			// Check through each option
+			if(mLevel->GetName() == L"Level Zero")
+			{
+				Load(L"data/level1.xml");
+			}
+			else if(mLevel->GetName() == L"Single Team")
+			{
+				Load(L"data/level2.xml");
+			}
+			else if(mLevel->GetName() == L"Many Teams")
+			{
+				Load(L"data/level3.xml");
+			}
+			else if(mLevel->GetName() == L"Your Level")
+			{
+				Load(L"data/level3.xml");
+			}
+		}
 	}
-	graphics->PopState();
+		graphics->PopState();
 }
+
 
 /**
  * Clear the game data
@@ -170,7 +180,8 @@ void BugSquash::Update(double elapsed)
 	{
 		mState = Type::Beginning;
 	}
-	else if( mAllBugsSquashed )
+
+	else if( mAllBugsSquashed)
 	{
 		mState = Type::Finished;
 	}

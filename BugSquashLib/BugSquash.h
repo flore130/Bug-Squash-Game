@@ -74,6 +74,12 @@ private:
 	/// Whether or not the player is editing a FatBug's code
 	bool mIsEditingCode = false;
 
+	///makes sure drawing "Finished" appears before starting next level
+	bool mDrawComplete = true;
+
+	///Time meant to Draw finished text on the screen
+	double mFinishDrawing = 0;
+
 
 protected:
 	/// All of the items in the bug squash application
