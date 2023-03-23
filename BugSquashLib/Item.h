@@ -137,7 +137,7 @@ public:
 
 	 bool GetVisibilityState ();
 
-	 virtual void NukeItem() {}
+	 virtual bool NukeItem() { return false; }
 
 };
 

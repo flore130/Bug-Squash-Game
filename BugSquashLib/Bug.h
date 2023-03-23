@@ -138,7 +138,7 @@ public:
 	 */
 	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; mSpeed = 0; }
 
-	 void NukeItem() override { SetIsSquashed(true); }
+	 bool NukeItem() override { SetIsSquashed(true); return true; }
 
 
 	/**

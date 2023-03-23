@@ -39,7 +39,7 @@ public:
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitFeature( this ); }
 
-	void NukeItem() override { }
+	bool NukeItem() override { return false; }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FEATURE_H

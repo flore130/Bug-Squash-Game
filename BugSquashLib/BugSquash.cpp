@@ -259,8 +259,10 @@ void BugSquash::KillAll()
 		auto itemY = item->GetY();
 		if (itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000)
 		{
-			item->NukeItem();
-			FixedIncrement();
+			if (item->NukeItem())
+			{
+				FixedIncrement();
+			}
 		}
 	}
 }
