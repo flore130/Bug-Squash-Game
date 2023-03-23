@@ -16,6 +16,10 @@ const std::wstring FeatureSplatImageName = L"images/feature-splat.png";
 /// Number of sprite images
 const int FeatureNumSpriteImages = 6;
 
+/**
+ * Constructor for feature object
+ * @param level the level the feature belongs to
+ */
 Feature::Feature(Level* level) : Bug(level, FeatureImageName, FeatureSplatImageName, FeatureNumSpriteImages)
 {
 

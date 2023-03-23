@@ -251,6 +251,10 @@ void BugRedundancy::SpawnRedundancyFlies()
 	mDisappearState = true;
 }
 
+/**
+* Handle update event for animations
+* @param elapsed the seconds elapsed since last update
+*/
 void BugRedundancy::Update(double elapsed)
 {
 	Bug::Update(elapsed);

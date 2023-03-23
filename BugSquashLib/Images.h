@@ -10,7 +10,7 @@
 
 #include <map>
 
-/*
+/**
  * Image class to store all of the item's images
  */
 class Images

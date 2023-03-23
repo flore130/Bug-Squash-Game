@@ -40,6 +40,7 @@ const int LabelY = 425;
 
 /**
  * Constructor
+ * @param bugSquash the bugSquash object the level belongs to
  */
 Level::Level(BugSquash* bugSquash) : mBugSquash(bugSquash){}
 

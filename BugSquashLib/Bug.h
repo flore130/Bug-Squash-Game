@@ -28,9 +28,6 @@ private:
 	/// The last stopwatch time
 	double mTime = 0;
 
-	/// Stopwatch used to measure elapsed time
-	wxStopWatch mStopWatch;
-
 	/// The speed the bug should move at in pixels per second
 	double mSpeed = 0;
 

@@ -94,8 +94,10 @@ public:
 	 */
 	bool GetParentSquashedStatus() { return mParentSquashed; }
 
-	void SetParentSquashed() { mParentSquashed = true; }
-
+	/**
+	 * Returns whether the bug should be shown on the screen or not
+	 * @return a boolean indicating whether the bug should appear on the screen
+	 */
 	bool GetDisappearState() { return mDisappearState; }
 
 	/**
