@@ -54,7 +54,7 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		Item::Draw(gc);
 		mHasSpawned = true;
 		// mTime will be set to the start time plus two seconds in which the nuke will display
-		mTime = mStartTime + TextDelay + 2;
+		mTime += mStartTime + TextDelay;
 	}
 }
 

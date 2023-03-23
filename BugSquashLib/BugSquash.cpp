@@ -12,12 +12,9 @@
 #include "Level.h"
 #include "BugSquash.h"
 #include "Item.h"
-#include "BugGarbage.h"
 #include "Program.h"
-#include "BugNull.h"
 #include "Scoreboard.h"
 #include "SimpleBugSquashVisitor.h"
-#include "FatBugSquashVisitor.h"
 #include "BugStateVisitor.h"
 #include "SquashCheckVisitor.h"
 

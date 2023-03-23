@@ -26,8 +26,8 @@ private:
 	/// The time the nuke should appear
 	double mStartTime = 0;
 
-	/// The last stopwatch time
-	long mTime = 0;
+	/// The amount of time the BugNuke has between spawning and despawning
+	long mTime = 2;
 
 	/// Stopwatch used to measure elapsed time
 	wxStopWatch mStopWatch;
