@@ -17,6 +17,7 @@
 class BugNuke : public Item
 {
 private:
+	bool mIsActive = false;
 
 	bool mHasSpawned = false;
 	/// The time the nuke should appear
@@ -46,6 +47,14 @@ public:
  	* @param newStart How many seconds before a bug nuke will appear
  	*/
 	void SetStart(double newStart) { mStartTime = newStart + 2; }
+
+	bool GetSpawned() { return mHasSpawned; }
+
+	/**
+	 * Determine if the BugNuke power up has been activated
+ 	 * @return a boolean indicating whether the power up was used or not
+	 */
+	bool GetIsActive() { return mIsActive; }
 
 	void XmlLoad(wxXmlNode* node) override;
 

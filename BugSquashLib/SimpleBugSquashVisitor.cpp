@@ -9,6 +9,7 @@
 #include "BugNull.h"
 #include "BugRedundancy.h"
 #include "Feature.h"
+#include "BugNuke.h"
 
 /**
   * Visit the BugGarbage object
@@ -129,5 +130,17 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 
 		// It was a bad squash
 		mFeatureSquashed = true;
+	}
+}
+
+/**
+ * Visit the BugNuke object
+ * @param nuke BugNuke we are visiting
+ */
+void SimpleBugSquashVisitor::VisitBugNuke(BugNuke *nuke)
+{
+	if (!nuke->GetSpawned())
+	{
+		return;
 	}
 }

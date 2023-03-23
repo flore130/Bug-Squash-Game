@@ -43,6 +43,8 @@ public:
 
 	 void VisitFeature( Feature* feature ) override;
 
+	 void VisitBugNuke( BugNuke* nuke ) override;
+
 	 /**
 	  * Get if it was a bug that was squashed
 	  * @return true if a bug was squashed
