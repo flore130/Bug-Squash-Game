@@ -58,6 +58,8 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
+	void Activate();
+
 	/**
 	 * Accept a visitor
 	 * @param visitor The visitor to accept

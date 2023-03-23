@@ -143,4 +143,5 @@ void SimpleBugSquashVisitor::VisitBugNuke(BugNuke *nuke)
 	{
 		return;
 	}
+	nuke->Activate();
 }

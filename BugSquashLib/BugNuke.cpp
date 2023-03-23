@@ -36,7 +36,7 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	// Get the time the bug has been displayed
 	auto newTime = mStopWatch.Time();
 	auto elapsed = (double) (newTime - mTime) * 0.001;
-	if (mHasSpawned == true)
+	if (mHasSpawned == true && mIsActive == false)
 	{
 		// After first being drawn on the screen, the power up will stay for another 2 seconds before vanishing
 		if (mStartTime - elapsed + TextDelay > -2)
@@ -49,4 +49,9 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		Item::Draw(gc);
 		mHasSpawned = true;
 	}
+}
+
+void BugNuke::Activate()
+{
+	mIsActive = true;
 }
