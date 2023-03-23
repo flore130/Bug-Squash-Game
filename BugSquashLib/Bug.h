@@ -129,14 +129,9 @@ public:
 	 */
 	bool GetIsSquashed() { return mIsSquashed; }
 
-	/**
-	 * Set the Bug status to squashed. Once true it can never be false
-	 * @param squashStatus Set the bug's squash status
-	 */
-	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; mSpeed = 0; }
+	void SetIsSquashed( bool squashStatus );
 
-	 bool NukeItem() override { SetIsSquashed(true); return true; }
-
+	bool NukeItem() override;
 
 	/**
 	* Set the code that must be solved to squash a fat garbage or null bug

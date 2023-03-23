@@ -33,7 +33,6 @@ private:
 	wxStopWatch mStopWatch;
 
 public:
-
 	/// Default constructor (disabled)
 	BugNuke() = delete;
 

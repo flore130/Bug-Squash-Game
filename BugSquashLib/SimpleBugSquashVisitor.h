@@ -10,7 +10,7 @@
 
 #include "ItemVisitor.h"
 
-/*
+/**
  * Class SimpleBugSquashVisitor, visits and squashes simple bugs
  */
 class SimpleBugSquashVisitor : public ItemVisitor

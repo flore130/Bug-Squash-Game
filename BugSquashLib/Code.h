@@ -18,7 +18,7 @@ class Bug;
 class Code
 {
 private:
-	/// The code the player currently has typed in for this <code> tag
+	/// The code the player currently has typed in for this <code> </code> tag
 	std::wstring mCurrentCode;
 
 	/// The regular expression needed in mCurrentCode to be considered passing

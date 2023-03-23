@@ -201,3 +201,23 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	graphics->DrawBitmap(bugBitmap, - (bugWidth / 2), - (bugHeight / 2), bugWidth, bugHeight );
 	graphics->PopState();
 }
+
+/**
+ * Set the Bug status to squashed. Once true it can never be false
+ * @param squashStatus Set the bug's squash status
+ */
+void Bug::SetIsSquashed( bool squashStatus )
+{
+	mIsSquashed |= squashStatus;
+	mSpeed = 0;
+}
+
+/**
+  * Squash the current item when the Nuke feature is selected
+  * @return true
+  */
+bool Bug::NukeItem()
+{
+	SetIsSquashed( true );
+	return true;
+}

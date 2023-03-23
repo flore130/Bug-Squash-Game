@@ -59,8 +59,6 @@ protected:
 	 */
 	wxGraphicsBitmap GetBitmap() { return mItemBitmap; }
 
-
-
 public:
 	/// The amount of time (in seconds) the text shows on the screen
 	const static int TextDelay = 2;
@@ -124,7 +122,6 @@ public:
 
 	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
-
 	virtual void SetProgram(wxXmlNode *node,std::shared_ptr<Program> parent);
 
 	virtual bool HitTest(double x, double y);
@@ -137,6 +134,10 @@ public:
 
 	 bool GetVisibilityState ();
 
+	 /**
+	  * Remove an item if the Nuke button is pressed
+	  * @return false Return the default value of false
+	  */
 	 virtual bool NukeItem() { return false; }
 
 };
