@@ -1,8 +1,6 @@
 /**
  * @file BugRedundancy.h
  * @author npmar
- *
- *
  */
 
 #ifndef PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H
@@ -10,9 +8,7 @@
 
 #include <wx/wx.h>
 #include <random>
-#include "Item.h"
 #include "Bug.h"
-#include "BugSquash.h"
 
 
 /**

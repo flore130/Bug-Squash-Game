@@ -7,7 +7,6 @@
 #include "CodeDlg.h"
 #include "BugSquashView.h"
 #include "Bug.h"
-#include "ids.h"
 
 using namespace std;
 

@@ -4,8 +4,9 @@
  */
 
 #include "pch.h"
-#include "Code.h"
 #include <wx/regex.h>
+#include "Code.h"
+
 
 /**
  * Constructor

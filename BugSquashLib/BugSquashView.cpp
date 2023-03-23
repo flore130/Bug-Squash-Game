@@ -8,7 +8,6 @@
 #include "BugSquashView.h"
 #include "SimpleBugSquashVisitor.h"
 #include "FatBugSquashVisitor.h"
-#include "Code.h"
 #include "CodeDlg.h"
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"

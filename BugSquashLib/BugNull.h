@@ -9,7 +9,6 @@
 #define PROJECT1_BUGSQUASHLIB_BUGNULL_H
 
 #include <wx/wx.h>
-#include "Item.h"
 #include "Bug.h"
 
 /**

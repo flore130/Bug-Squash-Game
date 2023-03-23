@@ -6,16 +6,12 @@
 #include "pch.h"
 #include "BugSquash.h"
 #include "Code.h"
-#include "BugGarbage.h"
-#include "BugNull.h"
 #include "BugRedundancy.h"
 #include "Feature.h"
 #include "BugNuke.h"
 #include "Program.h"
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"
-#include "Item.h"
-#include "Level.h"
 
 using namespace std;
 

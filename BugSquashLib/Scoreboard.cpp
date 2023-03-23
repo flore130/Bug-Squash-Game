@@ -6,9 +6,6 @@
 #include "pch.h"
 #include <wx/wx.h>
 #include <wx/graphics.h>
-
-
-#include "Scoreboard.h"
 #include "BugSquash.h"
 #include "Item.h"
 #include "string"

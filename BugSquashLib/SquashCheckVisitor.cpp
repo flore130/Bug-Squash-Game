@@ -5,9 +5,7 @@
 
 #include "pch.h"
 #include "SquashCheckVisitor.h"
-#include "BugGarbage.h"
 #include "FatGarbageBug.h"
-#include "BugNull.h"
 #include "FatNullBug.h"
 #include "BugRedundancy.h"
 #include "Feature.h"

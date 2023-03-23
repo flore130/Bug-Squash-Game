@@ -5,8 +5,6 @@
 
 #include "pch.h"
 #include "BugStateVisitor.h"
-#include "BugGarbage.h"
-#include "BugNull.h"
 #include "BugRedundancy.h"
 #include "Feature.h"
 #include "FatNullBug.h"

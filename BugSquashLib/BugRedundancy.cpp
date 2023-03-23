@@ -4,10 +4,12 @@
  */
 
 #include "pch.h"
+#include <vector>
+#include "BugSquash.h"
 #include "Program.h"
 #include "BugRedundancy.h"
 #include "Level.h"
-#include <vector>
+
 
 using namespace std;
 
