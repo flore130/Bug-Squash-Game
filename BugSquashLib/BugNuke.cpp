@@ -12,6 +12,11 @@ const double TextDelay = 2;
 /// The feature sprite image
 const std::wstring NukeImageName = L"images/bug-nuke.png";
 
+
+/**
+* Constructor
+* @param level level that this item is a member of
+*/
 BugNuke::BugNuke(Level* level) : Item(level, NukeImageName)
 {
 	mStopWatch.Start();

@@ -14,6 +14,7 @@
 #include "FatNullBug.h"
 #include "Level.h"
 #include "Item.h"
+#include "BugNukeVisitor.h"
 #include "ids.h"
 
 using namespace std;
@@ -135,11 +136,15 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 	{
 		// Initialize our visitor
 		SimpleBugSquashVisitor visitor;
+		BugNukeVisitor visitor2;
+
 
 		// Send the visitor to just this item
 		// If the item is a simple & un-squashed bug, the visitor
 		// tell the item to squash itself.
 		item->Accept( &visitor );
+
+		item->Accept(&visitor2);
 
 		// If we squashed the bug this time around, scoreboard must be updated
 		if ( visitor.JustSquashed() )

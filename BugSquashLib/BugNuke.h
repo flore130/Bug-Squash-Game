@@ -17,9 +17,12 @@
 class BugNuke : public Item
 {
 private:
+	/// Whether or not the power up has been activated
 	bool mIsActive = false;
 
+	/// Whether or not the BugNuke item has spawned in the level yet
 	bool mHasSpawned = false;
+
 	/// The time the nuke should appear
 	double mStartTime = 0;
 
@@ -48,6 +51,10 @@ public:
  	*/
 	void SetStart(double newStart) { mStartTime = newStart + 2; }
 
+	/**
+ 	* Finds if this BugNuke has spawned in the level yet
+	* @return boolean indicated whether or not the item has spawned
+	*/
 	bool GetSpawned() { return mHasSpawned; }
 
 	/**
@@ -58,6 +65,9 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
+	/**
+ 	* Activates the BugNuke ability, which squashes all bugs on screen
+ 	*/
 	void Activate();
 
 	/**
