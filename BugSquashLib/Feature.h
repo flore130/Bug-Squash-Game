@@ -38,6 +38,8 @@ public:
 	 * @param visitor The visitor to accept
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitFeature( this ); }
+
+	void NukeItem() override { }
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_FEATURE_H

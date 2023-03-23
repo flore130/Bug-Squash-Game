@@ -260,6 +260,7 @@ void BugSquash::KillAll()
 		if (itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000)
 		{
 			item->NukeItem();
+			FixedIncrement();
 		}
 	}
 }
