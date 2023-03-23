@@ -30,6 +30,8 @@ private:
 	/// The last stopwatch time
 	long mTime = 0;
 
+
+
 	void OnTimer(wxTimerEvent& event);
 	void OnLeftDown(wxMouseEvent &event);
 	void OnPaint(wxPaintEvent& event);
@@ -58,12 +60,12 @@ public:
 	 *
 	 * Used to pause game while player edits fat bug code
 	 */
-	void PauseStopwatch() { mStopWatch.Pause(); }
+	void PauseStopwatch() { mStopWatch.Pause(); mBugSquash.SetIsEditingCode(true); }
 
 	/**
 	 * Resume stopwatch
 	 */
-	void ResumeStopwatch() { mStopWatch.Resume(); }
+	void ResumeStopwatch() { mStopWatch.Resume(); mBugSquash.SetIsEditingCode(false); }
 
 	/**
 	 * Increments fixed count of the current level's scoreboard

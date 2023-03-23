@@ -83,6 +83,8 @@ public:
 	 * @return mName
 	 */
 	std::wstring GetName() const { return mName; }
+
+	bool GetIsEditingCode();
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_LEVEL_H

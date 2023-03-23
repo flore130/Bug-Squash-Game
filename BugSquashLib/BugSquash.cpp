@@ -225,29 +225,6 @@ BugSquash::BugSquash()
 }
 
 /**
- * Tell all bugs to resume sprite swapping
- * @param event
- */
-void BugSquash::OnCloseDialog(wxCloseEvent &event)
-{
-	for (auto item : mItems)
-	{
-		
-	}
-
-	// Need this line so the event handler will also call CodeDlg function
-	event.Skip();
-}
-
-/**
- * Tell all bugs in list to stop sprite swapping
- */
-void BugSquash::OnOpenDialog()
-{
-
-}
-
-/**
  * Check to see if all the bugs are squashed.
  * Goes through mItems and checks the squash status of each.
  * Will set mAllBugsSquashed to true if all are squashed

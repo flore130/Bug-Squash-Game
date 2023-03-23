@@ -71,6 +71,10 @@ private:
 	/// Pointer to the image class which holds all of the images used
 	std::shared_ptr< Images > mImages = nullptr;
 
+	/// Whether or not the player is editing a FatBug's code
+	bool mIsEditingCode = false;
+
+
 protected:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems {};
@@ -150,6 +154,17 @@ public:
 	 */
 	std::shared_ptr< wxImage > GetImage( const std::wstring& filename ) { return mImages->GetImage( filename ); }
 
+	/**
+	 * Whether a FatBug's code is currently being edited
+	 * @return true if player is editing fat bugs, false otherwise
+	 */
+	bool GetIsEditingCode() { return mIsEditingCode; }
+
+	/**
+	 * Set whether or not the player is editing code
+	 * @param newVal true if player is editing code, false otherwise
+	 */
+	void SetIsEditingCode(bool newVal) { mIsEditingCode = newVal; }
 	void CheckIfAllBugsAreSquashed();
 
 	void OnOpenDialog();
