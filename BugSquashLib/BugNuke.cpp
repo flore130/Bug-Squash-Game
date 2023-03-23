@@ -8,8 +8,6 @@
 #include "Item.h"
 #include "BugSquash.h"
 
-///The Constant to delay bugs from crawling in when text appears
-const double TextDelay = 2;
 
 /// The feature sprite image
 const std::wstring NukeImageName = L"images/bug-nuke.png";
@@ -45,8 +43,8 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	auto elapsed = (double) (newTime - mTime) * 0.001;
 	if (mHasSpawned == true && mIsActive == false)
 	{
-		// After first being drawn on the screen, the power up will stay for another 2 seconds before vanishing
-		if (mStartTime - elapsed + TextDelay > -2)
+		// If less than two seconds have passed since the BugNuke was spawned, it will continue to exist
+		if (mTime - elapsed > 0)
 		{
 			Item::Draw(gc);
 		}
@@ -55,6 +53,8 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	{
 		Item::Draw(gc);
 		mHasSpawned = true;
+		// mTime will be set to the start time plus two seconds in which the nuke will display
+		mTime += mStartTime + TextDelay;
 	}
 }
 
@@ -63,4 +63,13 @@ void BugNuke::Activate()
 	mIsActive = true;
 	auto level = GetLevel();
 	level->GetBugSquash()->KillAll();
+}
+
+bool BugNuke::HitTest(double x, double y)
+{
+	if (mHasSpawned)
+	{
+		Activate();
+	}
+	return Item::HitTest(x, y);
 }

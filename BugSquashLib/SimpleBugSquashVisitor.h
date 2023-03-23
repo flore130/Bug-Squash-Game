@@ -28,13 +28,7 @@ private:
 	/// Squashed a feature
 	bool mFeatureSquashed = false;
 
-	bool mIsNuked = false;
-
 public:
-
-	void SetNuked(bool isNuke = false) { mIsNuked = true; }
-
-	bool GetNuked() { return mIsNuked; }
 
 	/**
 	 * Get whether it's a simple bug or not

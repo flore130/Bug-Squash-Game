@@ -8,8 +8,8 @@
 #include "BugGarbage.h"
 #include "BugNull.h"
 #include "BugRedundancy.h"
-#include "Feature.h"
 #include "BugNuke.h"
+#include "Feature.h"
 
 /**
   * Visit the BugGarbage object
@@ -79,7 +79,7 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 		return;
 	}
 
-	if (bug->GetParentSquashedStatus() || GetNuked())
+	if (bug->GetParentSquashedStatus())
 	{
 		mIsAlreadySquashed = bug->GetIsSquashed();
 
@@ -111,7 +111,7 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
  */
 void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 {
-	if (!feature->GetVisibilityState() || mIsNuked)
+	if (!feature->GetVisibilityState())
 	{
 		return;
 	}

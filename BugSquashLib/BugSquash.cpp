@@ -12,12 +12,9 @@
 #include "Level.h"
 #include "BugSquash.h"
 #include "Item.h"
-#include "BugGarbage.h"
 #include "Program.h"
-#include "BugNull.h"
 #include "Scoreboard.h"
 #include "SimpleBugSquashVisitor.h"
-#include "FatBugSquashVisitor.h"
 #include "BugStateVisitor.h"
 #include "SquashCheckVisitor.h"
 
@@ -264,15 +261,16 @@ void BugSquash::CheckIfAllBugsAreSquashed()
 
 void BugSquash::KillAll()
 {
-	SimpleBugSquashVisitor visitor;
-	visitor.SetNuked(true);
 	for (auto item : mItems)
 	{
 		auto itemX = item->GetX();
 		auto itemY = item->GetY();
 		if (itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000)
 		{
-			item->Accept(&visitor);
+			if (item->NukeItem())
+			{
+				FixedIncrement();
+			}
 		}
 	}
 }

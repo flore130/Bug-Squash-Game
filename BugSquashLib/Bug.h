@@ -60,8 +60,6 @@ protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 
 public:
-	/// The amount of time (in seconds) the text shows on the screen
-	const static int TextDelay = 2;
 
 	bool HitTest(double x, double y) override;
 
@@ -139,6 +137,8 @@ public:
 	 * @param squashStatus Set the bug's squash status
 	 */
 	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; mSpeed = 0; }
+
+	 bool NukeItem() override { SetIsSquashed(true); return true; }
 
 
 	/**

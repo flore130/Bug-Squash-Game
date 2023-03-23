@@ -62,6 +62,9 @@ protected:
 
 
 public:
+	/// The amount of time (in seconds) the text shows on the screen
+	const static int TextDelay = 2;
+
 	/// Default constructor (disabled)
 	Item() = delete;
 
@@ -133,6 +136,8 @@ public:
 	 Level * GetLevel() { return mLevel; };
 
 	 bool GetVisibilityState ();
+
+	 virtual bool NukeItem() { return false; }
 
 };
 
