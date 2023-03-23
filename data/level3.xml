@@ -2,13 +2,13 @@
 <bug-squash level="Your Level">
   <program name="Water" x="400" y="300">
 
-    <bug type="garbage" x="1100" y="1050" speed="110" start="13"/>
-
-    <feature x="600" y="1100" speed="140" start="18"/>
-
     <bug type="null" x="-120" y="200" speed="130" start="4"/>
 
     <bug type="redundancy" x="100" y="1100" speed="100" start="9"/>
+
+    <bug type="garbage" x="1100" y="1050" speed="110" start="13"/>
+
+    <feature x="600" y="1100" speed="140" start="18"/>
 
     <bug type="null" x="1350" y="1100" speed="130" start="15">
       <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
@@ -40,17 +40,17 @@ public:
 
   <program name="Earth" x="850" y="300">
 
-    <feature x="800" y="1100" speed="110" start="5"/>
-
     <feature x="1300" y="1050" speed="115" start="2"/>
+
+    <feature x="800" y="1100" speed="110" start="5"/>
 
     <feature x="-220" y="500" speed="135" start="7"/>
 
     <bug type="garbage" x="1000" y="-100" speed="125" start="12"/>
 
-    <feature x="-200" y="700" speed="160" start="20"/>
-
     <feature x="-80" y="1000" speed="200" start="16"/>
+
+    <feature x="-200" y="700" speed="160" start="20"/>
 
     <bug type="garbage" x="-150" y="0" speed="115" start="18">
       <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
@@ -72,15 +72,15 @@ public:
 
   <program name="Fire" x="400" y="700">
 
-    <bug type="null" x="-100" y="-80" speed="120" start="7"/>
-
     <bug type="redundancy" x="300" y="1100" speed="75" start="3"/>
+
+    <bug type="null" x="-100" y="-80" speed="120" start="7"/>
 
     <bug type="null" x="850" y="-100" speed="120" start="7"/>
 
-    <bug type="null" x="1300" y="-90" speed="150" start="18"/>
-
     <bug type="redundancy" x="1400" y="900" speed="100" start="9"/>
+
+    <bug type="null" x="1300" y="-90" speed="150" start="18"/>
 
     <bug type="garbage" x="-100" y="400" speed="100" start="14">
       <code pass="int.*mScore.*=.*[0-9]*.*;"><![CDATA[/**
