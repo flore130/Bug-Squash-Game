@@ -16,6 +16,11 @@
   */
 void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
 {
+	if (!bug->GetVisibilityState())
+	{
+		return;
+	}
+
 	mIsAlreadySquashed = bug->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
@@ -40,6 +45,10 @@ void SimpleBugSquashVisitor::VisitBugGarbage( BugGarbage* bug )
   */
 void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
 {
+	if (!bug->GetVisibilityState())
+	{
+		return;
+	}
 	mIsAlreadySquashed = bug->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it
@@ -64,6 +73,11 @@ void SimpleBugSquashVisitor::VisitBugNull( BugNull* bug )
   */
 void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 {
+	if (!bug->GetVisibilityState())
+	{
+		return;
+	}
+
 	if (bug->GetParentSquashedStatus())
 	{
 		mIsAlreadySquashed = bug->GetIsSquashed();
@@ -96,6 +110,10 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
  */
 void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 {
+	if (!feature->GetVisibilityState())
+	{
+		return;
+	}
 	mIsAlreadySquashed = feature->GetIsSquashed();
 
 	// If the bug isn't squashed, and it's simple, squash it

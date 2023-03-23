@@ -91,7 +91,12 @@ void BugRedundancy::XmlLoad(wxXmlNode* node)
 void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
 
-//	/// Obtain the angle to rotate the bug so it faces the program
+	if (!GetVisibilityState())
+	{
+		return;
+	}
+
+	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = GetProgram()->GetX();
 	auto y = GetProgram()->GetY();
 	auto theta = 0;

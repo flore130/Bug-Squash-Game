@@ -132,6 +132,8 @@ public:
 	 */
 	 Level * GetLevel() { return mLevel; };
 
+	 bool GetVisibilityState ();
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H

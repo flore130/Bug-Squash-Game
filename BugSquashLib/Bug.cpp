@@ -100,6 +100,8 @@ void Bug::Update(double elapsed)
 			mHitProgram = true;
 		}
 	}
+
+
 	mStartTime -= elapsed;
 }
 
@@ -130,6 +132,10 @@ void Bug::XmlLoad(wxXmlNode *node)
  */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
+	if (!GetVisibilityState())
+	{
+		return;
+	}
 	// Obtain the angle to rotate the bug so it faces the program
 	auto x = mProgram->GetX();
 	auto y = mProgram->GetY();

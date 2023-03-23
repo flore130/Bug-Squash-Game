@@ -55,6 +55,7 @@ private:
 	/// A boolean to show if the bug has gotten to the program
 	bool mHitProgram = false;
 
+
 protected:
 	Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount);
 

@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Item.h"
 #include "Level.h"
+#include "BugSquash.h"
 
 using namespace std;
 
@@ -49,6 +50,11 @@ void Item::XmlLoad(wxXmlNode *node)
 */
 void Item::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
+	if (!GetVisibilityState())
+	{
+		return;
+	}
+
 	if (mItemBitmap.IsNull())
 	{
 		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
@@ -100,4 +106,24 @@ bool Item::HitTest(double x, double y)
 	// If the location is transparent, we are not in the drawn
 	// part of the image
 	return !mItemImage->IsTransparent((int)testX, (int)testY );
+}
+
+/**
+ * Get the visibility state of the item
+ * @return a boolean indicating the visibility state of the item
+ */
+bool Item::GetVisibilityState()
+{
+	BugSquash* bugSquash = nullptr;
+	if (mLevel != nullptr)
+	{
+		bugSquash = mLevel->GetBugSquash();
+	}
+	if (bugSquash != nullptr)
+	{
+		auto visible = (mX >= 0 && mX <= bugSquash->Width && mY >= 0 && mY <= bugSquash->Height) || bugSquash->GetShrinked();
+		return visible;
+	}
+
+	return false;
 }

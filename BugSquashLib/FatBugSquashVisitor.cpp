@@ -14,6 +14,11 @@
  */
 void FatBugSquashVisitor::VisitFatGarbage(FatGarbageBug *bug)
 {
+	if (!bug->GetVisibilityState())
+	{
+		return;
+	}
+
 	if (!bug->GetIsSquashed())
 	{
 		mVisitedFat = true;
@@ -27,6 +32,10 @@ void FatBugSquashVisitor::VisitFatGarbage(FatGarbageBug *bug)
  */
 void FatBugSquashVisitor::VisitFatNull(FatNullBug *bug)
 {
+	if (!bug->GetVisibilityState())
+	{
+		return;
+	}
 	if (!bug->GetIsSquashed())
 	{
 		mVisitedFat = true;
