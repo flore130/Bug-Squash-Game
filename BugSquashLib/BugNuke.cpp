@@ -64,3 +64,12 @@ void BugNuke::Activate()
 	auto level = GetLevel();
 	level->GetBugSquash()->KillAll();
 }
+
+bool BugNuke::HitTest(double x, double y)
+{
+	if (mHasSpawned)
+	{
+		Activate();
+	}
+	return Item::HitTest(x, y);
+}

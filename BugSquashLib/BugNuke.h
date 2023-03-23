@@ -51,6 +51,8 @@ public:
  	*/
 	void SetStart(double newStart) { mStartTime = newStart + 2; }
 
+	bool HitTest(double x, double y) override;
+
 	/**
  	* Finds if this BugNuke has spawned in the level yet
 	* @return boolean indicated whether or not the item has spawned

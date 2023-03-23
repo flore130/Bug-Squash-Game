@@ -132,12 +132,3 @@ void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 		mFeatureSquashed = true;
 	}
 }
-
-void SimpleBugSquashVisitor::VisitBugNuke(BugNuke *nuke)
-{
-	if (!nuke->GetSpawned())
-	{
-		return;
-	}
-	nuke->Activate();
-}
