@@ -5,6 +5,8 @@
 
 #include "pch.h"
 #include "BugNuke.h"
+#include "Item.h"
+#include "BugSquash.h"
 
 ///The Constant to delay bugs from crawling in when text appears
 const double TextDelay = 2;
@@ -59,4 +61,6 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 void BugNuke::Activate()
 {
 	mIsActive = true;
+	auto level = GetLevel();
+	level->GetBugSquash()->KillAll();
 }

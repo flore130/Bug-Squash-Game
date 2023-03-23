@@ -136,7 +136,7 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 	{
 		// Initialize our visitor
 		SimpleBugSquashVisitor visitor;
-		BugNukeVisitor visitor2;
+		BugNukeVisitor visitorNuke;
 
 
 		// Send the visitor to just this item
@@ -144,7 +144,7 @@ void BugSquashView::OnLeftDown(wxMouseEvent &event)
 		// tell the item to squash itself.
 		item->Accept( &visitor );
 
-		item->Accept(&visitor2);
+		item->Accept(&visitorNuke);
 
 		// If we squashed the bug this time around, scoreboard must be updated
 		if ( visitor.JustSquashed() )

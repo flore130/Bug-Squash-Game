@@ -111,7 +111,7 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
  */
 void SimpleBugSquashVisitor::VisitFeature( Feature *feature )
 {
-	if (!feature->GetVisibilityState())
+	if (!feature->GetVisibilityState() || mIsNuked)
 	{
 		return;
 	}

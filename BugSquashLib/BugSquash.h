@@ -129,6 +129,8 @@ public:
 	  */
 	 void OopsIncrement() { mScoreboard->OopsIncrement(); }
 
+	 void KillAll();
+
 	 /**
 	  * Remove an item from the list
 	  */
