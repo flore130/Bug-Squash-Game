@@ -13,9 +13,6 @@ using namespace std;
 /// The radius tolerance for successful hit tests
 const double BugHitRange = 50;
 
-///The Constant to delay bugs from crawling in when text appears
-const double TextDelay = 2;
-
 /**
  * Constructor
  * @param level the game level

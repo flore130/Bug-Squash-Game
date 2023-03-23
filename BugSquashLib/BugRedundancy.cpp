@@ -48,8 +48,6 @@ const int FirstWingSetX = -36;
 /// of this is the Y position for the left wings.
 const int WingSetY = 5;
 
-///The Constant to delay bugs from crawling in when text appears
-const double TextDelay = 2;
 
 /**
  * Constructor
