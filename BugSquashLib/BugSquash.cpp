@@ -17,6 +17,7 @@
 #include "BugNull.h"
 #include "Scoreboard.h"
 #include "RemoveBugVisitor.h"
+#include "SquashCheckVisitor.h"
 
 using namespace std;
 
@@ -118,6 +119,26 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 	else if ( mState == Type::Finished )
 	{
 		mLevel->DrawLevel( graphics, L"Level Complete!!!" );
+
+		// Swap the levels
+		// Check through each option
+		if ( mLevel->GetName() == L"Level Zero" )
+		{
+			Load( L"data/level1.xml" );
+		}
+		else if ( mLevel->GetName() == L"Single Team" )
+		{
+			Load( L"data/level2.xml" );
+		}
+		else if ( mLevel->GetName() == L"Many Teams" )
+		{
+			Load( L"data/level3.xml" );
+		}
+		else if ( mLevel->GetName() == L"Your Level" )
+		{
+			Load( L"data/level3.xml" );
+		}
+
 	}
 	graphics->PopState();
 }
@@ -224,4 +245,24 @@ void BugSquash::OnCloseDialog(wxCloseEvent &event)
 void BugSquash::OnOpenDialog()
 {
 
+}
+
+/**
+ * Check to see if all the bugs are squashed.
+ * Goes through mItems and checks the squash status of each.
+ * Will set mAllBugsSquashed to true if all are squashed
+ */
+void BugSquash::CheckIfAllBugsAreSquashed()
+{
+	// Create the visitor
+	SquashCheckVisitor visitor;
+
+	// Sent the visitor to all the items
+	this->Accept( &visitor );
+
+	// If all bugs are squashed, proceed to the next level
+	if ( visitor.GetAllSquashed() )
+	{
+		mAllBugsSquashed = true;
+	}
 }

@@ -35,13 +35,13 @@ public:
 	 */
 	 bool JustSquashed() const { return mJustSquashed; }
 
-	 void VisitBugGarbage( BugGarbage* bug );
+	 void VisitBugGarbage( BugGarbage* bug ) override;
 
-	 void VisitBugNull( BugNull* bug );
+	 void VisitBugNull( BugNull* bug ) override;
 
-	 void VisitBugRedundancy( BugRedundancy* bug );
+	 void VisitBugRedundancy( BugRedundancy* bug ) override;
 
-	 void VisitFeature( Feature* feature );
+	 void VisitFeature( Feature* feature ) override;
 
 	 /**
 	  * Get if it was a bug that was squashed

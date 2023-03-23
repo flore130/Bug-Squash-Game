@@ -150,6 +150,8 @@ public:
 	 */
 	std::shared_ptr< wxImage > GetImage( const std::wstring& filename ) { return mImages->GetImage( filename ); }
 
+	void CheckIfAllBugsAreSquashed();
+
 	void OnOpenDialog();
 	void OnCloseDialog(wxCloseEvent& event);
 

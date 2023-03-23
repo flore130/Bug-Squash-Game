@@ -116,6 +116,9 @@ void BugSquashView::OnPaint(wxPaintEvent &event)
 	auto gc =
 		std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
+	// Get BugSquash to check the current items
+	mBugSquash.CheckIfAllBugsAreSquashed();
+
 	// Tell the game class to draw
 	wxRect rect = GetRect();
 	mBugSquash.OnDraw(gc, rect.GetWidth(), rect.GetHeight());
