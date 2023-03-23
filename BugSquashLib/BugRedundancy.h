@@ -60,7 +60,7 @@ private:
 	bool mDisappearState = false;
 
 	/// wing angle for rotation
-	double mWingAngle;
+	double mWingAngle = 0;
 
 
 

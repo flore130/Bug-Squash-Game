@@ -26,7 +26,7 @@ private:
 	double mStartTime = 0;
 
 	/// The last stopwatch time
-	long mTime = 0;
+	double mTime = 0;
 
 	/// Stopwatch used to measure elapsed time
 	wxStopWatch mStopWatch;

@@ -99,6 +99,8 @@ void Bug::Update(double elapsed)
 		{
 			mHitProgram = true;
 		}
+
+		mTime += elapsed;
 	}
 
 
@@ -173,21 +175,23 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		SetBitmap(bugImageBitmap);
 	}
 
-	// Get the time the bug has been displayed
-	auto newTime = mStopWatch.Time();
-	auto elapsed = (double) (newTime - mTime) * 0.001;
-
-	if (mSpeed > 0 && elapsed >= 3.0/mSpeed && mStartTime <= 0 && !GetLevel()->GetIsEditingCode())
+	if (mSpeed > 0 && mTime >= 3.0/mSpeed && mStartTime <= 0 && !GetLevel()->GetIsEditingCode())
 	{
 		ChangeSpriteImageIndex(mSpriteCount);
-		mTime = newTime;
+		mTime = 0;
 	}
 
 	auto bugImageIndex = GetSpriteImageIndex();
+	if (mStartTime > 0)
+	{
+		bugImageIndex = mSpriteCount;
+	}
+
 	auto bugBitmap= graphics->CreateSubBitmap(bugImageBitmap,0, bugImageIndex * bugHeight, bugWidth, bugHeight);
 
 	graphics->PushState();
 	graphics->Translate(GetX(), GetY());
+
 	if (mStartTime <= 0)
 	{
 		graphics->Rotate(theta);

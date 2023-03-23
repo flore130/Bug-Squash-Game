@@ -121,7 +121,7 @@ bool Item::GetVisibilityState()
 	}
 	if (bugSquash != nullptr)
 	{
-		auto visible = (mX >= 0 && mX <= bugSquash->Width && mY >= 0 && mY <= bugSquash->Height) || bugSquash->GetShrinked();
+		auto visible = bugSquash->GetShrinked() || mX >= 0 && mX <= bugSquash->Width && mY >= 0 && mY <= bugSquash->Height;
 		return visible;
 	}
 

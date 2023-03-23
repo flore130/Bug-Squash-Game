@@ -99,7 +99,7 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	/// Obtain the angle to rotate the bug so it faces the program
 	auto x = GetProgram()->GetX();
 	auto y = GetProgram()->GetY();
-	auto theta = 0;
+	double theta = 0;
 	if (GetStart() <= 0)
 	{
 		theta = atan2(y - GetY(),x - GetX());
@@ -152,28 +152,22 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		return;
 	}
 
-	auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
-	if (time > 1)
-	{
-		time = 2.0 - time;
-	}
-	auto wingTheta = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
-//
 	auto bugWidth = GetImage()->GetWidth();
 	auto bugHeight = GetImage()->GetHeight();
 
 	gc->PushState();
 	gc->Translate(GetX(),GetY());
 	gc->Rotate(theta);
+
 	gc->DrawBitmap(bugImageBitmap, -bugWidth/2, -bugHeight/2, bugWidth, bugHeight);
 
-	auto xPos = FirstWingSetX;// + GetX();
-	auto yPos = - WingSetY;
+	auto xPos = FirstWingSetX;
+	auto yPos = WingSetY;
 	for (int i = 0; i < NumberOfSetsOfWings; i++)
 	{
 		gc->PushState();
-		gc->Translate(xPos, yPos);
-		gc->Rotate(wingTheta);
+		gc->Translate(xPos, -yPos);
+		gc->Rotate(mWingAngle);
 		gc->DrawBitmap(mLeftWingBitmap, -mLeftWingImage->GetWidth()/2, -mLeftWingImage->GetHeight()/2,mLeftWingImage->GetWidth(), mLeftWingImage->GetHeight());
 		xPos += WingSetXOffset;
 		gc->PopState();
@@ -183,8 +177,8 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	for (int i = 0; i < NumberOfSetsOfWings; i++)
 	{
 		gc->PushState();
-		gc->Translate(xPos,-yPos);
-		gc->Rotate(-wingTheta);
+		gc->Translate(xPos,yPos);
+		gc->Rotate(-mWingAngle);
 		gc->DrawBitmap(mRightWingBitmap,-mRightWingImage->GetWidth()/2, -mRightWingImage->GetHeight()/2, mRightWingImage->GetWidth(), mRightWingImage->GetHeight());
 		xPos += WingSetXOffset;
 		gc->PopState();
@@ -263,4 +257,10 @@ void BugRedundancy::Update(double elapsed)
 {
 	Bug::Update(elapsed);
 	mTime += elapsed;
+	auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
+	if (time > 1)
+	{
+		time = 2.0 - time;
+	}
+	mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
 }
