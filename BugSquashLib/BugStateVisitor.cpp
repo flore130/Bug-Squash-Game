@@ -1,12 +1,12 @@
 /**
- * @file RemoveBugVisitor.cpp
+ * @file BugStateVisitor.cpp
  * @author Ajuisiwon Azantilow
  */
 
 #include "pch.h"
-#include "RemoveBugVisitor.h"
+#include "BugStateVisitor.h"
 
-void RemoveBugVisitor::VisitBugGarbage( BugGarbage* bug )
+void BugStateVisitor::VisitBugGarbage(BugGarbage* bug )
 {
 	if (bug->GetHitProgram())
 	{
@@ -14,7 +14,7 @@ void RemoveBugVisitor::VisitBugGarbage( BugGarbage* bug )
 	}
 }
 
-void RemoveBugVisitor::VisitBugNull( BugNull* bug )
+void BugStateVisitor::VisitBugNull(BugNull* bug )
 {
 	if (bug->GetHitProgram())
 	{
@@ -22,7 +22,7 @@ void RemoveBugVisitor::VisitBugNull( BugNull* bug )
 	}
 }
 
-void RemoveBugVisitor::VisitBugRedundancy( BugRedundancy* bug )
+void BugStateVisitor::VisitBugRedundancy(BugRedundancy* bug )
 {
 	if (bug->GetHitProgram() || bug->GetDisappearState())
 	{
@@ -30,15 +30,16 @@ void RemoveBugVisitor::VisitBugRedundancy( BugRedundancy* bug )
 	}
 }
 
-void RemoveBugVisitor::VisitFeature( Feature* feature )
+void BugStateVisitor::VisitFeature(Feature* feature )
 {
 	if (feature->GetHitProgram())
 	{
 		mRemoveItem = true;
+		mGotMissed = false;
 	}
 }
 
-void RemoveBugVisitor::VisitFatNull(FatNullBug* fatNullBug)
+void BugStateVisitor::VisitFatNull(FatNullBug* fatNullBug)
 {
 	if (fatNullBug->GetHitProgram())
 	{
@@ -46,7 +47,7 @@ void RemoveBugVisitor::VisitFatNull(FatNullBug* fatNullBug)
 	}
 }
 
-void RemoveBugVisitor::VisitFatGarbage(FatGarbageBug* fatGarbage)
+void BugStateVisitor::VisitFatGarbage(FatGarbageBug* fatGarbage)
 {
 	if (fatGarbage->GetHitProgram())
 	{

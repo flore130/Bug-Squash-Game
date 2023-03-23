@@ -59,6 +59,9 @@ private:
 	/// Determine whether the bug is to disappear or not
 	bool mDisappearState = false;
 
+	/// wing angle for rotation
+	double mWingAngle;
+
 
 
 public:

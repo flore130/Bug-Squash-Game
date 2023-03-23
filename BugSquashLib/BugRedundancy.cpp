@@ -147,9 +147,6 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		return;
 	}
 
-//	/// Get the time the bug has been displayed
-	auto newTime = mStopWatch.Time();
-	auto elapsed = (double) (newTime - mTime) * 0.001;
 	auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
 	if (time > 1)
 	{
