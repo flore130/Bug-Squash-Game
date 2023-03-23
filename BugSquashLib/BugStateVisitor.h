@@ -9,12 +9,6 @@
 #define PROJECT1_BUGSQUASHLIB_BUGSTATEVISITOR_H
 
 #include "ItemVisitor.h"
-#include "BugGarbage.h"
-#include "BugNull.h"
-#include "BugRedundancy.h"
-#include "Feature.h"
-#include "FatNullBug.h"
-#include "FatGarbageBug.h"
 
 class BugStateVisitor : public ItemVisitor
 {
