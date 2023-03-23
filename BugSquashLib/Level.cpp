@@ -175,10 +175,13 @@ void Level::Load(const wxString &filename)
 		}
 		else if (name == L"nuke")
 		{
-			shared_ptr<Item> nuke_item;
+			auto start = 0.0;
+			child->GetAttribute(L"start").ToDouble(&start);
+			shared_ptr<BugNuke> nuke_item;
 			nuke_item = make_shared<BugNuke>(this);
 			mBugSquash->Add(nuke_item);
 			nuke_item->XmlLoad(child);
+			nuke_item->SetStart(start);
 		}
 	}
 	child = root->GetChildren();

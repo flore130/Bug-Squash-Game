@@ -18,7 +18,18 @@ class BugNuke : public Item
 {
 private:
 
+	bool mHasSpawned = false;
+	/// The time the nuke should appear
+	double mStartTime = 0;
+
+	/// The last stopwatch time
+	long mTime = 0;
+
+	/// Stopwatch used to measure elapsed time
+	wxStopWatch mStopWatch;
+
 public:
+
 	/// Default constructor (disabled)
 	BugNuke() = delete;
 
@@ -30,6 +41,12 @@ public:
 
 	BugNuke(Level* level);
 
+	/**
+ 	* Sets the start time for this bug nuke item
+ 	* @param newStart How many seconds before a bug nuke will appear
+ 	*/
+	void SetStart(double newStart) { mStartTime = newStart + 2; }
+
 	void XmlLoad(wxXmlNode* node) override;
 
 	/**
@@ -37,6 +54,8 @@ public:
 	 * @param visitor The visitor to accept
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitBugNuke( this ); }
+
+	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
 };
 
 
