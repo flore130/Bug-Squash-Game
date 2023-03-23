@@ -39,6 +39,10 @@ public:
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitFeature( this ); }
 
+	/**
+	 * Is this item nuke-able
+	 * @return false
+	 */
 	bool NukeItem() override { return false; }
 };
 

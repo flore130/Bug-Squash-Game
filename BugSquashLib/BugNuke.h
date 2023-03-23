@@ -50,21 +50,8 @@ public:
  	*/
 	void SetStart(double newStart) { mStartTime = newStart + 2; }
 
-	void SetTime(double newTime) { mTime = newTime; }
 
 	bool HitTest(double x, double y) override;
-
-	/**
- 	* Finds if this BugNuke has spawned in the level yet
-	* @return boolean indicated whether or not the item has spawned
-	*/
-	bool GetSpawned() { return mHasSpawned; }
-
-	/**
-	 * Determine if the BugNuke power up has been activated
- 	 * @return a boolean indicating whether the power up was used or not
-	 */
-	bool GetIsActive() { return mIsActive; }
 
 	void XmlLoad(wxXmlNode* node) override;
 

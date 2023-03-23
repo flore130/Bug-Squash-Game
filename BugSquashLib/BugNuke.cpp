@@ -69,6 +69,12 @@ void BugNuke::Activate()
 	}
 }
 
+/**
+ * Check whether the nuke button is where we clicked
+ * @param x x-coordinate to check
+ * @param y y-coordinate to check
+ * @return true if the button is where we clicked and spawned in
+ */
 bool BugNuke::HitTest(double x, double y)
 {
 	if(Item::HitTest(x, y))

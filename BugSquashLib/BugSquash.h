@@ -20,7 +20,6 @@
 
 class Item;
 
-
 /**
  * The main BugSquash class.
  */
@@ -80,7 +79,6 @@ private:
 	///Time meant to Draw finished text on the screen
 	double mFinishDrawing = 0;
 
-
 protected:
 	/// All of the items in the bug squash application
 	std::vector<std::shared_ptr<Item>> mItems {};
@@ -94,7 +92,6 @@ public:
 	void Update(double elapsed);
 	void Accept( ItemVisitor* visitor );
 	void Add( std::shared_ptr< Item > item );
-
 
 	/// Game area in virtual pixels
 	const static int Width = 1250;
@@ -135,6 +132,7 @@ public:
 	  */
 	 void OopsIncrement() { mScoreboard->OopsIncrement(); }
 
+
 	 void KillAll();
 
 	/**
@@ -156,9 +154,6 @@ public:
 	 */
 	void SetIsEditingCode(bool newVal) { mIsEditingCode = newVal; }
 	void CheckIfAllBugsAreSquashed();
-
-	void OnOpenDialog();
-	void OnCloseDialog(wxCloseEvent& event);
 
 };
 

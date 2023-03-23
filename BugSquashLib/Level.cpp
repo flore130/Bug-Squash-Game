@@ -201,6 +201,11 @@ void Level::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 	DrawLevel(graphics, mName);
 }
 
+/**
+ * Draw our level information
+ * @param graphics The graphics we are drawing on
+ * @param label The content we are drawing
+ */
 void Level::DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label)
 {
 	wxFont scoreFont(wxSize(TextSize,TextSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
