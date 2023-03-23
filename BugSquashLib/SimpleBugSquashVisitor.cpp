@@ -79,7 +79,7 @@ void SimpleBugSquashVisitor::VisitBugRedundancy( BugRedundancy *bug )
 		return;
 	}
 
-	if (bug->GetParentSquashedStatus())
+	if (bug->GetParentSquashedStatus() || GetNuked())
 	{
 		mIsAlreadySquashed = bug->GetIsSquashed();
 

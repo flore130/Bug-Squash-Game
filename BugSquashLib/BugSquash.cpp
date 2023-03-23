@@ -17,6 +17,7 @@
 #include "BugNull.h"
 #include "Scoreboard.h"
 #include "SimpleBugSquashVisitor.h"
+#include "FatBugSquashVisitor.h"
 #include "BugStateVisitor.h"
 #include "SquashCheckVisitor.h"
 
@@ -254,12 +255,10 @@ void BugSquash::KillAll()
 {
 	SimpleBugSquashVisitor visitor;
 	visitor.SetNuked(true);
-	double itemX = 0.0;
-	double itemY = 0.0;
 	for (auto item : mItems)
 	{
-		itemX = item->GetX();
-		itemY = item->GetY();
+		auto itemX = item->GetX();
+		auto itemY = item->GetY();
 		if (itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000)
 		{
 			item->Accept(&visitor);

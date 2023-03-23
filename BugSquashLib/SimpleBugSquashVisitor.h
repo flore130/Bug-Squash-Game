@@ -34,6 +34,8 @@ public:
 
 	void SetNuked(bool isNuke = false) { mIsNuked = true; }
 
+	bool GetNuked() { return mIsNuked; }
+
 	/**
 	 * Get whether it's a simple bug or not
 	 * @return Is it a simple bug
