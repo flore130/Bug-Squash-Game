@@ -51,6 +51,8 @@ public:
  	*/
 	void SetStart(double newStart) { mStartTime = newStart + 2; }
 
+	void SetTime(double newTime) { mTime = newTime; }
+
 	bool HitTest(double x, double y) override;
 
 	/**

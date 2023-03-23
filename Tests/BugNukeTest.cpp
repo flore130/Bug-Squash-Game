@@ -5,6 +5,7 @@
 
 #include <pch.h>
 #include <BugNuke.h>
+#include <BugNull.h>
 #include <BugSquash.h>
 #include <Level.h>
 #include "gtest/gtest.h"
@@ -48,6 +49,13 @@ TEST(BugNukeTest, KillTest)
 {
 	BugSquash bugSquash;
 	Level newLevel( &bugSquash );
-	std::shared_ptr<BugNuke> nuke = std::make_shared<BugNuke>(&newLevel);
-	BugNuke newNuke( &newLevel );
+
+	std::shared_ptr<BugNull> nullBug = std::make_shared<BugNull>(&newLevel);
+
+	nullBug->SetLocation(200, 200);
+
+	bugSquash.Add(nullBug);
+	ASSERT_TRUE(nullBug->HitTest(200,200));
+	bugSquash.KillAll();
+	ASSERT_TRUE(nullBug->GetIsSquashed());
 }
