@@ -43,3 +43,11 @@ TEST(BugNukeTest, HitTest)
 	ASSERT_FALSE(newNuke.HitTest(150, 400));
 	ASSERT_FALSE(newNuke.HitTest(300, 300));
 }
+
+TEST(BugNukeTest, KillTest)
+{
+	BugSquash bugSquash;
+	Level newLevel( &bugSquash );
+	std::shared_ptr<BugNuke> nuke = std::make_shared<BugNuke>(&newLevel);
+	BugNuke newNuke( &newLevel );
+}

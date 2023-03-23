@@ -60,9 +60,13 @@ void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 
 void BugNuke::Activate()
 {
-	mIsActive = true;
-	auto level = GetLevel();
-	level->GetBugSquash()->KillAll();
+	auto elapsed = (double) (mStopWatch.Time() - mTime) * 0.001;
+	if (mTime - elapsed >= 0)
+	{
+		mIsActive = true;
+		auto level = GetLevel();
+		level->GetBugSquash()->KillAll();
+	}
 }
 
 bool BugNuke::HitTest(double x, double y)
