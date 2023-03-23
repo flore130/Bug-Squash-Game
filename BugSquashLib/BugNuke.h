@@ -17,20 +17,17 @@
 class BugNuke : public Item
 {
 private:
-	/// Whether or not the power up has been activated
-	bool mIsActive = false;
-
 	/// Whether or not the BugNuke item has spawned in the level yet
 	bool mHasSpawned = false;
+
+	/// Whether or not the BugNuke item has despawned/disappeared yet
+	bool mHasDespawned = false;
 
 	/// The time the nuke should appear
 	double mStartTime = 0;
 
-	/// The amount of time the BugNuke has between spawning and despawning
-	long mTime = 2;
-
-	/// Stopwatch used to measure elapsed time
-	wxStopWatch mStopWatch;
+	/// The amount of time that the BugNuke power up will display on screen
+	const static int SpawnTime = 2;
 
 public:
 	/// Default constructor (disabled)
@@ -55,9 +52,6 @@ public:
 
 	void XmlLoad(wxXmlNode* node) override;
 
-	/**
- 	* Activates the BugNuke ability, which squashes all bugs on screen
- 	*/
 	void Activate();
 
 	/**
@@ -65,6 +59,8 @@ public:
 	 * @param visitor The visitor to accept
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitBugNuke( this ); }
+
+	void Update (double elapsed) override;
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
 };

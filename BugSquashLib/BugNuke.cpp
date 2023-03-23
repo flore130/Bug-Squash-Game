@@ -19,7 +19,6 @@ const std::wstring NukeImageName = L"images/bug-nuke.png";
 */
 BugNuke::BugNuke(Level* level) : Item(level, NukeImageName)
 {
-	mStopWatch.Start();
 }
 
 /**
@@ -38,32 +37,20 @@ void BugNuke::XmlLoad(wxXmlNode* node)
  */
 void BugNuke::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-	// Get the time the bug has been displayed
-	auto newTime = mStopWatch.Time();
-	auto elapsed = (double) (newTime - mTime) * 0.001;
-	if (mHasSpawned == true && mIsActive == false)
-	{
-		// If less than two seconds have passed since the BugNuke was spawned, it will continue to exist
-		if (mTime - elapsed > 0)
-		{
-			Item::Draw(gc);
-		}
-	}
-	else if (mStartTime - elapsed + TextDelay <= 0 && mHasSpawned == false)
+	if (mHasSpawned == true && mHasDespawned == false)
 	{
 		Item::Draw(gc);
-		mHasSpawned = true;
-		// mTime will be set to the start time plus two seconds in which the nuke will display
-		mTime += mStartTime + TextDelay;
 	}
 }
 
+/**
+ * Activates the BugNuke ability, which squashes all bugs on screen
+ */
 void BugNuke::Activate()
 {
-	auto elapsed = (double) (mStopWatch.Time() - mTime) * 0.001;
-	if (mTime - elapsed >= 0)
+	if (!mHasDespawned)
 	{
-		mIsActive = true;
+		mHasDespawned = true;
 		auto level = GetLevel();
 		level->GetBugSquash()->KillAll();
 	}
@@ -86,4 +73,21 @@ bool BugNuke::HitTest(double x, double y)
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Handles updates for spawn status
+ * @param elapsed the seconds elapsed since last update
+ */
+void BugNuke::Update(double elapsed)
+{
+	if (mStartTime - elapsed + TextDelay <= 0 && mHasSpawned == false)
+	{
+		mHasSpawned = true;
+	}
+	if (mStartTime - elapsed + TextDelay <= -SpawnTime && mHasSpawned == true)
+	{
+		mHasDespawned = true;
+	}
+	mStartTime -= elapsed;
 }
