@@ -140,6 +140,8 @@ public:
 	 */
 	 void SetIsSquashed( bool squashStatus ) { mIsSquashed |= squashStatus; mSpeed = 0; }
 
+	 void NukeItem() override { SetIsSquashed(true); }
+
 
 	/**
 	* Set the code that must be solved to squash a fat garbage or null bug

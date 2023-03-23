@@ -134,6 +134,8 @@ public:
 
 	 bool GetVisibilityState ();
 
+	 virtual void NukeItem() {}
+
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_ITEM_H

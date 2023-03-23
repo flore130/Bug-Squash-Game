@@ -28,13 +28,7 @@ private:
 	/// Squashed a feature
 	bool mFeatureSquashed = false;
 
-	bool mIsNuked = false;
-
 public:
-
-	void SetNuked(bool isNuke = false) { mIsNuked = true; }
-
-	bool GetNuked() { return mIsNuked; }
 
 	/**
 	 * Get whether it's a simple bug or not
@@ -49,6 +43,8 @@ public:
 	 void VisitBugRedundancy( BugRedundancy* bug ) override;
 
 	 void VisitFeature( Feature* feature ) override;
+
+	 void VisitBugNuke ( BugNuke* nuke) override;
 
 	 /**
 	  * Get if it was a bug that was squashed
