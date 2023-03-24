@@ -48,7 +48,10 @@ public:
 	void DrawText(std::shared_ptr<wxGraphicsContext> gc, wxString text, double x, double y);
 
 
-	///Adds to the list of program texts we have for the level
+	/**
+	 * Set the text on the program to a specific name
+	 * @param name The name that is assigned to the program
+	 */
 	void SetProgramTexts(wxString name) {mProgramTexts.push_back(name);}
 };
 
