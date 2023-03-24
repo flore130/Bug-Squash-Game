@@ -96,7 +96,7 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		return;
 	}
 
-	/// Obtain the angle to rotate the bug so it faces the program
+	// Obtain the angle to rotate the bug so it faces the program
 	auto x = GetProgram()->GetX();
 	auto y = GetProgram()->GetY();
 	double theta = 0;
@@ -105,7 +105,7 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		theta = atan2(y - GetY(),x - GetX());
 	}
 
-	/// Get the sub image from the sprite image
+	// Get the sub image from the sprite image
 	auto bugImageBitmap = GetBitmap();
 	if (bugImageBitmap.IsNull())
 	{
@@ -118,19 +118,19 @@ void BugRedundancy::Draw(std::shared_ptr<wxGraphicsContext> gc)
 		mSquashedFly = gc->CreateBitmapFromImage(*mSquashedImage);
 	}
 
-	/// Set the left wing bitmap of the redundancy fly
+	// Set the left wing bitmap of the redundancy fly
 	if (mLeftWingBitmap.IsNull())
 	{
 		mLeftWingBitmap = gc->CreateBitmapFromImage(*mLeftWingImage);
 	}
 
-	/// Set the right wing bitmap of the redundancy fly
+	// Set the right wing bitmap of the redundancy fly
 	if (mRightWingBitmap.IsNull())
 	{
 		mRightWingBitmap = gc->CreateBitmapFromImage(*mRightWingImage);
 	}
 
-	/// Set the top wing bitmap of the redundancy fly
+	// Set the top wing bitmap of the redundancy fly
 	if (mTopBitmap.IsNull())
 	{
 		mTopBitmap = gc->CreateBitmapFromImage(*mTopImage);
