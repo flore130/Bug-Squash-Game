@@ -135,19 +135,19 @@ void BugSquash::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, i
 			mDrawComplete = true;
 			// Swap the levels
 			// Check through each option
-			if(mLevel->GetName() == L"Level Zero")
+			if( mLevel->GetName() == L"Level Zero Begin" )
 			{
 				Load(L"data/level1.xml");
 			}
-			else if(mLevel->GetName() == L"Single Team")
+			else if( mLevel->GetName() == L"Single Team Begin" )
 			{
-				Load(L"data/level2.xml");
+				Load( L"data/level2.xml" );
 			}
-			else if(mLevel->GetName() == L"Many Teams")
+			else if( mLevel->GetName() == L"Many Teams Begin" )
 			{
-				Load(L"data/level3.xml");
+				Load( L"data/level3.xml" );
 			}
-			else if(mLevel->GetName() == L"Your Level")
+			else if(mLevel->GetName() == L"Your Level Begin")
 			{
 				Load(L"data/level3.xml");
 			}
