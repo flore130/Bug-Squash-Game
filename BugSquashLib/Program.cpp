@@ -59,7 +59,7 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> gc)
  * @param x coordinate
  * @param y coordinate
  */
-void Program::DrawText(std::shared_ptr<wxGraphicsContext> graphics, wxString text, int x, int y)
+void Program::DrawText(std::shared_ptr<wxGraphicsContext> graphics, wxString text, double x, double y)
 {
 	wxFont scoreFont(wxSize(ProgramNameFontSize,ProgramNameFontSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
 	wxFont labelFont(wxSize(ProgramNameFontSize, ProgramNameFontSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);

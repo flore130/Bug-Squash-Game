@@ -45,7 +45,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> gc);
 
-	void DrawText(std::shared_ptr<wxGraphicsContext> gc, wxString text, int x, int y);
+	void DrawText(std::shared_ptr<wxGraphicsContext> gc, wxString text, double x, double y);
 
 
 	///Adds to the list of program texts we have for the level
