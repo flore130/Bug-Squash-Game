@@ -51,7 +51,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 
 	// Start the game on level one, currently level0 for ease of testing
 	wxCommandEvent blank_event;
-	OnLevelZero( blank_event );
+	OnLevelOne( blank_event );
 }
 
 /**
