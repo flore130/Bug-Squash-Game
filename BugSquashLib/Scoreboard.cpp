@@ -110,5 +110,4 @@ void Scoreboard::DrawScore(std::shared_ptr<wxGraphicsContext> graphics, std::wst
 
 	graphics->GetTextExtent(label, &width, &height);
 	graphics->DrawText(label, x-width/2, ScoreLabelY);
-
 }
