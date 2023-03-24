@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code pass=".*double.*mX.*=.*([0-9]+|[0-9]+\.[0-9]+);.*\n.*double.*mY.*=.*([0-9]+|[0-9]+\.[0-9]+)+;"><![CDATA[/**
+ * Our Item class
+ */
+class Item
+{
+private:
+    /// Item location variables
+    double mX;
+    double mY;
+
+public:
+    void SetLocation(double x, double y);
+};
+]]><answer><![CDATA[/**
+ * Our Item class
+ */
+class Item
+{
+private:
+    /// Item location variables
+    double mX = 2.56;
+    double mY = 1;
+
+public:
+    void SetLocation(double x, double y);
+};
+]]>
+</answer></code>

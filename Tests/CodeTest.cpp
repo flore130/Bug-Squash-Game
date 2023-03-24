@@ -79,13 +79,18 @@ TEST_F(CodeTest, AnswerChecks){
 	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 2";
 	CheckAnswers();
 
-	std::shared_ptr<FatNullBug> myBug3 = std::make_shared<FatNullBug>(&newLevel);
-	Load( L"../Tests/test-data/null-bug-1.xml", myBug3);
-	ASSERT_FALSE(mCode->Passes()) << L"Null bug 1";
+	std::shared_ptr<FatGarbageBug> myBug3 = std::make_shared<FatGarbageBug>(&newLevel);
+	Load( L"../Tests/test-data/garbage-bug-3.xml", myBug3);
+	ASSERT_FALSE(mCode->Passes()) << L"Garbage bug 3";
 	CheckAnswers();
 
 	std::shared_ptr<FatNullBug> myBug4 = std::make_shared<FatNullBug>(&newLevel);
-	Load( L"../Tests/test-data/null-bug-2.xml", myBug4);
+	Load( L"../Tests/test-data/null-bug-1.xml", myBug4);
+	ASSERT_FALSE(mCode->Passes()) << L"Null bug 1";
+	CheckAnswers();
+
+	std::shared_ptr<FatNullBug> myBug5 = std::make_shared<FatNullBug>(&newLevel);
+	Load( L"../Tests/test-data/null-bug-2.xml", myBug5);
 	ASSERT_FALSE(mCode->Passes()) << L"Null bug 2";
 	CheckAnswers();
 }
