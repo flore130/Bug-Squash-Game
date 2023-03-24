@@ -26,10 +26,7 @@ const wxColour FontColor = wxColour(255, 0, 0);
 
 /// Left  X location. The right score is
 /// the width minus this value.
-const int LeftScoreX = 625;
-
-/// Y location
-const int ScoreY = 300;
+const int LeftX = 625;
 
 /// Y location
 const int LabelY = 425;
@@ -119,8 +116,8 @@ void Level::XmlProgram(wxXmlNode *node)
 	 */
 	shared_ptr<Program> program_item;
 	program_item = make_shared<Program>(this);
-	mNumPrograms += 1;
 	program_item->XmlLoad(node);
+
 	auto child = node->GetChildren();
 	for( ; child; child = child->GetNext())
 	{
@@ -135,6 +132,8 @@ void Level::XmlProgram(wxXmlNode *node)
  */
 void Level::Load(const wxString &filename)
 {
+	//mNumPrograms = 0;
+
 	wxXmlDocument xmlDoc;
 	if(!xmlDoc.Load(filename))
 	{
@@ -165,10 +164,17 @@ void Level::Load(const wxString &filename)
 		auto name = child->GetName();
 		if(name == L"program")
 		{
-			shared_ptr<Item> program_item;
+			shared_ptr<Program> program_item;
 			program_item = make_shared<Program>(this);
 			mBugSquash->Add( program_item );
 			program_item->XmlLoad(child);
+
+			auto x = child->GetAttribute("x");
+			auto y = child->GetAttribute("y");
+			auto programText = child->GetAttribute("name");
+
+			program_item->SetLocation(std::atoi(x), std::atoi(y));
+			program_item->SetProgramTexts(programText);
 		}
 		else if (name == L"nuke")
 		{
@@ -216,7 +222,7 @@ void Level::DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring 
 	graphics->SetFont(labelFont, FontColor);
 
 	graphics->GetTextExtent(label, &width, &height);
-	graphics->DrawText(label, LeftScoreX-width/2, LabelY);
+	graphics->DrawText(label, LeftX-width/2, LabelY);
 }
 
 /**
