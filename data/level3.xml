@@ -101,12 +101,13 @@ public:
     </bug>
 
     <bug type="null" x="1360" y="600" speed="65" start="5">
-      <code pass="if.*\(.*mCode.*!=.*nullptr.*\).*\n.*{.*\n.*mCode->Clear\(\);.*\n.*"><![CDATA[
-    GetGame()->SetPause(false);
+      <code pass="if.*\(.*mCode.*!=.*nullptr.*&amp;&amp;.*mCode->Passes\(\).*\).*\n.*\{.*\n.*return true;.*\n.*\}"><![CDATA[
+    if (mCode->Passes())
+    {
+        return true;
+    }
 
-    mCode->Clear();
-
-    return true;
+    return false;
 ]]></code>
     </bug>
 
