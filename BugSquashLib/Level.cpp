@@ -164,6 +164,7 @@ void Level::Load(const wxString &filename)
 		auto name = child->GetName();
 		if(name == L"program")
 		{
+			mNumPrograms += 1;
 			shared_ptr<Program> program_item;
 			program_item = make_shared<Program>(this);
 			mBugSquash->Add( program_item );
