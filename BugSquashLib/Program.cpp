@@ -48,7 +48,7 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> gc)
 	Item::Draw(gc);
 	for(auto programText : mProgramTexts)
 	{
-		DrawText(gc, programText, mX, mY);
+		DrawText(gc, programText, GetX(), GetY());
 	}
 }
 

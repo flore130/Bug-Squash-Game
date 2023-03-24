@@ -28,10 +28,6 @@ private:
 	/// Assignment operator
 	void operator=(const Program &) = delete;
 
-	///coordinates for program text location
-	int mX=0;
-	int mY=0;
-
 	///Contains the program text for each program in level
 	std::vector<wxString> mProgramTexts;
 
@@ -51,12 +47,6 @@ public:
 
 	void DrawText(std::shared_ptr<wxGraphicsContext> gc, wxString text, int x, int y);
 
-	///Gets location from xml file
-	void SetLocation(int x, int y)
-	{
-		mX = x;
-		mY = y;
-	}
 
 	///Adds to the list of program texts we have for the level
 	void SetProgramTexts(wxString name) {mProgramTexts.push_back(name);}

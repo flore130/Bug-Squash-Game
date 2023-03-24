@@ -83,4 +83,9 @@ TEST_F(CodeTest, AnswerChecks){
 	Load( L"../Tests/test-data/null-bug-1.xml", myBug3);
 	ASSERT_FALSE(mCode->Passes()) << L"Null bug 1";
 	CheckAnswers();
+
+	std::shared_ptr<FatNullBug> myBug4 = std::make_shared<FatNullBug>(&newLevel);
+	Load( L"../Tests/test-data/null-bug-2.xml", myBug4);
+	ASSERT_FALSE(mCode->Passes()) << L"Null bug 2";
+	CheckAnswers();
 }

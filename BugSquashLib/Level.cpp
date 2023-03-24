@@ -169,11 +169,8 @@ void Level::Load(const wxString &filename)
 			mBugSquash->Add( program_item );
 			program_item->XmlLoad(child);
 
-			auto x = child->GetAttribute("x");
-			auto y = child->GetAttribute("y");
 			auto programText = child->GetAttribute("name");
 
-			program_item->SetLocation(std::atoi(x), std::atoi(y));
 			program_item->SetProgramTexts(programText);
 		}
 		else if (name == L"nuke")

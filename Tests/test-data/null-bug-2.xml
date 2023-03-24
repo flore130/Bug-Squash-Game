@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code pass="if.*\(.*mCode.*!=.*nullptr.*&amp;&amp;.*mCode->Passes\(\).*\).*\n.*\{.*\n.*return true;.*\n.*\}"><![CDATA[
+    if (mCode->Passes())
+    {
+        return true;
+    }
+
+    return false;
+]]><answer><![CDATA[
+    if (mCode != nullptr && mCode->Passes())
+    {
+        return true;
+    }
+
+    return false;
+]]>
+</answer></code>
