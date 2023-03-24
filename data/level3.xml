@@ -125,7 +125,7 @@ public:
 
     <feature x="1350" y="400" speed="160" start="18"/>
 
-    <bug type="null" x="1100" y="1100" speed="250" start="3">
+    <bug type="null" x="1100" y="1100" speed="250" start="25">
       <code pass="if.*\(.*mCode.*!=.*nullptr.*&amp;&amp;.*mCode->Passes\(\).*\).*\n.*\{.*\n.*return true;.*\n.*\}"><![CDATA[
     if (mCode->Passes())
     {
