@@ -45,7 +45,7 @@ public:
  	* Sets the start time for this bug nuke item
  	* @param newStart How many seconds before a bug nuke will appear
  	*/
-	void SetStart(double newStart) { mStartTime = newStart + 2; }
+	void SetStart(double newStart) { mStartTime = newStart + Item::TextDelay; }
 
 
 	bool HitTest(double x, double y) override;
