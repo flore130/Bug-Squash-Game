@@ -152,7 +152,7 @@ void Level::Load(const wxString &filename)
 	auto root = xmlDoc.GetRoot();
 
 	auto main = root->GetAttribute("level");
-	mName = main;
+	mName = main + " Begin";
 
 	//
 	// Traverse the children of the root
