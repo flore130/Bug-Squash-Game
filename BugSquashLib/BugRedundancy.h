@@ -102,6 +102,8 @@ public:
 	 void SpawnRedundancyFlies();
 
 	 void Update(double elapsed) override;
+
+	 bool NukeItem() override;
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H

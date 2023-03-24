@@ -268,3 +268,14 @@ void BugRedundancy::Update(double elapsed)
 	}
 	mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
 }
+
+/**
+  * Squash the current item when the Nuke feature is selected
+  * @return true
+  */
+bool BugRedundancy::NukeItem()
+{
+	SetIsSquashed( true );
+	mParentSquashed = true;
+	return true;
+}
