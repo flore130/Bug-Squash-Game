@@ -60,7 +60,7 @@ void Scoreboard::OopsIncrement()
  */
 void Scoreboard::MissedIncrement()
 {
-	///if item is a bug and makes it to the program it will increment the missed count
+	// If item is a bug and makes it to the program it will increment the missed count
 	mMissed++;
 }
 

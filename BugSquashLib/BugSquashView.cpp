@@ -41,7 +41,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 	Bind(wxEVT_TIMER, &BugSquashView::OnTimer, this);
 	Bind(wxEVT_MOTION, &BugSquashView::OnMouseMove, this);
 
-	/// Bind the menu handlers
+	// Bind the menu handlers
 	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &BugSquashView::OnFileOpen, this, wxID_OPEN);
 
 	mTimer.SetOwner(this);
@@ -49,7 +49,7 @@ void BugSquashView::Initialize(wxFrame *mainFrame)
 
 	mStopWatch.Start();
 
-	// Start the game on level one, currently level0 for ease of testing
+	// Start the game on level one
 	wxCommandEvent blank_event;
 	OnLevelOne( blank_event );
 }
