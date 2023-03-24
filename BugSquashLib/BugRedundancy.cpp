@@ -261,12 +261,15 @@ void BugRedundancy::Update(double elapsed)
 {
 	Bug::Update(elapsed);
 	mTime += elapsed;
-	auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
-	if (time > 1)
+	if (mTime >= TextDelay || mParentSquashed == true)
 	{
-		time = 2.0 - time;
+		auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
+		if (time > 1)
+		{
+			time = 2.0 - time;
+		}
+		mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
 	}
-	mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
 }
 
 /**
