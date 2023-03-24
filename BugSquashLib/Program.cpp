@@ -69,5 +69,5 @@ void Program::DrawText(std::shared_ptr<wxGraphicsContext> graphics, wxString tex
 	graphics->SetFont(labelFont, FontColor);
 
 	graphics->GetTextExtent(text, &width, &height);
-	graphics->DrawText(text, x-63, y-18);
+	graphics->DrawText(text, x-width/2, y - height/2);
 }

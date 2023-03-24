@@ -43,7 +43,7 @@ public:
 	 */
 	void Accept( ItemVisitor* visitor ) override { visitor->VisitProgram( this ); }
 
-	void Draw(std::shared_ptr<wxGraphicsContext> gc);
+	void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
 
 	void DrawText(std::shared_ptr<wxGraphicsContext> gc, wxString text, double x, double y);
 
