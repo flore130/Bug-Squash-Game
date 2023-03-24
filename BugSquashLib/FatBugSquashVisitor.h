@@ -10,6 +10,9 @@
 
 #include "ItemVisitor.h"
 
+/**
+ * Visitor to visit fat bugs when they are double-clicked
+ */
 class FatBugSquashVisitor : public ItemVisitor
 {
 private:

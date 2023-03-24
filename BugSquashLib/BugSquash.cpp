@@ -197,6 +197,7 @@ void BugSquash::Update(double elapsed)
  * Handle left mouse button click
  * @param x x position of clicked screen
  * @param y y position of clicked screen
+ * @return The item on this location if applicable, otherwise nullptr
  */
 std::shared_ptr<Item> BugSquash::HitTest(int x, int y)
 {
@@ -259,15 +260,19 @@ void BugSquash::CheckIfAllBugsAreSquashed()
 	}
 }
 
+/**
+ * When the Nuke button is selected,
+ * kill every bug item on screen
+ */
 void BugSquash::KillAll()
 {
-	for (auto item : mItems)
+	for ( auto item : mItems )
 	{
 		auto itemX = item->GetX();
 		auto itemY = item->GetY();
-		if (itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000)
+		if ( itemX >= 0 && itemX <= 1250 && itemY >= 0 && itemY <= 1000 )
 		{
-			if (item->NukeItem())
+			if ( item->NukeItem() )
 			{
 				FixedIncrement();
 			}

@@ -1,8 +1,6 @@
 /**
  * @file BugRedundancy.h
  * @author npmar
- *
- *
  */
 
 #ifndef PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H
@@ -10,9 +8,7 @@
 
 #include <wx/wx.h>
 #include <random>
-#include "Item.h"
 #include "Bug.h"
-#include "BugSquash.h"
 
 
 /**
@@ -94,8 +90,10 @@ public:
 	 */
 	bool GetParentSquashedStatus() { return mParentSquashed; }
 
-	void SetParentSquashed() { mParentSquashed = true; }
-
+	/**
+	 * Returns whether the bug should be shown on the screen or not
+	 * @return a boolean indicating whether the bug should appear on the screen
+	 */
 	bool GetDisappearState() { return mDisappearState; }
 
 	/**
@@ -104,6 +102,8 @@ public:
 	 void SpawnRedundancyFlies();
 
 	 void Update(double elapsed) override;
+
+	 bool NukeItem() override;
 };
 
 #endif //PROJECT1_BUGSQUASHLIB_BUGREDUNDANCY_H

@@ -40,7 +40,7 @@ public:
 	/// Assignment operator
 	void operator=(const CodeDlg &) = delete;
 
-	CodeDlg(BugSquashView* view, std::shared_ptr<Code> code);
+	CodeDlg( BugSquashView* view, std::shared_ptr< Code > code );
 
 	void Initialize();
 

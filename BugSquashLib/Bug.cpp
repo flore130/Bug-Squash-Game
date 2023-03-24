@@ -17,12 +17,13 @@ const double BugHitRange = 50;
  * Constructor
  * @param level the game level
  * @param filename the filename for the bug image
+ * @param spriteCount the number of sprites in the bug image
+ * @param squashedFilename the filename for the squashed bug image
  */
 Bug::Bug(Level *level, const std::wstring &filename, const std::wstring& squashedFilename, int spriteCount) : Item(level, filename)
 {
 	mSpriteCount = spriteCount;
 	mSquashedBugImage = level->GetImage( squashedFilename );
-	mStopWatch.Start();
 }
 
 
@@ -199,4 +200,24 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 	graphics->DrawBitmap(bugBitmap, - (bugWidth / 2), - (bugHeight / 2), bugWidth, bugHeight );
 	graphics->PopState();
+}
+
+/**
+ * Set the Bug status to squashed. Once true it can never be false
+ * @param squashStatus Set the bug's squash status
+ */
+void Bug::SetIsSquashed( bool squashStatus )
+{
+	mIsSquashed |= squashStatus;
+	mSpeed = 0;
+}
+
+/**
+  * Squash the current item when the Nuke feature is selected
+  * @return true
+  */
+bool Bug::NukeItem()
+{
+	SetIsSquashed( true );
+	return true;
 }

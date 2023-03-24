@@ -7,16 +7,15 @@
 #include "CodeDlg.h"
 #include "BugSquashView.h"
 #include "Bug.h"
-#include "ids.h"
 
 using namespace std;
 
 /**
  * Constructor
- * @param window the window this dialog box should be a child of
+ * @param view the window this dialog box should be a child of
  * @param code the code this dialog box should display
  */
-CodeDlg::CodeDlg(BugSquashView* view, shared_ptr<Code> code) : mView(view), mCode(code)
+CodeDlg::CodeDlg( BugSquashView* view, std::shared_ptr< Code > code ) : mView( view ), mCode( code )
 {
 }
 

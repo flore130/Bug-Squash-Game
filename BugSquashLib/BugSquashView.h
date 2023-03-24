@@ -9,6 +9,7 @@
 #define PROJECT1_BUGSQUASHLIB_BUGSQUASHVIEW_H
 
 #include "BugSquash.h"
+
 /**
  * Class that contains all the views on the bug squash game
  */

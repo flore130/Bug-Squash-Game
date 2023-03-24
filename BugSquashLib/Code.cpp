@@ -4,12 +4,14 @@
  */
 
 #include "pch.h"
-#include "Code.h"
 #include <wx/regex.h>
+#include "Code.h"
+
 
 /**
  * Constructor
- * @param node the <code> node to read from
+ * @param node the <code> </code> node to read from
+ * @param bug The bug that has the code attribute
  */
 Code::Code(wxXmlNode* node, std::shared_ptr<Bug> bug)
 {

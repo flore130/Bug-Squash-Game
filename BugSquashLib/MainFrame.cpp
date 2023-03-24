@@ -6,7 +6,6 @@
 #include "pch.h"
 #include "BugSquashView.h"
 #include "MainFrame.h"
-#include "ids.h"
 
 /**
  * Initialize the MainFrame window

@@ -4,10 +4,12 @@
  */
 
 #include "pch.h"
+#include <vector>
+#include "BugSquash.h"
 #include "Program.h"
 #include "BugRedundancy.h"
 #include "Level.h"
-#include <vector>
+
 
 using namespace std;
 
@@ -251,14 +253,32 @@ void BugRedundancy::SpawnRedundancyFlies()
 	mDisappearState = true;
 }
 
+/**
+* Handle update event for animations
+* @param elapsed the seconds elapsed since last update
+*/
 void BugRedundancy::Update(double elapsed)
 {
 	Bug::Update(elapsed);
 	mTime += elapsed;
-	auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
-	if (time > 1)
+	if (mTime >= TextDelay || mParentSquashed == true)
 	{
-		time = 2.0 - time;
+		auto time = 2 * fmod(mTime, WingPeriod) / WingPeriod;
+		if (time > 1)
+		{
+			time = 2.0 - time;
+		}
+		mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
 	}
-	mWingAngle = WingRotateStart + (time * (WingRotateEnd - WingRotateStart));
+}
+
+/**
+  * Squash the current item when the Nuke feature is selected
+  * @return true
+  */
+bool BugRedundancy::NukeItem()
+{
+	SetIsSquashed( true );
+	mParentSquashed = true;
+	return true;
 }

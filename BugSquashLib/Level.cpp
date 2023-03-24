@@ -6,16 +6,12 @@
 #include "pch.h"
 #include "BugSquash.h"
 #include "Code.h"
-#include "BugGarbage.h"
-#include "BugNull.h"
 #include "BugRedundancy.h"
 #include "Feature.h"
 #include "BugNuke.h"
 #include "Program.h"
 #include "FatGarbageBug.h"
 #include "FatNullBug.h"
-#include "Item.h"
-#include "Level.h"
 
 using namespace std;
 
@@ -40,6 +36,7 @@ const int LabelY = 425;
 
 /**
  * Constructor
+ * @param bugSquash the bugSquash object the level belongs to
  */
 Level::Level(BugSquash* bugSquash) : mBugSquash(bugSquash){}
 
@@ -204,6 +201,11 @@ void Level::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 	DrawLevel(graphics, mName);
 }
 
+/**
+ * Draw our level information
+ * @param graphics The graphics we are drawing on
+ * @param label The content we are drawing
+ */
 void Level::DrawLevel(std::shared_ptr<wxGraphicsContext> graphics, std::wstring label)
 {
 	wxFont scoreFont(wxSize(TextSize,TextSize), wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
