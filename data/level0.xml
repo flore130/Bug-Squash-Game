@@ -17,5 +17,15 @@ public:
 };
 ]]></code>
     </bug>
+    <bug type="null" x="500" y="800" speed="30" start="0">
+      <code pass="if.*\(.*mCode.*!=.*nullptr.*&amp;&amp;.*mCode->Passes\(\).*\).*\n.*\{.*\n.*return true;.*\n.*\}"><![CDATA[
+    if (mCode->Passes())
+    {
+        return true;
+    }
+
+    return false;
+]]></code>
+    </bug>
   </program>
 </bug-squash>
